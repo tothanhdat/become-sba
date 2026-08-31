@@ -1,0 +1,438 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "questions": [
+    {
+      "code": "EC-001",
+      "domain": "EC",
+      "sourceRef": "4.1",
+      "sourceTask": "Prepare for Elicitation",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst has booked a two-hour workshop with eight stakeholders from finance and operations to explore reconciliation problems. The invitation says only 'requirements workshop'. A colleague asks what the analyst expects to walk out with. The analyst has not decided. What has the analyst omitted?",
+      "explanation": "Prepare for Elicitation begins by understanding the scope of the elicitation activity and defining the desired outcomes. Without a stated outcome, the analyst cannot select participants, choose techniques, or know when the session has succeeded.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Defining the desired elicitation outcomes for the activity.",
+          "isCorrect": true,
+          "rationale": "Correct. Understanding scope and defining desired outcomes is the first element of preparing for elicitation, and everything else in the session design follows from it."
+        },
+        {
+          "label": "B",
+          "text": "Confirming the elicitation results with the participants.",
+          "isCorrect": false,
+          "rationale": "Confirmation happens after elicitation, in Confirm Elicitation Results. The session has not run yet."
+        },
+        {
+          "label": "C",
+          "text": "Selecting the stakeholders to invite.",
+          "isCorrect": false,
+          "rationale": "Participants have already been selected. The gap is that they were selected without a stated outcome to select against."
+        },
+        {
+          "label": "D",
+          "text": "Agreeing the change control process for any requirements produced.",
+          "isCorrect": false,
+          "rationale": "Change control is a governance matter planned in Business Analysis Planning and Monitoring, not part of preparing a session."
+        }
+      ]
+    },
+    {
+      "code": "EC-002",
+      "domain": "EC",
+      "sourceRef": "4.1",
+      "sourceTask": "Prepare for Elicitation",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst needs to understand how call centre agents actually handle exceptions, as opposed to how the documented procedure says they should. Which elicitation technique is best suited, and why?",
+      "explanation": "Prepare for Elicitation selects techniques appropriate to the desired outcome. Observation elicits information by studying people performing the work in its real setting, which surfaces the gap between documented and actual practice.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Observation, because it studies the work as it is actually performed.",
+          "isCorrect": true,
+          "rationale": "Correct. Observation is the technique for learning what people really do, including workarounds that never reach a procedure document."
+        },
+        {
+          "label": "B",
+          "text": "Document analysis, because the procedure manual is the authoritative source.",
+          "isCorrect": false,
+          "rationale": "The manual describes the intended process. It is exactly the source that cannot reveal the divergence the analyst is looking for."
+        },
+        {
+          "label": "C",
+          "text": "Survey or questionnaire, because it reaches all agents efficiently.",
+          "isCorrect": false,
+          "rationale": "Reach is good, but self-reported behaviour tends to describe the official process. Agents may not notice or admit their own workarounds."
+        },
+        {
+          "label": "D",
+          "text": "Focus groups, because agents can discuss exceptions collectively.",
+          "isCorrect": false,
+          "rationale": "A focus group gathers opinions and reactions. It is a reasonable second choice, but it still relies on what agents say rather than what they do."
+        }
+      ]
+    },
+    {
+      "code": "EC-003",
+      "domain": "EC",
+      "sourceRef": "4.1",
+      "sourceTask": "Prepare for Elicitation",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Before running interviews with senior clinicians whose time is heavily constrained, a business analyst reads the existing process documentation, prior audit findings and the current system's data dictionary. What is the analyst's primary reason for doing this within Prepare for Elicitation?",
+      "explanation": "Preparing supporting materials and building the analyst's own understanding of the domain lets scarce stakeholder time be spent on what only those stakeholders can supply, rather than on background the analyst could have obtained elsewhere.",
+      "options": [
+        {
+          "label": "A",
+          "text": "To arrive informed, so scarce stakeholder time is spent on what only those stakeholders can provide.",
+          "isCorrect": true,
+          "rationale": "Correct. Preparing supporting materials and background understanding is part of this task, and it is what makes constrained sessions productive."
+        },
+        {
+          "label": "B",
+          "text": "To produce the requirements before the interviews, so clinicians only need to confirm them.",
+          "isCorrect": false,
+          "rationale": "This pre-empts elicitation and biases it. Documents describe the current state; they are not a substitute for eliciting the need."
+        },
+        {
+          "label": "C",
+          "text": "To satisfy the governance requirement that document analysis precedes interviews.",
+          "isCorrect": false,
+          "rationale": "BABOK prescribes no such ordering rule. Technique selection follows the desired outcome, not a fixed sequence."
+        },
+        {
+          "label": "D",
+          "text": "To establish traceability between the current system and the future requirements.",
+          "isCorrect": false,
+          "rationale": "Traceability is established in Requirements Life Cycle Management once requirements exist, not while preparing to elicit them."
+        }
+      ]
+    },
+    {
+      "code": "EC-004",
+      "domain": "EC",
+      "sourceRef": "4.2",
+      "sourceTask": "Conduct Elicitation",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Forty minutes into a ninety-minute workshop on order fulfilment, participants are deep in an argument about warehouse staffing levels, which is outside the agreed scope. Two stakeholders are becoming frustrated. What should the business analyst do?",
+      "explanation": "Guide Elicitation Activity, an element of Conduct Elicitation, includes keeping the activity focused on the stated objectives and managing off-topic discussion so the session still delivers its intended outcome.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Note the staffing discussion for follow-up and steer the group back to the agreed objectives.",
+          "isCorrect": true,
+          "rationale": "Correct. Guiding the activity means keeping it aligned to its objectives while not discarding information that may matter later."
+        },
+        {
+          "label": "B",
+          "text": "Let the discussion continue, since unplanned topics often reveal the real need.",
+          "isCorrect": false,
+          "rationale": "The most tempting distractor. Emergent topics can be valuable, which is why they are captured for follow-up, but abandoning the objective wastes the session the analyst prepared."
+        },
+        {
+          "label": "C",
+          "text": "End the workshop and reconvene once the staffing question has been settled.",
+          "isCorrect": false,
+          "rationale": "Ending the session surrenders the remaining fifty minutes and makes the analyst dependent on a decision outside the initiative's scope."
+        },
+        {
+          "label": "D",
+          "text": "Ask the sponsor to widen the scope to include warehouse staffing.",
+          "isCorrect": false,
+          "rationale": "Expanding scope mid-session on the strength of one argument is premature, and it does not address the immediate problem of a session going off track."
+        }
+      ]
+    },
+    {
+      "code": "EC-005",
+      "domain": "EC",
+      "sourceRef": "4.2",
+      "sourceTask": "Conduct Elicitation",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst has just finished a series of interviews. The notes have been written up and organised, but no stakeholder has yet reviewed them. What is the state of this information in BABOK terms?",
+      "explanation": "Conduct Elicitation produces elicitation results in an unconfirmed state. They become confirmed only after Confirm Elicitation Results, when stakeholders agree that the recorded information matches what they conveyed.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Elicitation results (unconfirmed).",
+          "isCorrect": true,
+          "rationale": "Correct. Conduct Elicitation outputs unconfirmed elicitation results; confirmation is a separate task."
+        },
+        {
+          "label": "B",
+          "text": "Elicitation results (confirmed).",
+          "isCorrect": false,
+          "rationale": "Confirmation requires stakeholder agreement that the record is accurate. Writing the notes up neatly does not confirm them."
+        },
+        {
+          "label": "C",
+          "text": "Requirements (stated).",
+          "isCorrect": false,
+          "rationale": "Elicitation results become requirements only once they are analysed, synthesised and modelled in Specify and Model Requirements."
+        },
+        {
+          "label": "D",
+          "text": "Requirements (verified).",
+          "isCorrect": false,
+          "rationale": "Verified requirements have passed a quality check in Verify Requirements. Interview notes are several steps away from that state."
+        }
+      ]
+    },
+    {
+      "code": "EC-006",
+      "domain": "EC",
+      "sourceRef": "4.2",
+      "sourceTask": "Conduct Elicitation",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "During a workshop, the most senior participant states a position early and the rest of the group visibly stops offering alternatives. The analyst suspects the group is converging on the senior view rather than on the best answer. Which action best addresses this while continuing the elicitation?",
+      "explanation": "Guiding an elicitation activity includes managing group dynamics so that the information elicited reflects the group's knowledge rather than its hierarchy. Techniques that surface individual input independently counteract dominance effects.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Switch to a method where participants record their input individually before the group discusses it.",
+          "isCorrect": true,
+          "rationale": "Correct. Collecting individual input first is the standard way to keep a dominant voice from suppressing the group's knowledge."
+        },
+        {
+          "label": "B",
+          "text": "Ask the senior participant to leave so the remaining stakeholders can speak freely.",
+          "isCorrect": false,
+          "rationale": "Excluding a legitimate stakeholder damages the working relationship and loses their knowledge, which is a heavy price for a problem that facilitation can solve."
+        },
+        {
+          "label": "C",
+          "text": "Record the senior participant's position as the group's agreed outcome and move on.",
+          "isCorrect": false,
+          "rationale": "This records the hierarchy rather than the group's knowledge, and produces elicitation results the analyst already believes are unrepresentative."
+        },
+        {
+          "label": "D",
+          "text": "Raise the dominance problem with the group directly and ask them to self-correct.",
+          "isCorrect": false,
+          "rationale": "Naming the dynamic in front of the senior participant is likely to embarrass people and suppress contribution further, rather than restore it."
+        }
+      ]
+    },
+    {
+      "code": "EC-007",
+      "domain": "EC",
+      "sourceRef": "4.3",
+      "sourceTask": "Confirm Elicitation Results",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst circulates a summary of a workshop and asks each attendee to confirm that it reflects what they said. One attendee replies that a constraint has been recorded backwards. What has the confirmation activity achieved?",
+      "explanation": "Confirm Elicitation Results checks that the recorded information matches what stakeholders conveyed and identifies errors, omissions and inconsistencies before that information is used to build requirements.",
+      "options": [
+        {
+          "label": "A",
+          "text": "It has caught an error before the information is used to build requirements.",
+          "isCorrect": true,
+          "rationale": "Correct. Identifying errors and inconsistencies in recorded results is precisely the purpose of this task."
+        },
+        {
+          "label": "B",
+          "text": "It has validated that the constraint delivers business value.",
+          "isCorrect": false,
+          "rationale": "Validation checks that requirements deliver value to stakeholders. Confirmation only checks that the record is faithful to what was said."
+        },
+        {
+          "label": "C",
+          "text": "It has verified that the constraint is well written and unambiguous.",
+          "isCorrect": false,
+          "rationale": "Verification is a quality check applied to requirements in Verify Requirements. Elicitation results are not yet requirements."
+        },
+        {
+          "label": "D",
+          "text": "It has approved the constraint for inclusion in the requirements baseline.",
+          "isCorrect": false,
+          "rationale": "Approval is a Requirements Life Cycle Management activity performed by authorised stakeholders on requirements, not a by-product of confirming notes."
+        }
+      ]
+    },
+    {
+      "code": "EC-008",
+      "domain": "EC",
+      "sourceRef": "4.3",
+      "sourceTask": "Confirm Elicitation Results",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Two stakeholders confirm elicitation results that contradict each other: the credit team says applications above a threshold always require manual review, while the digital team says the same applications are auto-approved. Both are certain. What should the business analyst do next?",
+      "explanation": "Confirm Elicitation Results includes comparing results against their sources and against other elicitation results, and following up on discrepancies. Contradictions are surfaced and investigated rather than resolved by preference.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Compare both accounts against other sources to establish what actually happens, then follow up on the discrepancy.",
+          "isCorrect": true,
+          "rationale": "Correct. Comparing results across sources and pursuing discrepancies is exactly what this task prescribes."
+        },
+        {
+          "label": "B",
+          "text": "Record both statements as conflicting requirements and let prioritisation resolve them.",
+          "isCorrect": false,
+          "rationale": "The conflict is about current-state fact, not competing wants. Prioritisation cannot decide which account of reality is true."
+        },
+        {
+          "label": "C",
+          "text": "Accept the credit team's account, since credit policy governs approval decisions.",
+          "isCorrect": false,
+          "rationale": "Deferring to the more authoritative-sounding function is the near-miss answer. It may well be that the digital team is describing an undocumented exception path."
+        },
+        {
+          "label": "D",
+          "text": "Escalate the contradiction to the sponsor for a decision.",
+          "isCorrect": false,
+          "rationale": "The sponsor cannot decide a question of fact that the analyst has not yet investigated. Escalating first passes the analyst's work upward."
+        }
+      ]
+    },
+    {
+      "code": "EC-009",
+      "domain": "EC",
+      "sourceRef": "4.4",
+      "sourceTask": "Communicate Business Analysis Information",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst must convey the same solution scope to an executive steering group and to the development team. Which approach best reflects Communicate Business Analysis Information?",
+      "explanation": "This task determines the appropriate format and level of detail for each audience so that they gain a common understanding. The underlying information is one set; its presentation is tailored to the audience's needs.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Present the same underlying information in the format and level of detail each audience needs.",
+          "isCorrect": true,
+          "rationale": "Correct. Determining the right form of communication for each audience, without changing the substance, is the heart of this task."
+        },
+        {
+          "label": "B",
+          "text": "Send both groups the full requirements package so nobody receives less information than the other.",
+          "isCorrect": false,
+          "rationale": "Equal volume is not equal understanding. Burying executives in detail they cannot use fails the task's purpose, which is common understanding."
+        },
+        {
+          "label": "C",
+          "text": "Communicate only with the development team, and let the steering group read the meeting minutes.",
+          "isCorrect": false,
+          "rationale": "Minutes are a record of a discussion, not a communication designed for the steering group's needs."
+        },
+        {
+          "label": "D",
+          "text": "Publish the requirements to the shared repository and notify both groups of the location.",
+          "isCorrect": false,
+          "rationale": "Making information available is not the same as communicating it. This task requires the analyst to confirm that understanding was reached."
+        }
+      ]
+    },
+    {
+      "code": "EC-010",
+      "domain": "EC",
+      "sourceRef": "4.4",
+      "sourceTask": "Communicate Business Analysis Information",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "After presenting a requirements package, a business analyst asks several participants to describe in their own words how the new process will handle rejected orders. Why does the analyst do this?",
+      "explanation": "Communicate Business Analysis Information is complete only when the audience has a common understanding of the information. Confirming understanding, rather than assuming it from delivery, is part of the task.",
+      "options": [
+        {
+          "label": "A",
+          "text": "To confirm that the audience has reached a common understanding of the information.",
+          "isCorrect": true,
+          "rationale": "Correct. The task's purpose is shared understanding, so the analyst checks for it rather than assuming delivery achieved it."
+        },
+        {
+          "label": "B",
+          "text": "To validate that the rejected-order requirement delivers business value.",
+          "isCorrect": false,
+          "rationale": "That is Validate Requirements. Asking someone to paraphrase tests comprehension, not value."
+        },
+        {
+          "label": "C",
+          "text": "To obtain approval of the requirements package from those present.",
+          "isCorrect": false,
+          "rationale": "Approval is a formal act by authorised stakeholders under Approve Requirements, not an outcome of a comprehension check."
+        },
+        {
+          "label": "D",
+          "text": "To elicit additional requirements about rejected orders.",
+          "isCorrect": false,
+          "rationale": "Further elicitation may follow, but the immediate purpose of asking people to restate what they heard is to test understanding."
+        }
+      ]
+    },
+    {
+      "code": "EC-011",
+      "domain": "EC",
+      "sourceRef": "4.5",
+      "sourceTask": "Manage Stakeholder Collaboration",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A stakeholder who was enthusiastic at the start of an initiative has become steadily less responsive over two months and now sends a delegate to every session. The business analyst suspects the stakeholder's attitude towards the change has shifted. What should the business analyst do?",
+      "explanation": "Manage Stakeholder Collaboration includes monitoring stakeholder attitudes and engagement throughout the initiative and acting when they change, because deteriorating engagement threatens the quality and acceptance of the analysis work.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Engage the stakeholder directly to understand what has changed, and adjust the collaboration accordingly.",
+          "isCorrect": true,
+          "rationale": "Correct. Monitoring attitudes and responding to changes in engagement is the substance of this task."
+        },
+        {
+          "label": "B",
+          "text": "Work with the delegate, since the delegate attends reliably and can speak for the stakeholder.",
+          "isCorrect": false,
+          "rationale": "Convenient and plausible, but it accepts the symptom. A delegate may lack the authority the initiative needs, and the underlying disengagement goes unaddressed."
+        },
+        {
+          "label": "C",
+          "text": "Escalate the non-attendance to the sponsor so the stakeholder is instructed to attend.",
+          "isCorrect": false,
+          "rationale": "Compelled attendance restores presence, not commitment, and is likely to harden the stakeholder's attitude."
+        },
+        {
+          "label": "D",
+          "text": "Record the reduced engagement as a project risk and continue as planned.",
+          "isCorrect": false,
+          "rationale": "Logging the risk documents the problem while leaving it to grow. This task asks the analyst to act on the change in engagement."
+        }
+      ]
+    },
+    {
+      "code": "EC-012",
+      "domain": "EC",
+      "sourceRef": "4.5",
+      "sourceTask": "Manage Stakeholder Collaboration",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Which outcome best describes what Manage Stakeholder Collaboration is intended to achieve?",
+      "explanation": "The purpose of Manage Stakeholder Collaboration is to encourage stakeholders to work towards a common goal, sustaining the participation and commitment that business analysis work depends on.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Stakeholders remain willing participants working towards a common goal.",
+          "isCorrect": true,
+          "rationale": "Correct. Sustaining stakeholder participation and shared purpose is the stated purpose of this task."
+        },
+        {
+          "label": "B",
+          "text": "Stakeholders formally approve the requirements at each defined checkpoint.",
+          "isCorrect": false,
+          "rationale": "Formal approval belongs to Approve Requirements. Willing collaboration makes approval easier but is not the same thing."
+        },
+        {
+          "label": "C",
+          "text": "Stakeholder responsibilities are documented in a RACI matrix.",
+          "isCorrect": false,
+          "rationale": "A responsibility matrix is a planning artifact from Plan Stakeholder Engagement. Documenting roles does not by itself sustain collaboration."
+        },
+        {
+          "label": "D",
+          "text": "Stakeholder feedback is captured and traced to the affected requirements.",
+          "isCorrect": false,
+          "rationale": "Tracing feedback to requirements is a Requirements Life Cycle Management activity, and describes bookkeeping rather than the relationship this task manages."
+        }
+      ]
+    }
+  ]
+}

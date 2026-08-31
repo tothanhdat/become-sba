@@ -1,0 +1,307 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "deck": "techniques",
+  "cards": [
+    {
+      "code": "TECH-01",
+      "front": "Acceptance and Evaluation Criteria",
+      "back": "Acceptance criteria are used to define the requirements, outcomes, or conditions that must be met in order for a solution to be considered acceptable to key stakeholders. Evaluation criteria are the measures used to assess a set of requirements in order to choose between multiple solutions.",
+      "sourceRef": "10.1"
+    },
+    {
+      "code": "TECH-02",
+      "front": "Backlog Management",
+      "back": "The backlog is used to record, track, and prioritize remaining work items.",
+      "sourceRef": "10.2"
+    },
+    {
+      "code": "TECH-03",
+      "front": "Balanced Scorecard",
+      "back": "The balanced scorecard is used to manage performance in any business model, organizational structure, or business process.",
+      "sourceRef": "10.3"
+    },
+    {
+      "code": "TECH-04",
+      "front": "Benchmarking and Market Analysis",
+      "back": "Benchmarking and market analysis are conducted to improve organizational operations, increase customer satisfaction, and increase value to stakeholders.",
+      "sourceRef": "10.4"
+    },
+    {
+      "code": "TECH-05",
+      "front": "Brainstorming",
+      "back": "Brainstorming is an excellent way to foster creative thinking about a problem. The aim of brainstorming is to produce numerous new ideas, and to derive from them themes for further analysis.",
+      "sourceRef": "10.5"
+    },
+    {
+      "code": "TECH-06",
+      "front": "Business Capability Analysis",
+      "back": "Business capability analysis provides a framework for scoping and planning by generating a shared understanding of outcomes, identifying alignment with strategy, and providing a scope and prioritization filter.",
+      "sourceRef": "10.6"
+    },
+    {
+      "code": "TECH-07",
+      "front": "Business Cases",
+      "back": "A business case provides a justification for a course of action based on the benefits to be realized by using the proposed solution, as compared to the cost, effort, and other considerations to acquire and live with that solution.",
+      "sourceRef": "10.7"
+    },
+    {
+      "code": "TECH-08",
+      "front": "Business Model Canvas",
+      "back": "A business model canvas describes how an enterprise creates, delivers, and captures value for and from its customers.",
+      "sourceRef": "10.8"
+    },
+    {
+      "code": "TECH-09",
+      "front": "Business Rules Analysis",
+      "back": "Business rules analysis is used to identify, express, validate, refine, and organize the rules that shape day-to-day business behaviour and guide operational business decision making.",
+      "sourceRef": "10.9"
+    },
+    {
+      "code": "TECH-10",
+      "front": "Collaborative Games",
+      "back": "Collaborative games encourage participants in an elicitation activity to collaborate in building a joint understanding of a problem or a solution.",
+      "sourceRef": "10.10"
+    },
+    {
+      "code": "TECH-11",
+      "front": "Concept Modelling",
+      "back": "A concept model is used to organize the business vocabulary needed to consistently and thoroughly communicate the knowledge of a domain. 1: Examples of Collaborative Games Game Description Objective Product Box Participants construct a box for the product as if it was being sold in a retail store. Used to help identify features of a product that help drive interest in the marketplace.",
+      "sourceRef": "10.11"
+    },
+    {
+      "code": "TECH-12",
+      "front": "Data Dictionary",
+      "back": "A data dictionary is used to standardize a definition of a data element and enable a common interpretation of data elements.",
+      "sourceRef": "10.12"
+    },
+    {
+      "code": "TECH-13",
+      "front": "Data Flow Diagrams",
+      "back": "Data flow diagrams show where data comes from, which activities process the data, and if the output results are stored or utilized by another activity or external entity.",
+      "sourceRef": "10.13"
+    },
+    {
+      "code": "TECH-14",
+      "front": "Data Mining",
+      "back": "Data mining is used to improve decision making by finding useful patterns and insights from data.",
+      "sourceRef": "10.14"
+    },
+    {
+      "code": "TECH-15",
+      "front": "Data Modelling",
+      "back": "A data model describes the entities, classes or data objects relevant to a domain, the attributes that are used to describe them, and the relationships among them to provide a common set of semantics for analysis and implementation.",
+      "sourceRef": "10.15"
+    },
+    {
+      "code": "TECH-16",
+      "front": "Decision Analysis",
+      "back": "Decision analysis formally assesses a problem and possible decisions in order to determine the value of alternate outcomes under conditions of uncertainty.",
+      "sourceRef": "10.16"
+    },
+    {
+      "code": "TECH-17",
+      "front": "Decision Modelling",
+      "back": "Decision modelling shows how repeatable business decisions are made.",
+      "sourceRef": "10.17"
+    },
+    {
+      "code": "TECH-18",
+      "front": "Document Analysis",
+      "back": "Document analysis is used to elicit business analysis information, including contextual understanding and requirements, by examining available materials that describe either the business environment or existing organizational assets.",
+      "sourceRef": "10.18"
+    },
+    {
+      "code": "TECH-19",
+      "front": "Estimation",
+      "back": "Estimation is used by business analysts and other stakeholders to forecast the cost and effort involved in pursuing a course of action.",
+      "sourceRef": "10.19"
+    },
+    {
+      "code": "TECH-20",
+      "front": "Financial Analysis",
+      "back": "Financial analysis is used to understand the financial aspects of an investment, a solution, or a solution approach.",
+      "sourceRef": "10.20"
+    },
+    {
+      "code": "TECH-21",
+      "front": "Focus Groups",
+      "back": "A focus group is a means to elicit ideas and opinions about a specific product, service, or opportunity in an interactive group environment. The participants, guided by a moderator, share their impressions, preferences, and needs.",
+      "sourceRef": "10.21"
+    },
+    {
+      "code": "TECH-22",
+      "front": "Functional Decomposition",
+      "back": "Functional decomposition helps manage complexity and reduce uncertainty by breaking down processes, systems, functional areas, or deliverables into their simpler constituent parts and allowing each part to be analyzed independently.",
+      "sourceRef": "10.22"
+    },
+    {
+      "code": "TECH-23",
+      "front": "Glossary",
+      "back": "A glossary defines key terms relevant to a business domain.",
+      "sourceRef": "10.23"
+    },
+    {
+      "code": "TECH-24",
+      "front": "Interface Analysis",
+      "back": "Interface analysis is used to identify where, what, why, when, how, and for whom information is exchanged between solution components or across solution boundaries.",
+      "sourceRef": "10.24"
+    },
+    {
+      "code": "TECH-25",
+      "front": "Interviews",
+      "back": "An interview is a systematic approach designed to elicit business analysis information from a person or group of people by talking to the interviewee(s), asking relevant questions, and documenting the responses.",
+      "sourceRef": "10.25"
+    },
+    {
+      "code": "TECH-26",
+      "front": "Item Tracking",
+      "back": "Item tracking is used to capture and assign responsibility for issues and stakeholder concerns that pose an impact to the solution.",
+      "sourceRef": "10.26"
+    },
+    {
+      "code": "TECH-27",
+      "front": "Lessons Learned",
+      "back": "The purpose of the lessons learned process is to compile and document successes, opportunities for improvement, failures, and recommendations for improving the performance of future projects or project phases.",
+      "sourceRef": "10.27"
+    },
+    {
+      "code": "TECH-28",
+      "front": "Metrics and Key Performance Indicators (KPIs)",
+      "back": "Metrics and key performance indicators measure the performance of solutions, solution components, and other matters of interest to stakeholders.",
+      "sourceRef": "10.28"
+    },
+    {
+      "code": "TECH-29",
+      "front": "Mind Mapping",
+      "back": "Mind mapping is used to articulate and capture thoughts, ideas, and information.",
+      "sourceRef": "10.29"
+    },
+    {
+      "code": "TECH-30",
+      "front": "Non-Functional Requirements Analysis",
+      "back": "Non-functional requirements analysis examines the requirements for a solution that define how well the functional requirements must perform. It specifies criteria that can be used to judge the operation of a system rather than specific behaviours (which are referred to as the functional requirements).",
+      "sourceRef": "10.30"
+    },
+    {
+      "code": "TECH-31",
+      "front": "Observation",
+      "back": "Observation is used to elicit information by viewing and understanding activities and their context. It is used as a basis for identifying needs and opportunities, understanding a business process, setting performance standards, evaluating solution performance, or supporting training and development.",
+      "sourceRef": "10.31"
+    },
+    {
+      "code": "TECH-32",
+      "front": "Organizational Modelling",
+      "back": "Organizational modelling is used to describe the roles, responsibilities, and reporting structures that exist within an organization and to align those structures with the organization's goals.",
+      "sourceRef": "10.32"
+    },
+    {
+      "code": "TECH-33",
+      "front": "Prioritization",
+      "back": "Prioritization provides a framework for business analysts to facilitate stakeholder decisions and to understand the relative importance of business analysis information.",
+      "sourceRef": "10.33"
+    },
+    {
+      "code": "TECH-34",
+      "front": "Process Analysis",
+      "back": "Process analysis assesses a process for its efficiency and effectiveness, as well as its ability to identify opportunities for change.",
+      "sourceRef": "10.34"
+    },
+    {
+      "code": "TECH-35",
+      "front": "Process Modelling",
+      "back": "Process modelling is a standardized graphical model used to show how work is carried out and is a foundation for process analysis.",
+      "sourceRef": "10.35"
+    },
+    {
+      "code": "TECH-36",
+      "front": "Prototyping",
+      "back": "Prototyping is used to elicit and validate stakeholder needs through an iterative process that creates a model or design of requirements. It is also used to optimize user experience, to evaluate design options, and as a basis for development of the final business solution.",
+      "sourceRef": "10.36"
+    },
+    {
+      "code": "TECH-37",
+      "front": "Reviews",
+      "back": "Reviews are used to evaluate the content of a work product.",
+      "sourceRef": "10.37"
+    },
+    {
+      "code": "TECH-38",
+      "front": "Risk Analysis and Management",
+      "back": "Risk analysis and management identifies areas of uncertainty that could negatively affect value, analyzes and evaluates those uncertainties, and develops and manages ways of dealing with the risks.",
+      "sourceRef": "10.38"
+    },
+    {
+      "code": "TECH-39",
+      "front": "Roles and Permissions Matrix",
+      "back": "A roles and permissions matrix is used to ensure coverage of activities by denoting responsibility, to identify roles, to discover missing roles, and to communicate results of a planned change.",
+      "sourceRef": "10.39"
+    },
+    {
+      "code": "TECH-40",
+      "front": "Root Cause Analysis",
+      "back": "Root cause analysis is used to identify and evaluate the underlying causes of a problem.",
+      "sourceRef": "10.40"
+    },
+    {
+      "code": "TECH-41",
+      "front": "Scope Modelling",
+      "back": "Scope models define the nature of one or more limits or boundaries and place elements inside or outside those boundaries.",
+      "sourceRef": "10.41"
+    },
+    {
+      "code": "TECH-42",
+      "front": "Sequence Diagrams",
+      "back": "Sequence diagrams are used to model the logic of usage scenarios by showing the information passed between objects in the system through the execution of the scenario.",
+      "sourceRef": "10.42"
+    },
+    {
+      "code": "TECH-43",
+      "front": "Stakeholder List, Map, or Personas",
+      "back": "Stakeholder lists, maps, and personas assist the business analyst in analyzing stakeholders and their characteristics.",
+      "sourceRef": "10.43"
+    },
+    {
+      "code": "TECH-44",
+      "front": "State Modelling",
+      "back": "State modelling is used to describe and analyze the different possible states of an entity within a system, how that entity changes from one state to another, and what can happen to the entity when it is in each state.",
+      "sourceRef": "10.44"
+    },
+    {
+      "code": "TECH-45",
+      "front": "Survey or Questionnaire",
+      "back": "A survey or questionnaire is used to elicit business analysis information—including information about customers, products, work practices, and attitudes—from a group of people in a structured way and in a relatively short period of time.",
+      "sourceRef": "10.45"
+    },
+    {
+      "code": "TECH-46",
+      "front": "SWOT Analysis",
+      "back": "SWOT analysis is a simple yet effective tool used to evaluate an organization's strengths, weaknesses, opportunities, and threats to both internal and external conditions.",
+      "sourceRef": "10.46"
+    },
+    {
+      "code": "TECH-47",
+      "front": "Use Cases and Scenarios",
+      "back": "Use cases and scenarios describe how a person or system interacts with the solution being modelled to achieve a goal.",
+      "sourceRef": "10.47"
+    },
+    {
+      "code": "TECH-48",
+      "front": "User Stories",
+      "back": "A user story represents a small, concise statement of functionality or quality needed to deliver value to a specific stakeholder.",
+      "sourceRef": "10.48"
+    },
+    {
+      "code": "TECH-49",
+      "front": "Vendor Assessment",
+      "back": "A vendor assessment assesses the ability of a vendor to meet commitments regarding the delivery and the consistent provision of a product or service.",
+      "sourceRef": "10.49"
+    },
+    {
+      "code": "TECH-50",
+      "front": "Workshops",
+      "back": "Workshops bring stakeholders together in order to collaborate on achieving a predefined goal.",
+      "sourceRef": "10.50"
+    }
+  ]
+}

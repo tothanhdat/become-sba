@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "note": "Every figure here comes from the IIBA certification handbooks (May 2026 editions). Pass thresholds are community estimates because IIBA does not publish cut scores; that is recorded per certification in passThresholdSource.",
+  "certifications": [
+    {
+      "code": "CBAP",
+      "name": "Certified Business Analysis Professional",
+      "nameVi": "CBAP — Chuyên gia phân tích nghiệp vụ",
+      "body": "IIBA",
+      "tier": "Senior",
+      "frameworkCode": "babok-v3",
+      "questionCount": 120,
+      "timeLimitSec": 12600,
+      "passThresholdPercent": 70,
+      "passThresholdSource": "Ước tính của cộng đồng; IIBA không công bố điểm đậu.",
+      "proficiencyLevel": 3,
+      "proficiencyLabel": "Level 3 — Expert",
+      "allowsCaseStudies": true,
+      "questionTypes": "multiple-choice, case-study and scenario-based",
+      "eligibility": "7.500 giờ BA trong 10 năm, ≥900 giờ ở 4/6 KA, 35 giờ PD, 2 references",
+      "accent": "indigo",
+      "order": 2,
+      "domainWeights": { "BAPM": 14, "EC": 12, "RLCM": 15, "SA": 15, "RADD": 30, "SE": 14 }
+    },
+    {
+      "code": "CCBA",
+      "name": "Certification of Capability in Business Analysis",
+      "nameVi": "CCBA — Năng lực phân tích nghiệp vụ",
+      "body": "IIBA",
+      "tier": "Core",
+      "frameworkCode": "babok-v3",
+      "questionCount": 130,
+      "timeLimitSec": 10800,
+      "passThresholdPercent": 70,
+      "passThresholdSource": "Ước tính của cộng đồng; IIBA không công bố điểm đậu.",
+      "proficiencyLevel": 2,
+      "proficiencyLabel": "Level 2 — Skilled",
+      "allowsCaseStudies": false,
+      "questionTypes": "multiple-choice, scenario-based",
+      "eligibility": "3.750 giờ BA trong 7 năm, 21 giờ PD, references",
+      "accent": "teal",
+      "order": 1,
+      "domainWeights": { "BAPM": 12, "EC": 20, "RLCM": 18, "SA": 12, "RADD": 32, "SE": 6 }
+    },
+    {
+      "code": "ECBA",
+      "name": "Entry Certificate in Business Analysis",
+      "nameVi": "ECBA — Chứng chỉ nhập môn phân tích nghiệp vụ",
+      "body": "IIBA",
+      "tier": "Foundational",
+      "frameworkCode": "ba-standard",
+      "questionCount": 50,
+      "timeLimitSec": 4500,
+      "passThresholdPercent": 70,
+      "passThresholdSource": "IIBA báo kết quả pass/fail kèm chỉ số, không công bố tỷ lệ cố định.",
+      "proficiencyLevel": 1,
+      "proficiencyLabel": "Level 1 — Foundational",
+      "allowsCaseStudies": false,
+      "questionTypes": "situation-based and standard multiple-choice",
+      "eligibility": "Không yêu cầu kinh nghiệm làm việc",
+      "accent": "amber",
+      "order": 0,
+      "domainWeights": {
+        "UBA": 20, "MEBA": 14, "IBA": 6,
+        "CHG": 10, "NEED": 10, "SOL": 10, "STK": 10, "VAL": 10, "CTX": 10
+      }
+    }
+  ]
+}

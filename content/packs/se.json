@@ -1,0 +1,510 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "questions": [
+    {
+      "code": "SE-001",
+      "domain": "SE",
+      "sourceRef": "8.1",
+      "sourceTask": "Measure Solution Performance",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A self-service portal went live four months ago. The sponsor asks whether it is working. The team can report uptime, page load times and the number of registered users, but nobody can say whether call volumes fell. What is the problem in BABOK terms?",
+      "explanation": "Measure Solution Performance defines measures that reflect the value the solution was intended to deliver, not merely what is easy to instrument. Technical and usage metrics do not answer whether the business objective was met.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The performance measures do not reflect the value the solution was meant to deliver.",
+          "isCorrect": true,
+          "rationale": "Correct. Defining measures that connect to the intended value is the first element of this task, and it is what is missing here."
+        },
+        {
+          "label": "B",
+          "text": "The solution has not yet been in use long enough to be measured.",
+          "isCorrect": false,
+          "rationale": "Four months of operation is ample. The gap is what is being measured, not for how long."
+        },
+        {
+          "label": "C",
+          "text": "The requirements were not verified before the portal was built.",
+          "isCorrect": false,
+          "rationale": "Verification checks requirement quality before delivery. It would not have produced call volume measurement after go-live."
+        },
+        {
+          "label": "D",
+          "text": "The solution scope was defined too narrowly during the change strategy.",
+          "isCorrect": false,
+          "rationale": "Nothing suggests the portal's scope was wrong. What is absent is a measure of its effect."
+        }
+      ]
+    },
+    {
+      "code": "SE-002",
+      "domain": "SE",
+      "sourceRef": "8.1",
+      "sourceTask": "Measure Solution Performance",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst is deciding whether to use a quantitative or qualitative measure of solution performance for customer confidence in a new claims process. Which consideration matters most?",
+      "explanation": "Measure Solution Performance allows for both quantitative and qualitative measures. The choice depends on what aspect of value is being measured and what stakeholders will accept as evidence of it.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Which kind of measure genuinely captures the aspect of value in question and will be accepted as evidence.",
+          "isCorrect": true,
+          "rationale": "Correct. BABOK accepts both kinds; the choice follows from what is being measured and what stakeholders find credible."
+        },
+        {
+          "label": "B",
+          "text": "Quantitative measures should always be preferred because they are objective.",
+          "isCorrect": false,
+          "rationale": "A tempting rule of thumb, but a precise number that measures the wrong thing is worse than a well-designed qualitative measure."
+        },
+        {
+          "label": "C",
+          "text": "Qualitative measures should be preferred because customer confidence is subjective.",
+          "isCorrect": false,
+          "rationale": "The subject matter does not dictate the instrument. Confidence can be measured quantitatively through repeat behaviour or survey scoring."
+        },
+        {
+          "label": "D",
+          "text": "Whichever measure the existing reporting platform can produce without change.",
+          "isCorrect": false,
+          "rationale": "Tooling convenience is exactly the pressure that produces measures nobody needs."
+        }
+      ]
+    },
+    {
+      "code": "SE-003",
+      "domain": "SE",
+      "sourceRef": "8.1",
+      "sourceTask": "Measure Solution Performance",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Stakeholders have proposed a set of solution performance measures. Before collecting any data, the business analyst tests each measure with the stakeholders to check that it will actually indicate what they believe it indicates. Which element is this?",
+      "explanation": "Validate Performance Measures is an element of Measure Solution Performance. It confirms with stakeholders that the chosen measures genuinely reflect the intended value before effort is spent collecting them.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Validate Performance Measures",
+          "isCorrect": true,
+          "rationale": "Correct. Checking with stakeholders that a measure indicates what they think it indicates is the validation element of this task."
+        },
+        {
+          "label": "B",
+          "text": "Collect Performance Measures",
+          "isCorrect": false,
+          "rationale": "Collection is the subsequent step. The scenario explicitly precedes any data collection."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Performance Measures",
+          "isCorrect": false,
+          "rationale": "Analysis is a separate task, performed once measures have been collected."
+        },
+        {
+          "label": "D",
+          "text": "Assess Solution Limitations",
+          "isCorrect": false,
+          "rationale": "That task examines what prevents a solution from delivering value. No solution behaviour is being examined here."
+        }
+      ]
+    },
+    {
+      "code": "SE-004",
+      "domain": "SE",
+      "sourceRef": "8.2",
+      "sourceTask": "Analyze Performance Measures",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Six months of data show that average order handling time fell as intended, but the number of orders requiring a second correction rose sharply. What should the business analyst conclude?",
+      "explanation": "Analyze Performance Measures interprets collected data to determine the value delivered, and looks at the measures together rather than in isolation. A gain on one measure offset by a loss on another may mean no net value.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The measures must be interpreted together, since faster handling that generates rework may deliver no net value.",
+          "isCorrect": true,
+          "rationale": "Correct. Analysing performance means determining the value actually delivered, which requires reading the measures against each other."
+        },
+        {
+          "label": "B",
+          "text": "The solution has succeeded, since the target measure improved as intended.",
+          "isCorrect": false,
+          "rationale": "The strongest distractor. Declaring success on the target measure alone is exactly the error this task guards against."
+        },
+        {
+          "label": "C",
+          "text": "The correction rate is a defect and should be raised with the delivery team.",
+          "isCorrect": false,
+          "rationale": "It may or may not be a defect. Treating it as one skips the analysis of what the combined measures say about value."
+        },
+        {
+          "label": "D",
+          "text": "The performance measures were invalid and should be replaced.",
+          "isCorrect": false,
+          "rationale": "The measures are working; they are surfacing a real effect. Replacing them would hide the finding."
+        }
+      ]
+    },
+    {
+      "code": "SE-005",
+      "domain": "SE",
+      "sourceRef": "8.2",
+      "sourceTask": "Analyze Performance Measures",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Performance data for a new pricing engine varies widely between regions. Before drawing conclusions, the business analyst examines whether the variation reflects real differences in solution performance or differences in how each region records the data. Why does this matter?",
+      "explanation": "Analyze Performance Measures depends on understanding the data's reliability and the risks in interpreting it. Variation caused by inconsistent collection tells the analyst nothing about the solution.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Conclusions about solution performance are only sound if the underlying data is measuring the same thing everywhere.",
+          "isCorrect": true,
+          "rationale": "Correct. Assessing the reliability of performance data is part of analysing it responsibly."
+        },
+        {
+          "label": "B",
+          "text": "Inconsistent data collection is a solution limitation that must be recorded.",
+          "isCorrect": false,
+          "rationale": "Inconsistent recording is usually an enterprise limitation in process or practice, not a limitation of the solution itself."
+        },
+        {
+          "label": "C",
+          "text": "Regional variation must be eliminated before the solution can be assessed.",
+          "isCorrect": false,
+          "rationale": "Genuine regional variation may be a real and important finding. The aim is to distinguish it from measurement artefact, not to remove it."
+        },
+        {
+          "label": "D",
+          "text": "The performance measures must be re-validated with stakeholders after every collection cycle.",
+          "isCorrect": false,
+          "rationale": "Re-validating every cycle is not required. What is required here is understanding whether this particular data can bear the conclusion."
+        }
+      ]
+    },
+    {
+      "code": "SE-006",
+      "domain": "SE",
+      "sourceRef": "8.3",
+      "sourceTask": "Assess Solution Limitations",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A newly delivered pricing tool produces correct results, but only after users manually re-enter data that the tool cannot import. The re-entry consumes most of the time the tool was meant to save. How should the business analyst classify this?",
+      "explanation": "Assess Solution Limitations identifies factors internal to the solution that restrict the value it delivers. A missing capability that forces manual work is a limitation of the solution, distinct from limitations in the surrounding enterprise.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A solution limitation, because the restriction lies inside the solution itself.",
+          "isCorrect": true,
+          "rationale": "Correct. The missing import capability is internal to the solution and directly restricts the value it delivers."
+        },
+        {
+          "label": "B",
+          "text": "An enterprise limitation, because users are performing manual work.",
+          "isCorrect": false,
+          "rationale": "The most common confusion on this pair. The manual work is caused by the solution's missing capability, not by an enterprise constraint."
+        },
+        {
+          "label": "C",
+          "text": "A defect, since the tool does not meet its requirements.",
+          "isCorrect": false,
+          "rationale": "The tool may be meeting its stated requirements exactly. A solution can be defect-free and still limit the value it delivers."
+        },
+        {
+          "label": "D",
+          "text": "A risk, since the expected savings may not be realised.",
+          "isCorrect": false,
+          "rationale": "The shortfall is already occurring and observed. A risk is an uncertain future event."
+        }
+      ]
+    },
+    {
+      "code": "SE-007",
+      "domain": "SE",
+      "sourceRef": "8.4",
+      "sourceTask": "Assess Enterprise Limitations",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A new approvals workflow performs exactly as designed, but the value expected has not materialised because a separate department still insists on a paper counter-signature that policy has not been updated to remove. How should the business analyst classify this?",
+      "explanation": "Assess Enterprise Limitations identifies factors outside the solution that restrict the realisation of value, including organisational policy, structure, culture and stakeholder readiness.",
+      "options": [
+        {
+          "label": "A",
+          "text": "An enterprise limitation, because the restriction lies in organisational policy rather than in the solution.",
+          "isCorrect": true,
+          "rationale": "Correct. The solution performs as designed; the impediment is an unchanged policy outside it."
+        },
+        {
+          "label": "B",
+          "text": "A solution limitation, because the workflow does not remove the paper step.",
+          "isCorrect": false,
+          "rationale": "The near-miss. The workflow was never required to change another department's policy, and it is functioning as designed."
+        },
+        {
+          "label": "C",
+          "text": "A defect in the requirements, since the paper step was not eliminated.",
+          "isCorrect": false,
+          "rationale": "Calling this a requirements defect assumes the initiative had authority over that department's policy, which is not stated."
+        },
+        {
+          "label": "D",
+          "text": "A performance measure that has not yet been validated.",
+          "isCorrect": false,
+          "rationale": "The measurement is not in question. The shortfall in value has been observed and its cause identified."
+        }
+      ]
+    },
+    {
+      "code": "SE-008",
+      "domain": "SE",
+      "sourceRef": "8.4",
+      "sourceTask": "Assess Enterprise Limitations",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Which of the following is most clearly an enterprise limitation rather than a solution limitation?",
+      "explanation": "Enterprise limitations are external to the solution: culture, structure, policy, stakeholder skills and readiness. Solution limitations are internal: missing capability, defects, and performance shortfalls in the solution itself.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Staff have not been trained to use a capability the solution provides.",
+          "isCorrect": true,
+          "rationale": "Correct. The capability exists in the solution; the impediment is the enterprise's readiness to use it."
+        },
+        {
+          "label": "B",
+          "text": "The solution cannot process transactions in a currency the business now trades in.",
+          "isCorrect": false,
+          "rationale": "A missing capability inside the solution is a solution limitation."
+        },
+        {
+          "label": "C",
+          "text": "The solution times out under month-end transaction volumes.",
+          "isCorrect": false,
+          "rationale": "A performance shortfall in the solution itself is a solution limitation."
+        },
+        {
+          "label": "D",
+          "text": "The solution produces incorrect totals when a discount is applied.",
+          "isCorrect": false,
+          "rationale": "An incorrect result is a defect within the solution, and therefore a solution limitation."
+        }
+      ]
+    },
+    {
+      "code": "SE-009",
+      "domain": "SE",
+      "sourceRef": "8.5",
+      "sourceTask": "Recommend Actions to Increase Solution Value",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A solution has been in use for a year. Analysis shows it delivers roughly a third of the value expected, and the cost of extending it would exceed the remaining benefit. What range of recommendations should the business analyst consider?",
+      "explanation": "Recommend Actions to Increase Solution Value considers the full range of possible actions, including adjusting the solution, changing the enterprise around it, accepting the current performance, or retiring or replacing the solution.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The full range, including changing the enterprise around the solution, accepting current performance, or retiring it.",
+          "isCorrect": true,
+          "rationale": "Correct. This task explicitly contemplates retirement and enterprise change, not only improvement of the solution."
+        },
+        {
+          "label": "B",
+          "text": "Only actions that improve the solution itself, since it is the object of the evaluation.",
+          "isCorrect": false,
+          "rationale": "The tempting narrow reading. When the cost of extension exceeds the benefit, confining the recommendation to solution changes guarantees a poor one."
+        },
+        {
+          "label": "C",
+          "text": "Only actions the delivery team has capacity to implement in the next release.",
+          "isCorrect": false,
+          "rationale": "Delivery capacity constrains what can be scheduled; it should not bound what the analyst is willing to recommend."
+        },
+        {
+          "label": "D",
+          "text": "No recommendation, since the value shortfall means the original business case was wrong.",
+          "isCorrect": false,
+          "rationale": "Declining to recommend abandons the task. Establishing that the case was optimistic is a finding, not a reason to stop."
+        }
+      ]
+    },
+    {
+      "code": "SE-010",
+      "domain": "SE",
+      "sourceRef": "8.5",
+      "sourceTask": "Recommend Actions to Increase Solution Value",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst has established that a solution's value is limited by an enterprise limitation: a policy in another department. The sponsor asks for a recommendation. What is the most appropriate recommendation to develop?",
+      "explanation": "Where value is constrained by the enterprise rather than the solution, the appropriate recommendation addresses the enterprise limitation. Modifying the solution to work around an enterprise limitation often adds cost without removing the constraint.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A recommendation to change the enterprise limitation, since that is what constrains the value.",
+          "isCorrect": true,
+          "rationale": "Correct. The recommendation should address the actual cause of the value shortfall."
+        },
+        {
+          "label": "B",
+          "text": "A recommendation to extend the solution so it can operate despite the policy.",
+          "isCorrect": false,
+          "rationale": "This is the plausible engineering answer. It spends money working around a constraint that could be removed, and leaves the constraint in place."
+        },
+        {
+          "label": "C",
+          "text": "A recommendation to retire the solution, since it cannot deliver its expected value.",
+          "isCorrect": false,
+          "rationale": "Retirement is disproportionate when the solution works and a policy is the impediment."
+        },
+        {
+          "label": "D",
+          "text": "A recommendation to lower the expected value in the business case to match actual performance.",
+          "isCorrect": false,
+          "rationale": "Restating the target to match the shortfall records the failure rather than acting to increase value."
+        }
+      ]
+    },
+    {
+      "code": "SE-011",
+      "domain": "SE",
+      "sourceRef": "8.3",
+      "sourceTask": "Assess Solution Limitations",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Can Solution Evaluation tasks be performed before a solution is fully implemented?",
+      "explanation": "Solution Evaluation applies to solutions and solution components at any stage, including prototypes, pilots and partially released solutions. Value can and should be assessed before full implementation where possible.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Yes, they apply to prototypes, pilots and partially released solutions as well as fully implemented ones.",
+          "isCorrect": true,
+          "rationale": "Correct. Evaluating early is often the point, since findings can still influence the remaining delivery."
+        },
+        {
+          "label": "B",
+          "text": "No, a solution must be in production before its performance can be assessed.",
+          "isCorrect": false,
+          "rationale": "This would make evaluation purely retrospective and remove its ability to influence anything."
+        },
+        {
+          "label": "C",
+          "text": "No, evaluation before implementation is validation, not solution evaluation.",
+          "isCorrect": false,
+          "rationale": "Validation checks requirements against stakeholder needs. Assessing how a pilot performs is solution evaluation."
+        },
+        {
+          "label": "D",
+          "text": "Yes, but only for solutions delivered under an adaptive approach.",
+          "isCorrect": false,
+          "rationale": "Nothing in Solution Evaluation restricts early assessment to adaptive initiatives; a predictive initiative can pilot too."
+        }
+      ]
+    },
+    {
+      "code": "SE-012",
+      "domain": "SE",
+      "sourceRef": "8.1",
+      "sourceTask": "Measure Solution Performance",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A sponsor asks the business analyst to define solution performance measures for a change whose business objectives were never stated in measurable terms. What should the business analyst do?",
+      "explanation": "Business objectives are an input to Measure Solution Performance. Where they are not stated measurably, the analyst works with stakeholders to establish what value was expected before defining measures of it.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Work with stakeholders to establish what value was expected, then derive measures from it.",
+          "isCorrect": true,
+          "rationale": "Correct. Measures are derived from the intended value, so the missing input has to be supplied before measurement can be meaningful."
+        },
+        {
+          "label": "B",
+          "text": "Define measures based on what the solution is technically able to report.",
+          "isCorrect": false,
+          "rationale": "This produces exactly the misaligned metrics that make evaluation useless."
+        },
+        {
+          "label": "C",
+          "text": "Decline to define measures until the sponsor issues measurable objectives.",
+          "isCorrect": false,
+          "rationale": "Helping stakeholders articulate expected value is the analyst's work, not a precondition someone else must satisfy first."
+        },
+        {
+          "label": "D",
+          "text": "Adopt the measures used on a comparable initiative elsewhere in the organisation.",
+          "isCorrect": false,
+          "rationale": "Borrowed measures reflect another initiative's intended value, which may be entirely different."
+        }
+      ]
+    },
+    {
+      "code": "SE-013",
+      "domain": "SE",
+      "sourceRef": "8.2",
+      "sourceTask": "Analyze Performance Measures",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Analysis of a delivered solution shows performance meaningfully below the level stakeholders expected. What is the immediate output of Analyze Performance Measures in this situation?",
+      "explanation": "Analyze Performance Measures produces an assessment of solution performance: an understanding of the value the solution delivers and where it falls short. Determining causes and recommending action are the following tasks.",
+      "options": [
+        {
+          "label": "A",
+          "text": "An assessment of solution performance, describing the value delivered and where it falls short.",
+          "isCorrect": true,
+          "rationale": "Correct. The output is the performance assessment; limitations and recommendations come from the subsequent tasks."
+        },
+        {
+          "label": "B",
+          "text": "A set of recommended actions to close the performance gap.",
+          "isCorrect": false,
+          "rationale": "Recommendations are the output of Recommend Actions to Increase Solution Value, two tasks later."
+        },
+        {
+          "label": "C",
+          "text": "A list of the solution's internal limitations.",
+          "isCorrect": false,
+          "rationale": "Identifying internal limitations is the output of Assess Solution Limitations, which follows the performance assessment."
+        },
+        {
+          "label": "D",
+          "text": "An updated business case reflecting the revised benefits.",
+          "isCorrect": false,
+          "rationale": "The business case may later be updated, but it is not the output of analysing performance measures."
+        }
+      ]
+    },
+    {
+      "code": "SE-014",
+      "domain": "SE",
+      "sourceRef": "8.5",
+      "sourceTask": "Recommend Actions to Increase Solution Value",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "After evaluating a solution, the business analyst concludes that its current performance is acceptable and that no change is warranted. Is 'do nothing' a legitimate recommendation?",
+      "explanation": "Recommending that the enterprise accept current performance is one of the valid outcomes of this task. The recommendation is a judgement about value, and sometimes the best available action is to change nothing.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Yes, accepting current performance is one of the recommendations this task contemplates.",
+          "isCorrect": true,
+          "rationale": "Correct. Where further change would not increase value, recommending acceptance is the right answer."
+        },
+        {
+          "label": "B",
+          "text": "No, the task requires actions that increase value, so a recommendation must propose a change.",
+          "isCorrect": false,
+          "rationale": "Reading the task name as an obligation to always change produces waste. The task asks for the recommendation that best serves value."
+        },
+        {
+          "label": "C",
+          "text": "Yes, but only if the solution has met every one of its performance measures.",
+          "isCorrect": false,
+          "rationale": "Acceptance can be right even with an unmet measure, if closing the gap would cost more than it returns."
+        },
+        {
+          "label": "D",
+          "text": "No, because accepting current performance ends the solution's evaluation permanently.",
+          "isCorrect": false,
+          "rationale": "Accepting current performance now does not preclude re-evaluating later as conditions change."
+        }
+      ]
+    }
+  ]
+}

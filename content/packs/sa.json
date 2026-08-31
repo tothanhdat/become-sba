@@ -1,0 +1,559 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "caseStudies": [
+    {
+      "code": "CS-SA-01",
+      "title": "Meridian Freight: rising cost to serve",
+      "body": "Meridian Freight moves palletised goods for grocery retailers across four regions. Over eighteen months its cost to serve has risen 14% while volumes have grown only 3%. Depot managers blame an ageing routing system that cannot re-plan mid-day, so drivers make unplanned return trips. Customer service blames depots for accepting bookings that cannot be met. Finance can see the margin erosion but cannot attribute it to any depot or customer. The executive team has asked a business analyst to establish what is actually happening before any investment is approved. There is a board commitment to reduce cost to serve by 10% within two years, and a constraint that no depot may be closed during the current contract period."
+    }
+  ],
+  "questions": [
+    {
+      "code": "SA-001",
+      "domain": "SA",
+      "sourceRef": "6.1",
+      "sourceTask": "Analyze Current State",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-SA-01",
+      "stem": "The business analyst has been asked to establish what is actually happening at Meridian Freight before any investment is approved. Which task should the analyst perform first, and why?",
+      "explanation": "Analyze Current State understands why an enterprise needs to change and what would be affected. With competing explanations and no agreed account of the problem, the current state must be understood before a future state or change strategy can be defined.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Current State, to understand the need and what is affected before any solution is considered.",
+          "isCorrect": true,
+          "rationale": "Correct. The organisation has three competing explanations and no shared understanding of the problem, which is precisely what this task resolves."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, to establish the target cost to serve the board has committed to.",
+          "isCorrect": false,
+          "rationale": "The board's 10% target is a business objective, but defining a future state before understanding why costs rose risks designing for the wrong problem."
+        },
+        {
+          "label": "C",
+          "text": "Define Change Strategy, to sequence the transition towards lower cost to serve.",
+          "isCorrect": false,
+          "rationale": "A change strategy describes how to move from current to future state. Neither state is yet established."
+        },
+        {
+          "label": "D",
+          "text": "Assess Risks, since the margin erosion is the principal risk to the business.",
+          "isCorrect": false,
+          "rationale": "Risk assessment operates on an understood change. Margin erosion here is the problem being investigated, not a risk to a proposed change."
+        }
+      ]
+    },
+    {
+      "code": "SA-002",
+      "domain": "SA",
+      "sourceRef": "6.1",
+      "sourceTask": "Analyze Current State",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-SA-01",
+      "stem": "Finance can see Meridian's margin erosion but cannot attribute it to any depot or customer. Which element of Analyze Current State most directly addresses this difficulty?",
+      "explanation": "Analyze Current State examines the enterprise's internal assets, capabilities, processes, technology and information. An inability to attribute cost points to a limitation in the current information and measurement capability.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Examining current internal capabilities and information, since the inability to attribute cost is itself a current-state limitation.",
+          "isCorrect": true,
+          "rationale": "Correct. The measurement gap is part of the current state, and describing it is part of understanding why the enterprise needs to change."
+        },
+        {
+          "label": "B",
+          "text": "Defining the solution scope for a new cost allocation system.",
+          "isCorrect": false,
+          "rationale": "Solution scope belongs to Define Change Strategy. Naming a solution at this point pre-empts the analysis."
+        },
+        {
+          "label": "C",
+          "text": "Establishing the business analysis information management approach.",
+          "isCorrect": false,
+          "rationale": "That plans how the analyst's own information is stored. It has nothing to do with the enterprise's cost attribution capability."
+        },
+        {
+          "label": "D",
+          "text": "Prioritising the depots by their contribution to the cost increase.",
+          "isCorrect": false,
+          "rationale": "Attractive, but the scenario states this attribution cannot currently be made. The gap must be described before it can be used."
+        }
+      ]
+    },
+    {
+      "code": "SA-003",
+      "domain": "SA",
+      "sourceRef": "6.1",
+      "sourceTask": "Analyze Current State",
+      "difficulty": 2,
+      "status": "active",
+      "caseStudyCode": "CS-SA-01",
+      "stem": "Meridian's contract prohibits closing any depot during the current period. How should the business analyst treat this in the current state analysis?",
+      "explanation": "Analyze Current State identifies the internal and external influencers on the enterprise, including business constraints such as contractual obligations, which bound the options available to any change.",
+      "options": [
+        {
+          "label": "A",
+          "text": "As a business constraint that bounds the options available to any change.",
+          "isCorrect": true,
+          "rationale": "Correct. A contractual restriction on what the enterprise may do is a business constraint identified during current state analysis."
+        },
+        {
+          "label": "B",
+          "text": "As an assumption, since the contract may be renegotiated.",
+          "isCorrect": false,
+          "rationale": "An assumption is believed true but unconfirmed. This restriction is confirmed by contract; the possibility of renegotiation does not make it an assumption."
+        },
+        {
+          "label": "C",
+          "text": "As a risk to the change strategy.",
+          "isCorrect": false,
+          "rationale": "A known, certain restriction is a constraint. A risk is an uncertain event that may or may not occur."
+        },
+        {
+          "label": "D",
+          "text": "As a business requirement, since the enterprise requires depots to remain open.",
+          "isCorrect": false,
+          "rationale": "A business requirement states a need the enterprise wants met. This states what the enterprise is not permitted to do."
+        }
+      ]
+    },
+    {
+      "code": "SA-004",
+      "domain": "SA",
+      "sourceRef": "6.1",
+      "sourceTask": "Analyze Current State",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst is asked why the current state needs describing at all when everyone already agrees the organisation must modernise its billing. What is the strongest justification in BABOK terms?",
+      "explanation": "The current state provides the context against which the need, the future state and the value of a change are understood. Without it, there is no baseline for measuring improvement and no basis for judging what is actually affected.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Without a described current state there is no baseline for value, and no way to know what a change would affect.",
+          "isCorrect": true,
+          "rationale": "Correct. The current state supplies the context and baseline that make the need and the potential value assessable."
+        },
+        {
+          "label": "B",
+          "text": "Documentation standards require a current state description for every initiative.",
+          "isCorrect": false,
+          "rationale": "Compliance is not the reason BABOK gives. Doing the task to satisfy a template misses its purpose."
+        },
+        {
+          "label": "C",
+          "text": "The current state description is needed as an input to Verify Requirements.",
+          "isCorrect": false,
+          "rationale": "Verification checks the quality of requirements. It does not consume a current state description."
+        },
+        {
+          "label": "D",
+          "text": "It identifies which stakeholders should approve the requirements.",
+          "isCorrect": false,
+          "rationale": "Approval authority is established in governance planning, not derived from a current state description."
+        }
+      ]
+    },
+    {
+      "code": "SA-005",
+      "domain": "SA",
+      "sourceRef": "6.2",
+      "sourceTask": "Define Future State",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-SA-01",
+      "stem": "Meridian's board has committed to reducing cost to serve by 10% within two years. In defining the future state, how should the business analyst treat this statement?",
+      "explanation": "Define Future State determines the necessary conditions to meet the business need, including business objectives that are measurable and time bound. Objectives describe the desired outcome, not the means of achieving it.",
+      "options": [
+        {
+          "label": "A",
+          "text": "As a business objective the future state must satisfy, stated in measurable and time-bound terms.",
+          "isCorrect": true,
+          "rationale": "Correct. A measurable, time-bound outcome commitment is a business objective, and the future state is defined to meet it."
+        },
+        {
+          "label": "B",
+          "text": "As the solution scope for the initiative.",
+          "isCorrect": false,
+          "rationale": "Solution scope describes what the solution will and will not cover. A percentage target says nothing about scope."
+        },
+        {
+          "label": "C",
+          "text": "As a solution requirement to be traced to the routing system.",
+          "isCorrect": false,
+          "rationale": "This assumes the routing system is the answer. The board committed to an outcome, not to a system change."
+        },
+        {
+          "label": "D",
+          "text": "As an assumption underpinning the business case.",
+          "isCorrect": false,
+          "rationale": "The board has committed to it as a target, which is an objective. An assumption would be something believed but unconfirmed."
+        }
+      ]
+    },
+    {
+      "code": "SA-006",
+      "domain": "SA",
+      "sourceRef": "6.2",
+      "sourceTask": "Define Future State",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A steering group insists the future state must be described as 'implement the vendor's cloud platform across all regions'. The business analyst is uneasy. What is the strongest objection?",
+      "explanation": "Define Future State describes the necessary conditions to meet the business need, in terms of capabilities and outcomes rather than a chosen solution. Naming a product as the future state forecloses the evaluation of design options.",
+      "options": [
+        {
+          "label": "A",
+          "text": "It states a solution rather than the conditions that must hold, which forecloses evaluating design options.",
+          "isCorrect": true,
+          "rationale": "Correct. The future state describes needed capabilities and outcomes; committing to a product at this point skips Define Design Options."
+        },
+        {
+          "label": "B",
+          "text": "It has not yet been approved by the stakeholders with decision-making authority.",
+          "isCorrect": false,
+          "rationale": "The steering group may well hold that authority. The problem is the nature of the statement, not who endorsed it."
+        },
+        {
+          "label": "C",
+          "text": "It does not specify the non-functional requirements the platform must meet.",
+          "isCorrect": false,
+          "rationale": "Missing detail is a lesser issue. Even a fully detailed product specification would still be a solution rather than a future state."
+        },
+        {
+          "label": "D",
+          "text": "It cannot be traced to the current state description.",
+          "isCorrect": false,
+          "rationale": "Traceability between states is not how BABOK frames the relationship, and a solution statement could be traced yet still be premature."
+        }
+      ]
+    },
+    {
+      "code": "SA-007",
+      "domain": "SA",
+      "sourceRef": "6.2",
+      "sourceTask": "Define Future State",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "During Define Future State, a business analyst describes the value the enterprise expects the change to deliver, and identifies which stakeholders will receive it. What is being produced?",
+      "explanation": "Define Future State includes describing potential value, expressed as the benefits the change is expected to deliver and to whom, which later supports the business case and the recommendation of a solution.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A description of the potential value of the future state.",
+          "isCorrect": true,
+          "rationale": "Correct. Potential value is an element of the future state description, covering the benefits expected and who receives them."
+        },
+        {
+          "label": "B",
+          "text": "The solution performance measures for the delivered solution.",
+          "isCorrect": false,
+          "rationale": "Solution performance measures are defined in Solution Evaluation, once there is a solution to measure."
+        },
+        {
+          "label": "C",
+          "text": "The acceptance criteria for the solution.",
+          "isCorrect": false,
+          "rationale": "Acceptance criteria state what must be true for a solution to be accepted; they are far more specific than an expected value description."
+        },
+        {
+          "label": "D",
+          "text": "The change strategy.",
+          "isCorrect": false,
+          "rationale": "The change strategy describes how to move from current to future state. Describing expected value is part of defining the destination, not the route."
+        }
+      ]
+    },
+    {
+      "code": "SA-008",
+      "domain": "SA",
+      "sourceRef": "6.3",
+      "sourceTask": "Assess Risks",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-SA-01",
+      "stem": "The business analyst identifies that if depot managers do not adopt the new mid-day re-planning process, the expected savings will not materialise. How should this be handled within Assess Risks?",
+      "explanation": "Assess Risks identifies and analyses risks to the desired outcome, including the consequences and likelihood of each, and determines how they will be managed so the potential value can still be realised.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyse its likelihood and consequence, and agree how it will be managed so the expected value can still be realised.",
+          "isCorrect": true,
+          "rationale": "Correct. Assessing consequence and likelihood and deciding on a response is what this task does."
+        },
+        {
+          "label": "B",
+          "text": "Record it as an assumption that depot managers will adopt the process.",
+          "isCorrect": false,
+          "rationale": "The near-miss answer. Recasting an identified threat as an assumption removes it from active management rather than addressing it."
+        },
+        {
+          "label": "C",
+          "text": "Add a requirement that depot managers must use the new process.",
+          "isCorrect": false,
+          "rationale": "A written obligation does not change adoption behaviour, and it substitutes a requirement for a risk response."
+        },
+        {
+          "label": "D",
+          "text": "Exclude it, since adoption behaviour is outside the scope of business analysis.",
+          "isCorrect": false,
+          "rationale": "Risks to the realisation of value are squarely within this task, whatever their source."
+        }
+      ]
+    },
+    {
+      "code": "SA-009",
+      "domain": "SA",
+      "sourceRef": "6.3",
+      "sourceTask": "Assess Risks",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst is distinguishing between an assumption, a constraint and a risk on an initiative. Which set of descriptions is correct?",
+      "explanation": "An assumption is believed to be true but has not been confirmed. A constraint is a restriction the solution must operate within. A risk is an uncertain event that, if it occurred, would affect the outcome.",
+      "options": [
+        {
+          "label": "A",
+          "text": "An assumption is unconfirmed belief; a constraint is a restriction that applies; a risk is an uncertain event with an effect.",
+          "isCorrect": true,
+          "rationale": "Correct. These are the BABOK distinctions, and the exam tests them repeatedly."
+        },
+        {
+          "label": "B",
+          "text": "An assumption is a low-probability risk; a constraint is a high-probability risk; a risk is anything uncertain.",
+          "isCorrect": false,
+          "rationale": "Assumptions and constraints are not points on a probability scale. Collapsing them into risk loses three distinct concepts."
+        },
+        {
+          "label": "C",
+          "text": "An assumption is imposed externally; a constraint is chosen internally; a risk is imposed by the market.",
+          "isCorrect": false,
+          "rationale": "Origin does not define these terms. Constraints and assumptions can each arise internally or externally."
+        },
+        {
+          "label": "D",
+          "text": "An assumption is a requirement not yet approved; a constraint is an approved requirement; a risk is a rejected requirement.",
+          "isCorrect": false,
+          "rationale": "None of the three are requirements at any approval stage. This confuses two unrelated concepts."
+        }
+      ]
+    },
+    {
+      "code": "SA-010",
+      "domain": "SA",
+      "sourceRef": "6.3",
+      "sourceTask": "Assess Risks",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Two risks have been analysed. Risk X is almost certain but would cost little if it occurred. Risk Y is unlikely but would end the initiative if it occurred. The sponsor wants to address only the risk with the higher probability. How should the business analyst respond?",
+      "explanation": "Risk analysis weighs both the likelihood of a risk and the magnitude of its consequence. A low-probability, high-consequence risk can carry greater exposure than a high-probability, low-consequence one.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Explain that exposure combines likelihood and consequence, so Risk Y may warrant more attention than Risk X.",
+          "isCorrect": true,
+          "rationale": "Correct. Assessing risk on likelihood alone ignores half of the analysis this task requires."
+        },
+        {
+          "label": "B",
+          "text": "Agree with the sponsor, since probability is the more objective measure.",
+          "isCorrect": false,
+          "rationale": "Probability is not more objective than consequence, and following this rule leaves an initiative-ending risk unmanaged."
+        },
+        {
+          "label": "C",
+          "text": "Recommend accepting both risks, since neither can be eliminated.",
+          "isCorrect": false,
+          "rationale": "Acceptance is one valid response, but choosing it for a risk that would end the initiative is not a considered decision."
+        },
+        {
+          "label": "D",
+          "text": "Escalate Risk Y to the programme board without analysing it further.",
+          "isCorrect": false,
+          "rationale": "Escalation without analysis passes an unexamined problem upward. The analyst has already analysed it and should present that analysis."
+        }
+      ]
+    },
+    {
+      "code": "SA-011",
+      "domain": "SA",
+      "sourceRef": "6.4",
+      "sourceTask": "Define Change Strategy",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-SA-01",
+      "stem": "Meridian's current and future states are now described. The business analyst is determining the most effective way to move between them, including which regions change first and what must be in place at each step. Which task is this, and what does it produce?",
+      "explanation": "Define Change Strategy develops and assesses alternative approaches to the change and selects the recommended one. Its outputs include the change strategy and the solution scope, and it addresses transition states and release planning.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Change Strategy, producing the change strategy and the solution scope.",
+          "isCorrect": true,
+          "rationale": "Correct. This task selects the approach to the change and produces both the change strategy and the solution scope."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, producing the future state description.",
+          "isCorrect": false,
+          "rationale": "The future state is already described. What remains is how to get there."
+        },
+        {
+          "label": "C",
+          "text": "Define Design Options, producing the design options.",
+          "isCorrect": false,
+          "rationale": "Design options concern possible ways to satisfy requirements within the solution. Sequencing the enterprise's transition is a change strategy matter."
+        },
+        {
+          "label": "D",
+          "text": "Plan Business Analysis Approach, producing the business analysis approach.",
+          "isCorrect": false,
+          "rationale": "That plans how the analysis work will be conducted, not how the enterprise will transition."
+        }
+      ]
+    },
+    {
+      "code": "SA-012",
+      "domain": "SA",
+      "sourceRef": "6.4",
+      "sourceTask": "Define Change Strategy",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A change cannot be delivered in one step: the organisation must run the old and new order systems in parallel for four months before the old one is retired. What does this parallel period represent?",
+      "explanation": "A transition state is an interim condition the enterprise occupies while moving from the current state to the future state. It is not the future state itself, and it may require capabilities that exist only temporarily.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A transition state on the way to the future state.",
+          "isCorrect": true,
+          "rationale": "Correct. Transition states are interim conditions the enterprise passes through, addressed within the change strategy."
+        },
+        {
+          "label": "B",
+          "text": "The future state, since it is what the enterprise will operate next.",
+          "isCorrect": false,
+          "rationale": "The future state is the intended end condition. A temporary parallel-run is explicitly not where the enterprise intends to stay."
+        },
+        {
+          "label": "C",
+          "text": "A constraint on the solution design.",
+          "isCorrect": false,
+          "rationale": "The parallel run is a chosen step in the transition, not a restriction imposed on the solution."
+        },
+        {
+          "label": "D",
+          "text": "A risk response to the possibility of a failed cutover.",
+          "isCorrect": false,
+          "rationale": "It may also reduce cutover risk, but structurally it is a transition state within the change strategy."
+        }
+      ]
+    },
+    {
+      "code": "SA-013",
+      "domain": "SA",
+      "sourceRef": "6.4",
+      "sourceTask": "Define Change Strategy",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Before recommending a change strategy, the business analyst assesses whether the organisation can absorb the change: whether staff have the skills, whether the culture supports it, and whether the operating model can accommodate it. What is the analyst producing?",
+      "explanation": "Enterprise readiness assessment is an element of Define Change Strategy. It examines the enterprise's capacity and willingness to make the change and to sustain the future state once reached.",
+      "options": [
+        {
+          "label": "A",
+          "text": "An enterprise readiness assessment.",
+          "isCorrect": true,
+          "rationale": "Correct. Assessing the enterprise's capacity and willingness to change is an element of defining the change strategy."
+        },
+        {
+          "label": "B",
+          "text": "A gap analysis between the current and future states.",
+          "isCorrect": false,
+          "rationale": "Gap analysis identifies the capabilities that are missing. Readiness asks whether the enterprise can absorb the change at all, which is a different question."
+        },
+        {
+          "label": "C",
+          "text": "A stakeholder engagement approach.",
+          "isCorrect": false,
+          "rationale": "That plans how the analyst will collaborate with stakeholders, and belongs to Business Analysis Planning and Monitoring."
+        },
+        {
+          "label": "D",
+          "text": "A risk analysis of the proposed change.",
+          "isCorrect": false,
+          "rationale": "Risk analysis is a separate task. Readiness findings may feed it, but the assessment itself is about capacity and willingness."
+        }
+      ]
+    },
+    {
+      "code": "SA-014",
+      "domain": "SA",
+      "sourceRef": "6.4",
+      "sourceTask": "Define Change Strategy",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A gap analysis has identified the capabilities the enterprise lacks to reach its future state. A stakeholder argues that the gap analysis is the change strategy. How should the business analyst respond?",
+      "explanation": "Gap analysis identifies what is missing between the current and future states. The change strategy goes further: it selects an approach to closing those gaps, sequences transition states, and defines the solution scope.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The gap analysis states what is missing; the change strategy selects how the gaps will be closed and in what order.",
+          "isCorrect": true,
+          "rationale": "Correct. Gap analysis is an input to, and an element within, the broader work of choosing and sequencing an approach."
+        },
+        {
+          "label": "B",
+          "text": "They are equivalent, since closing every identified gap is the only possible strategy.",
+          "isCorrect": false,
+          "rationale": "Several strategies can close the same gaps at different cost, pace and risk. Choosing between them is the strategy work."
+        },
+        {
+          "label": "C",
+          "text": "The gap analysis supersedes the change strategy once the future state is approved.",
+          "isCorrect": false,
+          "rationale": "Approving a future state does not remove the need to decide how to reach it."
+        },
+        {
+          "label": "D",
+          "text": "The gap analysis belongs to Analyze Current State, so it precedes strategy entirely.",
+          "isCorrect": false,
+          "rationale": "Gap analysis compares current and future states, so it cannot be completed within current state analysis alone."
+        }
+      ]
+    },
+    {
+      "code": "SA-015",
+      "domain": "SA",
+      "sourceRef": "6.2",
+      "sourceTask": "Define Future State",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst is challenged: 'You have described a future state we cannot afford.' Which element of Define Future State should the analyst point to as the place this is settled?",
+      "explanation": "Define Future State includes identifying constraints and assessing whether the potential value justifies the change. A future state that the enterprise cannot fund is bounded by a constraint that the future state definition must respect.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The constraints on the future state, since affordability bounds what future state can be defined.",
+          "isCorrect": true,
+          "rationale": "Correct. Constraints such as budget are identified as part of defining a future state, so an unaffordable target has not respected them."
+        },
+        {
+          "label": "B",
+          "text": "The change strategy, since cost is a matter of how the change is sequenced.",
+          "isCorrect": false,
+          "rationale": "Sequencing can spread cost, and this is the strongest distractor, but a target that is unaffordable in total is a future state problem first."
+        },
+        {
+          "label": "C",
+          "text": "The current state description, since it establishes the existing cost base.",
+          "isCorrect": false,
+          "rationale": "The current cost base is context. It does not set the boundary on what future state may be defined."
+        },
+        {
+          "label": "D",
+          "text": "Solution evaluation, since affordability is confirmed once the solution is in use.",
+          "isCorrect": false,
+          "rationale": "Waiting until the solution is live to discover it is unaffordable is precisely the failure this element prevents."
+        }
+      ]
+    }
+  ]
+}

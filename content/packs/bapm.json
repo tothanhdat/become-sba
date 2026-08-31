@@ -1,0 +1,510 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "questions": [
+    {
+      "code": "BAPM-001",
+      "domain": "BAPM",
+      "sourceRef": "3.1",
+      "sourceTask": "Plan Business Analysis Approach",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A regional insurer is replacing its claims platform. The sponsor cannot describe what the future process should look like and expects the requirements to change substantially as users see working software. The delivery team releases every two weeks. The business analyst is deciding how to organise the analysis work. Which planning decision best fits this situation?",
+      "explanation": "Plan Business Analysis Approach selects a predictive or adaptive approach based on how well the need is understood and how much change is expected. High uncertainty plus short delivery cycles points to an adaptive approach, where requirements are elaborated progressively rather than baselined up front.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Adopt an adaptive approach in which requirements are elaborated progressively across iterations.",
+          "isCorrect": true,
+          "rationale": "Correct. BABOK associates adaptive approaches with situations where the need is poorly understood and feedback from working software is expected to reshape requirements."
+        },
+        {
+          "label": "B",
+          "text": "Adopt a predictive approach and baseline the full requirements set before development starts.",
+          "isCorrect": false,
+          "rationale": "Predictive approaches suit low uncertainty and high change cost. Baselining everything here would guarantee rework, since the sponsor cannot yet describe the future state."
+        },
+        {
+          "label": "C",
+          "text": "Escalate to the sponsor that analysis cannot proceed until the future state is defined.",
+          "isCorrect": false,
+          "rationale": "An undefined future state is a normal starting condition, not a blocker. Strategy Analysis exists to define it; refusing to plan abandons the analyst's own task."
+        },
+        {
+          "label": "D",
+          "text": "Ask the delivery team to lengthen its iterations so that more analysis can be completed per cycle.",
+          "isCorrect": false,
+          "rationale": "This changes the delivery team's cadence to suit the analyst rather than planning the analysis approach around the situation, and it does nothing about the underlying uncertainty."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-002",
+      "domain": "BAPM",
+      "sourceRef": "3.1",
+      "sourceTask": "Plan Business Analysis Approach",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst has drafted the business analysis approach for a programme spanning four business units. Before starting elicitation, the analyst circulates the draft to the programme manager and the four unit leads for their agreement. Which element of Plan Business Analysis Approach is the analyst performing?",
+      "explanation": "The Acceptance element of Plan Business Analysis Approach covers reviewing and agreeing the approach with the stakeholders who must work within it, so that the plan is a shared commitment rather than the analyst's private intention.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Acceptance",
+          "isCorrect": true,
+          "rationale": "Correct. Acceptance is the element concerned with getting key stakeholders to review and agree the approach itself."
+        },
+        {
+          "label": "B",
+          "text": "Timing of Business Analysis Work",
+          "isCorrect": false,
+          "rationale": "Timing determines when analysis activities happen relative to the rest of the initiative, not who signs off on the approach."
+        },
+        {
+          "label": "C",
+          "text": "Complexity and Risk",
+          "isCorrect": false,
+          "rationale": "This element adjusts the approach for the size and risk profile of the change. Circulating a draft for agreement is not an assessment of complexity."
+        },
+        {
+          "label": "D",
+          "text": "Business Analysis Activities",
+          "isCorrect": false,
+          "rationale": "This element identifies and breaks down the analysis activities themselves. The activities are already drafted; what is happening now is agreement on them."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-003",
+      "domain": "BAPM",
+      "sourceRef": "3.1",
+      "sourceTask": "Plan Business Analysis Approach",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Midway through planning, a business analyst learns that the organisation has a mandatory methodology for regulated changes, and that this initiative is regulated. The analyst's draft approach conflicts with several of the methodology's required deliverables. What should the business analyst do?",
+      "explanation": "Plan Business Analysis Approach takes organisational standards, methodologies and regulatory constraints as guidelines. When a mandated methodology applies, the approach is tailored to comply with it rather than substituted for it.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tailor the business analysis approach so that it satisfies the mandated methodology.",
+          "isCorrect": true,
+          "rationale": "Correct. Organisational and regulatory standards are inputs that constrain the approach; the approach adapts to them."
+        },
+        {
+          "label": "B",
+          "text": "Proceed with the drafted approach because it is better suited to the initiative.",
+          "isCorrect": false,
+          "rationale": "Fitness for purpose does not override a mandatory standard on a regulated change. This is the tempting distractor, and it is a compliance failure."
+        },
+        {
+          "label": "C",
+          "text": "Request a waiver from the regulator before continuing analysis.",
+          "isCorrect": false,
+          "rationale": "The constraint here is an internal methodology applied to regulated work. Approaching the regulator is disproportionate and outside the analyst's task."
+        },
+        {
+          "label": "D",
+          "text": "Produce both sets of deliverables so that no stakeholder group is disadvantaged.",
+          "isCorrect": false,
+          "rationale": "Duplicating deliverables consumes effort without resolving the conflict, and creates two sources of truth to keep in step."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-004",
+      "domain": "BAPM",
+      "sourceRef": "3.2",
+      "sourceTask": "Plan Stakeholder Engagement",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst has produced a grid placing each stakeholder according to how much authority they hold over the change and how actively concerned they are with its outcome. The operations director sits in the high-influence, high-interest quadrant. How should this finding shape the engagement plan?",
+      "explanation": "Plan Stakeholder Engagement uses influence and impact analysis to decide how much collaboration each stakeholder needs. A stakeholder with both high influence and high interest warrants the closest and most frequent collaboration.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan close, frequent collaboration with the operations director throughout the initiative.",
+          "isCorrect": true,
+          "rationale": "Correct. High influence combined with high interest is exactly the profile that justifies the heaviest engagement investment."
+        },
+        {
+          "label": "B",
+          "text": "Send the operations director periodic status reports and escalate only when decisions are needed.",
+          "isCorrect": false,
+          "rationale": "This is the pattern for stakeholders with high influence but low interest. It under-engages someone who is actively concerned with the outcome."
+        },
+        {
+          "label": "C",
+          "text": "Delegate engagement with the operations director to the project manager to protect analysis time.",
+          "isCorrect": false,
+          "rationale": "Delegating the most consequential relationship removes the analyst from the conversations where requirements decisions are actually made."
+        },
+        {
+          "label": "D",
+          "text": "Treat the operations director as the sole source of requirements for operational areas.",
+          "isCorrect": false,
+          "rationale": "Influence is not the same as completeness of knowledge. Relying on one senior voice risks missing the people who do the work."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-005",
+      "domain": "BAPM",
+      "sourceRef": "3.2",
+      "sourceTask": "Plan Stakeholder Engagement",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Three weeks into elicitation on a supply chain initiative, a business analyst discovers that a third-party logistics provider will have to change its integration to accommodate the new solution. The provider does not appear anywhere in the engagement plan. What should the business analyst do first?",
+      "explanation": "Stakeholder identification within Plan Stakeholder Engagement is not a one-off event. When a new stakeholder emerges, the analyst analyses them and updates the stakeholder engagement approach before deciding how to work with them.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyse the provider's influence, interest and attitude, then update the stakeholder engagement approach.",
+          "isCorrect": true,
+          "rationale": "Correct. Stakeholder analysis precedes engagement decisions, and the engagement approach is updated as new stakeholders surface."
+        },
+        {
+          "label": "B",
+          "text": "Schedule an elicitation workshop with the provider immediately to avoid further delay.",
+          "isCorrect": false,
+          "rationale": "Plausible and energetic, but eliciting before analysing means the analyst does not yet know what the provider needs to decide, or who else at the provider must be present."
+        },
+        {
+          "label": "C",
+          "text": "Record the provider as a risk in the risk register and continue with the planned stakeholders.",
+          "isCorrect": false,
+          "rationale": "Logging a known stakeholder as a risk defers the work instead of doing it. The provider is a stakeholder, not merely a threat."
+        },
+        {
+          "label": "D",
+          "text": "Ask procurement to confirm whether the contract obliges the provider to participate.",
+          "isCorrect": false,
+          "rationale": "Contractual obligation may matter later, but it is not the first analytical step and does not tell the analyst how to engage the provider."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-006",
+      "domain": "BAPM",
+      "sourceRef": "3.2",
+      "sourceTask": "Plan Stakeholder Engagement",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst is planning engagement for a change that will be delivered across three countries with different working hours and languages. Which consideration most directly belongs in the stakeholder engagement approach?",
+      "explanation": "Plan Stakeholder Engagement covers stakeholder characteristics including location, culture, language and availability, because these determine which collaboration and communication methods will actually work.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The collaboration and communication methods suited to each group's location, language and availability.",
+          "isCorrect": true,
+          "rationale": "Correct. Selecting workable collaboration and communication approaches for the stakeholders' actual characteristics is the substance of this task."
+        },
+        {
+          "label": "B",
+          "text": "The sequence in which requirements will be verified and validated.",
+          "isCorrect": false,
+          "rationale": "Verification and validation sequencing belongs to Requirements Analysis and Design Definition, not to the engagement approach."
+        },
+        {
+          "label": "C",
+          "text": "The tooling that will store requirements and their traceability links.",
+          "isCorrect": false,
+          "rationale": "Requirements storage and access are covered by Plan Business Analysis Information Management."
+        },
+        {
+          "label": "D",
+          "text": "The threshold above which a requirement change needs sponsor approval.",
+          "isCorrect": false,
+          "rationale": "Approval thresholds are a governance decision, addressed in Plan Business Analysis Governance."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-007",
+      "domain": "BAPM",
+      "sourceRef": "3.3",
+      "sourceTask": "Plan Business Analysis Governance",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "On a large transformation programme, two business units keep submitting conflicting requirement changes, and each expects its own change to be implemented. Nobody has been able to say whose decision prevails. Which planning task should the business analyst return to?",
+      "explanation": "Plan Business Analysis Governance defines how requirements are prioritised, how changes are proposed and approved, and crucially who has decision-making authority when stakeholders disagree.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Business Analysis Governance, to establish decision-making authority and the change process.",
+          "isCorrect": true,
+          "rationale": "Correct. Deciding who decides, and by what process, is precisely what this task exists to settle."
+        },
+        {
+          "label": "B",
+          "text": "Plan Stakeholder Engagement, to improve collaboration between the two units.",
+          "isCorrect": false,
+          "rationale": "Better collaboration is welcome, but the missing ingredient is authority, not rapport. Two well-engaged units can still deadlock without a decision rule."
+        },
+        {
+          "label": "C",
+          "text": "Plan Business Analysis Information Management, to record both versions of each requirement.",
+          "isCorrect": false,
+          "rationale": "Recording both versions preserves the conflict rather than resolving it, and information management does not confer authority."
+        },
+        {
+          "label": "D",
+          "text": "Prioritize Requirements, to rank the competing changes by business value.",
+          "isCorrect": false,
+          "rationale": "Prioritisation is the downstream activity. Without an agreed decision maker, the units will simply dispute the ranking too."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-008",
+      "domain": "BAPM",
+      "sourceRef": "3.3",
+      "sourceTask": "Plan Business Analysis Governance",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst is defining how proposed requirement changes will be handled on an initiative. Which set of decisions belongs to the change control process the analyst is designing?",
+      "explanation": "The Change Control Process element of Plan Business Analysis Governance determines how changes are requested, what analysis accompanies them, who authorises them, and how the impact of a change is assessed and communicated.",
+      "options": [
+        {
+          "label": "A",
+          "text": "How a change is proposed, what impact analysis accompanies it, and who has authority to approve it.",
+          "isCorrect": true,
+          "rationale": "Correct. These are the components of the change control process defined during governance planning."
+        },
+        {
+          "label": "B",
+          "text": "Which modelling notation will be used to express the changed requirement.",
+          "isCorrect": false,
+          "rationale": "Notation choice is part of specifying and modelling requirements, not of governance."
+        },
+        {
+          "label": "C",
+          "text": "How long the changed requirement should be retained after the solution is retired.",
+          "isCorrect": false,
+          "rationale": "Retention of business analysis information is planned under Plan Business Analysis Information Management."
+        },
+        {
+          "label": "D",
+          "text": "Which stakeholders will attend the elicitation session where the change is discussed.",
+          "isCorrect": false,
+          "rationale": "Session attendance is an elicitation planning matter, decided in Prepare for Elicitation."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-009",
+      "domain": "BAPM",
+      "sourceRef": "3.3",
+      "sourceTask": "Plan Business Analysis Governance",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A sponsor tells the business analyst that, to save time, any team member should be able to approve requirement changes worth less than a small monetary threshold. The initiative is subject to external audit. How should the business analyst respond?",
+      "explanation": "Governance planning must satisfy the organisation's approval and audit obligations. Where an initiative is audited, the approval process needs identified approvers and a traceable record, regardless of the monetary size of a change.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Explain that audited work needs named approvers and a traceable record, and propose a lightweight process that still meets that requirement.",
+          "isCorrect": true,
+          "rationale": "Correct. It respects the sponsor's goal of speed while keeping the governance process compliant, which is what this task asks the analyst to design."
+        },
+        {
+          "label": "B",
+          "text": "Implement the sponsor's instruction, since the sponsor holds decision-making authority.",
+          "isCorrect": false,
+          "rationale": "The sponsor's authority does not extend to setting aside audit obligations. This is the near-miss answer: deferring to authority where compliance is the binding constraint."
+        },
+        {
+          "label": "C",
+          "text": "Refer the decision to the audit function and pause governance planning until they reply.",
+          "isCorrect": false,
+          "rationale": "Stopping work to await an answer the analyst can already reason about wastes the initiative's time and abdicates the analyst's own task."
+        },
+        {
+          "label": "D",
+          "text": "Approve all small changes personally so that a single named approver exists.",
+          "isCorrect": false,
+          "rationale": "Naming the analyst as approver of business changes puts decision authority in the wrong place and creates a conflict of interest."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-010",
+      "domain": "BAPM",
+      "sourceRef": "3.4",
+      "sourceTask": "Plan Business Analysis Information Management",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst is deciding how requirements will be organised, where they will be stored, who may access them, and how long they will be kept after the change is delivered. Which task is the analyst performing?",
+      "explanation": "Plan Business Analysis Information Management covers the organisation, storage, access, attributes and retention of business analysis information, including whether it will be reused after the initiative closes.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Business Analysis Information Management",
+          "isCorrect": true,
+          "rationale": "Correct. Organisation, storage, access and retention of business analysis information are the elements of this task."
+        },
+        {
+          "label": "B",
+          "text": "Maintain Requirements",
+          "isCorrect": false,
+          "rationale": "Maintain Requirements keeps requirements accurate and reusable during and after the initiative. It acts on the plan; it does not create it."
+        },
+        {
+          "label": "C",
+          "text": "Plan Business Analysis Governance",
+          "isCorrect": false,
+          "rationale": "Governance settles approval and prioritisation authority, not where information lives or how long it is kept."
+        },
+        {
+          "label": "D",
+          "text": "Trace Requirements",
+          "isCorrect": false,
+          "rationale": "Tracing establishes and maintains relationships between requirements and other artifacts. Storage and retention are a different concern."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-011",
+      "domain": "BAPM",
+      "sourceRef": "3.4",
+      "sourceTask": "Plan Business Analysis Information Management",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "An organisation runs many small, similar onboarding initiatives each year. The business analyst wants requirements from the current initiative to be usable by future teams without rework. Which planning decision most directly supports that intent?",
+      "explanation": "Planning for reuse is an element of Plan Business Analysis Information Management. Requirements intended for reuse must be stated so they are not tied to a single initiative's context, and stored where future teams can find them.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan how requirements will be stated and stored so they remain meaningful outside this initiative's context.",
+          "isCorrect": true,
+          "rationale": "Correct. Reuse depends on both context-independent wording and accessible storage, which is what this element addresses."
+        },
+        {
+          "label": "B",
+          "text": "Baseline the requirements at the end of the initiative and archive the baseline.",
+          "isCorrect": false,
+          "rationale": "An archived baseline records what this initiative decided. It preserves history but does not make the requirements reusable elsewhere."
+        },
+        {
+          "label": "C",
+          "text": "Trace every requirement to the business objective it supports.",
+          "isCorrect": false,
+          "rationale": "Traceability is valuable, and it is a Requirements Life Cycle Management activity, but links to this initiative's objectives do not travel to the next initiative."
+        },
+        {
+          "label": "D",
+          "text": "Ask the sponsor to approve the requirements for reuse before the initiative closes.",
+          "isCorrect": false,
+          "rationale": "Approval does not make information reusable. Whether a future team can use a requirement depends on how it is written and stored, not on who signed it."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-012",
+      "domain": "BAPM",
+      "sourceRef": "3.4",
+      "sourceTask": "Plan Business Analysis Information Management",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "During planning, a business analyst decides that each requirement will carry its source, its priority, its owner and its current status. What is the business analyst defining?",
+      "explanation": "Requirement attributes are planned as part of Plan Business Analysis Information Management. Attributes carry metadata about a requirement, such as source, priority, owner, status and complexity, and support later tracing and prioritisation.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The attributes that will be captured for each requirement.",
+          "isCorrect": true,
+          "rationale": "Correct. Source, priority, owner and status are requirement attributes, planned as part of information management."
+        },
+        {
+          "label": "B",
+          "text": "The traceability relationships between requirements.",
+          "isCorrect": false,
+          "rationale": "Traceability describes links between requirements and other artifacts. Owner and status are properties of a single requirement, not links."
+        },
+        {
+          "label": "C",
+          "text": "The requirements architecture for the initiative.",
+          "isCorrect": false,
+          "rationale": "Requirements architecture is the structure of the requirement set as a whole, defined in Define Requirements Architecture."
+        },
+        {
+          "label": "D",
+          "text": "The acceptance criteria for the solution.",
+          "isCorrect": false,
+          "rationale": "Acceptance criteria state what must be true for a solution to be accepted; they are not descriptive metadata about a requirement."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-013",
+      "domain": "BAPM",
+      "sourceRef": "3.5",
+      "sourceTask": "Identify Business Analysis Performance Improvements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst notices that requirements on the current initiative are being reworked far more often than on comparable past initiatives. The analyst wants to establish why before proposing any change to the way the team works. What should the business analyst do?",
+      "explanation": "Identify Business Analysis Performance Improvements assesses business analysis performance against agreed measures, determines the cause of variances, and only then recommends preventive or corrective action.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyse the performance results against the agreed measures to determine the cause of the variance.",
+          "isCorrect": true,
+          "rationale": "Correct. Analysing performance and identifying the source of a problem precedes recommending action in this task."
+        },
+        {
+          "label": "B",
+          "text": "Introduce a stricter requirements review checkpoint to reduce the rework rate.",
+          "isCorrect": false,
+          "rationale": "This is a corrective action taken before the cause is known. If the rework stems from unstable business objectives, another review gate will not help."
+        },
+        {
+          "label": "C",
+          "text": "Report the rework rate to the sponsor and ask for a decision on how to proceed.",
+          "isCorrect": false,
+          "rationale": "Reporting a raw number without analysis passes the analyst's own task to the sponsor and invites an uninformed decision."
+        },
+        {
+          "label": "D",
+          "text": "Compare the initiative's rework rate against an industry benchmark.",
+          "isCorrect": false,
+          "rationale": "Benchmarking gives an external comparison but still does not explain the variance on this initiative, which is what the analyst set out to establish."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-014",
+      "domain": "BAPM",
+      "sourceRef": "3.5",
+      "sourceTask": "Identify Business Analysis Performance Improvements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "At the start of an initiative, a business analyst and the stakeholders agree what good business analysis performance will look like on this piece of work, and how it will be measured. Why does BABOK place this agreement at the beginning rather than at the end?",
+      "explanation": "Performance measures are defined and agreed with stakeholders before the work is assessed, so that expectations are explicit and the assessment has an agreed basis rather than being a retrospective opinion.",
+      "options": [
+        {
+          "label": "A",
+          "text": "So that later assessment has an agreed basis and stakeholder expectations are explicit from the outset.",
+          "isCorrect": true,
+          "rationale": "Correct. Agreeing measures up front is what makes a later performance assessment meaningful rather than a matter of opinion."
+        },
+        {
+          "label": "B",
+          "text": "So that the business analyst's individual performance appraisal can be calculated objectively.",
+          "isCorrect": false,
+          "rationale": "The task measures business analysis performance on the initiative, not an individual's employment appraisal."
+        },
+        {
+          "label": "C",
+          "text": "So that the measures can be baselined and placed under change control.",
+          "isCorrect": false,
+          "rationale": "Change control governs requirements. Performance measures may evolve as the initiative proceeds and are not the object of the change control process."
+        },
+        {
+          "label": "D",
+          "text": "So that the measures can be traced to the business objectives in the requirements repository.",
+          "isCorrect": false,
+          "rationale": "Traceability links requirements to objectives. Performance measures describe how the analysis work itself is going, and are not traced this way."
+        }
+      ]
+    }
+  ]
+}

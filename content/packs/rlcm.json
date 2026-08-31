@@ -1,0 +1,546 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "questions": [
+    {
+      "code": "RLCM-001",
+      "domain": "RLCM",
+      "sourceRef": "5.1",
+      "sourceTask": "Trace Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A sponsor challenges a costly non-functional requirement, asking why it exists at all. Within minutes the business analyst shows the chain from that requirement up to the business objective it supports, and down to the design and test cases that implement it. Which benefit of traceability is being demonstrated?",
+      "explanation": "Trace Requirements creates and maintains relationships between requirements, designs, solution components and other artifacts. Those relationships let the analyst show coverage and derivation, and assess the impact of changing or removing any one item.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Traceability shows the requirement's derivation and coverage, so its necessity and impact can be assessed.",
+          "isCorrect": true,
+          "rationale": "Correct. Demonstrating why a requirement exists and what depends on it is the core value of the traceability relationships this task maintains."
+        },
+        {
+          "label": "B",
+          "text": "Traceability proves that the requirement was formally approved.",
+          "isCorrect": false,
+          "rationale": "Approval status is a requirement attribute recorded under Approve Requirements. A trace link is a relationship, not an approval record."
+        },
+        {
+          "label": "C",
+          "text": "Traceability confirms that the requirement is unambiguous and testable.",
+          "isCorrect": false,
+          "rationale": "Those are quality characteristics assessed in Verify Requirements. A well-traced requirement can still be badly written."
+        },
+        {
+          "label": "D",
+          "text": "Traceability establishes the requirement's relative priority.",
+          "isCorrect": false,
+          "rationale": "Priority comes from Prioritize Requirements. Traceability informs prioritisation but does not set it."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-002",
+      "domain": "RLCM",
+      "sourceRef": "5.1",
+      "sourceTask": "Trace Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst records that a requirement to send a shipment notification cannot be implemented unless the requirement to capture a verified customer email address is implemented first. Which kind of relationship has the analyst recorded?",
+      "explanation": "Trace Requirements distinguishes several relationship types. A necessity relationship exists when one requirement can only be implemented if another is also implemented, which is different from one requirement being derived from another.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Necessity",
+          "isCorrect": true,
+          "rationale": "Correct. Necessity captures that implementing one requirement is only meaningful or possible if another is also implemented."
+        },
+        {
+          "label": "B",
+          "text": "Derive",
+          "isCorrect": false,
+          "rationale": "A derive relationship exists where one requirement is developed from another, typically across levels of abstraction. Here neither requirement is derived from the other; one simply depends on the other."
+        },
+        {
+          "label": "C",
+          "text": "Satisfy",
+          "isCorrect": false,
+          "rationale": "Satisfy links an implementation element to the requirement it fulfils. Both items here are requirements."
+        },
+        {
+          "label": "D",
+          "text": "Validate",
+          "isCorrect": false,
+          "rationale": "A validate relationship links a requirement to a test case or other item that checks it. No test case is involved."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-003",
+      "domain": "RLCM",
+      "sourceRef": "5.1",
+      "sourceTask": "Trace Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A programme has ten thousand requirements across six workstreams. The business analyst is deciding how much traceability to maintain. Which consideration should drive the decision?",
+      "explanation": "The level of formality and detail in traceability is a judgement about value against effort. Traceability is maintained to the extent that it supports impact analysis, coverage and governance needs, because maintaining links has an ongoing cost.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The value the links will provide for impact analysis and coverage, weighed against the cost of maintaining them.",
+          "isCorrect": true,
+          "rationale": "Correct. Traceability is maintained at a level justified by its usefulness; exhaustive linking on a large programme can cost more than it returns."
+        },
+        {
+          "label": "B",
+          "text": "Every requirement should be traced to every related artifact, as completeness is the goal.",
+          "isCorrect": false,
+          "rationale": "The tempting absolutist answer. Complete traceability on ten thousand requirements creates a maintenance burden that degrades into stale links."
+        },
+        {
+          "label": "C",
+          "text": "The capabilities of the requirements management tool the programme has licensed.",
+          "isCorrect": false,
+          "rationale": "Tooling can constrain how links are stored, but it should not decide what traceability the initiative actually needs."
+        },
+        {
+          "label": "D",
+          "text": "The number of business analysts available to maintain the links.",
+          "isCorrect": false,
+          "rationale": "Staffing is a real constraint, but it is a reason to resource the decision, not the basis for deciding what traceability is worth having."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-004",
+      "domain": "RLCM",
+      "sourceRef": "5.2",
+      "sourceTask": "Maintain Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "An organisation has just delivered a change. The business analyst wants the requirements describing the resulting business rules to remain accurate and available for future initiatives, rather than being archived with the project. Which task covers this?",
+      "explanation": "Maintain Requirements ensures that requirements remain accurate and current throughout their life cycle, including maintaining them for reuse beyond the initiative that produced them.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Maintain Requirements",
+          "isCorrect": true,
+          "rationale": "Correct. Keeping requirements accurate and available for reuse after delivery is exactly what this task covers."
+        },
+        {
+          "label": "B",
+          "text": "Plan Business Analysis Information Management",
+          "isCorrect": false,
+          "rationale": "That task plans how information will be stored and reused. Actually keeping the requirements current afterwards is Maintain Requirements."
+        },
+        {
+          "label": "C",
+          "text": "Approve Requirements",
+          "isCorrect": false,
+          "rationale": "Approval obtains agreement from authorised stakeholders. It does not keep a requirement accurate as the business changes around it."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes",
+          "isCorrect": false,
+          "rationale": "That task evaluates a proposed change. Nothing is being proposed here; the concern is ongoing accuracy."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-005",
+      "domain": "RLCM",
+      "sourceRef": "5.2",
+      "sourceTask": "Maintain Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst is reviewing candidate requirements for the organisation's reusable library. Which requirement is the strongest candidate for reuse?",
+      "explanation": "Requirements maintained for reuse must be stated in a way that is independent of any one initiative's context, so that a future team can apply them without unpicking references to a specific project, release or system.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A requirement stating a regulatory retention rule in terms that do not reference this project or system.",
+          "isCorrect": true,
+          "rationale": "Correct. Context-independent wording is what makes a requirement reusable across initiatives."
+        },
+        {
+          "label": "B",
+          "text": "A high-priority requirement that the sponsor personally approved.",
+          "isCorrect": false,
+          "rationale": "Priority and approval are properties of this initiative. Neither says anything about whether the requirement travels."
+        },
+        {
+          "label": "C",
+          "text": "A requirement describing a screen layout in the release that has just gone live.",
+          "isCorrect": false,
+          "rationale": "It is tied to a specific solution and release, which is the opposite of what reuse needs."
+        },
+        {
+          "label": "D",
+          "text": "A requirement with complete traceability to this initiative's business objectives.",
+          "isCorrect": false,
+          "rationale": "Rich traceability into this initiative's objectives is a sign of good practice here, but those links do not carry over to a future initiative."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-006",
+      "domain": "RLCM",
+      "sourceRef": "5.3",
+      "sourceTask": "Prioritize Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Every business unit has classified its own requirements as top priority, and the combined list cannot be delivered in the available release. What should the business analyst do?",
+      "explanation": "Prioritize Requirements ranks requirements in order of relative importance using an agreed basis such as business value, risk, cost, dependencies and regulatory need. Prioritisation is comparative, so a shared basis is what makes it possible.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Agree a shared basis for prioritisation with the stakeholders, then rank the requirements against it.",
+          "isCorrect": true,
+          "rationale": "Correct. Establishing the basis for prioritisation is the first element of this task, and it is what allows competing claims to be compared."
+        },
+        {
+          "label": "B",
+          "text": "Deliver the requirements from the unit that contributes most revenue first.",
+          "isCorrect": false,
+          "rationale": "Revenue contribution is one possible basis, but imposing it unilaterally substitutes the analyst's rule for an agreed one."
+        },
+        {
+          "label": "C",
+          "text": "Allocate the release capacity equally between the business units.",
+          "isCorrect": false,
+          "rationale": "Equal shares feel fair but ignore value, risk and dependencies. It is a political settlement, not a prioritisation."
+        },
+        {
+          "label": "D",
+          "text": "Ask each unit to reduce its own list until the combined set fits the release.",
+          "isCorrect": false,
+          "rationale": "This pushes the decision back without a shared basis, so each unit optimises locally and the overall set is still not prioritised."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-007",
+      "domain": "RLCM",
+      "sourceRef": "5.3",
+      "sourceTask": "Prioritize Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A requirement carries modest business value on its own, but three high-value requirements cannot be implemented without it. How should this affect its priority?",
+      "explanation": "Dependencies are one of the bases for prioritisation. A requirement of limited standalone value can rank highly because other, more valuable requirements depend on it.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Its priority should rise, because dependencies are a legitimate basis for prioritisation.",
+          "isCorrect": true,
+          "rationale": "Correct. Prioritisation weighs dependencies alongside value, so an enabling requirement ranks above its standalone worth."
+        },
+        {
+          "label": "B",
+          "text": "Its priority should stay low, because priority reflects business value delivered.",
+          "isCorrect": false,
+          "rationale": "The near-miss answer. Value matters, but treating it as the only basis strands the three high-value requirements that depend on this one."
+        },
+        {
+          "label": "C",
+          "text": "It should be merged into the highest-value requirement that depends on it.",
+          "isCorrect": false,
+          "rationale": "Merging distinct requirements to solve a ranking problem damages the requirement set and hides the dependency rather than reflecting it."
+        },
+        {
+          "label": "D",
+          "text": "It should be reclassified as a constraint rather than a requirement.",
+          "isCorrect": false,
+          "rationale": "A constraint is a restriction the solution must operate within. A prerequisite capability the solution must provide is still a requirement."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-008",
+      "domain": "RLCM",
+      "sourceRef": "5.3",
+      "sourceTask": "Prioritize Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "On an adaptive initiative, the business analyst re-ranks the backlog before every iteration rather than agreeing a fixed ranking at the start. Which aspect of Prioritize Requirements does this reflect?",
+      "explanation": "Continual prioritisation is an element of the task. As the situation changes and more is learned, the relative importance of requirements changes, so prioritisation is revisited rather than settled once.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Continual prioritisation, since relative importance changes as the initiative progresses.",
+          "isCorrect": true,
+          "rationale": "Correct. BABOK treats prioritisation as ongoing, not as a single event at the start."
+        },
+        {
+          "label": "B",
+          "text": "Challenges of prioritisation, since stakeholders resist fixed rankings.",
+          "isCorrect": false,
+          "rationale": "That element covers difficulties such as stakeholders inflating priority or refusing to trade off. Re-ranking each iteration is a rhythm, not a difficulty."
+        },
+        {
+          "label": "C",
+          "text": "Basis for prioritisation, since the criteria are reassessed each iteration.",
+          "isCorrect": false,
+          "rationale": "The basis is the set of criteria used. The scenario describes reapplying the criteria repeatedly, not redefining them."
+        },
+        {
+          "label": "D",
+          "text": "Change control, since each re-ranking is a change to the baseline.",
+          "isCorrect": false,
+          "rationale": "Reordering an unbaselined backlog is normal adaptive practice, not a controlled change to an approved baseline."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-009",
+      "domain": "RLCM",
+      "sourceRef": "5.4",
+      "sourceTask": "Assess Requirements Changes",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Late in delivery, a stakeholder proposes adding a customer self-service cancellation flow. Before any decision is taken, what should the business analyst determine?",
+      "explanation": "Assess Requirements Changes evaluates a proposed change for its alignment to strategy, its benefit and cost, its impact on other requirements and solution components, and the urgency of the decision.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Whether the change aligns to the strategy, what it would cost and benefit, and what else it would affect.",
+          "isCorrect": true,
+          "rationale": "Correct. Alignment, benefit and cost, and impact are exactly the dimensions this task assesses before a decision is made."
+        },
+        {
+          "label": "B",
+          "text": "Whether the change can be delivered within the current release timebox.",
+          "isCorrect": false,
+          "rationale": "Schedule fit is one input to the cost side, but assessing only feasibility skips alignment, benefit and the effect on other requirements."
+        },
+        {
+          "label": "C",
+          "text": "Whether the stakeholder proposing the change has authority to request it.",
+          "isCorrect": false,
+          "rationale": "Authority governs who may approve the change under the governance approach; it is not the assessment of the change itself."
+        },
+        {
+          "label": "D",
+          "text": "Whether the change has already been implemented by a competitor.",
+          "isCorrect": false,
+          "rationale": "Competitor behaviour might inform the benefit case, but on its own it is market colour rather than an assessment of this change."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-010",
+      "domain": "RLCM",
+      "sourceRef": "5.4",
+      "sourceTask": "Assess Requirements Changes",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A proposed change looks small in isolation. Using the traceability links, the business analyst finds it touches four downstream requirements and two integrations. What has traceability provided in this situation?",
+      "explanation": "Impact analysis draws directly on the traceability relationships maintained in Trace Requirements. Those links reveal what a change touches, which is what turns an intuitive estimate into an assessed one.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The basis for impact analysis, by revealing what the change actually touches.",
+          "isCorrect": true,
+          "rationale": "Correct. Assessing the impact of a change is one of the principal reasons traceability is maintained."
+        },
+        {
+          "label": "B",
+          "text": "Confirmation that the change should be rejected because it is too broad.",
+          "isCorrect": false,
+          "rationale": "Impact analysis informs the decision; it does not make it. A broad change may still be worth doing."
+        },
+        {
+          "label": "C",
+          "text": "The approval record for the affected requirements.",
+          "isCorrect": false,
+          "rationale": "Approval status is an attribute of each requirement, not something traceability links supply."
+        },
+        {
+          "label": "D",
+          "text": "The prioritised order in which the affected requirements should be reworked.",
+          "isCorrect": false,
+          "rationale": "Traceability shows what is connected. Deciding the order of rework is a prioritisation activity."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-011",
+      "domain": "RLCM",
+      "sourceRef": "5.4",
+      "sourceTask": "Assess Requirements Changes",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst has assessed a proposed change and documented its impact and benefit. Who decides whether the change proceeds?",
+      "explanation": "Assess Requirements Changes produces a recommendation. The decision itself rests with the stakeholders holding decision-making authority, as established in Plan Business Analysis Governance.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The stakeholders with decision-making authority defined in the governance approach.",
+          "isCorrect": true,
+          "rationale": "Correct. The analyst assesses and recommends; authorised stakeholders decide."
+        },
+        {
+          "label": "B",
+          "text": "The business analyst, since the analyst holds the impact assessment.",
+          "isCorrect": false,
+          "rationale": "Holding the analysis does not confer authority. Deciding on behalf of the business is outside the analyst's role."
+        },
+        {
+          "label": "C",
+          "text": "The delivery team, since they must absorb the work.",
+          "isCorrect": false,
+          "rationale": "The delivery team's capacity is an input to the assessment, but the decision is a business one."
+        },
+        {
+          "label": "D",
+          "text": "Whoever proposed the change, since they understand the need best.",
+          "isCorrect": false,
+          "rationale": "Letting each requester approve their own change dissolves governance entirely."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-012",
+      "domain": "RLCM",
+      "sourceRef": "5.5",
+      "sourceTask": "Approve Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst has circulated a requirements package for approval. Two of the four named approvers have signed; the other two have not responded in three weeks and delivery is due to start. What should the business analyst do?",
+      "explanation": "Approve Requirements obtains agreement from all stakeholders with approval authority, and includes tracking and communicating approval status. Missing approvals are pursued and made visible rather than assumed.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Pursue the outstanding approvals and make the incomplete approval status visible to the delivery decision.",
+          "isCorrect": true,
+          "rationale": "Correct. Tracking and communicating approval status is part of the task, and delivery decisions should be taken with that status known."
+        },
+        {
+          "label": "B",
+          "text": "Treat the silence as tacit approval and proceed, since the approvers were given ample time.",
+          "isCorrect": false,
+          "rationale": "The most tempting distractor under schedule pressure. Approval requires agreement from those with authority; silence is not agreement."
+        },
+        {
+          "label": "C",
+          "text": "Replace the unresponsive approvers with stakeholders who are available.",
+          "isCorrect": false,
+          "rationale": "Approval authority comes from the governance approach. The analyst cannot reassign it to make a deadline."
+        },
+        {
+          "label": "D",
+          "text": "Reduce the scope of the package to only the requirements the two responders approved.",
+          "isCorrect": false,
+          "rationale": "This silently drops requirements to manufacture a complete approval, which misrepresents the requirement set."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-013",
+      "domain": "RLCM",
+      "sourceRef": "5.5",
+      "sourceTask": "Approve Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Which pair correctly distinguishes verification, validation and approval of requirements?",
+      "explanation": "Verification checks that requirements are well written and of sufficient quality. Validation checks that they deliver value and support business objectives. Approval is agreement by authorised stakeholders that the requirements are ready to proceed.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Verification checks quality, validation checks value, and approval records authorised agreement.",
+          "isCorrect": true,
+          "rationale": "Correct. These are the three distinct checks, performed by different tasks for different purposes."
+        },
+        {
+          "label": "B",
+          "text": "Verification checks value, validation checks quality, and approval records authorised agreement.",
+          "isCorrect": false,
+          "rationale": "Verification and validation are reversed. This swap is the most common error on the real exam."
+        },
+        {
+          "label": "C",
+          "text": "Verification and validation are both quality checks, and approval is the business sign-off of quality.",
+          "isCorrect": false,
+          "rationale": "Validation is not a quality check. It asks whether the requirement delivers value, which a perfectly written requirement can fail."
+        },
+        {
+          "label": "D",
+          "text": "Approval must precede verification so that only approved requirements are checked.",
+          "isCorrect": false,
+          "rationale": "Approving requirements before checking their quality inverts the sequence and asks approvers to commit to unchecked work."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-014",
+      "domain": "RLCM",
+      "sourceRef": "5.5",
+      "sourceTask": "Approve Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "On an adaptive initiative, requirements are approved by the product owner at the point each one is pulled into an iteration, rather than as a large package at a phase gate. Is this consistent with BABOK?",
+      "explanation": "The formality and timing of approval follow the business analysis approach and the governance decisions made for the initiative. Adaptive initiatives typically approve requirements later and in smaller increments than predictive ones.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Yes, because approval timing and formality follow the chosen approach and governance decisions.",
+          "isCorrect": true,
+          "rationale": "Correct. BABOK does not mandate one approval ceremony; it requires that authorised stakeholders agree, in a manner the initiative has planned."
+        },
+        {
+          "label": "B",
+          "text": "No, because requirements must be baselined and approved before any development begins.",
+          "isCorrect": false,
+          "rationale": "That describes a predictive approach. Treating it as universal is exactly the assumption BABOK avoids."
+        },
+        {
+          "label": "C",
+          "text": "Yes, but only if the product owner also performs verification and validation.",
+          "isCorrect": false,
+          "rationale": "Verification and validation are separate tasks that may involve other people. Approval does not depend on the approver performing them personally."
+        },
+        {
+          "label": "D",
+          "text": "No, because a single approver cannot represent all stakeholders with an interest.",
+          "isCorrect": false,
+          "rationale": "A single authorised approver is legitimate if the governance approach assigns that authority. Representation is a governance design question, not a prohibition."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-015",
+      "domain": "RLCM",
+      "sourceRef": "5.2",
+      "sourceTask": "Maintain Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Six months after a solution went live, a business analyst finds that several stored requirements no longer describe how the business operates, because two subsequent small changes were made without updating them. What does this indicate?",
+      "explanation": "Maintain Requirements keeps requirements accurate and current over their whole life, not only during the initiative. Requirements that drift out of step with the business have not been maintained, which undermines their reuse and any impact analysis based on them.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The requirements have not been maintained, so they can no longer be relied on for reuse or impact analysis.",
+          "isCorrect": true,
+          "rationale": "Correct. The value of stored requirements depends on their remaining accurate, which is what this task exists to ensure."
+        },
+        {
+          "label": "B",
+          "text": "The requirements should be deleted, since inaccurate information is worse than none.",
+          "isCorrect": false,
+          "rationale": "Deletion discards work that can be corrected, and loses the record of why the original decisions were made."
+        },
+        {
+          "label": "C",
+          "text": "The change control process failed, since the two changes were not assessed.",
+          "isCorrect": false,
+          "rationale": "The changes may well have been properly assessed and approved. The failure is that the requirement records were not updated afterwards."
+        },
+        {
+          "label": "D",
+          "text": "The requirements were never validated, since they no longer deliver value.",
+          "isCorrect": false,
+          "rationale": "Validation concerns whether a requirement delivers value at the time it is assessed. Going stale later is a maintenance failure, not a validation one."
+        }
+      ]
+    }
+  ]
+}

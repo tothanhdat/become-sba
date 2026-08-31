@@ -1,0 +1,1100 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "caseStudies": [
+    {
+      "code": "CS-RADD-01",
+      "title": "Northbank: lending origination redesign",
+      "body": "Northbank is redesigning how it originates small business loans. Today an application passes through four teams: intake, credit assessment, security review and drawdown. Each team keeps its own spreadsheet and rekeys data from the previous team's output. Applications are frequently returned to intake because a document is missing, and nobody can say how often this happens or at which step. The product director wants decisions in two days rather than nine. Regulation requires that every credit decision be reconstructable, showing what information the decision was based on and who approved it. The business analyst has confirmed elicitation results from all four teams and is now analysing them."
+    }
+  ],
+  "questions": [
+    {
+      "code": "RADD-001",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-RADD-01",
+      "stem": "The business analyst at Northbank has confirmed elicitation results from all four teams and is now turning them into requirements. What is the analyst doing in BABOK terms?",
+      "explanation": "Specify and Model Requirements analyses, synthesises and refines elicitation results into requirements and designs. Confirmed elicitation results are the input; specified and modelled requirements are the output.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analysing, synthesising and refining elicitation results into requirements and designs.",
+          "isCorrect": true,
+          "rationale": "Correct. This is the stated purpose of Specify and Model Requirements, and it is the step between confirmed elicitation results and requirements."
+        },
+        {
+          "label": "B",
+          "text": "Confirming that the elicitation results accurately reflect what stakeholders said.",
+          "isCorrect": false,
+          "rationale": "The scenario states the results are already confirmed. That task is complete."
+        },
+        {
+          "label": "C",
+          "text": "Verifying that the requirements meet the necessary quality standard.",
+          "isCorrect": false,
+          "rationale": "Verification follows specification. There are no requirements to verify yet."
+        },
+        {
+          "label": "D",
+          "text": "Defining the requirements architecture for the initiative.",
+          "isCorrect": false,
+          "rationale": "Requirements architecture structures the requirement set as a whole. It operates on requirements that specification produces."
+        }
+      ]
+    },
+    {
+      "code": "RADD-002",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-RADD-01",
+      "stem": "The business analyst wants to show how an application moves between Northbank's four teams, where it waits, and where it is returned to intake. Which model is most appropriate?",
+      "explanation": "Model selection follows the aspect being represented. Process models show the flow of work, the sequence of activities, the actors performing them, and where work loops back or waits.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A process model, since the concern is the flow of work between actors.",
+          "isCorrect": true,
+          "rationale": "Correct. Flow, sequence, handoffs and rework loops are what process models represent."
+        },
+        {
+          "label": "B",
+          "text": "A data model, since the concern is the information each team holds.",
+          "isCorrect": false,
+          "rationale": "Data modelling would describe the structure of the information, not the movement of an application between teams."
+        },
+        {
+          "label": "C",
+          "text": "A state model, since an application changes state as it progresses.",
+          "isCorrect": false,
+          "rationale": "The strongest distractor: applications do have states. But the question asks about movement between teams and rework loops, which is flow."
+        },
+        {
+          "label": "D",
+          "text": "A scope model, since the concern is which teams are in scope.",
+          "isCorrect": false,
+          "rationale": "Scope models set boundaries. They do not show how work travels within those boundaries."
+        }
+      ]
+    },
+    {
+      "code": "RADD-003",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-RADD-01",
+      "stem": "Northbank's regulation requires every credit decision to be reconstructable, showing what information it was based on and who approved it. How should the business analyst treat this?",
+      "explanation": "Requirements can be functional or non-functional. A regulatory obligation about the qualities the solution must exhibit, such as auditability, is a non-functional requirement, and it must be stated so it can be verified.",
+      "options": [
+        {
+          "label": "A",
+          "text": "As a non-functional requirement expressing an auditability quality the solution must exhibit.",
+          "isCorrect": true,
+          "rationale": "Correct. Auditability is a quality of service the solution must possess, which makes it a non-functional requirement."
+        },
+        {
+          "label": "B",
+          "text": "As a business rule governing who may approve a credit decision.",
+          "isCorrect": false,
+          "rationale": "A rule about who may approve would be a business rule. The obligation here is that the decision be reconstructable afterwards."
+        },
+        {
+          "label": "C",
+          "text": "As a constraint, since regulation restricts the solution.",
+          "isCorrect": false,
+          "rationale": "Tempting, because regulation does constrain. But this states a capability the solution must have, which makes it a requirement rather than a boundary on design."
+        },
+        {
+          "label": "D",
+          "text": "As an assumption about regulatory expectations.",
+          "isCorrect": false,
+          "rationale": "The requirement is confirmed regulation, not an unconfirmed belief."
+        }
+      ]
+    },
+    {
+      "code": "RADD-004",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-RADD-01",
+      "stem": "Nobody at Northbank can say how often applications are returned to intake or at which step. A stakeholder asks the business analyst simply to state a requirement that returns must be reduced by half. What is the strongest objection?",
+      "explanation": "Specified requirements must be verifiable and unambiguous. A target expressed against an unmeasured baseline cannot be verified, because there is nothing to measure the reduction from.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Without a measured baseline the requirement is not verifiable, so it cannot be stated that way.",
+          "isCorrect": true,
+          "rationale": "Correct. Verifiability is a required quality of a specified requirement, and a halving target needs a baseline to be verifiable against."
+        },
+        {
+          "label": "B",
+          "text": "Reducing returns is a business objective, so it belongs in Strategy Analysis rather than here.",
+          "isCorrect": false,
+          "rationale": "The near-miss. It is true that outcome targets sit better as objectives, but the decisive defect is that the statement cannot be verified at all."
+        },
+        {
+          "label": "C",
+          "text": "The stakeholder lacks authority to state requirements without the product director.",
+          "isCorrect": false,
+          "rationale": "Stakeholders routinely express needs. Authority governs approval, not whether a need may be voiced."
+        },
+        {
+          "label": "D",
+          "text": "The requirement has not been traced to a business objective.",
+          "isCorrect": false,
+          "rationale": "Tracing is a later concern, and adding a trace link would not make an unverifiable statement verifiable."
+        }
+      ]
+    },
+    {
+      "code": "RADD-005",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst produces a high-level requirement for executives and a detailed set of the same requirements for the development team. Which element of Specify and Model Requirements does this reflect?",
+      "explanation": "Implement the Appropriate Levels of Abstraction is an element of this task. The same requirement may be represented at different levels of detail for different audiences and purposes.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Implement the Appropriate Levels of Abstraction",
+          "isCorrect": true,
+          "rationale": "Correct. Presenting requirements at the level of detail each audience needs is exactly this element."
+        },
+        {
+          "label": "B",
+          "text": "Analyze Requirements",
+          "isCorrect": false,
+          "rationale": "Analysing requirements examines and refines them for completeness and consistency, not for audience-appropriate detail."
+        },
+        {
+          "label": "C",
+          "text": "Represent Requirements and Attributes",
+          "isCorrect": false,
+          "rationale": "That element covers capturing requirements and their metadata. Choosing a level of detail is a separate concern."
+        },
+        {
+          "label": "D",
+          "text": "Model Requirements",
+          "isCorrect": false,
+          "rationale": "Modelling selects and builds the representations. The scenario is about how much detail each version carries."
+        }
+      ]
+    },
+    {
+      "code": "RADD-006",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Which statement best distinguishes a requirement from a design in BABOK?",
+      "explanation": "BABOK treats requirements and designs as differing in what they represent, not in level of detail or formality. A requirement focuses on need; a design focuses on solution. The two are elaborated iteratively, and one person's design can be another's requirement.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A requirement focuses on need and a design focuses on solution; the distinction is one of intent, not of detail.",
+          "isCorrect": true,
+          "rationale": "Correct. BABOK is explicit that the difference is what the item represents, and that the two are elaborated iteratively."
+        },
+        {
+          "label": "B",
+          "text": "Requirements are high level and designs are detailed.",
+          "isCorrect": false,
+          "rationale": "The most common misconception. Both can be expressed at any level of detail; a detailed requirement is still a requirement."
+        },
+        {
+          "label": "C",
+          "text": "Requirements are produced by business analysts and designs by technical staff.",
+          "isCorrect": false,
+          "rationale": "Role does not determine the category. BABOK notes that a business analyst may work with designs, and that the same item can be viewed either way."
+        },
+        {
+          "label": "D",
+          "text": "Requirements are approved and designs are not.",
+          "isCorrect": false,
+          "rationale": "Designs are also subject to approval. Approval status is unrelated to the distinction."
+        }
+      ]
+    },
+    {
+      "code": "RADD-007",
+      "domain": "RADD",
+      "sourceRef": "7.2",
+      "sourceTask": "Verify Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A reviewer flags a requirement that reads 'the system shall respond quickly to user actions'. Which quality characteristic does this requirement fail, and which task should catch it?",
+      "explanation": "Verify Requirements checks that requirements are of sufficient quality: among other characteristics, they must be unambiguous and testable. 'Quickly' cannot be tested because it admits multiple readings.",
+      "options": [
+        {
+          "label": "A",
+          "text": "It is ambiguous and not testable, and Verify Requirements should catch it.",
+          "isCorrect": true,
+          "rationale": "Correct. Unambiguity and testability are quality characteristics assessed during verification."
+        },
+        {
+          "label": "B",
+          "text": "It does not deliver value, and Validate Requirements should catch it.",
+          "isCorrect": false,
+          "rationale": "A fast response may well deliver value. The defect is that the statement cannot be checked, which is a quality problem."
+        },
+        {
+          "label": "C",
+          "text": "It is not prioritised, and Prioritize Requirements should catch it.",
+          "isCorrect": false,
+          "rationale": "Prioritisation ranks requirements. It does not assess how well one is written."
+        },
+        {
+          "label": "D",
+          "text": "It is not traced, and Trace Requirements should catch it.",
+          "isCorrect": false,
+          "rationale": "Traceability records relationships. A vague requirement can be fully traced and still be unusable."
+        }
+      ]
+    },
+    {
+      "code": "RADD-008",
+      "domain": "RADD",
+      "sourceRef": "7.2",
+      "sourceTask": "Verify Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "During verification a business analyst finds that two requirements in the same package contradict each other about whether a discount applies to freight. Which quality characteristic has been violated?",
+      "explanation": "Verify Requirements assesses characteristics including consistency: requirements should not conflict with each other or use the same term to mean different things.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Consistency",
+          "isCorrect": true,
+          "rationale": "Correct. Two requirements that contradict each other are inconsistent."
+        },
+        {
+          "label": "B",
+          "text": "Completeness",
+          "isCorrect": false,
+          "rationale": "Completeness concerns whether enough detail is present. Both requirements here are present and detailed; they simply disagree."
+        },
+        {
+          "label": "C",
+          "text": "Feasibility",
+          "isCorrect": false,
+          "rationale": "Feasibility asks whether a requirement can reasonably be met within the constraints. Both requirements are individually feasible."
+        },
+        {
+          "label": "D",
+          "text": "Prioritisation",
+          "isCorrect": false,
+          "rationale": "Priority is not a verification quality characteristic; it is assigned in Requirements Life Cycle Management."
+        }
+      ]
+    },
+    {
+      "code": "RADD-009",
+      "domain": "RADD",
+      "sourceRef": "7.2",
+      "sourceTask": "Verify Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A requirement is perfectly written: unambiguous, testable, complete and consistent with the rest of the set. Stakeholders nonetheless say it should not be built, because it addresses a problem that no longer exists. What does this show?",
+      "explanation": "Verification and validation answer different questions. A requirement can pass verification, which assesses quality, and still fail validation, which assesses whether it delivers value and supports the business objectives.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A requirement can pass verification and still fail validation, because the two assess different things.",
+          "isCorrect": true,
+          "rationale": "Correct. Quality of expression and delivery of value are independent, which is why BABOK keeps the two tasks separate."
+        },
+        {
+          "label": "B",
+          "text": "The verification was performed incorrectly, since a valueless requirement is not complete.",
+          "isCorrect": false,
+          "rationale": "Completeness means sufficient detail is present, not that the requirement is worth building."
+        },
+        {
+          "label": "C",
+          "text": "The requirement should be reworded until stakeholders accept it.",
+          "isCorrect": false,
+          "rationale": "Rewording a requirement that addresses a problem that no longer exists does not create value."
+        },
+        {
+          "label": "D",
+          "text": "Validation should have been performed before verification.",
+          "isCorrect": false,
+          "rationale": "BABOK does not fix an order between the two. The point of the scenario is that they are different checks, not that they were mis-sequenced."
+        }
+      ]
+    },
+    {
+      "code": "RADD-010",
+      "domain": "RADD",
+      "sourceRef": "7.3",
+      "sourceTask": "Validate Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst is checking that each requirement in a package supports the delivery of value to stakeholders and aligns with the business objectives. Which task is this and what is the analyst assessing?",
+      "explanation": "Validate Requirements ensures that requirements and designs deliver business value and support the organisation's goals and objectives. It is a value check, not a quality check.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Validate Requirements, assessing whether the requirements deliver value and align to objectives.",
+          "isCorrect": true,
+          "rationale": "Correct. Validation is the alignment-to-value check across the requirement set."
+        },
+        {
+          "label": "B",
+          "text": "Verify Requirements, assessing whether the requirements are correctly written.",
+          "isCorrect": false,
+          "rationale": "Verification is the quality check. Nothing in the scenario concerns how the requirements are worded."
+        },
+        {
+          "label": "C",
+          "text": "Approve Requirements, assessing whether stakeholders agree to them.",
+          "isCorrect": false,
+          "rationale": "Approval records authorised agreement. The analyst here is assessing value, not collecting sign-off."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, assessing whether the requirements should be modified.",
+          "isCorrect": false,
+          "rationale": "That task evaluates a proposed change. No change has been proposed."
+        }
+      ]
+    },
+    {
+      "code": "RADD-011",
+      "domain": "RADD",
+      "sourceRef": "7.3",
+      "sourceTask": "Validate Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Validation reveals that a substantial group of requirements traces to a business objective that the organisation abandoned two quarters ago. What should the business analyst do?",
+      "explanation": "Validate Requirements identifies requirements that no longer align with the business objectives, so that they can be reconsidered rather than carried into delivery. Continuing to build them consumes capacity for no value.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Report that the group no longer aligns to a live objective, and recommend it be reconsidered before delivery.",
+          "isCorrect": true,
+          "rationale": "Correct. Surfacing misalignment so stakeholders can decide is what validation is for."
+        },
+        {
+          "label": "B",
+          "text": "Retrace the requirements to a different objective so they remain in scope.",
+          "isCorrect": false,
+          "rationale": "The most seductive wrong answer: it makes the trace matrix look healthy while preserving work that has lost its purpose."
+        },
+        {
+          "label": "C",
+          "text": "Delete the requirements, since they no longer support a live objective.",
+          "isCorrect": false,
+          "rationale": "Deleting unilaterally exceeds the analyst's authority and destroys work that stakeholders may still want for another reason."
+        },
+        {
+          "label": "D",
+          "text": "Lower the priority of the requirements so they fall out of the current release.",
+          "isCorrect": false,
+          "rationale": "Deprioritising hides the finding. The requirements would remain in the backlog with an invalid justification."
+        }
+      ]
+    },
+    {
+      "code": "RADD-012",
+      "domain": "RADD",
+      "sourceRef": "7.3",
+      "sourceTask": "Validate Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst defines, for a set of requirements, the conditions that must be met for stakeholders to accept the delivered solution. What is being produced, and within which task?",
+      "explanation": "Defining measurable evaluation and acceptance criteria is an element of Validate Requirements, because those criteria express what stakeholders will regard as valuable delivery.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Acceptance and evaluation criteria, within Validate Requirements.",
+          "isCorrect": true,
+          "rationale": "Correct. Defining measurable evaluation criteria is an element of validation."
+        },
+        {
+          "label": "B",
+          "text": "Quality characteristics, within Verify Requirements.",
+          "isCorrect": false,
+          "rationale": "Quality characteristics describe attributes of a well-written requirement, not conditions for accepting a solution."
+        },
+        {
+          "label": "C",
+          "text": "Solution performance measures, within Measure Solution Performance.",
+          "isCorrect": false,
+          "rationale": "Performance measures assess a solution once it is in use. Acceptance criteria are agreed beforehand."
+        },
+        {
+          "label": "D",
+          "text": "Requirement attributes, within Plan Business Analysis Information Management.",
+          "isCorrect": false,
+          "rationale": "Attributes are metadata such as source and status, not conditions of acceptance."
+        }
+      ]
+    },
+    {
+      "code": "RADD-013",
+      "domain": "RADD",
+      "sourceRef": "7.4",
+      "sourceTask": "Define Requirements Architecture",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-RADD-01",
+      "stem": "Northbank's requirement set has grown to several hundred items across four teams. The business analyst wants to ensure the requirements fit together as a whole, support each other, and collectively cover the change. Which task addresses this?",
+      "explanation": "Define Requirements Architecture ensures the requirements collectively support one another to achieve the objectives, structures the requirement set, and makes gaps and conflicts visible at the level of the whole set.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Requirements Architecture",
+          "isCorrect": true,
+          "rationale": "Correct. It is the task concerned with the structure and coherence of the requirement set as a whole."
+        },
+        {
+          "label": "B",
+          "text": "Verify Requirements",
+          "isCorrect": false,
+          "rationale": "Verification checks the quality of requirements, largely item by item. It does not establish how the set fits together."
+        },
+        {
+          "label": "C",
+          "text": "Trace Requirements",
+          "isCorrect": false,
+          "rationale": "Tracing records individual relationships. Architecture organises the whole set and shows whether the structure is complete and coherent."
+        },
+        {
+          "label": "D",
+          "text": "Specify and Model Requirements",
+          "isCorrect": false,
+          "rationale": "Specification produces the requirements. Architecture organises what specification has produced."
+        }
+      ]
+    },
+    {
+      "code": "RADD-014",
+      "domain": "RADD",
+      "sourceRef": "7.4",
+      "sourceTask": "Define Requirements Architecture",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst is challenged that requirements architecture duplicates traceability. What is the clearest distinction?",
+      "explanation": "Traceability records relationships between individual items. Requirements architecture is the structure of the requirement set as a whole: how requirements are organised, how the parts relate, and whether the set is complete and internally consistent.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Traceability records relationships between items; architecture describes how the whole set is structured and whether it holds together.",
+          "isCorrect": true,
+          "rationale": "Correct. One is a set of links; the other is the organising structure that gives the links meaning."
+        },
+        {
+          "label": "B",
+          "text": "Traceability applies to functional requirements and architecture to non-functional ones.",
+          "isCorrect": false,
+          "rationale": "Neither is restricted by requirement type."
+        },
+        {
+          "label": "C",
+          "text": "Traceability is maintained during delivery and architecture only before it.",
+          "isCorrect": false,
+          "rationale": "Both persist through the life cycle. Architecture is updated as the requirement set evolves."
+        },
+        {
+          "label": "D",
+          "text": "Traceability is optional and architecture is mandatory.",
+          "isCorrect": false,
+          "rationale": "BABOK mandates neither at a fixed level; both are applied to the extent the initiative needs."
+        }
+      ]
+    },
+    {
+      "code": "RADD-015",
+      "domain": "RADD",
+      "sourceRef": "7.4",
+      "sourceTask": "Define Requirements Architecture",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "While structuring a requirement set, a business analyst finds that no requirement addresses what happens when a payment provider is unavailable, although several requirements assume it is available. What has the requirements architecture revealed?",
+      "explanation": "One purpose of requirements architecture is to expose gaps and inconsistencies that are invisible when requirements are examined individually. Assumptions shared across several requirements with nothing covering the failure case are exactly such a gap.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A gap in the requirement set that individual review would not have surfaced.",
+          "isCorrect": true,
+          "rationale": "Correct. Seeing the set as a structure is what makes a missing case visible."
+        },
+        {
+          "label": "B",
+          "text": "A verification failure, since the affected requirements are incomplete.",
+          "isCorrect": false,
+          "rationale": "Each affected requirement may be complete in itself. The omission only appears at the level of the set."
+        },
+        {
+          "label": "C",
+          "text": "A validation failure, since the affected requirements do not deliver value.",
+          "isCorrect": false,
+          "rationale": "The existing requirements may deliver value perfectly well. What is missing is coverage of another case."
+        },
+        {
+          "label": "D",
+          "text": "A change request, since new requirements will be needed.",
+          "isCorrect": false,
+          "rationale": "A change request may follow, but what the architecture revealed is the gap itself."
+        }
+      ]
+    },
+    {
+      "code": "RADD-016",
+      "domain": "RADD",
+      "sourceRef": "7.5",
+      "sourceTask": "Define Design Options",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-RADD-01",
+      "stem": "Northbank could reach two-day decisions by buying an origination platform, by extending its existing systems, or by restructuring the four teams into one with no new technology. The business analyst is describing each of these and what it would involve. Which task is this?",
+      "explanation": "Define Design Options identifies possible approaches to meeting the need, describes each, and identifies improvement opportunities. Design options are not restricted to software; process and organisational changes are valid options.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Design Options",
+          "isCorrect": true,
+          "rationale": "Correct. Identifying and describing alternative ways to meet the need is precisely this task, and organisational change counts as a design option."
+        },
+        {
+          "label": "B",
+          "text": "Define Change Strategy",
+          "isCorrect": false,
+          "rationale": "The change strategy selects how the enterprise transitions to a future state. Here the analyst is describing alternative solutions."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Potential Value and Recommend Solution",
+          "isCorrect": false,
+          "rationale": "That is the following task. The analyst has not yet valued the options or made a recommendation."
+        },
+        {
+          "label": "D",
+          "text": "Define Future State",
+          "isCorrect": false,
+          "rationale": "The future state describes the conditions to be achieved, deliberately without committing to a solution."
+        }
+      ]
+    },
+    {
+      "code": "RADD-017",
+      "domain": "RADD",
+      "sourceRef": "7.5",
+      "sourceTask": "Define Design Options",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A stakeholder objects that one of the design options under consideration involves no software at all, only a change to how a team is organised, and therefore should be excluded. How should the business analyst respond?",
+      "explanation": "Design options may involve changes to business processes, organisational structures, people's skills, or technology, in any combination. Excluding non-technology options narrows the analysis without justification.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Keep it, because a design option may consist of process or organisational change with no technology.",
+          "isCorrect": true,
+          "rationale": "Correct. BABOK explicitly admits process, organisational and people changes as design options."
+        },
+        {
+          "label": "B",
+          "text": "Exclude it, because design options describe solution components to be built.",
+          "isCorrect": false,
+          "rationale": "This narrows 'solution' to software, which is the assumption BABOK deliberately avoids."
+        },
+        {
+          "label": "C",
+          "text": "Keep it, but only as the do-nothing baseline against which the real options are compared.",
+          "isCorrect": false,
+          "rationale": "Restructuring four teams into one is a substantive change, not a do-nothing baseline."
+        },
+        {
+          "label": "D",
+          "text": "Exclude it and raise it separately as an enterprise limitation.",
+          "isCorrect": false,
+          "rationale": "An enterprise limitation restricts value realisation. A proposed reorganisation is a design option, not a limitation."
+        }
+      ]
+    },
+    {
+      "code": "RADD-018",
+      "domain": "RADD",
+      "sourceRef": "7.5",
+      "sourceTask": "Define Design Options",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst notices that one design option would also remove a duplicate data entry step in an adjacent process, beyond what the current need requires. What should the analyst do with this observation?",
+      "explanation": "Identifying improvement opportunities is an element of Define Design Options. Opportunities that a design option incidentally creates are recorded so decision makers can weigh them.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Record it as an improvement opportunity associated with that design option.",
+          "isCorrect": true,
+          "rationale": "Correct. Identifying improvement opportunities is an explicit element of this task."
+        },
+        {
+          "label": "B",
+          "text": "Add it as a new requirement, since it is a benefit the solution can deliver.",
+          "isCorrect": false,
+          "rationale": "Turning an incidental benefit into a requirement expands scope without a stated need behind it."
+        },
+        {
+          "label": "C",
+          "text": "Ignore it, since it falls outside the stated need.",
+          "isCorrect": false,
+          "rationale": "Discarding it deprives decision makers of information that may distinguish between otherwise similar options."
+        },
+        {
+          "label": "D",
+          "text": "Raise it as a risk, since unplanned change to an adjacent process is a threat.",
+          "isCorrect": false,
+          "rationale": "It may carry risk, but describing an identified benefit purely as a threat misrepresents it."
+        }
+      ]
+    },
+    {
+      "code": "RADD-019",
+      "domain": "RADD",
+      "sourceRef": "7.6",
+      "sourceTask": "Analyze Potential Value and Recommend Solution",
+      "difficulty": 3,
+      "status": "active",
+      "caseStudyCode": "CS-RADD-01",
+      "stem": "Northbank's three design options have been described. The business analyst now estimates the value each would deliver, weighs it against the cost and risk of each, and puts forward one option. Which task is this?",
+      "explanation": "Analyze Potential Value and Recommend Solution assesses the value delivered by each design option and recommends the one that delivers the greatest overall value, taking trade-offs into account.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Potential Value and Recommend Solution",
+          "isCorrect": true,
+          "rationale": "Correct. Valuing the options and recommending one is the stated purpose of this task."
+        },
+        {
+          "label": "B",
+          "text": "Define Design Options",
+          "isCorrect": false,
+          "rationale": "That task produced the options. Valuing and choosing between them is the next task."
+        },
+        {
+          "label": "C",
+          "text": "Assess Risks",
+          "isCorrect": false,
+          "rationale": "Risk is one input to the value assessment, but the task described here is broader and ends in a recommendation."
+        },
+        {
+          "label": "D",
+          "text": "Measure Solution Performance",
+          "isCorrect": false,
+          "rationale": "That measures a delivered solution in use. Nothing has been delivered."
+        }
+      ]
+    },
+    {
+      "code": "RADD-020",
+      "domain": "RADD",
+      "sourceRef": "7.6",
+      "sourceTask": "Analyze Potential Value and Recommend Solution",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Option A delivers the highest financial return but requires capability the organisation does not have and cannot acquire within the timeframe. Option B delivers less but is achievable. What should the business analyst recommend?",
+      "explanation": "Potential value is assessed against the constraints and the enterprise's actual capacity to realise it. An option whose value cannot be realised within the applicable constraints does not deliver that value.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Option B, because value that cannot be realised within the constraints is not value delivered.",
+          "isCorrect": true,
+          "rationale": "Correct. Assessing potential value means assessing realisable value, which is why constraints and enterprise capability are part of the analysis."
+        },
+        {
+          "label": "B",
+          "text": "Option A, because the recommendation should maximise financial return.",
+          "isCorrect": false,
+          "rationale": "The single most tempting distractor. A return the organisation cannot achieve is a number on a page."
+        },
+        {
+          "label": "C",
+          "text": "Option A, with a recommendation to extend the timeframe.",
+          "isCorrect": false,
+          "rationale": "The timeframe is stated as a constraint. Recommending its removal answers a different question than the one asked."
+        },
+        {
+          "label": "D",
+          "text": "Neither, since a further option should be sought that combines the two.",
+          "isCorrect": false,
+          "rationale": "Refusing to recommend from the available options abandons the task, and no basis is given for expecting a hybrid to exist."
+        }
+      ]
+    },
+    {
+      "code": "RADD-021",
+      "domain": "RADD",
+      "sourceRef": "7.6",
+      "sourceTask": "Analyze Potential Value and Recommend Solution",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst is assessing the potential value of a design option. Which pair of considerations must both be weighed?",
+      "explanation": "Potential value is the net of expected benefits and expected costs, including negative consequences. Assessing benefits alone overstates value, and assessing costs alone cannot identify the better option.",
+      "options": [
+        {
+          "label": "A",
+          "text": "The benefits the option is expected to deliver and the costs and negative consequences it would incur.",
+          "isCorrect": true,
+          "rationale": "Correct. Potential value is a net judgement, so both sides are required."
+        },
+        {
+          "label": "B",
+          "text": "The number of requirements the option satisfies and the number it leaves unmet.",
+          "isCorrect": false,
+          "rationale": "Counting requirements treats them as equally valuable, which they are not."
+        },
+        {
+          "label": "C",
+          "text": "The delivery team's estimate and the sponsor's preference.",
+          "isCorrect": false,
+          "rationale": "An estimate and a preference are inputs to a decision, not an assessment of value."
+        },
+        {
+          "label": "D",
+          "text": "The option's alignment to the requirements architecture and its traceability coverage.",
+          "isCorrect": false,
+          "rationale": "Both are useful hygiene checks and neither measures the value the option would deliver."
+        }
+      ]
+    },
+    {
+      "code": "RADD-022",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst must represent the rules that determine which of eleven pricing bands applies, given four input conditions that can combine in many ways. Which representation is most appropriate?",
+      "explanation": "Model selection depends on what is being represented. Rules combining several conditions to determine an outcome are best expressed with a decision table or decision model, which makes every combination explicit and reveals gaps.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A decision table or decision model, since the outcome depends on combinations of conditions.",
+          "isCorrect": true,
+          "rationale": "Correct. Decision models make condition combinations explicit, which is what makes missing or overlapping cases visible."
+        },
+        {
+          "label": "B",
+          "text": "A process model, since pricing occurs as a step in the sales process.",
+          "isCorrect": false,
+          "rationale": "A process model would show that pricing happens, not which band applies under which combination of conditions."
+        },
+        {
+          "label": "C",
+          "text": "A use case, since a sales agent triggers the pricing.",
+          "isCorrect": false,
+          "rationale": "Use cases describe interactions to achieve a goal. They are a poor vehicle for dense combinatorial rules."
+        },
+        {
+          "label": "D",
+          "text": "A state model, since a quotation moves between pricing states.",
+          "isCorrect": false,
+          "rationale": "State models show permitted transitions of an object over time, not rules selecting among eleven outcomes."
+        }
+      ]
+    },
+    {
+      "code": "RADD-023",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst needs to show the permitted transitions of an insurance claim through its life, and which transitions are forbidden. Which model fits?",
+      "explanation": "State modelling represents the states an object may occupy, the events that cause transitions, and which transitions are permitted. It is the natural fit for showing a claim's life cycle and its illegal transitions.",
+      "options": [
+        {
+          "label": "A",
+          "text": "A state model.",
+          "isCorrect": true,
+          "rationale": "Correct. Permitted and forbidden transitions between states are exactly what state modelling represents."
+        },
+        {
+          "label": "B",
+          "text": "A data flow diagram.",
+          "isCorrect": false,
+          "rationale": "Data flow diagrams show how information moves and is transformed, not the life cycle of an object."
+        },
+        {
+          "label": "C",
+          "text": "An organisational model.",
+          "isCorrect": false,
+          "rationale": "Organisational models show structure, roles and reporting lines."
+        },
+        {
+          "label": "D",
+          "text": "A scope model.",
+          "isCorrect": false,
+          "rationale": "Scope models set the boundary of the change. They say nothing about how an object behaves over time."
+        }
+      ]
+    },
+    {
+      "code": "RADD-024",
+      "domain": "RADD",
+      "sourceRef": "7.1",
+      "sourceTask": "Specify and Model Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "During analysis a business analyst discovers that two departments use the term 'active customer' to mean different things, and both meanings appear across the requirements. What should the analyst do?",
+      "explanation": "Analysing requirements includes resolving inconsistencies in terminology, because a term with two meanings makes the requirement set internally inconsistent and will produce a solution that satisfies neither reading.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Resolve the terminology with both departments and apply one agreed meaning consistently.",
+          "isCorrect": true,
+          "rationale": "Correct. A term meaning two things is an inconsistency in the requirement set that has to be settled, not annotated."
+        },
+        {
+          "label": "B",
+          "text": "Record both definitions in a glossary and note which requirement uses which.",
+          "isCorrect": false,
+          "rationale": "The strongest distractor, because documenting the ambiguity looks rigorous. It preserves the inconsistency into delivery."
+        },
+        {
+          "label": "C",
+          "text": "Adopt the definition used by the department that owns the customer master data.",
+          "isCorrect": false,
+          "rationale": "Data ownership is a reasonable tiebreaker but choosing unilaterally leaves the other department's requirements silently wrong."
+        },
+        {
+          "label": "D",
+          "text": "Split every affected requirement into two, one per definition.",
+          "isCorrect": false,
+          "rationale": "This doubles the requirement set to encode a disagreement that should be resolved."
+        }
+      ]
+    },
+    {
+      "code": "RADD-025",
+      "domain": "RADD",
+      "sourceRef": "7.2",
+      "sourceTask": "Verify Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Which activity is characteristic of Verify Requirements?",
+      "explanation": "Verify Requirements checks that requirements and designs are of sufficient quality to be used as a reliable basis for further work, typically through review and by checking them against quality characteristics and any applicable standards.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Reviewing requirements against quality characteristics and any applicable standards.",
+          "isCorrect": true,
+          "rationale": "Correct. Checking quality characteristics and conformance to standards is what verification does."
+        },
+        {
+          "label": "B",
+          "text": "Confirming with stakeholders that the recorded elicitation notes are accurate.",
+          "isCorrect": false,
+          "rationale": "That is Confirm Elicitation Results, which acts on elicitation results rather than requirements."
+        },
+        {
+          "label": "C",
+          "text": "Measuring whether the delivered solution achieves its business objectives.",
+          "isCorrect": false,
+          "rationale": "That is Measure Solution Performance in Solution Evaluation."
+        },
+        {
+          "label": "D",
+          "text": "Ranking requirements against an agreed basis of importance.",
+          "isCorrect": false,
+          "rationale": "That is Prioritize Requirements."
+        }
+      ]
+    },
+    {
+      "code": "RADD-026",
+      "domain": "RADD",
+      "sourceRef": "7.3",
+      "sourceTask": "Validate Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A stakeholder argues that validation is unnecessary because every requirement was elicited directly from the business, so by definition it must be what the business wants. What is the strongest counter-argument?",
+      "explanation": "Elicited need and delivered value are not the same. Stakeholders can ask for things that do not support the business objectives, that conflict with other stakeholders' value, or that have been overtaken by events. Validation tests alignment to value.",
+      "options": [
+        {
+          "label": "A",
+          "text": "What a stakeholder asks for is not automatically what delivers value or supports the objectives.",
+          "isCorrect": true,
+          "rationale": "Correct. Validation exists precisely because elicited requests and business value can diverge."
+        },
+        {
+          "label": "B",
+          "text": "Elicitation results are unconfirmed until stakeholders review them.",
+          "isCorrect": false,
+          "rationale": "True, but confirmation is a different check, and confirmed results can still fail validation."
+        },
+        {
+          "label": "C",
+          "text": "Requirements must be verified before they can be considered elicited.",
+          "isCorrect": false,
+          "rationale": "This reverses the flow and does not address the stakeholder's argument about value."
+        },
+        {
+          "label": "D",
+          "text": "Validation is mandatory under the governance approach.",
+          "isCorrect": false,
+          "rationale": "Appealing to process compliance sidesteps the substantive point, which is that requests and value can differ."
+        }
+      ]
+    },
+    {
+      "code": "RADD-027",
+      "domain": "RADD",
+      "sourceRef": "7.4",
+      "sourceTask": "Define Requirements Architecture",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A business analyst is choosing how to organise a requirement set: by business capability, by process, or by the system component that will implement each requirement. Which basis is the weakest choice, and why?",
+      "explanation": "Requirements architecture organises requirements to make the set understandable and complete. Structuring by implementation component ties the requirement set to one design, which is premature while design options are still open.",
+      "options": [
+        {
+          "label": "A",
+          "text": "By implementing system component, because it binds the requirement set to a design that has not been chosen.",
+          "isCorrect": true,
+          "rationale": "Correct. Organising around a chosen implementation forecloses design options and makes the structure brittle if the design changes."
+        },
+        {
+          "label": "B",
+          "text": "By business capability, because capabilities change more often than processes.",
+          "isCorrect": false,
+          "rationale": "Capabilities are typically the more stable organising axis, not the less."
+        },
+        {
+          "label": "C",
+          "text": "By process, because processes cut across departmental boundaries.",
+          "isCorrect": false,
+          "rationale": "Cutting across boundaries is often an advantage, since it shows the end-to-end picture."
+        },
+        {
+          "label": "D",
+          "text": "All three are equally weak, since architecture should not impose a single structure.",
+          "isCorrect": false,
+          "rationale": "Requirements architecture exists to impose a coherent structure. Declining to choose one abandons the task."
+        }
+      ]
+    },
+    {
+      "code": "RADD-028",
+      "domain": "RADD",
+      "sourceRef": "7.5",
+      "sourceTask": "Define Design Options",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "How many design options should a business analyst normally define before moving to recommendation?",
+      "explanation": "BABOK does not prescribe a number. The analyst identifies the options that are genuinely available and worth considering, so that the recommendation is a real choice rather than the endorsement of a single predetermined answer.",
+      "options": [
+        {
+          "label": "A",
+          "text": "As many as are genuinely available and worth considering, so the recommendation is a real choice.",
+          "isCorrect": true,
+          "rationale": "Correct. The purpose is a meaningful comparison, not hitting a count."
+        },
+        {
+          "label": "B",
+          "text": "Exactly three, to allow a balanced comparison.",
+          "isCorrect": false,
+          "rationale": "A conventional habit, not a BABOK rule. Manufacturing a third option to fill a slot weakens the analysis."
+        },
+        {
+          "label": "C",
+          "text": "One, since the analyst should recommend the best approach directly.",
+          "isCorrect": false,
+          "rationale": "A single option leaves decision makers with nothing to decide, and hides the trade-offs."
+        },
+        {
+          "label": "D",
+          "text": "At least one per stakeholder group, so every group is represented.",
+          "isCorrect": false,
+          "rationale": "Options describe ways to meet the need. Allocating one per group turns solution design into a negotiation over representation."
+        }
+      ]
+    },
+    {
+      "code": "RADD-029",
+      "domain": "RADD",
+      "sourceRef": "7.6",
+      "sourceTask": "Analyze Potential Value and Recommend Solution",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "The recommended solution will deliver clear value to the finance department while making the field sales team's work slightly harder. How should the business analyst present this?",
+      "explanation": "Assessing potential value includes identifying who gains and who bears cost, because value is not distributed evenly across stakeholders. Making the trade-off explicit lets decision makers weigh it rather than discover it after delivery.",
+      "options": [
+        {
+          "label": "A",
+          "text": "State explicitly who gains and who bears cost, so decision makers can weigh the trade-off.",
+          "isCorrect": true,
+          "rationale": "Correct. Value is assessed across stakeholders, and an uneven distribution is part of the recommendation."
+        },
+        {
+          "label": "B",
+          "text": "Present the net organisational value, since the finance gain outweighs the sales cost.",
+          "isCorrect": false,
+          "rationale": "A net figure conceals the distribution. The sales team's added burden may affect adoption and therefore realisation of the value."
+        },
+        {
+          "label": "C",
+          "text": "Omit the sales impact, since it is minor and might derail approval.",
+          "isCorrect": false,
+          "rationale": "Withholding a known negative consequence to protect a recommendation misleads the decision makers."
+        },
+        {
+          "label": "D",
+          "text": "Recommend a different option that has no negative impact on any stakeholder.",
+          "isCorrect": false,
+          "rationale": "Requiring an option that harms nobody would rule out most real changes, and no such option is described."
+        }
+      ]
+    },
+    {
+      "code": "RADD-030",
+      "domain": "RADD",
+      "sourceRef": "7.2",
+      "sourceTask": "Verify Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A requirement states that the system shall support the organisation's future growth. During verification, which characteristic does this most clearly fail?",
+      "explanation": "Verified requirements must be testable and unambiguous. A statement with no defined threshold, timeframe or measure of growth admits any interpretation and cannot be shown to have been met.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Testability, since nothing in the statement can be shown to have been met or not met.",
+          "isCorrect": true,
+          "rationale": "Correct. With no measure of growth, no test can distinguish a solution that satisfies the requirement from one that does not."
+        },
+        {
+          "label": "B",
+          "text": "Feasibility, since supporting unlimited growth is impossible.",
+          "isCorrect": false,
+          "rationale": "The statement does not say unlimited. The problem is that it says nothing measurable at all."
+        },
+        {
+          "label": "C",
+          "text": "Prioritisation, since the requirement has no relative importance.",
+          "isCorrect": false,
+          "rationale": "Priority is assigned separately and is not a verification quality characteristic."
+        },
+        {
+          "label": "D",
+          "text": "Traceability, since it cannot be linked to a business objective.",
+          "isCorrect": false,
+          "rationale": "It could plausibly be traced to a growth objective. Tracing it would not make it verifiable."
+        }
+      ]
+    }
+  ]
+}

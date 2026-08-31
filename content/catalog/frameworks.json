@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "frameworks": [
+    {
+      "code": "babok-v3",
+      "name": "BABOK Guide v3",
+      "source": "A Guide to the Business Analysis Body of Knowledge, Third Edition (IIBA)",
+      "domainLabel": "Knowledge Area",
+      "domainLabelVi": "Knowledge Area",
+      "domains": [
+        { "code": "BAPM", "name": "Business Analysis Planning and Monitoring", "nameVi": "Lập kế hoạch & giám sát phân tích nghiệp vụ", "reference": "3", "order": 1 },
+        { "code": "EC",   "name": "Elicitation and Collaboration",             "nameVi": "Khai thác yêu cầu & phối hợp",              "reference": "4", "order": 2 },
+        { "code": "RLCM", "name": "Requirements Life Cycle Management",        "nameVi": "Quản lý vòng đời yêu cầu",                  "reference": "5", "order": 3 },
+        { "code": "SA",   "name": "Strategy Analysis",                          "nameVi": "Phân tích chiến lược",                      "reference": "6", "order": 4 },
+        { "code": "RADD", "name": "Requirements Analysis and Design Definition","nameVi": "Phân tích yêu cầu & định nghĩa thiết kế",   "reference": "7", "order": 5 },
+        { "code": "SE",   "name": "Solution Evaluation",                        "nameVi": "Đánh giá giải pháp",                        "reference": "8", "order": 6 }
+      ]
+    },
+    {
+      "code": "ba-standard",
+      "name": "The Business Analysis Standard + BABOK Guide",
+      "source": "The Business Analysis Standard (IIBA), with the BABOK Guide for the six BACCM domains",
+      "domainLabel": "Performance Domain",
+      "domainLabelVi": "Performance Domain",
+      "domains": [
+        { "code": "UBA",  "name": "Understanding Business Analysis",           "nameVi": "Hiểu về phân tích nghiệp vụ",     "order": 1 },
+        { "code": "MEBA", "name": "Mindset for Effective Business Analysis",   "nameVi": "Tư duy của người làm BA hiệu quả", "order": 2 },
+        { "code": "IBA",  "name": "Implementing Business Analysis",            "nameVi": "Triển khai phân tích nghiệp vụ",  "order": 3 },
+        { "code": "CHG",  "name": "Change",                                     "nameVi": "Change — Sự thay đổi",            "order": 4 },
+        { "code": "NEED", "name": "Need",                                       "nameVi": "Need — Nhu cầu",                  "order": 5 },
+        { "code": "SOL",  "name": "Solution",                                   "nameVi": "Solution — Giải pháp",            "order": 6 },
+        { "code": "STK",  "name": "Stakeholder",                                "nameVi": "Stakeholder — Bên liên quan",     "order": 7 },
+        { "code": "VAL",  "name": "Value",                                      "nameVi": "Value — Giá trị",                 "order": 8 },
+        { "code": "CTX",  "name": "Context",                                    "nameVi": "Context — Bối cảnh",              "order": 9 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "version": 1,
+  "frameworkCode": "babok-v3",
+  "deck": "tasks",
+  "cards": [
+    {
+      "code": "TASK-3.1",
+      "front": "3.1 Plan Business Analysis Approach",
+      "back": "Purpose: The purpose of Plan Business Analysis Approach is to define an appropriate method to conduct business analysis activities.\nInputs: Needs\nElements: Planning Approach; Business Analysis Activities; Timing of Business Analysis Work; Complexity and Risk; Acceptance\nOutputs: Business Analysis Approach",
+      "domain": "BAPM",
+      "sourceRef": "3.1"
+    },
+    {
+      "code": "TASK-3.2",
+      "front": "3.2 Plan Stakeholder Engagement",
+      "back": "Purpose: The purpose of Plan Stakeholder Engagement is to plan an approach for establishing and maintaining effective working relationships with the stakeholders.\nInputs: Needs; Business Analysis Approach\nElements: Perform Stakeholder Analysis\nOutputs: Stakeholder Engagement Approach",
+      "domain": "BAPM",
+      "sourceRef": "3.2"
+    },
+    {
+      "code": "TASK-3.3",
+      "front": "3.3 Plan Business Analysis Governance",
+      "back": "Purpose: The purpose of Plan Business Analysis Governance is to define how decisions are made about requirements and designs, including reviews, change control, approvals, and prioritization.\nInputs: Business Analysis Approach; Stakeholder Engagement Approach\nElements: Decision Making\nOutputs: Governance Approach",
+      "domain": "BAPM",
+      "sourceRef": "3.3"
+    },
+    {
+      "code": "TASK-3.4",
+      "front": "3.4 Plan Business Analysis Information Management",
+      "back": "Purpose: The purpose of Plan Business Analysis Information Management is to develop an approach for how business analysis information will be stored and accessed.\nInputs: Business Analysis Approach; Governance Approach; Stakeholder Engagement Approach\nElements: Organization of Business Analysis Information\nOutputs: Information Management Approach",
+      "domain": "BAPM",
+      "sourceRef": "3.4"
+    },
+    {
+      "code": "TASK-3.5",
+      "front": "3.5 Identify Business Analysis Performance",
+      "back": "Purpose: The purpose of Identify Business Analysis Performance Improvements is to assess business analysis work and to plan to improve processes where required.\nInputs: Business Analysis Approach; Performance Objectives (external)\nElements: Performance Analysis; Assessment Measures\nOutputs: Business Analysis Performance Assessment; Prepare for Elicitation; Conduct Elicitation; Confirm Elicitation Results; Communicate Business Analysis Information; Manage Stakeholder Collaboration",
+      "domain": "BAPM",
+      "sourceRef": "3.5"
+    },
+    {
+      "code": "TASK-4.1",
+      "front": "4.1 Prepare for Elicitation",
+      "back": "Purpose: The purpose of Prepare for Elicitation is to understand the scope of the elicitation activity, select appropriate techniques, and plan for (or procure) appropriate supporting materials and resources.\nInputs: Needs; Stakeholder Engagement Approach\nElements: Understand the Scope of Elicitation; Select Elicitation Techniques; Set Up Logistics; Secure Supporting Material; Prepare Stakeholders\nOutputs: Elicitation Activity Plan",
+      "domain": "EC",
+      "sourceRef": "4.1"
+    },
+    {
+      "code": "TASK-4.2",
+      "front": "4.2 Conduct Elicitation",
+      "back": "Purpose: The purpose of Conduct Elicitation is to draw out, explore, and identify information relevant to the change.\nInputs: Elicitation Activity Plan\nElements: Guide Elicitation Activity; Capture Elicitation Outcomes\nOutputs: Elicitation Results (unconfirmed)",
+      "domain": "EC",
+      "sourceRef": "4.2"
+    },
+    {
+      "code": "TASK-4.3",
+      "front": "4.3 Confirm Elicitation Results",
+      "back": "Purpose: The purpose of Confirm Elicitation Results is to check the information gathered during an elicitation session for accuracy and consistency with other information.\nInputs: Elicitation Results (unconfirmed)\nElements: Compare Elicitation Results Against Source Information; Compare Elicitation Results Against Other Elicitation Results\nOutputs: Elicitation Results (confirmed)",
+      "domain": "EC",
+      "sourceRef": "4.3"
+    },
+    {
+      "code": "TASK-4.4",
+      "front": "4.4 Communicate Business Analysis Information",
+      "back": "Purpose: The purpose of Communicate Business Analysis Information is to ensure stakeholders have a shared understanding of business analysis information.\nInputs: Business Analysis Information; Stakeholder Engagement Approach\nElements: Determine Objectives and Format of Communication; Communicate Business Analysis Package\nOutputs: Business Analysis Information (communicated)",
+      "domain": "EC",
+      "sourceRef": "4.4"
+    },
+    {
+      "code": "TASK-4.5",
+      "front": "4.5 Manage Stakeholder Collaboration",
+      "back": "Purpose: The purpose of Manage Stakeholder Collaboration is to encourage stakeholders to work towards a common goal.\nInputs: Stakeholder Engagement Approach; Business Analysis Performance Assessment\nElements: Gain Agreement on Commitments; Monitor Stakeholder Engagement; Collaboration\nOutputs: Stakeholder Engagement; Trace Requirements; Maintain Requirements; Prioritize Requirements; Assess Requirements Changes; Approve Requirements",
+      "domain": "EC",
+      "sourceRef": "4.5"
+    },
+    {
+      "code": "TASK-5.1",
+      "front": "5.1 Trace Requirements",
+      "back": "Purpose: The purpose of Trace Requirements is to ensure that requirements and designs at different levels are aligned to one another, and to manage the effects of change to one level on related requirements.\nInputs: Requirements; Designs\nElements: Level of Formality; Relationships; Traceability Repository\nOutputs: Requirements (traced); Designs (traced)",
+      "domain": "RLCM",
+      "sourceRef": "5.1"
+    },
+    {
+      "code": "TASK-5.2",
+      "front": "5.2 Maintain Requirements",
+      "back": "Purpose: The purpose of Maintain Requirements is to retain requirement accuracy and consistency throughout and beyond the change during the entire requirements life cycle, and to support reuse of requirements in other solutions.\nInputs: Requirements; Designs\nElements: Maintain Requirements; Maintain Attributes; Reusing Requirements\nOutputs: Requirements (maintained); Designs (maintained)",
+      "domain": "RLCM",
+      "sourceRef": "5.2"
+    },
+    {
+      "code": "TASK-5.3",
+      "front": "5.3 Prioritize Requirements",
+      "back": "Purpose: The purpose of Prioritize Requirements is to rank requirements in the order of relative importance.\nInputs: Requirements; Designs\nElements: Basis for Prioritization; Challenges of Prioritization; Continual Prioritization\nOutputs: Requirements (prioritized); Designs (prioritized)",
+      "domain": "RLCM",
+      "sourceRef": "5.3"
+    },
+    {
+      "code": "TASK-5.4",
+      "front": "5.4 Assess Requirements Changes",
+      "back": "Purpose: The purpose of Assess Requirements Changes is to evaluate the implications of proposed changes to requirements and designs.\nInputs: Proposed Change; Requirements; Designs\nElements: Assessment Formality; Impact Analysis; Impact Resolution\nOutputs: Requirements Change Assessment; Designs Change Assessment",
+      "domain": "RLCM",
+      "sourceRef": "5.4"
+    },
+    {
+      "code": "TASK-5.5",
+      "front": "5.5 Approve Requirements",
+      "back": "Purpose: The purpose of Approve Requirements is to obtain agreement on and approval of requirements and designs for business analysis work to continue and/or solution construction to proceed.\nInputs: Requirements (verified); Designs\nElements: Understand Stakeholder Roles; Conflict and Issue Management; Gain Consensus; Track and Communicate Approval\nOutputs: Requirements (approved); Designs (approved); Analyze Current State; Define Future State; Assess Risks; Define Change Strategy",
+      "domain": "RLCM",
+      "sourceRef": "5.5"
+    },
+    {
+      "code": "TASK-6.1",
+      "front": "6.1 Analyze Current State",
+      "back": "Purpose: The purpose of Analyze Current State is to understand the reasons why an enterprise needs to change some aspect of how it operates and what would be directly or indirectly affected by the change.\nInputs: Elicitation Results; Needs\nElements: Business Needs\nOutputs: Current State Description; Business Requirements",
+      "domain": "SA",
+      "sourceRef": "6.1"
+    },
+    {
+      "code": "TASK-6.2",
+      "front": "6.2 Define Future State",
+      "back": "Purpose: The purpose of Define Future State is to determine the set of necessary conditions to meet the business need.\nInputs: Business Requirements\nElements: Business Goals and Objectives; Scope of Solution Space; Constraints; Organizational Structure and Culture; Capabilities and Processes; Technology and Infrastructure; Policies; Business Architecture; Internal Assets\nOutputs: Business Objectives; Future State Description; Potential Value",
+      "domain": "SA",
+      "sourceRef": "6.2"
+    },
+    {
+      "code": "TASK-6.3",
+      "front": "6.3 Assess Risks",
+      "back": "Purpose: The purpose of Assess Risks is to understand the undesirable consequences of internal and external forces on the enterprise during a transition to, or once in, the future state.\nInputs: Business Objectives; Elicitation Results (confirmed); Influences; Potential Value; Requirements (prioritized)\nElements: Unknowns; Constraints, Assumptions, and Dependencies; Negative Impact to Value; Risk Tolerance; Recommendation",
+      "domain": "SA",
+      "sourceRef": "6.3"
+    },
+    {
+      "code": "TASK-6.4",
+      "front": "6.4 Define Change Strategy",
+      "back": "Purpose: The purpose of Define Change Strategy is to develop and assess alternative approaches to the change, and then select the recommended approach.\nInputs: Current State Description; Future State Description; Risk Analysis Results; Stakeholder Engagement Approach\nElements: Solution Scope; Gap Analysis; Enterprise Readiness Assessment; Change Strategy; Transition States and Release Planning\nOutputs: Change Strategy; Solution Scope; Specify and Model Requirements; Verify Requirements; Validate Requirements; Define Requirements Architecture; Define Solution Options; Analyze Potential Value and Recommend Solution",
+      "domain": "SA",
+      "sourceRef": "6.4"
+    },
+    {
+      "code": "TASK-7.1",
+      "front": "7.1 Specify and Model Requirements",
+      "back": "Purpose: The purpose of Specify and Model Requirements is to analyze, synthesize, and refine elicitation results into requirements and designs.\nInputs: Elicitation Results (any state)\nElements: Model Requirements; Analyze Requirements; Represent Requirements and Attributes; Implement the Appropriate Levels of Abstraction\nOutputs: Requirements (specified and modelled)",
+      "domain": "RADD",
+      "sourceRef": "7.1"
+    },
+    {
+      "code": "TASK-7.2",
+      "front": "7.2 Verify Requirements",
+      "back": "Purpose: The purpose of Verify Requirements is to ensure that requirements and designs specifications and models meet quality standards and are usable for the purpose they serve.\nInputs: Requirements (specified and modelled)\nElements: Characteristics of Requirements and Designs Quality; Verification Activities; Checklists\nOutputs: Requirements (verified)",
+      "domain": "RADD",
+      "sourceRef": "7.2"
+    },
+    {
+      "code": "TASK-7.3",
+      "front": "7.3 Validate Requirements",
+      "back": "Purpose: The purpose of Validate Requirements is to ensure that all requirements and Requirements Analysis and Design Definition Validate Requirements designs align to the business requirements and support the delivery of needed value.\nInputs: Requirements (specified and modelled)\nElements: Identify Assumptions; Define Measurable Evaluation Criteria; Evaluate Alignment with Solution Scope\nOutputs: Requirements (validated)",
+      "domain": "RADD",
+      "sourceRef": "7.3"
+    },
+    {
+      "code": "TASK-7.4",
+      "front": "7.4 Define Requirements Architecture",
+      "back": "Purpose: The purpose of Define Requirements Architecture is to ensure that the requirements collectively support one another to fully achieve the objectives.\nInputs: Information Management Approach; Requirements (any state); Solution Scope\nElements: Requirements Viewpoints and Views; Template Architectures; Completeness; Relate and Verify Requirements Relationships; Business Analysis Information Architecture\nOutputs: Requirements Architecture",
+      "domain": "RADD",
+      "sourceRef": "7.4"
+    },
+    {
+      "code": "TASK-7.5",
+      "front": "7.5 Define Design Options",
+      "back": "Purpose: The purpose of Define Design Options is to define the solution approach, identify opportunities to improve the business, allocate requirements across solution components, and represent design options that achieve the desired future state.\nInputs: Change Strategy; Requirements (validated, prioritized); Requirements Architecture\nElements: Define Solution Approaches; Identify Improvement Opportunities; Requirements Allocation; Describe Design Options\nOutputs: Design Options",
+      "domain": "RADD",
+      "sourceRef": "7.5"
+    },
+    {
+      "code": "TASK-7.6",
+      "front": "7.6 Analyze Potential Value and Recommend Solution",
+      "back": "Purpose: The purpose of Analyze Potential Value and Recommend Solution is to estimate the potential value for each design option and to establish which one is most appropriate to meet the enterprise’s requirements.\nInputs: Potential Value; Design Options\nElements: Expected Benefits; Expected Costs; Determine Value; Assess Design Options and Recommend Solution\nOutputs: Solution Recommendation; Prototypes or Proofs of Concept; Pilot or Beta releases; Operational releases; Measure Solution Performance; Analyze Performance Measures; Assess Solution Limitations; Assess Enterprise Limitations; Recommend Actions to Increase Solution Value",
+      "domain": "RADD",
+      "sourceRef": "7.6"
+    },
+    {
+      "code": "TASK-8.1",
+      "front": "8.1 Measure Solution Performance",
+      "back": "Purpose: The purpose of Measure Solution Performance is to define performance measures and use the data collected to evaluate the effectiveness of a solution in relation to the value it brings.\nInputs: Business Objectives; Implemented Solution (external)\nElements: Define Solution Performance Measures; Validate Performance Measures; Collect Performance Measures\nOutputs: Solution Performance Measures",
+      "domain": "SE",
+      "sourceRef": "8.1"
+    },
+    {
+      "code": "TASK-8.2",
+      "front": "8.2 Analyze Performance Measures",
+      "back": "Purpose: The purpose of Analyze Performance Measures is to provide insights into the performance of a solution in relation to the value it brings.\nInputs: Potential Value; Solution Performance Measures\nElements: Solution Performance versus Desired Value; Risks; Trends; Accuracy; Performance Variances\nOutputs: Solution Performance Analysis",
+      "domain": "SE",
+      "sourceRef": "8.2"
+    },
+    {
+      "code": "TASK-8.3",
+      "front": "8.3 Assess Solution Limitations",
+      "back": "Purpose: The purpose of Assess Solution Limitations is to determine the factors internal to the solution that restrict the full realization of value.\nInputs: Implemented Solution (external); Solution Performance Analysis\nElements: Identify Internal Solution Component Dependencies; Investigate Solution Problems; Impact Assessment\nOutputs: Solution Limitation",
+      "domain": "SE",
+      "sourceRef": "8.3"
+    },
+    {
+      "code": "TASK-8.4",
+      "front": "8.4 Assess Enterprise Limitations",
+      "back": "Purpose: The purpose of Assess Enterprise Limitations is to determine how factors external to the solution are restricting value realization.\nInputs: Current State Description; Solution Performance Analysis\nElements: Enterprise Culture Assessment; Stakeholder Impact Analysis; Organizational Structure Changes; Operational Assessment\nOutputs: Enterprise Limitation",
+      "domain": "SE",
+      "sourceRef": "8.4"
+    },
+    {
+      "code": "TASK-8.5",
+      "front": "8.5 Recommend Actions to Increase Solution Value",
+      "back": "Purpose: The purpose of Recommend Actions to Increase Solution Value is to understand the factors that create differences between potential value and actual value, and to recommend a course of action to align them.\nInputs: Enterprise Limitation; Solution Limitation\nElements: Adjust Solution Performance Measures; Recommendations\nOutputs: Recommended Actions",
+      "domain": "SE",
+      "sourceRef": "8.5"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.DS_Store
+.env*.local
+
+# Local database — regenerable via `npm run seed`
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# BABOK v3 is copyrighted IIBA material — never commit
+content/babok/
