@@ -6,7 +6,16 @@ import { importCatalog, type CertificationPack, type FrameworkPack } from "@/lib
 import { importQuestionPack } from "@/lib/content/importer";
 import type { QuestionPack } from "@/lib/content/schema";
 import type { Db } from "@/lib/db";
+import { users } from "@/lib/db/schema";
 import { OPTION_LABELS, type Difficulty } from "@/lib/domain";
+
+export const TEST_USER_ID = "test-user-1";
+
+/** Inserts a minimal user row so userId-scoped foreign keys resolve in tests. */
+export function createTestUser(db: Db, id: string = TEST_USER_ID): string {
+  db.insert(users).values({ id, email: `${id}@example.test` }).run();
+  return id;
+}
 
 const BABOK_DOMAINS = ["BAPM", "EC", "RLCM", "SA", "RADD", "SE"] as const;
 
