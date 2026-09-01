@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 import type { Db } from "./db";
 import { bookmarks, questions, userNotes } from "./db/schema";
@@ -12,48 +12,78 @@ function assertQuestionExists(db: Db, questionId: number): void {
   if (!found) throw new Error(`Question ${questionId} does not exist`);
 }
 
+function requireUserId(userId: string | null): string {
+  if (userId === null) throw new Error("userId is required");
+  return userId;
+}
+
 /** Store the learner's own note. Blank text deletes the note rather than storing "". */
-export function saveNote(db: Db, questionId: number, body: string, now = Date.now()): void {
+export function saveNote(
+  db: Db,
+  userId: string | null,
+  questionId: number,
+  body: string,
+  now = Date.now(),
+): void {
+  const owner = requireUserId(userId);
   assertQuestionExists(db, questionId);
 
   const trimmed = body.trim();
   if (trimmed === "") {
-    db.delete(userNotes).where(eq(userNotes.questionId, questionId)).run();
+    db.delete(userNotes)
+      .where(and(eq(userNotes.questionId, questionId), eq(userNotes.userId, owner)))
+      .run();
     return;
   }
 
   db.insert(userNotes)
-    .values({ questionId, body: trimmed, updatedAt: now })
+    .values({ questionId, userId: owner, body: trimmed, updatedAt: now })
     .onConflictDoUpdate({
-      target: userNotes.questionId,
+      target: [userNotes.questionId, userNotes.userId],
       set: { body: trimmed, updatedAt: now },
     })
     .run();
 }
 
-export function getNote(db: Db, questionId: number): string | null {
+export function getNote(db: Db, userId: string | null, questionId: number): string | null {
+  const owner = requireUserId(userId);
   return (
-    db.select({ body: userNotes.body }).from(userNotes).where(eq(userNotes.questionId, questionId)).get()
-      ?.body ?? null
+    db
+      .select({ body: userNotes.body })
+      .from(userNotes)
+      .where(and(eq(userNotes.questionId, questionId), eq(userNotes.userId, owner)))
+      .get()?.body ?? null
   );
 }
 
 /** Flip the bookmark and return whether the question is now bookmarked. */
-export function toggleBookmark(db: Db, questionId: number, now = Date.now()): boolean {
+export function toggleBookmark(
+  db: Db,
+  userId: string | null,
+  questionId: number,
+  now = Date.now(),
+): boolean {
+  const owner = requireUserId(userId);
   assertQuestionExists(db, questionId);
 
-  if (isBookmarked(db, questionId)) {
-    db.delete(bookmarks).where(eq(bookmarks.questionId, questionId)).run();
+  if (isBookmarked(db, owner, questionId)) {
+    db.delete(bookmarks)
+      .where(and(eq(bookmarks.questionId, questionId), eq(bookmarks.userId, owner)))
+      .run();
     return false;
   }
 
-  db.insert(bookmarks).values({ questionId, createdAt: now }).run();
+  db.insert(bookmarks).values({ questionId, userId: owner, createdAt: now }).run();
   return true;
 }
 
-export function isBookmarked(db: Db, questionId: number): boolean {
+export function isBookmarked(db: Db, userId: string | null, questionId: number): boolean {
+  const owner = requireUserId(userId);
   return (
-    db.select({ questionId: bookmarks.questionId }).from(bookmarks).where(eq(bookmarks.questionId, questionId)).get() !==
-    undefined
+    db
+      .select({ questionId: bookmarks.questionId })
+      .from(bookmarks)
+      .where(and(eq(bookmarks.questionId, questionId), eq(bookmarks.userId, owner)))
+      .get() !== undefined
   );
 }

@@ -3,10 +3,11 @@ import { beforeEach, describe, expect, test } from "vitest";
 import { createDatabase, type Db } from "@/lib/db";
 import { questions } from "@/lib/db/schema";
 import { importQuestionPack } from "@/lib/content/importer";
-import { seedCatalogAndBank } from "@/test-support/bank";
+import { createTestUser, seedCatalogAndBank } from "@/test-support/bank";
 import { getNote, isBookmarked, saveNote, toggleBookmark } from "./notes";
 
 let db: Db;
+let userId: string;
 
 function seedOneQuestion(): number {
   seedCatalogAndBank(db);
@@ -36,48 +37,72 @@ function seedOneQuestion(): number {
 
 beforeEach(() => {
   db = createDatabase(":memory:");
+  userId = createTestUser(db);
 });
 
 describe("saveNote", () => {
   test("stores a note against a question", () => {
     const id = seedOneQuestion();
-    saveNote(db, id, "Remember: elicitation results are unconfirmed.");
-    expect(getNote(db, id)).toBe("Remember: elicitation results are unconfirmed.");
+    saveNote(db, userId, id, "Remember: elicitation results are unconfirmed.");
+    expect(getNote(db, userId, id)).toBe("Remember: elicitation results are unconfirmed.");
   });
 
   test("overwrites an existing note", () => {
     const id = seedOneQuestion();
-    saveNote(db, id, "first");
-    saveNote(db, id, "second");
-    expect(getNote(db, id)).toBe("second");
+    saveNote(db, userId, id, "first");
+    saveNote(db, userId, id, "second");
+    expect(getNote(db, userId, id)).toBe("second");
   });
 
   test("clearing the text removes the note", () => {
     const id = seedOneQuestion();
-    saveNote(db, id, "something");
-    saveNote(db, id, "   ");
-    expect(getNote(db, id)).toBeNull();
+    saveNote(db, userId, id, "something");
+    saveNote(db, userId, id, "   ");
+    expect(getNote(db, userId, id)).toBeNull();
   });
 
   test("returns null when there is no note", () => {
-    expect(getNote(db, seedOneQuestion())).toBeNull();
+    expect(getNote(db, userId, seedOneQuestion())).toBeNull();
   });
 
   test("rejects a note on a question that does not exist", () => {
-    expect(() => saveNote(db, 999, "orphan")).toThrow(/999/);
+    expect(() => saveNote(db, userId, 999, "orphan")).toThrow(/999/);
   });
 });
 
 describe("toggleBookmark", () => {
   test("adds a bookmark, then removes it", () => {
     const id = seedOneQuestion();
-    expect(toggleBookmark(db, id)).toBe(true);
-    expect(isBookmarked(db, id)).toBe(true);
-    expect(toggleBookmark(db, id)).toBe(false);
-    expect(isBookmarked(db, id)).toBe(false);
+    expect(toggleBookmark(db, userId, id)).toBe(true);
+    expect(isBookmarked(db, userId, id)).toBe(true);
+    expect(toggleBookmark(db, userId, id)).toBe(false);
+    expect(isBookmarked(db, userId, id)).toBe(false);
   });
 
   test("rejects a bookmark on a question that does not exist", () => {
-    expect(() => toggleBookmark(db, 999)).toThrow(/999/);
+    expect(() => toggleBookmark(db, userId, 999)).toThrow(/999/);
+  });
+});
+
+describe("per-user isolation", () => {
+  test("a note is private to the user who wrote it", () => {
+    const id = seedOneQuestion();
+    const other = createTestUser(db, "other-user");
+    saveNote(db, userId, id, "mine");
+    expect(getNote(db, other, id)).toBeNull();
+    expect(getNote(db, userId, id)).toBe("mine");
+  });
+
+  test("a bookmark is private to the user who set it", () => {
+    const id = seedOneQuestion();
+    const other = createTestUser(db, "other-user");
+    toggleBookmark(db, userId, id);
+    expect(isBookmarked(db, other, id)).toBe(false);
+    expect(isBookmarked(db, userId, id)).toBe(true);
+  });
+
+  test("rejects a null userId", () => {
+    const id = seedOneQuestion();
+    expect(() => saveNote(db, null, id, "x")).toThrow(/userId/);
   });
 });
