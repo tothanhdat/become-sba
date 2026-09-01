@@ -318,12 +318,15 @@ git commit -m "feat(db): add Auth.js tables and userId columns for per-user prog
 
 **Files:**
 - Create: `src/lib/auth.ts`
+- Create: `src/types/next-auth.d.ts`
 - Create: `src/app/api/auth/[...nextauth]/route.ts`
 
 **Interfaces:**
-- Produces: `auth()`, `signIn()`, `signOut()`, `handlers` exported from `@/lib/auth`. `auth()` returns `Promise<{ user: { id: string; name?: string | null; email?: string | null; image?: string | null } } | null>` — every later task that calls `auth()` relies on `session.user.id` being a `string`.
+- Produces: `auth()`, `signIn()`, `signOut()`, `handlers` exported from `@/lib/auth`. `auth()` returns `Promise<{ user: { id: string; name?: string | null; email?: string | null; image?: string | null } } | null>` — every later task that calls `auth()` relies on `session.user.id` being a `string`. This requires both the `session` callback (Step 1) and the type augmentation (Step 2) — Auth.js v5 does not populate or type `session.user.id` on its own.
 
 - [ ] **Step 1: Write `src/lib/auth.ts`**
+
+Auth.js v5 does **not** put `id` on `session.user` by default, even with the database session strategy — the adapter's `user` object (passed into the `session` callback) has `.id`, but nothing copies it onto `session.user.id` unless a `session` callback does it explicitly. Every later task in this plan reads `session.user.id`, so this callback is required here, not optional:
 
 ```ts
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
@@ -341,10 +344,34 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   }),
   session: { strategy: "database" },
   providers: [Google],
+  callbacks: {
+    session({ session, user }) {
+      session.user.id = user.id;
+      return session;
+    },
+  },
 });
 ```
 
-- [ ] **Step 2: Write the route handler**
+- [ ] **Step 2: Add the `session.user.id` type augmentation**
+
+Without this, `session.user.id` is a TypeScript error everywhere it's read (Tasks 9, 10, 13, 14, 15 all read it) — `npx vitest run` would still pass since Vitest doesn't type-check, but `npm run typecheck` / `npm run build` would fail. Create:
+
+```ts
+import type { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+    } & DefaultSession["user"];
+  }
+}
+```
+
+Save this as `src/types/next-auth.d.ts`.
+
+- [ ] **Step 3: Write the route handler**
 
 ```ts
 import { handlers } from "@/lib/auth";
@@ -352,18 +379,20 @@ import { handlers } from "@/lib/auth";
 export const { GET, POST } = handlers;
 ```
 
-- [ ] **Step 3: Manual smoke test**
+- [ ] **Step 4: Manual smoke test**
 
 ```bash
 npm run dev
 ```
 
-Visit `http://localhost:3000/api/auth/signin` in a browser — Auth.js's built-in sign-in page should render with a "Sign in with Google" button (only one provider is configured, so it's the only option shown). Click it, complete the Google consent screen, and confirm you land back on the app without an error. Stop the dev server.
+Visit `http://localhost:3000/api/auth/signin` in a browser — Auth.js's built-in sign-in page should render with a "Sign in with Google" button (only one provider is configured, so it's the only option shown). Click it, complete the Google consent screen, and confirm you land back on the app without an error.
 
-- [ ] **Step 4: Commit**
+Then visit `http://localhost:3000/api/auth/session` in the same browser session. This returns the current session as JSON — confirm the response includes `user.id` as a non-empty string (not just `name`/`email`/`image`). This is the one thing that cannot be caught by typecheck or tests: it's Auth.js's actual runtime behavior. If `id` is missing, the `session` callback in Step 1 isn't wired correctly — fix it before moving on, since every later task depends on `session.user.id` being real. Stop the dev server once confirmed.
+
+- [ ] **Step 5: Commit**
 
 ```bash
-git add src/lib/auth.ts src/app/api/auth/
+git add src/lib/auth.ts src/types/next-auth.d.ts src/app/api/auth/
 git commit -m "feat(auth): add Auth.js v5 config with Google provider and database sessions"
 ```
 
