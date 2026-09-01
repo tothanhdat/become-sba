@@ -1,7 +1,26 @@
+CREATE TABLE `accounts` (
+	`user_id` text NOT NULL,
+	`type` text NOT NULL,
+	`provider` text NOT NULL,
+	`provider_account_id` text NOT NULL,
+	`refresh_token` text,
+	`access_token` text,
+	`expires_at` integer,
+	`token_type` text,
+	`scope` text,
+	`id_token` text,
+	`session_state` text,
+	PRIMARY KEY(`provider`, `provider_account_id`),
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
 CREATE TABLE `bookmarks` (
-	`question_id` integer PRIMARY KEY NOT NULL,
+	`question_id` integer NOT NULL,
+	`user_id` text NOT NULL,
 	`created_at` integer DEFAULT (unixepoch() * 1000) NOT NULL,
-	FOREIGN KEY (`question_id`) REFERENCES `questions`(`id`) ON UPDATE no action ON DELETE cascade
+	PRIMARY KEY(`question_id`, `user_id`),
+	FOREIGN KEY (`question_id`) REFERENCES `questions`(`id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `case_studies` (
@@ -59,6 +78,7 @@ CREATE TABLE `domains` (
 CREATE UNIQUE INDEX `domains_framework_code_idx` ON `domains` (`framework_id`,`code`);--> statement-breakpoint
 CREATE TABLE `exam_sessions` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`user_id` text NOT NULL,
 	`certification_id` integer NOT NULL,
 	`mode` text NOT NULL,
 	`domain_filter_id` integer,
@@ -68,6 +88,7 @@ CREATE TABLE `exam_sessions` (
 	`started_at` integer DEFAULT (unixepoch() * 1000) NOT NULL,
 	`submitted_at` integer,
 	`score` integer,
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade,
 	FOREIGN KEY (`certification_id`) REFERENCES `certifications`(`id`) ON UPDATE no action ON DELETE no action,
 	FOREIGN KEY (`domain_filter_id`) REFERENCES `domains`(`id`) ON UPDATE no action ON DELETE no action
 );
@@ -75,21 +96,26 @@ CREATE TABLE `exam_sessions` (
 CREATE TABLE `flashcard_reviews` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`card_id` integer NOT NULL,
+	`user_id` text NOT NULL,
 	`grade` integer NOT NULL,
 	`interval_days_after` integer NOT NULL,
 	`reviewed_at` integer DEFAULT (unixepoch() * 1000) NOT NULL,
-	FOREIGN KEY (`card_id`) REFERENCES `flashcards`(`id`) ON UPDATE no action ON DELETE cascade
+	FOREIGN KEY (`card_id`) REFERENCES `flashcards`(`id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `flashcard_states` (
-	`card_id` integer PRIMARY KEY NOT NULL,
+	`card_id` integer NOT NULL,
+	`user_id` text NOT NULL,
 	`ease_factor` real DEFAULT 2.5 NOT NULL,
 	`interval_days` integer DEFAULT 0 NOT NULL,
 	`repetitions` integer DEFAULT 0 NOT NULL,
 	`lapses` integer DEFAULT 0 NOT NULL,
 	`due_at` integer NOT NULL,
 	`last_reviewed_at` integer,
-	FOREIGN KEY (`card_id`) REFERENCES `flashcards`(`id`) ON UPDATE no action ON DELETE cascade
+	PRIMARY KEY(`card_id`, `user_id`),
+	FOREIGN KEY (`card_id`) REFERENCES `flashcards`(`id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE INDEX `flashcard_states_due_idx` ON `flashcard_states` (`due_at`);--> statement-breakpoint
@@ -164,9 +190,35 @@ CREATE TABLE `session_questions` (
 --> statement-breakpoint
 CREATE UNIQUE INDEX `session_questions_pos_idx` ON `session_questions` (`session_id`,`position`);--> statement-breakpoint
 CREATE UNIQUE INDEX `session_questions_q_idx` ON `session_questions` (`session_id`,`question_id`);--> statement-breakpoint
+CREATE TABLE `sessions` (
+	`session_token` text PRIMARY KEY NOT NULL,
+	`user_id` text NOT NULL,
+	`expires` integer NOT NULL,
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
 CREATE TABLE `user_notes` (
-	`question_id` integer PRIMARY KEY NOT NULL,
+	`question_id` integer NOT NULL,
+	`user_id` text NOT NULL,
 	`body` text NOT NULL,
 	`updated_at` integer DEFAULT (unixepoch() * 1000) NOT NULL,
-	FOREIGN KEY (`question_id`) REFERENCES `questions`(`id`) ON UPDATE no action ON DELETE cascade
+	PRIMARY KEY(`question_id`, `user_id`),
+	FOREIGN KEY (`question_id`) REFERENCES `questions`(`id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
+CREATE TABLE `users` (
+	`id` text PRIMARY KEY NOT NULL,
+	`name` text,
+	`email` text NOT NULL,
+	`email_verified` integer,
+	`image` text
+);
+--> statement-breakpoint
+CREATE UNIQUE INDEX `users_email_unique` ON `users` (`email`);--> statement-breakpoint
+CREATE TABLE `verification_tokens` (
+	`identifier` text NOT NULL,
+	`token` text NOT NULL,
+	`expires` integer NOT NULL,
+	PRIMARY KEY(`identifier`, `token`)
 );

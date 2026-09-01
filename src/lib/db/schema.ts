@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import {
   index,
   integer,
+  primaryKey,
   real,
   sqliteTable,
   text,
@@ -18,13 +19,62 @@ import type {
 } from "@/lib/domain";
 
 /**
- * Single-learner app: there is no users table and no auth. If this ever becomes
- * multi-user, every table below gains a `userId` column and nothing else changes.
+ * Multi-user app: every table that carries personal progress has a `userId`
+ * column referencing `users.id`, `onDelete: "cascade"` (deleting a user drops
+ * their data). `users`/`accounts`/`sessions`/`verificationTokens` below are
+ * Auth.js's own tables — `sessions` here is a session *cookie*, a different
+ * concept from this app's own `exam_sessions` (a mock exam attempt).
  *
  * Timestamps are unix milliseconds so they sort and diff without parsing.
  */
 
 const now = sql`(unixepoch() * 1000)`;
+
+export const users = sqliteTable("users", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text("name"),
+  email: text("email").notNull().unique(),
+  emailVerified: integer("email_verified", { mode: "timestamp_ms" }),
+  image: text("image"),
+});
+
+export const accounts = sqliteTable(
+  "accounts",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    type: text("type").notNull(),
+    provider: text("provider").notNull(),
+    providerAccountId: text("provider_account_id").notNull(),
+    refresh_token: text("refresh_token"),
+    access_token: text("access_token"),
+    expires_at: integer("expires_at"),
+    token_type: text("token_type"),
+    scope: text("scope"),
+    id_token: text("id_token"),
+    session_state: text("session_state"),
+  },
+  (t) => [primaryKey({ columns: [t.provider, t.providerAccountId] })],
+);
+
+export const sessions = sqliteTable("sessions", {
+  sessionToken: text("session_token").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  expires: integer("expires", { mode: "timestamp_ms" }).notNull(),
+});
+
+export const verificationTokens = sqliteTable(
+  "verification_tokens",
+  {
+    identifier: text("identifier").notNull(),
+    token: text("token").notNull(),
+    expires: integer("expires", { mode: "timestamp_ms" }).notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.identifier, t.token] })],
+);
 
 /**
  * A body of knowledge that certifications are examined against, e.g. BABOK v3.
@@ -172,23 +222,40 @@ export const questionOptions = sqliteTable(
 );
 
 /** One free-text note per question, written by the learner. */
-export const userNotes = sqliteTable("user_notes", {
-  questionId: integer("question_id")
-    .primaryKey()
-    .references(() => questions.id, { onDelete: "cascade" }),
-  body: text("body").notNull(),
-  updatedAt: integer("updated_at").notNull().default(now),
-});
+export const userNotes = sqliteTable(
+  "user_notes",
+  {
+    questionId: integer("question_id")
+      .notNull()
+      .references(() => questions.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    body: text("body").notNull(),
+    updatedAt: integer("updated_at").notNull().default(now),
+  },
+  (t) => [primaryKey({ columns: [t.questionId, t.userId] })],
+);
 
-export const bookmarks = sqliteTable("bookmarks", {
-  questionId: integer("question_id")
-    .primaryKey()
-    .references(() => questions.id, { onDelete: "cascade" }),
-  createdAt: integer("created_at").notNull().default(now),
-});
+export const bookmarks = sqliteTable(
+  "bookmarks",
+  {
+    questionId: integer("question_id")
+      .notNull()
+      .references(() => questions.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    createdAt: integer("created_at").notNull().default(now),
+  },
+  (t) => [primaryKey({ columns: [t.questionId, t.userId] })],
+);
 
 export const examSessions = sqliteTable("exam_sessions", {
   id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
   certificationId: integer("certification_id")
     .notNull()
     .references(() => certifications.id),
@@ -254,8 +321,11 @@ export const flashcardStates = sqliteTable(
   "flashcard_states",
   {
     cardId: integer("card_id")
-      .primaryKey()
+      .notNull()
       .references(() => flashcards.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
     /** SM-2 ease factor, floored at 1.3. */
     easeFactor: real("ease_factor").notNull().default(2.5),
     intervalDays: integer("interval_days").notNull().default(0),
@@ -264,7 +334,10 @@ export const flashcardStates = sqliteTable(
     dueAt: integer("due_at").notNull(),
     lastReviewedAt: integer("last_reviewed_at"),
   },
-  (t) => [index("flashcard_states_due_idx").on(t.dueAt)],
+  (t) => [
+    primaryKey({ columns: [t.cardId, t.userId] }),
+    index("flashcard_states_due_idx").on(t.dueAt),
+  ],
 );
 
 /** Append-only log, so progress charts can be rebuilt later. */
@@ -273,6 +346,9 @@ export const flashcardReviews = sqliteTable("flashcard_reviews", {
   cardId: integer("card_id")
     .notNull()
     .references(() => flashcards.id, { onDelete: "cascade" }),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
   grade: integer("grade").notNull(),
   intervalDaysAfter: integer("interval_days_after").notNull(),
   reviewedAt: integer("reviewed_at").notNull().default(now),
