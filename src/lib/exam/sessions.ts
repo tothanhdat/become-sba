@@ -30,6 +30,11 @@ export interface CreateSessionOptions {
   now?: number;
 }
 
+function requireUserId(userId: string | null): string {
+  if (userId === null) throw new Error("userId is required");
+  return userId;
+}
+
 /**
  * Whether a question may be served for a certification.
  *
@@ -51,8 +56,13 @@ function eligibilityFilter(cert: Certification) {
 /**
  * Every question this certification may serve, tagged with when the learner
  * last saw it so the generator can favour unseen material.
+ *
+ * `userId` scopes the "last seen" lookup to one learner's own exam history.
+ * `getBankCoverage` calls this with `userId` omitted — it only counts pool
+ * size and never reads `lastSeenAt`, so it's fine for that scoping to be
+ * absent there.
  */
-function loadPool(db: Db, cert: Certification, restrictTo?: string): PoolQuestion[] {
+function loadPool(db: Db, cert: Certification, restrictTo?: string, userId?: string): PoolQuestion[] {
   const lastSeen = db
     .select({
       questionId: sessionQuestions.questionId,
@@ -60,7 +70,11 @@ function loadPool(db: Db, cert: Certification, restrictTo?: string): PoolQuestio
     })
     .from(sessionQuestions)
     .innerJoin(examSessions, eq(examSessions.id, sessionQuestions.sessionId))
-    .where(eq(examSessions.certificationId, cert.id))
+    .where(
+      userId === undefined
+        ? eq(examSessions.certificationId, cert.id)
+        : and(eq(examSessions.certificationId, cert.id), eq(examSessions.userId, userId)),
+    )
     .groupBy(sessionQuestions.questionId)
     .as("last_seen");
 
@@ -89,7 +103,7 @@ function loadPool(db: Db, cert: Certification, restrictTo?: string): PoolQuestio
   }));
 }
 
-/** How many questions this certification can currently serve, per domain. */
+/** How many questions this certification can currently serve, per domain. Not personal data — unscoped by user. */
 export function getBankCoverage(
   db: Db,
   cert: Certification,
@@ -104,8 +118,14 @@ export function getBankCoverage(
  * The questions worth revisiting: those whose most recent graded answer was
  * wrong, plus anything bookmarked. A question drops out of the pool as soon as
  * the learner answers it correctly, which is the point of the mode.
+ *
+ * A logged-out visitor has no history, so this returns an empty pool rather
+ * than touching the database — this is what lets the Dashboard render one
+ * code path whether or not the visitor is signed in.
  */
-export function loadReviewPool(db: Db, cert: Certification): PoolQuestion[] {
+export function loadReviewPool(db: Db, userId: string | null, cert: Certification): PoolQuestion[] {
+  if (userId === null) return [];
+
   const latestGraded = db
     .select({
       questionId: sessionQuestions.questionId,
@@ -113,7 +133,13 @@ export function loadReviewPool(db: Db, cert: Certification): PoolQuestion[] {
     })
     .from(sessionQuestions)
     .innerJoin(examSessions, eq(examSessions.id, sessionQuestions.sessionId))
-    .where(and(isNotNull(examSessions.submittedAt), eq(examSessions.certificationId, cert.id)))
+    .where(
+      and(
+        isNotNull(examSessions.submittedAt),
+        eq(examSessions.certificationId, cert.id),
+        eq(examSessions.userId, userId),
+      ),
+    )
     .groupBy(sessionQuestions.questionId)
     .as("latest_graded");
 
@@ -128,23 +154,31 @@ export function loadReviewPool(db: Db, cert: Certification): PoolQuestion[] {
         eq(latestGraded.latestAt, examSessions.submittedAt),
       ),
     )
-    .where(and(eq(sessionQuestions.isCorrect, false), eq(examSessions.certificationId, cert.id)))
+    .where(
+      and(
+        eq(sessionQuestions.isCorrect, false),
+        eq(examSessions.certificationId, cert.id),
+        eq(examSessions.userId, userId),
+      ),
+    )
     .all()
     .map((r) => r.questionId);
 
   const bookmarked = db
     .select({ questionId: bookmarks.questionId })
     .from(bookmarks)
+    .where(eq(bookmarks.userId, userId))
     .all()
     .map((r) => r.questionId);
 
   const ids = new Set([...stillWrong, ...bookmarked]);
   if (ids.size === 0) return [];
 
-  return loadPool(db, cert).filter((q) => ids.has(q.id));
+  return loadPool(db, cert, undefined, userId).filter((q) => ids.has(q.id));
 }
 
-export function createSession(db: Db, options: CreateSessionOptions): number {
+export function createSession(db: Db, userId: string | null, options: CreateSessionOptions): number {
+  const owner = requireUserId(userId);
   const { certificationCode, mode, domain, now = Date.now() } = options;
 
   const cert = getCertification(db, certificationCode);
@@ -166,14 +200,14 @@ export function createSession(db: Db, options: CreateSessionOptions): number {
     mode === "review"
       ? buildSessionPlan({
           domains: weights,
-          pool: loadReviewPool(db, cert),
+          pool: loadReviewPool(db, owner, cert),
           total,
           seed,
           blueprint: false,
         })
       : buildSessionPlan({
           domains: weights,
-          pool: loadPool(db, cert, domain),
+          pool: loadPool(db, cert, domain, owner),
           total,
           domain,
           seed,
@@ -191,6 +225,7 @@ export function createSession(db: Db, options: CreateSessionOptions): number {
     const session = tx
       .insert(examSessions)
       .values({
+        userId: owner,
         certificationId: cert.id,
         mode,
         domainFilterId: domainId,
@@ -253,9 +288,16 @@ export interface TakingView {
   questions: TakingQuestion[];
 }
 
-function requireSession(db: Db, sessionId: number) {
+/**
+ * "Doesn't exist" and "exists but belongs to someone else" throw the exact
+ * same error — one shape, so a guessed session id can't be used to probe
+ * whether it belongs to another user, and the API layer's existing 404
+ * mapping needs no changes.
+ */
+function requireSession(db: Db, userId: string | null, sessionId: number) {
+  const owner = requireUserId(userId);
   const session = db.select().from(examSessions).where(eq(examSessions.id, sessionId)).get();
-  if (!session) throw new Error(`Session ${sessionId} does not exist`);
+  if (!session || session.userId !== owner) throw new Error(`Session ${sessionId} does not exist`);
   return session;
 }
 
@@ -286,8 +328,8 @@ function headerOf(
  * during a mock exam that data must not reach the browser at all, and keeping
  * it out of one shared shape is easier to keep honest than filtering per caller.
  */
-export function getSessionForTaking(db: Db, sessionId: number): TakingView {
-  const session = requireSession(db, sessionId);
+export function getSessionForTaking(db: Db, userId: string | null, sessionId: number): TakingView {
+  const session = requireSession(db, userId, sessionId);
   const cert = getCertificationById(db, session.certificationId)!;
 
   const rows = db
@@ -379,12 +421,13 @@ export interface AnswerPatch {
 
 export function saveAnswer(
   db: Db,
+  userId: string | null,
   sessionId: number,
   questionId: number,
   patch: AnswerPatch,
   now: number = Date.now(),
 ): void {
-  const session = requireSession(db, sessionId);
+  const session = requireSession(db, userId, sessionId);
   if (session.submittedAt !== null) {
     throw new Error(`Session ${sessionId} has already been submitted`);
   }
@@ -427,8 +470,13 @@ export function saveAnswer(
 }
 
 /** Grade the session, freeze it, and return the score. */
-export function submitSession(db: Db, sessionId: number, now: number = Date.now()): ScoreResult {
-  const session = requireSession(db, sessionId);
+export function submitSession(
+  db: Db,
+  userId: string | null,
+  sessionId: number,
+  now: number = Date.now(),
+): ScoreResult {
+  const session = requireSession(db, userId, sessionId);
   if (session.submittedAt !== null) {
     throw new Error(`Session ${sessionId} was already submitted`);
   }
@@ -507,12 +555,13 @@ export interface ResultView {
 }
 
 /** The full post-mortem, available only once the session is graded. */
-export function getSessionResult(db: Db, sessionId: number): ResultView {
-  const session = requireSession(db, sessionId);
+export function getSessionResult(db: Db, userId: string | null, sessionId: number): ResultView {
+  const session = requireSession(db, userId, sessionId);
   if (session.submittedAt === null) {
     throw new Error(`Session ${sessionId} has not been submitted yet`);
   }
   const cert = getCertificationById(db, session.certificationId)!;
+  const owner = session.userId;
 
   const rows = db
     .select({
@@ -529,8 +578,12 @@ export function getSessionResult(db: Db, sessionId: number): ResultView {
       flagged: sessionQuestions.flagged,
       caseTitle: caseStudies.title,
       caseBody: caseStudies.body,
-      note: sql<string | null>`(select body from user_notes where question_id = ${questions.id})`.as("note"),
-      bookmarked: sql<number>`(select count(*) from bookmarks where question_id = ${questions.id})`.as("bookmarked"),
+      note: sql<string | null>`(select body from user_notes where question_id = ${questions.id} and user_id = ${owner})`.as(
+        "note",
+      ),
+      bookmarked: sql<number>`(select count(*) from bookmarks where question_id = ${questions.id} and user_id = ${owner})`.as(
+        "bookmarked",
+      ),
     })
     .from(sessionQuestions)
     .innerJoin(questions, eq(questions.id, sessionQuestions.questionId))

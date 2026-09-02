@@ -5,7 +5,8 @@ import { getCertification } from "@/lib/catalog";
 import { importQuestionPack } from "@/lib/content/importer";
 import { createDatabase, type Db } from "@/lib/db";
 import { bookmarks, questionOptions, questions } from "@/lib/db/schema";
-import { sampleBank, seedCatalogAndBank } from "@/test-support/bank";
+import { toggleBookmark } from "@/lib/notes";
+import { createTestUser, sampleBank, seedCatalogAndBank } from "@/test-support/bank";
 import {
   createSession,
   getBankCoverage,
@@ -17,17 +18,18 @@ import {
 } from "./sessions";
 
 let db: Db;
+let userId: string;
 
 const cert = (code: string) => getCertification(db, code)!;
 
 /** Answers every question in a session; `correct` decides right or wrong. */
 function answerAll(sessionId: number, correct: boolean): void {
-  const view = getSessionForTaking(db, sessionId);
+  const view = getSessionForTaking(db, userId, sessionId);
   const keys = correctIds();
   for (const q of view.questions) {
     const right = keys.get(q.questionId)!;
     const chosen = correct ? right : q.options.find((o) => o.id !== right)!.id;
-    saveAnswer(db, sessionId, q.questionId, { selectedOptionId: chosen });
+    saveAnswer(db, userId, sessionId, q.questionId, { selectedOptionId: chosen });
   }
 }
 
@@ -44,20 +46,21 @@ function correctIds(): Map<number, number> {
 
 beforeEach(() => {
   db = createDatabase(":memory:");
+  userId = createTestUser(db);
 });
 
 describe("createSession", () => {
   test("a quick quiz serves the requested number of questions in order", () => {
     seedCatalogAndBank(db, 5);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 10 });
-    expect(getSessionForTaking(db, id).questions.map((q) => q.position)).toEqual([
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 10 });
+    expect(getSessionForTaking(db, userId, id).questions.map((q) => q.position)).toEqual([
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     ]);
   });
 
   test("a CBAP mock exam uses CBAP's 120-question, 210-minute format", () => {
     seedCatalogAndBank(db, 25);
-    const view = getSessionForTaking(db, createSession(db, { certificationCode: "CBAP", mode: "mock" }));
+    const view = getSessionForTaking(db, userId, createSession(db, userId, { certificationCode: "CBAP", mode: "mock" }));
     expect(view.questions).toHaveLength(120);
     expect(view.session.timeLimitSec).toBe(12600);
     expect(view.session.certificationCode).toBe("CBAP");
@@ -65,7 +68,7 @@ describe("createSession", () => {
 
   test("a CCBA mock exam uses CCBA's own 130-question, 180-minute format", () => {
     seedCatalogAndBank(db, 30);
-    const view = getSessionForTaking(db, createSession(db, { certificationCode: "CCBA", mode: "mock" }));
+    const view = getSessionForTaking(db, userId, createSession(db, userId, { certificationCode: "CCBA", mode: "mock" }));
     expect(view.questions).toHaveLength(130);
     expect(view.session.timeLimitSec).toBe(10800);
   });
@@ -75,42 +78,42 @@ describe("createSession", () => {
     seedCatalogAndBank(db, 45);
     const count = (id: number) => {
       const counts: Record<string, number> = {};
-      for (const q of getSessionForTaking(db, id).questions) {
+      for (const q of getSessionForTaking(db, userId, id).questions) {
         counts[q.domain] = (counts[q.domain] ?? 0) + 1;
       }
       return counts;
     };
 
-    expect(count(createSession(db, { certificationCode: "CBAP", mode: "mock" }))).toEqual({
+    expect(count(createSession(db, userId, { certificationCode: "CBAP", mode: "mock" }))).toEqual({
       RADD: 36, SA: 18, RLCM: 18, BAPM: 17, SE: 17, EC: 14,
     });
-    expect(count(createSession(db, { certificationCode: "CCBA", mode: "mock" }))).toEqual({
+    expect(count(createSession(db, userId, { certificationCode: "CCBA", mode: "mock" }))).toEqual({
       RADD: 41, EC: 26, RLCM: 23, BAPM: 16, SA: 16, SE: 8,
     });
   });
 
   test("practice modes are untimed", () => {
     seedCatalogAndBank(db, 5);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "domain", domain: "SA", total: 5 });
-    expect(getSessionForTaking(db, id).session.timeLimitSec).toBeNull();
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "domain", domain: "SA", total: 5 });
+    expect(getSessionForTaking(db, userId, id).session.timeLimitSec).toBeNull();
   });
 
   test("a domain session only serves that domain", () => {
     seedCatalogAndBank(db, 6);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "domain", domain: "SE", total: 6 });
-    expect(getSessionForTaking(db, id).questions.every((q) => q.domain === "SE")).toBe(true);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "domain", domain: "SE", total: 6 });
+    expect(getSessionForTaking(db, userId, id).questions.every((q) => q.domain === "SE")).toBe(true);
   });
 
   test("draft questions never reach an exam", () => {
     seedCatalogAndBank(db, 3);
     db.update(questions).set({ status: "draft" }).where(sql`domain_id != 4`).run();
-    const view = getSessionForTaking(db, createSession(db, { certificationCode: "CBAP", mode: "quick", total: 20 }));
+    const view = getSessionForTaking(db, userId, createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 20 }));
     expect(new Set(view.questions.map((q) => q.domain)).size).toBe(1);
   });
 
   test("refuses a domain session with no domain given", () => {
     seedCatalogAndBank(db, 3);
-    expect(() => createSession(db, { certificationCode: "CBAP", mode: "domain", total: 5 })).toThrow(
+    expect(() => createSession(db, userId, { certificationCode: "CBAP", mode: "domain", total: 5 })).toThrow(
       /domain is required/i,
     );
   });
@@ -118,19 +121,19 @@ describe("createSession", () => {
   test("refuses a domain that is not part of the certification's framework", () => {
     seedCatalogAndBank(db, 3);
     expect(() =>
-      createSession(db, { certificationCode: "CBAP", mode: "domain", domain: "UBA", total: 5 }),
+      createSession(db, userId, { certificationCode: "CBAP", mode: "domain", domain: "UBA", total: 5 }),
     ).toThrow(/UBA/);
   });
 
   test("refuses a certification that does not exist", () => {
     seedCatalogAndBank(db, 3);
-    expect(() => createSession(db, { certificationCode: "PMP", mode: "quick" })).toThrow(/PMP/);
+    expect(() => createSession(db, userId, { certificationCode: "PMP", mode: "quick" })).toThrow(/PMP/);
   });
 
   test("refuses to start a session for a certification with no eligible questions", () => {
     // ECBA examines a different framework, so the BABOK bank is invisible to it.
     seedCatalogAndBank(db, 5);
-    expect(() => createSession(db, { certificationCode: "ECBA", mode: "quick" })).toThrow(
+    expect(() => createSession(db, userId, { certificationCode: "ECBA", mode: "quick" })).toThrow(
       /no questions available/i,
     );
   });
@@ -168,8 +171,8 @@ describe("certification eligibility rules", () => {
 describe("getSessionForTaking", () => {
   test("does not leak which option is correct", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 5 });
-    const serialised = JSON.stringify(getSessionForTaking(db, id));
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    const serialised = JSON.stringify(getSessionForTaking(db, userId, id));
 
     expect(serialised).not.toContain("isCorrect");
     expect(serialised).not.toContain("rationale");
@@ -178,37 +181,37 @@ describe("getSessionForTaking", () => {
 
   test("renders the same option order every time the session is reopened", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 5 });
-    expect(getSessionForTaking(db, id)).toEqual(getSessionForTaking(db, id));
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    expect(getSessionForTaking(db, userId, id)).toEqual(getSessionForTaking(db, userId, id));
   });
 
   test("labels options A to D by their displayed position", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 5 });
-    expect(getSessionForTaking(db, id).questions[0].options.map((o) => o.label)).toEqual([
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    expect(getSessionForTaking(db, userId, id).questions[0].options.map((o) => o.label)).toEqual([
       "A", "B", "C", "D",
     ]);
   });
 });
 
 describe("saveAnswer", () => {
-  const start = () => createSession(db, { certificationCode: "CBAP", mode: "quick", total: 5 });
+  const start = () => createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
 
   test("remembers the chosen option", () => {
     seedCatalogAndBank(db, 3);
     const id = start();
-    const first = getSessionForTaking(db, id).questions[0];
-    saveAnswer(db, id, first.questionId, { selectedOptionId: first.options[2].id });
-    expect(getSessionForTaking(db, id).questions[0].selectedOptionId).toBe(first.options[2].id);
+    const first = getSessionForTaking(db, userId, id).questions[0];
+    saveAnswer(db, userId, id, first.questionId, { selectedOptionId: first.options[2].id });
+    expect(getSessionForTaking(db, userId, id).questions[0].selectedOptionId).toBe(first.options[2].id);
   });
 
   test("remembers a flag independently of the answer", () => {
     seedCatalogAndBank(db, 3);
     const id = start();
-    const first = getSessionForTaking(db, id).questions[0];
-    saveAnswer(db, id, first.questionId, { flagged: true });
+    const first = getSessionForTaking(db, userId, id).questions[0];
+    saveAnswer(db, userId, id, first.questionId, { flagged: true });
 
-    const reloaded = getSessionForTaking(db, id).questions[0];
+    const reloaded = getSessionForTaking(db, userId, id).questions[0];
     expect(reloaded.flagged).toBe(true);
     expect(reloaded.selectedOptionId).toBeNull();
   });
@@ -216,19 +219,19 @@ describe("saveAnswer", () => {
   test("rejects an option belonging to a different question", () => {
     seedCatalogAndBank(db, 3);
     const id = start();
-    const [first, second] = getSessionForTaking(db, id).questions;
+    const [first, second] = getSessionForTaking(db, userId, id).questions;
     expect(() =>
-      saveAnswer(db, id, first.questionId, { selectedOptionId: second.options[0].id }),
+      saveAnswer(db, userId, id, first.questionId, { selectedOptionId: second.options[0].id }),
     ).toThrow();
   });
 
   test("refuses to change an answer after the exam is submitted", () => {
     seedCatalogAndBank(db, 3);
     const id = start();
-    const first = getSessionForTaking(db, id).questions[0];
-    submitSession(db, id);
+    const first = getSessionForTaking(db, userId, id).questions[0];
+    submitSession(db, userId, id);
     expect(() =>
-      saveAnswer(db, id, first.questionId, { selectedOptionId: first.options[0].id }),
+      saveAnswer(db, userId, id, first.questionId, { selectedOptionId: first.options[0].id }),
     ).toThrow(/submitted/i);
   });
 });
@@ -236,30 +239,30 @@ describe("saveAnswer", () => {
 describe("submitSession", () => {
   test("scores a perfect run", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 12 });
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 12 });
     answerAll(id, true);
-    const score = submitSession(db, id);
+    const score = submitSession(db, userId, id);
     expect(score.correct).toBe(12);
     expect(score.passed).toBe(true);
   });
 
   test("scores an all-wrong run", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 12 });
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 12 });
     answerAll(id, false);
-    expect(submitSession(db, id).passed).toBe(false);
+    expect(submitSession(db, userId, id).passed).toBe(false);
   });
 
   test("counts skipped questions as unanswered", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 6 });
-    expect(submitSession(db, id).unanswered).toBe(6);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 6 });
+    expect(submitSession(db, userId, id).unanswered).toBe(6);
   });
 
   test("breaks the score down by the certification's own domains", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 12 });
-    const score = submitSession(db, id);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 12 });
+    const score = submitSession(db, userId, id);
     expect(Object.keys(score.byDomain).sort()).toEqual(
       ["BAPM", "EC", "RADD", "RLCM", "SA", "SE"],
     );
@@ -267,20 +270,20 @@ describe("submitSession", () => {
 
   test("cannot be submitted twice", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 5 });
-    submitSession(db, id);
-    expect(() => submitSession(db, id)).toThrow(/already submitted/i);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    submitSession(db, userId, id);
+    expect(() => submitSession(db, userId, id)).toThrow(/already submitted/i);
   });
 });
 
 describe("getSessionResult", () => {
   test("reveals explanations and per-option reasoning after submission", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
     answerAll(id, false);
-    submitSession(db, id);
+    submitSession(db, userId, id);
 
-    const result = getSessionResult(db, id);
+    const result = getSessionResult(db, userId, id);
     expect(result.score.correct).toBe(0);
     expect(result.certification.code).toBe("CBAP");
     const q = result.questions[0];
@@ -292,58 +295,84 @@ describe("getSessionResult", () => {
 
   test("is unavailable before submission", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 5 });
-    expect(() => getSessionResult(db, id)).toThrow(/not been submitted/i);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    expect(() => getSessionResult(db, userId, id)).toThrow(/not been submitted/i);
   });
 });
 
 describe("loadReviewPool", () => {
   test("collects questions the learner got wrong", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 6 });
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 6 });
     answerAll(id, false);
-    submitSession(db, id);
-    expect(loadReviewPool(db, cert("CBAP"))).toHaveLength(6);
+    submitSession(db, userId, id);
+    expect(loadReviewPool(db, userId, cert("CBAP"))).toHaveLength(6);
   });
 
   test("drops a question once it is answered correctly later", () => {
     seedCatalogAndBank(db, 2);
-    const first = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 12 });
+    const first = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 12 });
     answerAll(first, false);
-    submitSession(db, first);
+    submitSession(db, userId, first);
 
-    const second = createSession(db, { certificationCode: "CBAP", mode: "review", total: 12 });
+    const second = createSession(db, userId, { certificationCode: "CBAP", mode: "review", total: 12 });
     answerAll(second, true);
-    submitSession(db, second);
+    submitSession(db, userId, second);
 
-    expect(loadReviewPool(db, cert("CBAP"))).toHaveLength(0);
+    expect(loadReviewPool(db, userId, cert("CBAP"))).toHaveLength(0);
   });
 
   test("keeps bookmarked questions even when answered correctly", () => {
     seedCatalogAndBank(db, 2);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 12 });
-    const view = getSessionForTaking(db, id);
-    db.insert(bookmarks).values({ questionId: view.questions[0].questionId }).run();
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 12 });
+    const view = getSessionForTaking(db, userId, id);
+    db.insert(bookmarks).values({ questionId: view.questions[0].questionId, userId }).run();
     answerAll(id, true);
-    submitSession(db, id);
+    submitSession(db, userId, id);
 
-    expect(loadReviewPool(db, cert("CBAP")).map((q) => q.id)).toEqual([
+    expect(loadReviewPool(db, userId, cert("CBAP")).map((q) => q.id)).toEqual([
       view.questions[0].questionId,
     ]);
   });
 
   test("does not carry one certification's mistakes into another", () => {
     seedCatalogAndBank(db, 3);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 6 });
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 6 });
     answerAll(id, false);
-    submitSession(db, id);
+    submitSession(db, userId, id);
 
-    expect(loadReviewPool(db, cert("CBAP")).length).toBe(6);
-    expect(loadReviewPool(db, cert("CCBA")).length).toBe(0);
+    expect(loadReviewPool(db, userId, cert("CBAP")).length).toBe(6);
+    expect(loadReviewPool(db, userId, cert("CCBA")).length).toBe(0);
   });
 
   test("is empty before anything has been answered", () => {
     seedCatalogAndBank(db, 3);
-    expect(loadReviewPool(db, cert("CBAP"))).toEqual([]);
+    expect(loadReviewPool(db, userId, cert("CBAP"))).toEqual([]);
+  });
+});
+
+describe("per-user isolation", () => {
+  test("a session belongs only to the user who created it", () => {
+    seedCatalogAndBank(db, 5);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    const other = createTestUser(db, "other-user");
+    expect(() => getSessionForTaking(db, other, id)).toThrow(/does not exist/);
+  });
+
+  test("bookmarks are private, so the review pool never crosses users", () => {
+    seedCatalogAndBank(db, 6);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 5 });
+    const q = getSessionForTaking(db, userId, id).questions[0];
+    toggleBookmark(db, userId, q.questionId);
+
+    const other = createTestUser(db, "other-user");
+    expect(loadReviewPool(db, other, cert("CBAP"))).toEqual([]);
+    expect(loadReviewPool(db, userId, cert("CBAP")).map((p) => p.id)).toContain(q.questionId);
+  });
+
+  test("rejects a null userId when creating a session", () => {
+    expect(() =>
+      createSession(db, null, { certificationCode: "CBAP", mode: "quick", total: 5 }),
+    ).toThrow(/userId/);
   });
 });
