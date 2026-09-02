@@ -53,6 +53,7 @@ export function ModeCards({ certification, reviewPoolSize, decks }: ModeCardsPro
           disabled={disabled}
         >
           <input type="hidden" name="certificationCode" value={certification.code} />
+          <input type="hidden" name="returnTo" value={`/dashboard?cert=${certification.code}`} />
           <input type="hidden" name="mode" value="mock" />
         </ModeCard>
 
@@ -64,6 +65,7 @@ export function ModeCards({ certification, reviewPoolSize, decks }: ModeCardsPro
           disabled={disabled}
         >
           <input type="hidden" name="certificationCode" value={certification.code} />
+          <input type="hidden" name="returnTo" value={`/dashboard?cert=${certification.code}`} />
           <input type="hidden" name="mode" value="domain" />
           <select
             name="domain"
@@ -88,6 +90,7 @@ export function ModeCards({ certification, reviewPoolSize, decks }: ModeCardsPro
           disabled={disabled}
         >
           <input type="hidden" name="certificationCode" value={certification.code} />
+          <input type="hidden" name="returnTo" value={`/dashboard?cert=${certification.code}`} />
           <input type="hidden" name="mode" value="quick" />
           <input type="hidden" name="total" value={15} />
         </ModeCard>
@@ -101,6 +104,7 @@ export function ModeCards({ certification, reviewPoolSize, decks }: ModeCardsPro
           disabled={disabled || reviewPoolSize === 0}
         >
           <input type="hidden" name="certificationCode" value={certification.code} />
+          <input type="hidden" name="returnTo" value={`/dashboard?cert=${certification.code}`} />
           <input type="hidden" name="mode" value="review" />
           <input type="hidden" name="total" value={Math.min(reviewPoolSize, 50) || 1} />
         </ModeCard>
