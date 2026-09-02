@@ -26,6 +26,10 @@ export function json(body: unknown, status = 200): Response {
   });
 }
 
+export function unauthorized(): Response {
+  return json({ error: "Sign-in required" }, 401);
+}
+
 /** Parse a numeric path segment, rejecting anything that is not a positive integer. */
 export async function numericParam(params: Promise<{ id: string }>): Promise<number> {
   const { id } = await params;
