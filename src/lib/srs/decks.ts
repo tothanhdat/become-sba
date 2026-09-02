@@ -28,11 +28,21 @@ export interface DueCardQuery {
   now?: number;
 }
 
+function requireUserId(userId: string | null): string {
+  if (userId === null) throw new Error("userId is required");
+  return userId;
+}
+
 /**
  * Cards ready to study: anything never reviewed, plus anything whose SM-2 due
  * date has arrived. Oldest due first, so the biggest backlog clears first.
+ *
+ * `userId` is `null` for a logged-out visitor, who has no SM-2 state at all —
+ * there is nothing "due" without an account, so this returns an empty queue
+ * rather than touching the database.
  */
-export function getDueCards(db: Db, query: DueCardQuery = {}): DueCard[] {
+export function getDueCards(db: Db, userId: string | null, query: DueCardQuery = {}): DueCard[] {
+  if (userId === null) return [];
   const { frameworkId, deck, limit, now = Date.now() } = query;
 
   const rows = db
@@ -47,7 +57,10 @@ export function getDueCards(db: Db, query: DueCardQuery = {}): DueCard[] {
       repetitions: flashcardStates.repetitions,
     })
     .from(flashcards)
-    .leftJoin(flashcardStates, eq(flashcardStates.cardId, flashcards.id))
+    .leftJoin(
+      flashcardStates,
+      and(eq(flashcardStates.cardId, flashcards.id), eq(flashcardStates.userId, userId)),
+    )
     .leftJoin(domains, eq(domains.id, flashcards.domainId))
     .where(
       and(
@@ -63,11 +76,11 @@ export function getDueCards(db: Db, query: DueCardQuery = {}): DueCard[] {
   return limit === undefined ? due : due.slice(0, limit);
 }
 
-function loadState(db: Db, cardId: number, now: number): CardState {
+function loadState(db: Db, cardId: number, userId: string, now: number): CardState {
   const stored = db
     .select()
     .from(flashcardStates)
-    .where(eq(flashcardStates.cardId, cardId))
+    .where(and(eq(flashcardStates.cardId, cardId), eq(flashcardStates.userId, userId)))
     .get();
 
   if (!stored) return initialCardState(now);
@@ -88,24 +101,26 @@ function loadState(db: Db, cardId: number, now: number): CardState {
  */
 export function reviewCard(
   db: Db,
+  userId: string | null,
   cardId: number,
   button: ReviewButton,
   now: number = Date.now(),
 ): CardState {
+  const owner = requireUserId(userId);
   const card = db.select({ id: flashcards.id }).from(flashcards).where(eq(flashcards.id, cardId)).get();
   if (!card) throw new Error(`Flashcard ${cardId} does not exist`);
 
   const grade = REVIEW_GRADES[button];
-  const next = scheduleReview(loadState(db, cardId, now), grade, now);
+  const next = scheduleReview(loadState(db, cardId, owner, now), grade, now);
 
   db.transaction((tx) => {
     tx.insert(flashcardStates)
-      .values({ cardId, ...next })
-      .onConflictDoUpdate({ target: flashcardStates.cardId, set: next })
+      .values({ cardId, userId: owner, ...next })
+      .onConflictDoUpdate({ target: [flashcardStates.cardId, flashcardStates.userId], set: next })
       .run();
 
     tx.insert(flashcardReviews)
-      .values({ cardId, grade, intervalDaysAfter: next.intervalDays, reviewedAt: now })
+      .values({ cardId, userId: owner, grade, intervalDaysAfter: next.intervalDays, reviewedAt: now })
       .run();
   });
 
@@ -122,8 +137,14 @@ export interface DeckStats {
   learning: number;
 }
 
+/**
+ * `total` is a property of the deck, not the visitor, so it's always real.
+ * `new`/`due`/`learning` reflect SM-2 state, which only exists per-user — a
+ * logged-out visitor gets zeros there rather than a misleading count.
+ */
 export function getDeckStats(
   db: Db,
+  userId: string | null,
   frameworkId?: number,
   now: number = Date.now(),
 ): Record<Deck, DeckStats> {
@@ -137,13 +158,20 @@ export function getDeckStats(
       dueAt: flashcardStates.dueAt,
     })
     .from(flashcards)
-    .leftJoin(flashcardStates, eq(flashcardStates.cardId, flashcards.id))
+    .leftJoin(
+      flashcardStates,
+      and(
+        eq(flashcardStates.cardId, flashcards.id),
+        userId === null ? sql`1 = 0` : eq(flashcardStates.userId, userId),
+      ),
+    )
     .where(frameworkId === undefined ? undefined : eq(flashcards.frameworkId, frameworkId))
     .all();
 
   for (const row of rows) {
     const s = stats[row.deck];
     s.total += 1;
+    if (userId === null) continue;
     if (row.dueAt === null) {
       s.new += 1;
       s.due += 1;
