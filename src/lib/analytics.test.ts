@@ -2,13 +2,14 @@ import { beforeEach, describe, expect, test } from "vitest";
 
 import { createDatabase, type Db } from "@/lib/db";
 import { questionOptions } from "@/lib/db/schema";
-import { seedCatalogAndBank } from "@/test-support/bank";
+import { createTestUser, seedCatalogAndBank } from "@/test-support/bank";
 import { getCertification } from "@/lib/catalog";
 import { getReadiness, getSessionHistory } from "./analytics";
 import { createSession, getSessionForTaking, saveAnswer, submitSession } from "./exam/sessions";
 import { eq } from "drizzle-orm";
 
 let db: Db;
+let userId: string;
 
 function seedBank(per: number): void {
   seedCatalogAndBank(db, per);
@@ -27,23 +28,24 @@ function correctOptionId(questionId: number): number {
 
 /** Answers the first `correct` questions right and the rest wrong. */
 function play(sessionId: number, correct: number): void {
-  const view = getSessionForTaking(db, sessionId);
+  const view = getSessionForTaking(db, userId, sessionId);
   view.questions.forEach((q, i) => {
     const right = correctOptionId(q.questionId);
     const chosen = i < correct ? right : q.options.find((o) => o.id !== right)!.id;
-    saveAnswer(db, sessionId, q.questionId, { selectedOptionId: chosen });
+    saveAnswer(db, userId, sessionId, q.questionId, { selectedOptionId: chosen });
   });
-  submitSession(db, sessionId);
+  submitSession(db, userId, sessionId);
 }
 
 beforeEach(() => {
   db = createDatabase(":memory:");
+  userId = createTestUser(db);
 });
 
 describe("getReadiness", () => {
   test("reports zeros before any exam has been taken", () => {
     seedBank(3);
-    const readiness = getReadiness(db, cbap());
+    const readiness = getReadiness(db, userId, cbap());
     expect(readiness.answered).toBe(0);
     expect(readiness.overallPercent).toBe(0);
     expect(readiness.byDomain.RADD).toEqual({ total: 0, correct: 0, percent: 0 });
@@ -51,10 +53,10 @@ describe("getReadiness", () => {
 
   test("measures accuracy across graded sessions", () => {
     seedBank(4);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 12 });
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 12 });
     play(id, 9);
 
-    const readiness = getReadiness(db, cbap());
+    const readiness = getReadiness(db, userId, cbap());
     expect(readiness.answered).toBe(12);
     expect(readiness.correct).toBe(9);
     expect(readiness.overallPercent).toBe(75);
@@ -62,16 +64,16 @@ describe("getReadiness", () => {
 
   test("ignores sessions that were never submitted", () => {
     seedBank(4);
-    createSession(db, { certificationCode: "CBAP", mode: "quick", total: 12 });
-    expect(getReadiness(db, cbap()).answered).toBe(0);
+    createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 12 });
+    expect(getReadiness(db, userId, cbap()).answered).toBe(0);
   });
 
   test("names the weakest domains so the learner knows where to study", () => {
     seedBank(4);
-    const id = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 24 });
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 24 });
     play(id, 12);
 
-    const readiness = getReadiness(db, cbap());
+    const readiness = getReadiness(db, userId, cbap());
     expect(readiness.weakestDomains.length).toBeGreaterThan(0);
     const percents = readiness.weakestDomains.map((k) => readiness.byDomain[k].percent);
     expect(percents).toEqual([...percents].sort((a, b) => a - b));
@@ -81,17 +83,17 @@ describe("getReadiness", () => {
 describe("getSessionHistory", () => {
   test("is empty at the start", () => {
     seedBank(1);
-    expect(getSessionHistory(db, cbap())).toEqual([]);
+    expect(getSessionHistory(db, userId, cbap())).toEqual([]);
   });
 
   test("lists graded sessions newest first", () => {
     seedBank(4);
-    const first = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 6, now: 1_000 });
+    const first = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 6, now: 1_000 });
     play(first, 6);
-    const second = createSession(db, { certificationCode: "CBAP", mode: "quick", total: 6, now: 2_000 });
+    const second = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 6, now: 2_000 });
     play(second, 3);
 
-    const history = getSessionHistory(db, cbap());
+    const history = getSessionHistory(db, userId, cbap());
     expect(history.map((h) => h.id)).toEqual([second, first]);
     expect(history[0].percent).toBe(50);
     expect(history[1].percent).toBe(100);
@@ -99,7 +101,26 @@ describe("getSessionHistory", () => {
 
   test("leaves unsubmitted sessions out of the history", () => {
     seedBank(4);
-    createSession(db, { certificationCode: "CBAP", mode: "quick", total: 6 });
-    expect(getSessionHistory(db, cbap())).toEqual([]);
+    createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 6 });
+    expect(getSessionHistory(db, userId, cbap())).toEqual([]);
+  });
+});
+
+describe("per-user isolation", () => {
+  test("readiness and history never include another user's sessions", () => {
+    seedBank(6);
+    const id = createSession(db, userId, { certificationCode: "CBAP", mode: "quick", total: 6 });
+    play(id, 6);
+
+    const other = createTestUser(db, "other-user");
+    expect(getReadiness(db, other, cbap()).answered).toBe(0);
+    expect(getSessionHistory(db, other, cbap())).toEqual([]);
+    expect(getReadiness(db, userId, cbap()).answered).toBe(6);
+  });
+
+  test("a null userId returns the empty/zero shape without touching another user's data", () => {
+    seedBank(1);
+    expect(getReadiness(db, null, cbap()).answered).toBe(0);
+    expect(getSessionHistory(db, null, cbap())).toEqual([]);
   });
 });

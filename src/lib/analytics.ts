@@ -27,6 +27,13 @@ function percentOf(correct: number, total: number): number {
   return Math.round((correct / total) * 1000) / 10;
 }
 
+function emptyReadiness(cert: Certification): Readiness {
+  const byDomain = Object.fromEntries(
+    cert.domains.map((d) => [d.code, { total: 0, correct: 0, percent: 0 }]),
+  ) as Record<string, DomainAccuracy>;
+  return { answered: 0, correct: 0, overallPercent: 0, onTrack: false, byDomain, weakestDomains: [] };
+}
+
 /**
  * Lifetime accuracy for one certification, sliced by its own domains.
  *
@@ -36,8 +43,13 @@ function percentOf(correct: number, total: number): number {
  *
  * Only submitted sessions count: an exam still in progress has no answers worth
  * measuring, and half-finished attempts would drag the numbers down unfairly.
+ *
+ * A logged-out visitor has no history — this returns the same zeroed shape a
+ * brand-new signed-in user would see, without touching the database.
  */
-export function getReadiness(db: Db, cert: Certification): Readiness {
+export function getReadiness(db: Db, userId: string | null, cert: Certification): Readiness {
+  if (userId === null) return emptyReadiness(cert);
+
   const rows = db
     .select({ domain: domains.code, isCorrect: sessionQuestions.isCorrect })
     .from(sessionQuestions)
@@ -45,7 +57,11 @@ export function getReadiness(db: Db, cert: Certification): Readiness {
     .innerJoin(questions, eq(questions.id, sessionQuestions.questionId))
     .innerJoin(domains, eq(domains.id, questions.domainId))
     .where(
-      and(isNotNull(examSessions.submittedAt), eq(examSessions.certificationId, cert.id)),
+      and(
+        isNotNull(examSessions.submittedAt),
+        eq(examSessions.certificationId, cert.id),
+        eq(examSessions.userId, userId),
+      ),
     )
     .all();
 
@@ -99,7 +115,14 @@ export interface HistoryEntry {
   durationSec: number;
 }
 
-export function getSessionHistory(db: Db, cert: Certification, limit = 50): HistoryEntry[] {
+export function getSessionHistory(
+  db: Db,
+  userId: string | null,
+  cert: Certification,
+  limit = 50,
+): HistoryEntry[] {
+  if (userId === null) return [];
+
   const rows = db
     .select({
       session: examSessions,
@@ -108,7 +131,11 @@ export function getSessionHistory(db: Db, cert: Certification, limit = 50): Hist
     .from(examSessions)
     .leftJoin(domains, eq(domains.id, examSessions.domainFilterId))
     .where(
-      and(isNotNull(examSessions.submittedAt), eq(examSessions.certificationId, cert.id)),
+      and(
+        isNotNull(examSessions.submittedAt),
+        eq(examSessions.certificationId, cert.id),
+        eq(examSessions.userId, userId),
+      ),
     )
     .orderBy(desc(examSessions.submittedAt), desc(examSessions.id))
     .limit(limit)
