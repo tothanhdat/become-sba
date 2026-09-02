@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { SignInButton } from "@/components/auth/SignInButton";
+import { SignOutButton } from "@/components/auth/SignOutButton";
 import { ACCENT_SOFT_BG, ACCENT_SOLID_BG, ACCENT_TEXT } from "@/lib/ui/accent";
 import type { CertificationSummary } from "@/lib/ui/types";
 
@@ -7,6 +9,7 @@ interface AppShellProps {
   certifications: CertificationSummary[];
   current: CertificationSummary;
   active: "dashboard" | "flashcards" | "library";
+  user: { name?: string | null; image?: string | null } | null;
   children: React.ReactNode;
 }
 
@@ -23,7 +26,7 @@ const NAV = [
  * exam facts. Present on Dashboard, Result, Flashcards, Library — the exam-
  * taking screen opts out entirely (see docs/UI-SPEC.md "distraction free").
  */
-export function AppShell({ certifications, current, active, children }: AppShellProps) {
+export function AppShell({ certifications, current, active, user, children }: AppShellProps) {
   return (
     <div className="min-h-screen">
       {/*
@@ -84,6 +87,20 @@ export function AppShell({ certifications, current, active, children }: AppShell
               {item.label}
             </Link>
           ))}
+
+          <div className="flex shrink-0 items-center gap-2.5">
+            {user ? (
+              <>
+                {user.image && (
+                  <img src={user.image} alt="" className="h-7 w-7 rounded-full" referrerPolicy="no-referrer" />
+                )}
+                {user.name && <span className="hidden text-body-small text-ink-secondary sm:inline">{user.name}</span>}
+                <SignOutButton />
+              </>
+            ) : (
+              <SignInButton />
+            )}
+          </div>
         </div>
       </header>
 
