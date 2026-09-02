@@ -1,10 +1,13 @@
-import { errorResponse, json, numericParam, type RouteContext } from "@/app/api/_http";
+import { errorResponse, json, numericParam, unauthorized, type RouteContext } from "@/app/api/_http";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { submitSession } from "@/lib/exam/sessions";
 
 export async function POST(_request: Request, ctx: RouteContext): Promise<Response> {
   try {
-    return json(submitSession(db, await numericParam(ctx.params)));
+    const session = await auth();
+    if (!session?.user?.id) return unauthorized();
+    return json(submitSession(db, session.user.id, await numericParam(ctx.params)));
   } catch (error) {
     return errorResponse(error);
   }

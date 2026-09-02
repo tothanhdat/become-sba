@@ -1,7 +1,8 @@
 import { z } from "zod";
 
-import { errorResponse, json } from "@/app/api/_http";
+import { errorResponse, json, unauthorized } from "@/app/api/_http";
 import { getCertification } from "@/lib/catalog";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { DECKS } from "@/lib/domain";
 import { getDueCards } from "@/lib/srs/decks";
@@ -15,6 +16,9 @@ const querySchema = z.object({
 
 export async function GET(request: Request): Promise<Response> {
   try {
+    const session = await auth();
+    if (!session?.user?.id) return unauthorized();
+
     const params = new URL(request.url).searchParams;
     const query = querySchema.parse({
       certification: params.get("certification") ?? undefined,
@@ -29,7 +33,7 @@ export async function GET(request: Request): Promise<Response> {
       frameworkId = cert.framework.id;
     }
 
-    return json(getDueCards(db, { frameworkId, deck: query.deck, limit: query.limit }));
+    return json(getDueCards(db, session.user.id, { frameworkId, deck: query.deck, limit: query.limit }));
   } catch (error) {
     return errorResponse(error);
   }

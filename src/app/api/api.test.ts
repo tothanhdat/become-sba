@@ -7,7 +7,7 @@
  */
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
-import { seedCatalogAndBank } from "@/test-support/bank";
+import { createTestUser, seedCatalogAndBank, TEST_USER_ID } from "@/test-support/bank";
 
 process.env.CBAP_DB_PATH = ":memory:";
 
@@ -23,7 +23,14 @@ function post(body?: unknown): Request {
   });
 }
 
-/** Fresh module graph — and therefore a fresh in-memory database — per test. */
+/**
+ * Fresh module graph — and therefore a fresh in-memory database — per test.
+ *
+ * `@/lib/auth` is mocked so route handlers see a real session without a real
+ * Google OAuth round trip. `authState` is mutable so a single `boot()` call
+ * can simulate more than one caller against the same database — see the
+ * "auth boundary" tests below, which need a second user in the *same* db.
+ */
 async function boot(questionsPerKa = 4) {
   vi.resetModules();
   // The db module caches its handle on globalThis to survive Next.js hot
@@ -31,10 +38,17 @@ async function boot(questionsPerKa = 4) {
   // really does start from an empty database.
   delete (globalThis as { cbapDb?: unknown }).cbapDb;
 
+  const authState: { userId: string | null } = { userId: TEST_USER_ID };
+  vi.doMock("@/lib/auth", () => ({
+    auth: async () =>
+      authState.userId ? { user: { id: authState.userId, email: `${authState.userId}@example.test` } } : null,
+  }));
+
   const { db } = await import("@/lib/db");
   const { importFlashcardDeck } = await import("@/lib/content/importer");
 
   seedCatalogAndBank(db, questionsPerKa);
+  createTestUser(db, TEST_USER_ID);
   importFlashcardDeck(db, {
     version: 1,
     frameworkCode: "babok-v3",
@@ -44,6 +58,9 @@ async function boot(questionsPerKa = 4) {
 
   return {
     db,
+    setUser: (userId: string | null) => {
+      authState.userId = userId;
+    },
     certifications: await import("@/app/api/certifications/route"),
     sessions: await import("@/app/api/sessions/route"),
     session: await import("@/app/api/sessions/[id]/route"),
@@ -290,5 +307,62 @@ describe("GET /api/stats", () => {
     const app = await boot();
     const res = await app.stats.GET(new Request("http://localhost/api/stats?certification=PMP"));
     expect(res.status).toBe(404);
+  });
+});
+
+describe("auth boundary", () => {
+  test("POST /api/sessions returns 401 with no session", async () => {
+    const app = await boot();
+    app.setUser(null);
+    const res = await app.sessions.POST(post({ certificationCode: "CBAP", mode: "quick", total: 5 }));
+    expect(res.status).toBe(401);
+  });
+
+  test("GET /api/sessions/:id returns 401 with no session", async () => {
+    const app = await boot();
+    app.setUser(null);
+    const res = await app.session.GET(new Request("http://localhost/api"), ctx(1));
+    expect(res.status).toBe(401);
+  });
+
+  test("POST /api/flashcards/due review returns 401 with no session", async () => {
+    const app = await boot();
+    const due = await app.due.GET(new Request("http://localhost/api/flashcards/due"));
+    expect(due.status).toBe(200);
+
+    app.setUser(null);
+    const res = await app.review.POST(post({ button: "good" }), ctx(1));
+    expect(res.status).toBe(401);
+  });
+
+  test("another user's session is not found, never exposed", async () => {
+    const app = await boot();
+    const created = await app.sessions.POST(post({ certificationCode: "CBAP", mode: "quick", total: 5 }));
+    const { sessionId } = await created.json();
+
+    createTestUser(app.db, "someone-else");
+    app.setUser("someone-else");
+    const res = await app.session.GET(new Request("http://localhost/api"), ctx(sessionId));
+    expect(res.status).toBe(404);
+  });
+
+  test("another user cannot answer or submit someone else's session", async () => {
+    const app = await boot();
+    const created = await app.sessions.POST(post({ certificationCode: "CBAP", mode: "quick", total: 5 }));
+    const { sessionId } = await created.json();
+    const view = await (await app.session.GET(new Request("http://localhost/api"), ctx(sessionId))).json();
+    const questionId = view.questions[0].questionId;
+
+    createTestUser(app.db, "someone-else");
+    app.setUser("someone-else");
+
+    const answerRes = await app.answers.PATCH(
+      post({ questionId, selectedOptionId: view.questions[0].options[0].id }),
+      ctx(sessionId),
+    );
+    expect(answerRes.status).toBe(404);
+
+    const submitRes = await app.submit.POST(post(), ctx(sessionId));
+    expect(submitRes.status).toBe(404);
   });
 });

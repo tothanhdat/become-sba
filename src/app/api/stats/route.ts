@@ -1,4 +1,5 @@
-import { errorResponse, json } from "@/app/api/_http";
+import { errorResponse, json, unauthorized } from "@/app/api/_http";
+import { auth } from "@/lib/auth";
 import { getReadiness, getSessionHistory } from "@/lib/analytics";
 import { getCertification } from "@/lib/catalog";
 import { db } from "@/lib/db";
@@ -8,6 +9,9 @@ import { getDeckStats } from "@/lib/srs/decks";
 /** Everything the dashboard needs for one certification, in one round trip. */
 export async function GET(request: Request): Promise<Response> {
   try {
+    const session = await auth();
+    if (!session?.user?.id) return unauthorized();
+
     const code = new URL(request.url).searchParams.get("certification");
     if (!code) throw new Error("A certification query parameter is required");
 
@@ -28,11 +32,11 @@ export async function GET(request: Request): Promise<Response> {
         proficiencyLabel: cert.proficiencyLabel,
         domains: cert.domains,
       },
-      readiness: getReadiness(db, cert),
-      history: getSessionHistory(db, cert, 20),
-      decks: getDeckStats(db, cert.framework.id),
+      readiness: getReadiness(db, session.user.id, cert),
+      history: getSessionHistory(db, session.user.id, cert, 20),
+      decks: getDeckStats(db, session.user.id, cert.framework.id),
       coverage: getBankCoverage(db, cert),
-      reviewPoolSize: loadReviewPool(db, cert).length,
+      reviewPoolSize: loadReviewPool(db, session.user.id, cert).length,
     });
   } catch (error) {
     return errorResponse(error);
