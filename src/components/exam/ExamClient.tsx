@@ -22,6 +22,7 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
   const [view, setView] = useState<TakingView | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [sessionExpired, setSessionExpired] = useState(false);
   const [index, setIndex] = useState(0);
   const [now, setNow] = useState(() => Date.now());
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -94,11 +95,15 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ questionId, ...patch }),
       });
-      if (!res.ok) {
+      if (res.status === 401) {
+        setSessionExpired(true);
+        setSaveError("Phiên đăng nhập hết hạn — đăng nhập lại để tiếp tục.");
+      } else if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         setSaveError(body.error ?? "Không lưu được câu trả lời vừa rồi.");
       } else {
         setSaveError(null);
+        setSessionExpired(false);
       }
     },
     [sessionId],
@@ -238,7 +243,17 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
       </header>
 
       {saveError && (
-        <p className="bg-wrong-bg px-6 py-2 text-center text-body-small text-wrong-text">{saveError}</p>
+        <p className="flex items-center justify-center gap-2 bg-wrong-bg px-6 py-2 text-center text-body-small text-wrong-text">
+          {saveError}
+          {sessionExpired && (
+            <a
+              href={`/api/auth/signin?callbackUrl=${encodeURIComponent(`/exam/${sessionId}`)}`}
+              className="underline"
+            >
+              Đăng nhập lại
+            </a>
+          )}
+        </p>
       )}
 
       <div className="mx-auto mt-6 flex max-w-[1040px] items-start gap-8 px-6">
