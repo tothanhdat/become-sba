@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { AppShell } from "@/components/AppShell";
 import { FlashcardReviewer } from "@/components/flashcards/FlashcardReviewer";
+import { auth } from "@/lib/auth";
 import { DECKS, type Deck } from "@/lib/domain";
 import { listCertifications } from "@/lib/catalog";
 import { db } from "@/lib/db";
@@ -51,13 +53,21 @@ export default async function FlashcardsPage({
   const current =
     all.find((c) => c.code === params.cert) ?? [...all].sort((a, b) => b.availableQuestions - a.availableQuestions)[0];
   const requestedDeck = DECKS.includes(params.deck as Deck) ? (params.deck as Deck) : undefined;
-
-  const decks = getDeckStats(db, current.framework.id);
-  const totalCards = DECKS.reduce((acc, d) => acc + decks[d].total, 0);
   const reviewing = params.deck === "all" || requestedDeck !== undefined;
 
+  const session = await auth();
+  const userId = session?.user?.id ?? null;
+
+  if (reviewing && !session) {
+    const callback = `/flashcards?cert=${current.code}${params.deck ? `&deck=${params.deck}` : ""}`;
+    redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent(callback)}`);
+  }
+
+  const decks = getDeckStats(db, userId, current.framework.id);
+  const totalCards = DECKS.reduce((acc, d) => acc + decks[d].total, 0);
+
   return (
-    <AppShell certifications={all} current={current} active="flashcards">
+    <AppShell certifications={all} current={current} active="flashcards" user={session?.user ?? null}>
       <div className="flex flex-col gap-6">
         <div className="flex flex-wrap items-center gap-2">
           {DECKS.map((d) => {
@@ -112,11 +122,20 @@ export default async function FlashcardsPage({
                 >
                   <h3 className="text-heading-m text-ink-primary">{meta.title}</h3>
                   <p className="mt-1 text-body-small text-ink-secondary">{meta.blurb}</p>
-                  <div className="mt-4 flex gap-4 text-body-small">
-                    <Stat label="Đến hạn" value={s.due} tone="accent" />
-                    <Stat label="Chưa học" value={s.new} tone="muted" />
-                    <Stat label="Đang học" value={s.learning} tone="muted" />
-                    <Stat label="Tổng" value={s.total} tone="muted" />
+                  <div className="mt-4 flex flex-wrap items-center gap-4 text-body-small">
+                    {session ? (
+                      <>
+                        <Stat label="Đến hạn" value={s.due} tone="accent" />
+                        <Stat label="Chưa học" value={s.new} tone="muted" />
+                        <Stat label="Đang học" value={s.learning} tone="muted" />
+                        <Stat label="Tổng" value={s.total} tone="muted" />
+                      </>
+                    ) : (
+                      <>
+                        <Stat label="Tổng" value={s.total} tone="muted" />
+                        <p className="text-caption text-ink-muted">Đăng nhập để xem lịch ôn của bạn</p>
+                      </>
+                    )}
                   </div>
                 </Link>
               );
