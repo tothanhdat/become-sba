@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 
+import type { QuestionTranslation } from "@/lib/translate";
 import type { ResultQuestion } from "@/lib/ui/types";
 
 interface Props {
@@ -23,6 +24,10 @@ export function ReviewBlock({ question, frameworkName }: Props) {
   const [note, setNote] = useState(question.note ?? "");
   const [noteStatus, setNoteStatus] = useState<NoteStatus>("idle");
   const [bookmarkBusy, setBookmarkBusy] = useState(false);
+  const [translation, setTranslation] = useState<QuestionTranslation | null>(null);
+  const [showVi, setShowVi] = useState(false);
+  const [translating, setTranslating] = useState(false);
+  const [translateError, setTranslateError] = useState<string | null>(null);
   const lastSavedNote = useRef(question.note ?? "");
   const savedIndicatorTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -36,6 +41,35 @@ export function ReviewBlock({ question, frameworkName }: Props) {
       }
     } finally {
       setBookmarkBusy(false);
+    }
+  }
+
+  async function toggleTranslate() {
+    if (showVi) {
+      setShowVi(false);
+      return;
+    }
+    // Translated once, kept for the rest of the visit — the source text is fixed.
+    if (translation) {
+      setShowVi(true);
+      return;
+    }
+
+    setTranslating(true);
+    setTranslateError(null);
+    try {
+      const res = await fetch(`/api/questions/${question.questionId}/translate`, { method: "POST" });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        setTranslateError(body.error ?? "Không dịch được câu này.");
+        return;
+      }
+      setTranslation((await res.json()) as QuestionTranslation);
+      setShowVi(true);
+    } catch {
+      setTranslateError("Không kết nối được tới máy chủ.");
+    } finally {
+      setTranslating(false);
     }
   }
 
@@ -62,6 +96,12 @@ export function ReviewBlock({ question, frameworkName }: Props) {
     }
   }
 
+  const vi = showVi ? translation : null;
+  const displayStem = vi?.stem ?? question.stem;
+  const displayCaseStudy = vi?.caseStudy ?? question.caseStudy;
+  const displayExplanation = vi?.explanation ?? question.explanation;
+  const viOption = (label: string) => vi?.options.find((o) => o.label === label);
+
   return (
     <article className="overflow-hidden rounded-xl border border-border-subtle bg-surface-card">
       <header
@@ -81,10 +121,19 @@ export function ReviewBlock({ question, frameworkName }: Props) {
 
         <button
           type="button"
+          onClick={() => void toggleTranslate()}
+          disabled={translating}
+          className="ml-auto rounded-md border border-border-strong bg-surface-card px-2.5 py-1 text-body-small text-ink-secondary transition-colors hover:bg-surface-sunken disabled:opacity-60"
+        >
+          {translating ? "Đang dịch…" : showVi ? "Hiển thị văn bản gốc" : "Dịch sang tiếng Việt"}
+        </button>
+
+        <button
+          type="button"
           onClick={toggleBookmark}
           disabled={bookmarkBusy}
           className={
-            "ml-auto rounded-md border px-2.5 py-1 text-body-small transition-colors disabled:opacity-60 " +
+            "rounded-md border px-2.5 py-1 text-body-small transition-colors disabled:opacity-60 " +
             (bookmarked
               ? "border-flagged-border bg-flagged-bg text-flagged-text"
               : "border-border-strong bg-surface-card text-ink-secondary hover:bg-surface-sunken")
@@ -95,20 +144,22 @@ export function ReviewBlock({ question, frameworkName }: Props) {
       </header>
 
       <div className="flex flex-col gap-4 px-6 py-5">
-        {question.caseStudy && (
+        {translateError && <p className="text-body-small text-wrong-text">{translateError}</p>}
+
+        {displayCaseStudy && (
           <div className="rounded-lg border-l-[3px] border-border-strong bg-surface-sunken px-4 py-3">
             <button type="button" onClick={() => setCaseOpen((v) => !v)} className="flex items-center gap-2 text-left">
               <span className="text-body-small text-ink-muted">{caseOpen ? "▾" : "▸"}</span>
               <span className="text-mono-label uppercase text-ink-muted">Case study</span>
-              <span className="text-body-medium text-ink-primary">{question.caseStudy.title}</span>
+              <span className="text-body-medium text-ink-primary">{displayCaseStudy.title}</span>
             </button>
             {caseOpen && (
-              <p className="mt-2 text-body-small leading-relaxed text-ink-secondary">{question.caseStudy.body}</p>
+              <p className="mt-2 text-body-small leading-relaxed text-ink-secondary">{displayCaseStudy.body}</p>
             )}
           </div>
         )}
 
-        <p className="text-body-default leading-relaxed text-ink-primary">{question.stem}</p>
+        <p className="text-body-default leading-relaxed text-ink-primary">{displayStem}</p>
 
         <div className="flex flex-col gap-2.5">
           {question.options.map((opt) => {
@@ -140,12 +191,14 @@ export function ReviewBlock({ question, frameworkName }: Props) {
                     {tone === "correct" ? "✓" : tone === "wrong" ? "✗" : opt.label}
                   </span>
                   <p className="text-body-default text-ink-primary">
-                    {opt.label}. {opt.text}
+                    {opt.label}. {viOption(opt.label)?.text ?? opt.text}
                   </p>
                   {tone === "correct" && <Chip tone="correct">ĐÁP ÁN ĐÚNG</Chip>}
                   {tone === "wrong" && <Chip tone="wrong">BẠN CHỌN</Chip>}
                 </div>
-                <p className="mt-1.5 pl-[34px] text-body-small text-ink-secondary">{opt.rationale}</p>
+                <p className="mt-1.5 pl-[34px] text-body-small text-ink-secondary">
+                  {viOption(opt.label)?.rationale ?? opt.rationale}
+                </p>
               </div>
             );
           })}
@@ -153,7 +206,7 @@ export function ReviewBlock({ question, frameworkName }: Props) {
 
         <div className="rounded-lg bg-accent-soft px-4 py-3.5">
           <p className="text-mono-label uppercase text-accent-text">Giải thích</p>
-          <p className="mt-1 text-body-default text-ink-primary">{question.explanation}</p>
+          <p className="mt-1 text-body-default text-ink-primary">{displayExplanation}</p>
         </div>
 
         <div>

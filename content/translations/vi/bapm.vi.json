@@ -1,0 +1,482 @@
+{
+  "version": 1,
+  "locale": "vi",
+  "questions": [
+    {
+      "code": "BAPM-001",
+      "stem": "Một công ty bảo hiểm khu vực đang thay thế claims platform của mình. Sponsor không mô tả được quy trình tương lai nên trông như thế nào và dự kiến requirements sẽ thay đổi đáng kể khi người dùng nhìn thấy phần mềm chạy được. Delivery team release hai tuần một lần. Business analyst đang cân nhắc cách tổ chức công việc phân tích. Quyết định planning nào phù hợp nhất với tình huống này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Áp dụng adaptive approach, trong đó requirements được làm rõ dần qua từng iteration.",
+          "rationale": "Đúng. BABOK gắn adaptive approach với những tình huống mà nhu cầu chưa được hiểu rõ và phản hồi từ phần mềm chạy được dự kiến sẽ định hình lại requirements."
+        },
+        {
+          "label": "B",
+          "text": "Áp dụng predictive approach và baseline toàn bộ tập requirements trước khi bắt đầu phát triển.",
+          "rationale": "Predictive approach hợp với mức bất định thấp và chi phí thay đổi cao. Baseline mọi thứ ở đây chắc chắn dẫn tới làm lại, vì sponsor còn chưa mô tả nổi future state."
+        },
+        {
+          "label": "C",
+          "text": "Báo lên sponsor rằng không thể tiến hành phân tích cho tới khi future state được xác định.",
+          "rationale": "Một future state chưa được định nghĩa là điều kiện khởi đầu bình thường, không phải vật cản. Strategy Analysis tồn tại để định nghĩa nó; từ chối lập kế hoạch là bỏ rơi chính task của analyst."
+        },
+        {
+          "label": "D",
+          "text": "Đề nghị delivery team kéo dài iteration để mỗi chu kỳ hoàn thành được nhiều phân tích hơn.",
+          "rationale": "Cách này đổi nhịp của delivery team để chiều analyst thay vì lập kế hoạch phân tích xoay quanh tình huống, và nó chẳng giải quyết được gì với mức bất định nằm bên dưới."
+        }
+      ],
+      "sourceHash": "f5e0a9eeea99e970eaa9ae82b3e513b0ccbaf8f3212bea2e4e9fe3695524026d",
+      "explanation": "Plan Business Analysis Approach chọn predictive hay adaptive approach dựa trên mức độ nhu cầu được hiểu rõ tới đâu và dự kiến sẽ thay đổi nhiều tới mức nào. Mức bất định cao cộng với chu kỳ bàn giao ngắn chỉ về adaptive approach, nơi requirements được làm rõ dần thay vì baseline ngay từ đầu."
+    },
+    {
+      "code": "BAPM-002",
+      "stem": "Một business analyst đã soạn thảo business analysis approach cho một programme trải rộng trên bốn business unit. Trước khi bắt đầu elicitation, analyst gửi bản nháp cho programme manager và bốn trưởng đơn vị để lấy sự đồng thuận. Analyst đang thực hiện element nào của Plan Business Analysis Approach?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Acceptance",
+          "rationale": "Đúng. Acceptance là element lo việc để các stakeholder chủ chốt rà soát và đồng thuận với chính approach đó."
+        },
+        {
+          "label": "B",
+          "text": "Timing of Business Analysis Work",
+          "rationale": "Timing xác định các hoạt động phân tích diễn ra khi nào so với phần còn lại của initiative, không phải ai là người ký duyệt approach."
+        },
+        {
+          "label": "C",
+          "text": "Complexity and Risk",
+          "rationale": "Element này điều chỉnh approach theo quy mô và mức rủi ro của thay đổi. Gửi bản nháp đi lấy đồng thuận không phải là đánh giá độ phức tạp."
+        },
+        {
+          "label": "D",
+          "text": "Business Analysis Activities",
+          "rationale": "Element này nhận diện và bóc tách chính các hoạt động phân tích. Các hoạt động thì đã soạn xong rồi; điều đang diễn ra bây giờ là lấy sự đồng thuận về chúng."
+        }
+      ],
+      "sourceHash": "0de7273c19190e193fd7b9f90a43289127f1a21b923b4dfb15df57ef61419664",
+      "explanation": "Element Acceptance của Plan Business Analysis Approach bao gồm việc rà soát và thống nhất approach với những stakeholder phải làm việc trong khuôn khổ đó, để bản kế hoạch là một cam kết chung chứ không phải ý định riêng của analyst."
+    },
+    {
+      "code": "BAPM-003",
+      "stem": "Đang giữa giai đoạn lập kế hoạch, một business analyst biết được rằng tổ chức có một methodology bắt buộc cho các thay đổi thuộc diện chịu quản lý, và initiative này thuộc diện đó. Approach analyst đã soạn lại xung đột với một số deliverable bắt buộc của methodology. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Điều chỉnh business analysis approach sao cho đáp ứng được methodology bắt buộc.",
+          "rationale": "Đúng. Các chuẩn mực của tổ chức và của cơ quan quản lý là input ràng buộc approach; approach phải thích ứng theo chúng."
+        },
+        {
+          "label": "B",
+          "text": "Tiếp tục với approach đã soạn vì nó phù hợp hơn với initiative này.",
+          "rationale": "Sự phù hợp với mục đích không lấn át được một chuẩn mực bắt buộc trên một thay đổi thuộc diện chịu quản lý. Đây là distractor hấp dẫn, và nó là một lỗi tuân thủ."
+        },
+        {
+          "label": "C",
+          "text": "Xin miễn trừ từ cơ quan quản lý trước khi tiếp tục phân tích.",
+          "rationale": "Ràng buộc ở đây là một methodology nội bộ áp dụng cho công việc thuộc diện chịu quản lý. Đi hỏi cơ quan quản lý là phản ứng thái quá và nằm ngoài task của analyst."
+        },
+        {
+          "label": "D",
+          "text": "Làm cả hai bộ deliverable để không nhóm stakeholder nào bị thiệt.",
+          "rationale": "Làm trùng lặp deliverable ngốn công sức mà không giải quyết được xung đột, đồng thời tạo ra hai nguồn sự thật phải giữ đồng bộ."
+        }
+      ],
+      "sourceHash": "2be88635cdde766d55c40d0fba782f9bf717802d541bad13f2840b91df421eb0",
+      "explanation": "Plan Business Analysis Approach lấy các chuẩn mực của tổ chức, methodology và ràng buộc pháp lý làm guideline. Khi một methodology bắt buộc được áp dụng, approach phải được điều chỉnh để tuân thủ nó chứ không phải thay thế nó."
+    },
+    {
+      "code": "BAPM-004",
+      "stem": "Một business analyst đã lập một lưới đặt từng stakeholder theo mức thẩm quyền họ có đối với thay đổi và mức độ họ thực sự quan tâm tới kết quả của nó. Operations director nằm ở góc phần tư influence cao, interest cao. Phát hiện này nên định hình engagement plan như thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Lên kế hoạch phối hợp chặt chẽ và thường xuyên với operations director trong suốt initiative.",
+          "rationale": "Đúng. Influence cao kết hợp với interest cao đúng là hồ sơ biện minh cho khoản đầu tư engagement lớn nhất."
+        },
+        {
+          "label": "B",
+          "text": "Gửi cho operations director báo cáo tiến độ định kỳ và chỉ escalate khi cần ra quyết định.",
+          "rationale": "Đây là cách làm dành cho stakeholder có influence cao nhưng interest thấp. Nó tương tác quá ít với một người đang thực sự quan tâm tới kết quả."
+        },
+        {
+          "label": "C",
+          "text": "Giao việc trao đổi với operations director cho project manager để giữ thời gian cho công việc phân tích.",
+          "rationale": "Giao đi mối quan hệ hệ trọng nhất là tự loại analyst ra khỏi những cuộc trao đổi nơi các quyết định về requirements thực sự được đưa ra."
+        },
+        {
+          "label": "D",
+          "text": "Xem operations director là nguồn requirement duy nhất cho các mảng vận hành.",
+          "rationale": "Influence không đồng nghĩa với hiểu biết đầy đủ. Chỉ dựa vào một tiếng nói cấp cao có nguy cơ bỏ sót những người trực tiếp làm việc."
+        }
+      ],
+      "sourceHash": "5180077cd8fbaa3425a96de4405da1a7afc259ad55c5194cef7279252f7f89c4",
+      "explanation": "Plan Stakeholder Engagement dùng phân tích influence và impact để quyết định mỗi stakeholder cần mức độ cộng tác tới đâu. Một stakeholder vừa có influence cao vừa có interest cao xứng đáng nhận mức cộng tác chặt chẽ và thường xuyên nhất."
+    },
+    {
+      "code": "BAPM-005",
+      "stem": "Sau ba tuần elicitation trên một initiative về supply chain, business analyst phát hiện rằng một nhà cung cấp logistics bên thứ ba sẽ phải thay đổi phần integration của họ để phù hợp với giải pháp mới. Nhà cung cấp này không xuất hiện ở bất kỳ đâu trong engagement plan. Business analyst nên làm gì trước tiên?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân tích influence, interest và attitude của nhà cung cấp, rồi cập nhật stakeholder engagement approach.",
+          "rationale": "Đúng. Stakeholder analysis đi trước các quyết định về engagement, và engagement approach được cập nhật khi có stakeholder mới lộ diện."
+        },
+        {
+          "label": "B",
+          "text": "Lên lịch workshop elicitation với nhà cung cấp ngay lập tức để tránh chậm trễ thêm.",
+          "rationale": "Nghe hợp lý và tích cực, nhưng elicit trước khi phân tích nghĩa là analyst còn chưa biết nhà cung cấp cần quyết định điều gì, hay ai khác bên phía họ cần phải có mặt."
+        },
+        {
+          "label": "C",
+          "text": "Ghi nhà cung cấp này như một risk trong risk register và tiếp tục với các stakeholder đã dự kiến.",
+          "rationale": "Ghi một stakeholder đã biết vào sổ risk là hoãn phần việc lại thay vì làm nó. Nhà cung cấp là một stakeholder, không đơn thuần là một mối đe dọa."
+        },
+        {
+          "label": "D",
+          "text": "Đề nghị bộ phận procurement xác nhận xem hợp đồng có buộc nhà cung cấp phải tham gia hay không.",
+          "rationale": "Nghĩa vụ hợp đồng có thể quan trọng về sau, nhưng nó không phải bước phân tích đầu tiên và cũng không cho analyst biết phải tương tác với nhà cung cấp ra sao."
+        }
+      ],
+      "sourceHash": "b9c5169705ec8932c4b2426d9598511b8d4bdff4d55a336077a3aca04d1b5ea7",
+      "explanation": "Việc nhận diện stakeholder trong Plan Stakeholder Engagement không phải là việc làm một lần rồi thôi. Khi một stakeholder mới xuất hiện, analyst phân tích họ và cập nhật stakeholder engagement approach trước khi quyết định cách làm việc với họ."
+    },
+    {
+      "code": "BAPM-006",
+      "stem": "Một business analyst đang lập kế hoạch engagement cho một thay đổi sẽ được triển khai tại ba quốc gia với giờ làm việc và ngôn ngữ khác nhau. Cân nhắc nào thuộc về stakeholder engagement approach một cách trực tiếp nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các phương thức collaboration và communication phù hợp với vị trí, ngôn ngữ và mức độ sẵn sàng của từng nhóm.",
+          "rationale": "Đúng. Chọn cách collaboration và communication khả thi theo đặc điểm thực tế của stakeholder là nội dung chính của task này."
+        },
+        {
+          "label": "B",
+          "text": "Trình tự mà requirements sẽ được verify và validate.",
+          "rationale": "Trình tự verification và validation thuộc về Requirements Analysis and Design Definition, không thuộc engagement approach."
+        },
+        {
+          "label": "C",
+          "text": "Công cụ sẽ lưu trữ requirements và các liên kết traceability của chúng.",
+          "rationale": "Việc lưu trữ và truy cập requirements thuộc phạm vi Plan Business Analysis Information Management."
+        },
+        {
+          "label": "D",
+          "text": "Ngưỡng mà vượt qua đó một thay đổi requirement cần sponsor phê duyệt.",
+          "rationale": "Ngưỡng phê duyệt là một quyết định governance, được xử lý trong Plan Business Analysis Governance."
+        }
+      ],
+      "sourceHash": "61f76f29093c867bb9257f378370374fbeed36aac863618079260bbf20ac2b57",
+      "explanation": "Plan Stakeholder Engagement bao trùm các đặc điểm của stakeholder gồm vị trí, văn hóa, ngôn ngữ và mức độ sẵn sàng, vì chính chúng quyết định phương thức collaboration và communication nào thực sự chạy được."
+    },
+    {
+      "code": "BAPM-007",
+      "stem": "Trên một programme chuyển đổi quy mô lớn, hai business unit liên tục gửi lên những requirement change xung đột nhau, và mỗi bên đều mong thay đổi của mình được triển khai. Chưa ai nói được quyết định của bên nào là quyết định cuối cùng. Business analyst nên quay lại planning task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Business Analysis Governance, để thiết lập thẩm quyền ra quyết định và quy trình xử lý thay đổi.",
+          "rationale": "Đúng. Quyết định ai là người quyết, và theo quy trình nào, chính xác là điều task này tồn tại để giải quyết."
+        },
+        {
+          "label": "B",
+          "text": "Plan Stakeholder Engagement, để cải thiện sự phối hợp giữa hai đơn vị.",
+          "rationale": "Cộng tác tốt hơn thì đáng hoan nghênh, nhưng thứ đang thiếu là thẩm quyền, không phải sự thân thiện. Hai đơn vị gắn kết tốt vẫn có thể bế tắc nếu không có quy tắc ra quyết định."
+        },
+        {
+          "label": "C",
+          "text": "Plan Business Analysis Information Management, để lưu lại cả hai phiên bản của mỗi requirement.",
+          "rationale": "Ghi lại cả hai phiên bản là bảo tồn xung đột chứ không giải quyết nó, và information management không tạo ra thẩm quyền."
+        },
+        {
+          "label": "D",
+          "text": "Prioritize Requirements, để xếp hạng các thay đổi cạnh tranh nhau theo business value.",
+          "rationale": "Prioritisation là hoạt động ở phía sau. Không có người ra quyết định được thống nhất, hai đơn vị rồi cũng sẽ tranh cãi luôn cả thứ hạng."
+        }
+      ],
+      "sourceHash": "a564542cb5336dbcd72b85c5e2a79a9173ef3426b82f8fc67d25cf910690e6e4",
+      "explanation": "Plan Business Analysis Governance xác định requirements được prioritize ra sao, thay đổi được đề xuất và phê duyệt thế nào, và quan trọng nhất là ai có thẩm quyền ra quyết định khi stakeholder bất đồng."
+    },
+    {
+      "code": "BAPM-008",
+      "stem": "Một business analyst đang định nghĩa cách xử lý các requirement change được đề xuất trên một initiative. Nhóm quyết định nào thuộc về change control process mà analyst đang thiết kế?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một thay đổi được đề xuất ra sao, impact analysis nào đi kèm với nó, và ai có thẩm quyền phê duyệt.",
+          "rationale": "Đúng. Đây chính là các thành phần của change control process được định nghĩa trong lúc lập kế hoạch governance."
+        },
+        {
+          "label": "B",
+          "text": "Notation mô hình hóa nào sẽ được dùng để diễn đạt requirement đã thay đổi.",
+          "rationale": "Việc chọn notation thuộc phần đặc tả và mô hình hóa requirements, không thuộc governance."
+        },
+        {
+          "label": "C",
+          "text": "Requirement đã thay đổi cần được lưu giữ bao lâu sau khi giải pháp ngừng sử dụng.",
+          "rationale": "Việc lưu giữ thông tin business analysis được lập kế hoạch trong Plan Business Analysis Information Management."
+        },
+        {
+          "label": "D",
+          "text": "Những stakeholder nào sẽ tham dự buổi elicitation nơi thay đổi được đem ra bàn.",
+          "rationale": "Ai tham dự buổi làm việc là chuyện lập kế hoạch elicitation, được quyết trong Prepare for Elicitation."
+        }
+      ],
+      "sourceHash": "b23c9546a1255c4ef2c7ad20c30faac617a7468f478ff6ea6e9a34097d5bfe6a",
+      "explanation": "Element Change Control Process của Plan Business Analysis Governance xác định thay đổi được yêu cầu ra sao, phân tích nào đi kèm chúng, ai là người cho phép, và tác động của một thay đổi được đánh giá và truyền đạt thế nào."
+    },
+    {
+      "code": "BAPM-009",
+      "stem": "Sponsor nói với business analyst rằng, để tiết kiệm thời gian, bất kỳ thành viên nào trong nhóm cũng nên được phép phê duyệt các requirement change có giá trị dưới một ngưỡng tiền nhỏ. Initiative này chịu external audit. Business analyst nên phản hồi thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giải thích rằng công việc chịu audit cần có người phê duyệt được nêu tên và hồ sơ truy vết được, rồi đề xuất một quy trình gọn nhẹ mà vẫn đáp ứng yêu cầu đó.",
+          "rationale": "Đúng. Nó tôn trọng mục tiêu về tốc độ của sponsor mà vẫn giữ quy trình governance tuân thủ, đúng như điều task này đòi hỏi analyst thiết kế."
+        },
+        {
+          "label": "B",
+          "text": "Thực hiện theo chỉ đạo của sponsor, vì sponsor nắm thẩm quyền ra quyết định.",
+          "rationale": "Thẩm quyền của sponsor không mở rộng tới việc gạt bỏ nghĩa vụ audit. Đây là đáp án suýt đúng: nhượng bộ trước thẩm quyền ở nơi mà tuân thủ mới là ràng buộc quyết định."
+        },
+        {
+          "label": "C",
+          "text": "Chuyển quyết định này cho bộ phận audit và tạm dừng việc lập kế hoạch governance cho tới khi họ trả lời.",
+          "rationale": "Dừng công việc để chờ một câu trả lời mà analyst đã có thể tự lập luận ra là lãng phí thời gian của initiative và thoái thác chính task của mình."
+        },
+        {
+          "label": "D",
+          "text": "Đích thân phê duyệt mọi thay đổi nhỏ để luôn có một người phê duyệt được nêu tên.",
+          "rationale": "Đặt analyst làm người phê duyệt các thay đổi nghiệp vụ là đặt thẩm quyền ra quyết định sai chỗ và tạo ra xung đột lợi ích."
+        }
+      ],
+      "sourceHash": "8f6eccff9bee2b57ca978cc2d3d5ba5d0e7e0ea9e6dee9e9595b892a0789f896",
+      "explanation": "Việc lập kế hoạch governance phải thỏa mãn các nghĩa vụ phê duyệt và audit của tổ chức. Khi một initiative chịu audit, quy trình phê duyệt cần có người phê duyệt được nêu tên và hồ sơ truy vết được, bất kể thay đổi lớn hay nhỏ về mặt tiền bạc."
+    },
+    {
+      "code": "BAPM-010",
+      "stem": "Một business analyst đang quyết định requirements sẽ được tổ chức ra sao, lưu ở đâu, ai được phép truy cập, và được giữ lại bao lâu sau khi thay đổi đã bàn giao. Analyst đang thực hiện task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Business Analysis Information Management",
+          "rationale": "Đúng. Tổ chức, lưu trữ, truy cập và lưu giữ thông tin business analysis chính là các element của task này."
+        },
+        {
+          "label": "B",
+          "text": "Maintain Requirements",
+          "rationale": "Maintain Requirements giữ cho requirements chính xác và tái sử dụng được trong và sau initiative. Nó hành động dựa trên bản kế hoạch chứ không tạo ra bản kế hoạch đó."
+        },
+        {
+          "label": "C",
+          "text": "Plan Business Analysis Governance",
+          "rationale": "Governance giải quyết thẩm quyền phê duyệt và prioritisation, không phải chuyện thông tin nằm ở đâu hay được giữ bao lâu."
+        },
+        {
+          "label": "D",
+          "text": "Trace Requirements",
+          "rationale": "Tracing thiết lập và duy trì quan hệ giữa requirements với các artifact khác. Lưu trữ và thời hạn lưu giữ là mối quan tâm khác."
+        }
+      ],
+      "sourceHash": "049d21c4bc00737bc07aac3182d3181a85a08c1a9a63313bb532c91417029dab",
+      "explanation": "Plan Business Analysis Information Management bao trùm việc tổ chức, lưu trữ, truy cập, attribute và thời hạn lưu giữ thông tin business analysis, bao gồm cả việc nó có được tái sử dụng sau khi initiative kết thúc hay không."
+    },
+    {
+      "code": "BAPM-011",
+      "stem": "Một tổ chức mỗi năm chạy rất nhiều initiative onboarding nhỏ và tương tự nhau. Business analyst muốn requirements từ initiative hiện tại có thể được các nhóm sau này dùng lại mà không phải làm lại. Quyết định planning nào hỗ trợ ý định đó một cách trực tiếp nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Lên kế hoạch cách requirements được phát biểu và lưu trữ sao cho chúng vẫn có ý nghĩa bên ngoài bối cảnh của initiative này.",
+          "rationale": "Đúng. Tái sử dụng phụ thuộc vào cả cách diễn đạt độc lập với bối cảnh lẫn nơi lưu trữ truy cập được, và đó là điều element này xử lý."
+        },
+        {
+          "label": "B",
+          "text": "Baseline requirements vào cuối initiative và lưu trữ baseline đó.",
+          "rationale": "Một baseline được lưu kho ghi lại điều initiative này đã quyết. Nó bảo tồn lịch sử nhưng không làm cho requirements tái sử dụng được ở nơi khác."
+        },
+        {
+          "label": "C",
+          "text": "Trace mọi requirement tới business objective mà nó phục vụ.",
+          "rationale": "Traceability thì có giá trị, và nó là hoạt động thuộc Requirements Life Cycle Management, nhưng các liên kết tới objective của initiative này không đi theo sang initiative kế tiếp."
+        },
+        {
+          "label": "D",
+          "text": "Đề nghị sponsor phê duyệt việc tái sử dụng requirements trước khi initiative kết thúc.",
+          "rationale": "Phê duyệt không làm cho thông tin tái sử dụng được. Việc một nhóm sau này có dùng được một requirement hay không phụ thuộc vào cách nó được viết và lưu, chứ không phải ai đã ký."
+        }
+      ],
+      "sourceHash": "036b1d6978f003ddfca0582ba7de3cc516dd198a6e98833d7e53827de5f742f4",
+      "explanation": "Lập kế hoạch cho việc tái sử dụng là một element của Plan Business Analysis Information Management. Requirement dự định tái sử dụng phải được phát biểu sao cho không bị trói vào bối cảnh của một initiative duy nhất, và được lưu ở nơi các nhóm sau này tìm thấy được."
+    },
+    {
+      "code": "BAPM-012",
+      "stem": "Trong lúc lập kế hoạch, một business analyst quyết định rằng mỗi requirement sẽ mang theo nguồn gốc, mức priority, người sở hữu và trạng thái hiện tại của nó. Business analyst đang định nghĩa cái gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các attribute sẽ được ghi nhận cho mỗi requirement.",
+          "rationale": "Đúng. Nguồn gốc, priority, người sở hữu và trạng thái là các requirement attribute, được lập kế hoạch trong phần information management."
+        },
+        {
+          "label": "B",
+          "text": "Các quan hệ traceability giữa các requirement.",
+          "rationale": "Traceability mô tả các liên kết giữa requirements với những artifact khác. Người sở hữu và trạng thái là thuộc tính của một requirement đơn lẻ, không phải liên kết."
+        },
+        {
+          "label": "C",
+          "text": "Requirements architecture cho initiative.",
+          "rationale": "Requirements architecture là cấu trúc của cả bộ requirement như một tổng thể, được định nghĩa trong Define Requirements Architecture."
+        },
+        {
+          "label": "D",
+          "text": "Acceptance criteria cho giải pháp.",
+          "rationale": "Acceptance criteria nêu điều gì phải đúng thì giải pháp mới được chấp nhận; chúng không phải metadata mô tả về một requirement."
+        }
+      ],
+      "sourceHash": "0a7d08a256d31be4f28501fe90736e7007dd1960dfed86b19ee70480490d6130",
+      "explanation": "Requirement attribute được lập kế hoạch như một phần của Plan Business Analysis Information Management. Attribute mang metadata về một requirement, chẳng hạn nguồn gốc, priority, người sở hữu, trạng thái và độ phức tạp, và hỗ trợ việc tracing cùng prioritisation về sau."
+    },
+    {
+      "code": "BAPM-013",
+      "stem": "Một business analyst nhận thấy requirements trên initiative hiện tại phải làm lại thường xuyên hơn hẳn so với các initiative tương tự trước đây. Analyst muốn xác định nguyên nhân trước khi đề xuất bất kỳ thay đổi nào về cách nhóm làm việc. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân tích kết quả performance so với các thước đo đã thống nhất để xác định nguyên nhân của chênh lệch.",
+          "rationale": "Đúng. Phân tích performance và xác định nguồn gốc vấn đề đi trước việc khuyến nghị hành động trong task này."
+        },
+        {
+          "label": "B",
+          "text": "Đưa vào một checkpoint review requirements chặt hơn để giảm tỷ lệ làm lại.",
+          "rationale": "Đây là hành động khắc phục được thực hiện trước khi biết nguyên nhân. Nếu việc làm lại bắt nguồn từ business objective không ổn định, thêm một cổng review nữa cũng vô ích."
+        },
+        {
+          "label": "C",
+          "text": "Báo cáo tỷ lệ làm lại lên sponsor và xin quyết định về cách tiến hành tiếp.",
+          "rationale": "Báo một con số thô mà không phân tích là đẩy phần việc của chính analyst sang sponsor và mời gọi một quyết định thiếu căn cứ."
+        },
+        {
+          "label": "D",
+          "text": "So sánh tỷ lệ làm lại của initiative với một benchmark của ngành.",
+          "rationale": "Benchmark cho một mốc so sánh bên ngoài nhưng vẫn không giải thích được chênh lệch trên initiative này, vốn là điều analyst đặt ra để tìm hiểu."
+        }
+      ],
+      "sourceHash": "dd8da49f824a6f860c9596793dcbbd77b472a269aaf4e8111d41ee83df065b3d",
+      "explanation": "Identify Business Analysis Performance Improvements đánh giá business analysis performance đối chiếu với các thước đo đã thống nhất, xác định nguyên nhân của chênh lệch, và chỉ sau đó mới khuyến nghị hành động phòng ngừa hoặc khắc phục."
+    },
+    {
+      "code": "BAPM-014",
+      "stem": "Vào đầu một initiative, business analyst và các stakeholder thống nhất với nhau thế nào là business analysis performance tốt trên phần việc này, và nó sẽ được đo lường ra sao. Vì sao BABOK đặt sự thống nhất này ở đầu chứ không phải ở cuối?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Để việc đánh giá về sau có một cơ sở đã được thống nhất và kỳ vọng của stakeholder được nói rõ ngay từ đầu.",
+          "rationale": "Đúng. Thống nhất thước đo ngay từ đầu là điều làm cho việc đánh giá performance về sau có ý nghĩa thay vì chỉ là chuyện quan điểm."
+        },
+        {
+          "label": "B",
+          "text": "Để có thể tính toán khách quan kết quả đánh giá năng lực cá nhân của business analyst.",
+          "rationale": "Task này đo business analysis performance trên initiative, không phải đánh giá năng lực nhân sự của một cá nhân."
+        },
+        {
+          "label": "C",
+          "text": "Để các thước đo có thể được baseline và đưa vào change control.",
+          "rationale": "Change control quản trị requirements. Các performance measure có thể tiến hóa khi initiative diễn ra và không phải đối tượng của change control process."
+        },
+        {
+          "label": "D",
+          "text": "Để các thước đo có thể được trace tới business objective trong requirements repository.",
+          "rationale": "Traceability liên kết requirements với objective. Performance measure mô tả bản thân công việc phân tích đang diễn ra thế nào, và không được trace theo kiểu đó."
+        }
+      ],
+      "sourceHash": "c6ad222e5c8220ae9c1c0cd04125ea7ece207b2e9aab584c839d1d644924f708",
+      "explanation": "Các performance measure được xác định và thống nhất với stakeholder trước khi công việc được đánh giá, để kỳ vọng là rõ ràng và việc đánh giá có một cơ sở đã được thống nhất chứ không phải một ý kiến nhìn lại sau khi mọi chuyện đã rồi."
+    },
+    {
+      "code": "BAPM-015",
+      "stem": "Một business analyst tham gia một initiative mới và bắt đầu lập danh sách stakeholder, đánh giá mức influence và attitude của từng người đối với thay đổi, trước khi quyết định cách tương tác với từng nhóm. Analyst đang thực hiện task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Stakeholder Engagement, vì stakeholder analysis chính là element dẫn dắt task này.",
+          "rationale": "Đúng. Đánh giá influence và attitude chính là stakeholder analysis, element nằm ở trung tâm của việc lập stakeholder engagement approach."
+        },
+        {
+          "label": "B",
+          "text": "Plan Business Analysis Governance, vì nó xác định ai tham gia vào các quyết định.",
+          "rationale": "Governance xác định các quyết định về requirements và design được đưa ra ra sao, chẳng hạn phê duyệt và change control. Tự nó không phân tích stakeholder là ai."
+        },
+        {
+          "label": "C",
+          "text": "Manage Stakeholder Collaboration, vì nó làm việc trực tiếp với stakeholder.",
+          "rationale": "Manage Stakeholder Collaboration là công việc liên tục duy trì sự tham gia khi đã có sẵn một approach, không phải phần phân tích ban đầu xem stakeholder là ai."
+        },
+        {
+          "label": "D",
+          "text": "Plan Business Analysis Approach, vì nó bao trùm phương pháp tổng thể cho công việc.",
+          "rationale": "Plan Business Analysis Approach đặt ra phương pháp tổng thể để tiến hành business analysis; phân tích riêng về stakeholder là một task hẹp hơn và tách biệt."
+        }
+      ],
+      "sourceHash": "96ab40da69d662a3954a3260289941cfc11a281bf4543bad6dc8e3d5aec122c3",
+      "explanation": "Plan Stakeholder Engagement là task có mục đích lập ra approach để thiết lập và duy trì quan hệ làm việc hiệu quả với stakeholder; element cốt lõi của nó là thực hiện stakeholder analysis để hiểu họ là ai trước khi quyết định cách tương tác với họ."
+    },
+    {
+      "code": "BAPM-016",
+      "stem": "Trước khi một initiative bước vào công việc chi tiết, sponsor đề nghị business analyst xác định trước, một cách chính xác, ai được phép phê duyệt thay đổi đối với một requirement đã baseline và bằng chứng nào phải đi kèm một change request. Task nào đáp ứng nhu cầu này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Business Analysis Governance, vì nó định nghĩa chính quy trình ra quyết định.",
+          "rationale": "Đúng. Quyết định trước ai phê duyệt thay đổi và cần bằng chứng gì chính xác là cấu trúc ra quyết định mà task này định nghĩa."
+        },
+        {
+          "label": "B",
+          "text": "Approve Requirements, vì nó liên quan tới việc phê duyệt một thay đổi.",
+          "rationale": "Approve Requirements là nơi một phê duyệt thực tế được lấy trong quá trình làm việc, dùng quy trình mà governance đã định nghĩa sẵn, chứ không phải nơi thiết kế ra quy trình đó."
+        },
+        {
+          "label": "C",
+          "text": "Assess Requirements Changes, vì nó đánh giá tác động của một thay đổi.",
+          "rationale": "Việc đánh giá tác động của một thay đổi cụ thể diễn ra sau, dùng các quy tắc governance đã có sẵn, chứ không phải việc dựng lên các quy tắc ấy."
+        },
+        {
+          "label": "D",
+          "text": "Plan Business Analysis Information Management, vì nó xử lý các bản ghi requirement.",
+          "rationale": "Information management lo việc thông tin business analysis được lưu và truy cập ra sao, không phải ai có thẩm quyền phê duyệt thay đổi với nó."
+        }
+      ],
+      "sourceHash": "f6cfb5c24b2b428b30171a77404e9597c2be3e528fc60e2892b86102fb707648",
+      "explanation": "Plan Business Analysis Governance xác định các quyết định về requirements và design được đưa ra như thế nào, bao gồm review, change control, phê duyệt và prioritization, trước khi việc ra quyết định đó thực sự phải diễn ra."
+    },
+    {
+      "code": "BAPM-017",
+      "stem": "Sau khi một release khép lại, business analysis lead xem lại thời gian đã bỏ ra để elicit và phê duyệt requirements trên initiative này, so sánh với cycle time mục tiêu, rồi soạn khuyến nghị về cách lên kế hoạch cho các buổi elicitation trên những initiative khác trong tương lai. Lead đang làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Identify Business Analysis Performance Improvements, vì nó đánh giá công việc BA và lên kế hoạch thay đổi quy trình.",
+          "rationale": "Đúng. Rà soát xem quy trình business analysis đã vận hành ra sao, đối chiếu với các thước đo đã thống nhất, rồi khuyến nghị thay đổi quy trình chính là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Plan Business Analysis Approach, vì nó xác định công việc sẽ được thực hiện ra sao.",
+          "rationale": "Plan Business Analysis Approach đặt ra phương pháp từ đầu. Tình huống này là một đánh giá nhìn lại sau khi công việc đã xong."
+        },
+        {
+          "label": "C",
+          "text": "Measure Solution Performance, vì performance đang được đo lường.",
+          "rationale": "Measure Solution Performance đánh giá giá trị của giải pháp đã triển khai đối với doanh nghiệp, không phải cycle time elicitation và phê duyệt của chính business analyst."
+        },
+        {
+          "label": "D",
+          "text": "Analyze Performance Measures, vì các thước đo đang được so với mục tiêu.",
+          "rationale": "Analyze Performance Measures diễn giải dữ liệu performance của một giải pháp, thuộc Solution Evaluation, chứ không phải đánh giá bản thân quy trình business analysis."
+        }
+      ],
+      "sourceHash": "d3eb6818ed830082405da65ce0b0898ed9377c70ef9555000f460180daed0588",
+      "explanation": "Identify Business Analysis Performance Improvements đánh giá chính công việc business analysis và lập kế hoạch cải tiến quy trình. Rất dễ nhầm nó với các task về performance của Solution Evaluation, vốn đo giá trị của một giải pháp đã triển khai chứ không phải chất lượng của quy trình business analysis đã tạo ra nó."
+    }
+  ]
+}

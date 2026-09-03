@@ -1,0 +1,510 @@
+{
+  "version": 1,
+  "locale": "vi",
+  "questions": [
+    {
+      "code": "RLCM-001",
+      "stem": "Một sponsor chất vấn về một non-functional requirement tốn kém, hỏi rằng vì sao nó tồn tại. Chỉ trong vài phút, business analyst chỉ ra được chuỗi liên kết từ requirement đó lên tới business objective mà nó phục vụ, và xuống tới design cùng các test case hiện thực hóa nó. Lợi ích nào của traceability đang được minh họa?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Traceability cho thấy nguồn gốc dẫn xuất và mức độ bao phủ của requirement, nhờ đó đánh giá được tính cần thiết và tác động của nó.",
+          "rationale": "Đúng. Chứng minh vì sao một requirement tồn tại và những gì phụ thuộc vào nó là giá trị cốt lõi của các quan hệ traceability mà task này duy trì."
+        },
+        {
+          "label": "B",
+          "text": "Traceability chứng minh rằng requirement đã được phê duyệt chính thức.",
+          "rationale": "Trạng thái phê duyệt là một requirement attribute được ghi trong Approve Requirements. Một liên kết trace là một quan hệ, không phải hồ sơ phê duyệt."
+        },
+        {
+          "label": "C",
+          "text": "Traceability xác nhận rằng requirement không mơ hồ và có thể kiểm thử được.",
+          "rationale": "Đó là các quality characteristic được đánh giá trong Verify Requirements. Một requirement được trace tốt vẫn có thể được viết tệ."
+        },
+        {
+          "label": "D",
+          "text": "Traceability xác lập mức priority tương đối của requirement.",
+          "rationale": "Priority đến từ Prioritize Requirements. Traceability cung cấp thông tin cho prioritisation nhưng không quyết định nó."
+        }
+      ],
+      "sourceHash": "41f40334a639bc0213a371cf24f14687409e68093e04fdbd7fe405f3a2129aa4",
+      "explanation": "Trace Requirements tạo ra và duy trì quan hệ giữa requirements, design, thành phần giải pháp và các artifact khác. Chính những quan hệ đó cho phép analyst chứng minh mức bao phủ và nguồn gốc dẫn xuất, đồng thời đánh giá tác động của việc thay đổi hay loại bỏ bất kỳ mục nào."
+    },
+    {
+      "code": "RLCM-002",
+      "stem": "Một business analyst ghi lại rằng requirement về gửi thông báo giao hàng không thể được triển khai trừ khi requirement về thu thập địa chỉ email khách hàng đã xác minh được triển khai trước. Analyst đã ghi nhận loại quan hệ nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Necessity",
+          "rationale": "Đúng. Necessity nắm bắt việc triển khai một requirement chỉ có ý nghĩa hoặc chỉ khả thi nếu một requirement khác cũng được triển khai."
+        },
+        {
+          "label": "B",
+          "text": "Derive",
+          "rationale": "Quan hệ derive tồn tại khi một requirement được phát triển ra từ một requirement khác, thường là qua các mức trừu tượng. Ở đây không cái nào được dẫn xuất từ cái nào; đơn giản là một cái phụ thuộc vào cái kia."
+        },
+        {
+          "label": "C",
+          "text": "Satisfy",
+          "rationale": "Satisfy liên kết một phần tử hiện thực hóa với requirement mà nó đáp ứng. Cả hai mục ở đây đều là requirement."
+        },
+        {
+          "label": "D",
+          "text": "Validate",
+          "rationale": "Quan hệ validate liên kết một requirement với một test case hay mục khác dùng để kiểm tra nó. Không có test case nào ở đây."
+        }
+      ],
+      "sourceHash": "9bbd327ffdaa5388f3b1e2ddd42e7370638e5c4bca85a47312906a2dbf74b0a4",
+      "explanation": "Trace Requirements phân biệt nhiều loại quan hệ. Quan hệ necessity tồn tại khi một requirement chỉ có thể được triển khai nếu một requirement khác cũng được triển khai — khác với việc một requirement được dẫn xuất từ một requirement khác."
+    },
+    {
+      "code": "RLCM-003",
+      "stem": "Một programme có mười nghìn requirement trải trên sáu workstream. Business analyst đang quyết định nên duy trì traceability tới mức nào. Cân nhắc nào nên dẫn dắt quyết định này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giá trị mà các liên kết mang lại cho impact analysis và mức bao phủ, cân đối với chi phí duy trì chúng.",
+          "rationale": "Đúng. Traceability được duy trì ở mức mà tính hữu ích của nó biện minh được; liên kết vét cạn trên một programme lớn có thể tốn hơn phần nó mang lại."
+        },
+        {
+          "label": "B",
+          "text": "Mọi requirement đều nên được trace tới mọi artifact liên quan, vì tính đầy đủ là mục tiêu.",
+          "rationale": "Đây là đáp án tuyệt đối hóa nghe rất hấp dẫn. Traceability đầy đủ trên mười nghìn requirement tạo ra gánh nặng bảo trì rồi thoái hóa thành những liên kết lỗi thời."
+        },
+        {
+          "label": "C",
+          "text": "Năng lực của công cụ requirements management mà programme đã mua license.",
+          "rationale": "Công cụ có thể ràng buộc cách lưu liên kết, nhưng nó không nên quyết định initiative thực sự cần mức traceability nào."
+        },
+        {
+          "label": "D",
+          "text": "Số lượng business analyst sẵn có để duy trì các liên kết.",
+          "rationale": "Nhân lực là một ràng buộc có thật, nhưng đó là lý do để bố trí nguồn lực cho quyết định, chứ không phải cơ sở để quyết định traceability đáng có tới đâu."
+        }
+      ],
+      "sourceHash": "bbd428c1fdff39184a4222cc6b18b02644dacf64838901abf122055bee1003f8",
+      "explanation": "Mức độ trang trọng và chi tiết của traceability là một phán đoán cân giữa giá trị và công sức. Traceability được duy trì tới mức đủ để phục vụ impact analysis, mức bao phủ và nhu cầu governance, vì việc duy trì liên kết có chi phí liên tục."
+    },
+    {
+      "code": "RLCM-004",
+      "stem": "Một tổ chức vừa bàn giao xong một thay đổi. Business analyst muốn các requirement mô tả những business rule phát sinh từ đó vẫn chính xác và sẵn dùng cho các initiative sau này, thay vì bị lưu kho cùng với dự án. Task nào bao trùm việc này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Maintain Requirements",
+          "rationale": "Đúng. Giữ requirements chính xác và sẵn dùng để tái sử dụng sau khi bàn giao đúng là phạm vi của task này."
+        },
+        {
+          "label": "B",
+          "text": "Plan Business Analysis Information Management",
+          "rationale": "Task đó lập kế hoạch cách thông tin sẽ được lưu và tái sử dụng. Còn việc thực sự giữ cho requirements cập nhật về sau là Maintain Requirements."
+        },
+        {
+          "label": "C",
+          "text": "Approve Requirements",
+          "rationale": "Approval lấy sự đồng thuận từ stakeholder có thẩm quyền. Nó không giữ cho một requirement chính xác khi doanh nghiệp xung quanh nó thay đổi."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes",
+          "rationale": "Task đó đánh giá một thay đổi được đề xuất. Ở đây không có gì được đề xuất cả; mối quan tâm là độ chính xác lâu dài."
+        }
+      ],
+      "sourceHash": "6e7dfe9e6a3380558142a14d449695478866d2c9d93775fb37105962c4c043fe",
+      "explanation": "Maintain Requirements đảm bảo requirements vẫn chính xác và cập nhật suốt vòng đời của chúng, bao gồm cả việc duy trì chúng để tái sử dụng vượt ra ngoài initiative đã tạo ra chúng."
+    },
+    {
+      "code": "RLCM-005",
+      "stem": "Một business analyst đang rà soát các requirement ứng viên cho thư viện tái sử dụng của tổ chức. Requirement nào là ứng viên mạnh nhất để tái sử dụng?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một requirement phát biểu một quy tắc lưu trữ theo luật định bằng những từ ngữ không tham chiếu tới dự án hay hệ thống này.",
+          "rationale": "Đúng. Cách diễn đạt độc lập với bối cảnh chính là thứ làm cho một requirement tái sử dụng được giữa các initiative."
+        },
+        {
+          "label": "B",
+          "text": "Một requirement priority cao mà sponsor đích thân phê duyệt.",
+          "rationale": "Priority và phê duyệt là thuộc tính của initiative này. Không cái nào nói lên được requirement đó có đi xa được hay không."
+        },
+        {
+          "label": "C",
+          "text": "Một requirement mô tả bố cục màn hình trong release vừa mới go-live.",
+          "rationale": "Nó bị trói vào một giải pháp và một release cụ thể — trái ngược với điều mà việc tái sử dụng đòi hỏi."
+        },
+        {
+          "label": "D",
+          "text": "Một requirement có traceability đầy đủ tới các business objective của initiative này.",
+          "rationale": "Traceability dày dặn tới các objective của initiative này là dấu hiệu làm việc tốt, nhưng những liên kết đó không mang sang được initiative tương lai."
+        }
+      ],
+      "sourceHash": "bbeca09f211b8b73c9be6dad0cfa1f4ff95c1f5867f57f880f389fa0aca7ef2f",
+      "explanation": "Requirement được duy trì để tái sử dụng phải được phát biểu theo cách độc lập với bối cảnh của bất kỳ initiative đơn lẻ nào, để một nhóm sau này áp dụng được mà không phải gỡ rối những tham chiếu tới một dự án, release hay hệ thống cụ thể."
+    },
+    {
+      "code": "RLCM-006",
+      "stem": "Mọi business unit đều xếp requirement của riêng mình là ưu tiên cao nhất, và danh sách gộp lại không thể bàn giao hết trong release hiện có. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Thống nhất với các stakeholder một cơ sở chung cho việc prioritisation, rồi xếp hạng các requirement dựa trên cơ sở đó.",
+          "rationale": "Đúng. Thiết lập cơ sở cho prioritisation là element đầu tiên của task này, và nó là thứ cho phép so sánh những đòi hỏi cạnh tranh nhau."
+        },
+        {
+          "label": "B",
+          "text": "Bàn giao trước các requirement của đơn vị đóng góp doanh thu lớn nhất.",
+          "rationale": "Đóng góp doanh thu là một cơ sở khả dĩ, nhưng áp đặt nó đơn phương là thay một cơ sở đã thống nhất bằng quy tắc riêng của analyst."
+        },
+        {
+          "label": "C",
+          "text": "Chia đều năng lực của release cho các business unit.",
+          "rationale": "Chia đều nghe có vẻ công bằng nhưng bỏ qua giá trị, rủi ro và dependency. Đó là một dàn xếp chính trị, không phải prioritisation."
+        },
+        {
+          "label": "D",
+          "text": "Đề nghị từng đơn vị tự cắt bớt danh sách của mình cho tới khi tập gộp vừa với release.",
+          "rationale": "Cách này đẩy quyết định ngược lại mà không có cơ sở chung, nên mỗi đơn vị tối ưu cục bộ và cả tập vẫn không được prioritize."
+        }
+      ],
+      "sourceHash": "a74a675ef3f923924a7dd2831bfa79f6e87827d19681e8eea48a5966b04761be",
+      "explanation": "Prioritize Requirements xếp hạng requirements theo tầm quan trọng tương đối dựa trên một cơ sở đã thống nhất như business value, rủi ro, chi phí, dependency và yêu cầu pháp lý. Prioritisation mang tính so sánh, nên một cơ sở chung chính là thứ làm cho nó khả thi."
+    },
+    {
+      "code": "RLCM-007",
+      "stem": "Một requirement tự nó chỉ mang lại business value khiêm tốn, nhưng ba requirement giá trị cao khác không thể triển khai nếu thiếu nó. Điều này nên ảnh hưởng thế nào tới priority của nó?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Priority của nó nên được nâng lên, vì các dependency là một cơ sở chính đáng cho prioritisation.",
+          "rationale": "Đúng. Prioritisation cân nhắc dependency song song với giá trị, nên một requirement mang tính tiền đề xếp cao hơn giá trị riêng của nó."
+        },
+        {
+          "label": "B",
+          "text": "Priority của nó nên giữ ở mức thấp, vì priority phản ánh business value được tạo ra.",
+          "rationale": "Đáp án suýt đúng. Giá trị thì quan trọng, nhưng coi nó là cơ sở duy nhất sẽ làm mắc kẹt ba requirement giá trị cao phụ thuộc vào cái này."
+        },
+        {
+          "label": "C",
+          "text": "Nó nên được gộp vào requirement có giá trị cao nhất phụ thuộc vào nó.",
+          "rationale": "Gộp các requirement khác biệt để giải quyết một vấn đề xếp hạng làm hỏng bộ requirement và che giấu dependency thay vì phản ánh nó."
+        },
+        {
+          "label": "D",
+          "text": "Nó nên được phân loại lại thành một constraint thay vì một requirement.",
+          "rationale": "Constraint là một hạn chế mà giải pháp phải vận hành bên trong. Một capability tiền đề mà giải pháp phải cung cấp thì vẫn là một requirement."
+        }
+      ],
+      "sourceHash": "63f7f27dcc3dfd3e6deb461c736d4e54c2cbc08197eacb686089424d4377e40e",
+      "explanation": "Dependency là một trong các cơ sở của prioritisation. Một requirement có giá trị độc lập hạn chế vẫn có thể xếp hạng cao vì những requirement khác giá trị hơn phụ thuộc vào nó."
+    },
+    {
+      "code": "RLCM-008",
+      "stem": "Trên một initiative theo hướng adaptive, business analyst xếp hạng lại backlog trước mỗi iteration thay vì thống nhất một thứ tự cố định ngay từ đầu. Điều này phản ánh khía cạnh nào của Prioritize Requirements?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Continual prioritisation, vì mức độ quan trọng tương đối thay đổi khi initiative tiến triển.",
+          "rationale": "Đúng. BABOK coi prioritisation là việc liên tục, không phải một sự kiện duy nhất lúc bắt đầu."
+        },
+        {
+          "label": "B",
+          "text": "Challenges of prioritisation, vì stakeholder phản đối các thứ hạng cố định.",
+          "rationale": "Element đó nói về những khó khăn như stakeholder thổi phồng priority hay không chịu đánh đổi. Xếp hạng lại mỗi iteration là một nhịp làm việc, không phải một khó khăn."
+        },
+        {
+          "label": "C",
+          "text": "Basis for prioritisation, vì các tiêu chí được đánh giá lại mỗi iteration.",
+          "rationale": "Basis là tập tiêu chí được dùng. Tình huống mô tả việc áp dụng lại các tiêu chí nhiều lần, không phải việc định nghĩa lại chúng."
+        },
+        {
+          "label": "D",
+          "text": "Change control, vì mỗi lần xếp hạng lại là một thay đổi đối với baseline.",
+          "rationale": "Sắp xếp lại một backlog chưa baseline là thực hành adaptive bình thường, không phải một thay đổi có kiểm soát đối với một baseline đã được phê duyệt."
+        }
+      ],
+      "sourceHash": "248edc266ea4b48f63a4dc682db68d5862cf18fd2a5b383c106494569f1e979f",
+      "explanation": "Continual prioritisation là một element của task. Khi tình huống thay đổi và hiểu biết tăng lên, tầm quan trọng tương đối của các requirement cũng thay đổi, nên prioritisation được xem lại chứ không chốt một lần là xong."
+    },
+    {
+      "code": "RLCM-009",
+      "stem": "Ở giai đoạn muộn của quá trình bàn giao, một stakeholder đề xuất bổ sung luồng tự hủy đơn cho khách hàng. Trước khi có bất kỳ quyết định nào, business analyst nên xác định điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Thay đổi này có phù hợp với chiến lược không, nó tốn gì và mang lại gì, và nó ảnh hưởng tới những gì khác.",
+          "rationale": "Đúng. Sự phù hợp, lợi ích và chi phí, cùng tác động đúng là những chiều mà task này đánh giá trước khi một quyết định được đưa ra."
+        },
+        {
+          "label": "B",
+          "text": "Thay đổi này có thể bàn giao kịp trong timebox của release hiện tại hay không.",
+          "rationale": "Việc vừa lịch là một input cho phía chi phí, nhưng chỉ đánh giá tính khả thi là bỏ qua sự phù hợp, lợi ích và ảnh hưởng lên các requirement khác."
+        },
+        {
+          "label": "C",
+          "text": "Stakeholder đề xuất thay đổi có thẩm quyền yêu cầu điều đó hay không.",
+          "rationale": "Thẩm quyền quy định ai được phép phê duyệt thay đổi theo governance approach; nó không phải là việc đánh giá bản thân thay đổi."
+        },
+        {
+          "label": "D",
+          "text": "Thay đổi này đã được đối thủ cạnh tranh triển khai hay chưa.",
+          "rationale": "Hành vi của đối thủ có thể bổ sung thông tin cho luận điểm về lợi ích, nhưng tự nó chỉ là màu sắc thị trường chứ không phải một đánh giá về thay đổi này."
+        }
+      ],
+      "sourceHash": "127b539091896472384a6c64192d7deaf045405ae3796838066f387bacfe425d",
+      "explanation": "Assess Requirements Changes đánh giá một thay đổi được đề xuất về mức độ phù hợp với chiến lược, lợi ích và chi phí của nó, tác động lên các requirement và thành phần giải pháp khác, cùng mức độ khẩn cấp của quyết định."
+    },
+    {
+      "code": "RLCM-010",
+      "stem": "Một thay đổi được đề xuất trông có vẻ nhỏ khi xét riêng lẻ. Dựa vào các liên kết traceability, business analyst phát hiện nó chạm tới bốn requirement phía sau và hai integration. Traceability đã mang lại điều gì trong tình huống này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Cơ sở cho impact analysis, bằng cách phơi bày ra thay đổi thực sự chạm tới những gì.",
+          "rationale": "Đúng. Đánh giá tác động của một thay đổi là một trong những lý do chính khiến traceability được duy trì."
+        },
+        {
+          "label": "B",
+          "text": "Sự xác nhận rằng thay đổi nên bị từ chối vì nó quá rộng.",
+          "rationale": "Impact analysis cung cấp thông tin cho quyết định; nó không đưa ra quyết định. Một thay đổi trên diện rộng vẫn có thể đáng làm."
+        },
+        {
+          "label": "C",
+          "text": "Hồ sơ phê duyệt cho các requirement bị ảnh hưởng.",
+          "rationale": "Trạng thái phê duyệt là attribute của từng requirement, không phải thứ mà các liên kết traceability cung cấp."
+        },
+        {
+          "label": "D",
+          "text": "Thứ tự ưu tiên để làm lại các requirement bị ảnh hưởng.",
+          "rationale": "Traceability cho thấy cái gì nối với cái gì. Quyết định thứ tự làm lại là một hoạt động prioritisation."
+        }
+      ],
+      "sourceHash": "a424649f39a00386a41cc18292ce6956ada5e41a70a639b8ed90eba3c24097ac",
+      "explanation": "Impact analysis dựa trực tiếp vào các quan hệ traceability được duy trì trong Trace Requirements. Chính những liên kết đó phơi bày ra thay đổi chạm tới cái gì, và đó là thứ biến một ước lượng theo cảm tính thành một đánh giá có căn cứ."
+    },
+    {
+      "code": "RLCM-011",
+      "stem": "Một business analyst đã đánh giá một thay đổi được đề xuất và ghi lại tác động cùng lợi ích của nó. Ai quyết định thay đổi đó có được tiến hành hay không?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các stakeholder có thẩm quyền ra quyết định đã được xác định trong governance approach.",
+          "rationale": "Đúng. Analyst đánh giá và khuyến nghị; stakeholder có thẩm quyền là người quyết."
+        },
+        {
+          "label": "B",
+          "text": "Business analyst, vì analyst là người nắm bản đánh giá tác động.",
+          "rationale": "Nắm bản phân tích không tạo ra thẩm quyền. Quyết định thay cho phía business nằm ngoài vai trò của analyst."
+        },
+        {
+          "label": "C",
+          "text": "Delivery team, vì họ là người phải gánh khối lượng công việc.",
+          "rationale": "Năng lực của delivery team là một input cho phần đánh giá, nhưng quyết định là một quyết định nghiệp vụ."
+        },
+        {
+          "label": "D",
+          "text": "Người đề xuất thay đổi, vì họ hiểu rõ nhu cầu nhất.",
+          "rationale": "Để mỗi người yêu cầu tự phê duyệt thay đổi của mình là xóa sổ hoàn toàn governance."
+        }
+      ],
+      "sourceHash": "c173b422a60621cb87ee7ab0773ffc2e18f656948d740d086102640a9d521af7",
+      "explanation": "Assess Requirements Changes tạo ra một khuyến nghị. Bản thân quyết định thuộc về các stakeholder nắm thẩm quyền ra quyết định, như đã được xác lập trong Plan Business Analysis Governance."
+    },
+    {
+      "code": "RLCM-012",
+      "stem": "Một business analyst đã gửi đi một requirements package để lấy phê duyệt. Hai trong bốn người phê duyệt được nêu tên đã ký; hai người còn lại không phản hồi suốt ba tuần và việc bàn giao sắp phải bắt đầu. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Tiếp tục theo đuổi các phê duyệt còn thiếu và làm rõ tình trạng phê duyệt chưa đầy đủ này trong quyết định bàn giao.",
+          "rationale": "Đúng. Theo dõi và truyền đạt trạng thái phê duyệt là một phần của task, và các quyết định bàn giao nên được đưa ra khi đã biết rõ trạng thái đó."
+        },
+        {
+          "label": "B",
+          "text": "Xem sự im lặng là ngầm phê duyệt và tiếp tục, vì họ đã được cho đủ thời gian.",
+          "rationale": "Đây là distractor hấp dẫn nhất khi bị sức ép tiến độ. Phê duyệt đòi hỏi sự đồng thuận từ người có thẩm quyền; im lặng không phải là đồng thuận."
+        },
+        {
+          "label": "C",
+          "text": "Thay những người phê duyệt không phản hồi bằng các stakeholder đang sẵn sàng.",
+          "rationale": "Thẩm quyền phê duyệt đến từ governance approach. Analyst không thể tự phân bổ lại nó để kịp hạn chót."
+        },
+        {
+          "label": "D",
+          "text": "Thu hẹp scope của package xuống chỉ còn các requirement mà hai người kia đã phê duyệt.",
+          "rationale": "Cách này âm thầm loại bỏ requirement để tạo ra một trạng thái phê duyệt trọn vẹn giả tạo, và như vậy là trình bày sai về bộ requirement."
+        }
+      ],
+      "sourceHash": "2dc88f1b1a72873a9e1848ff3df36df6ee6a231d45ab2dccc2dc2876c2913d85",
+      "explanation": "Approve Requirements lấy sự đồng thuận từ tất cả stakeholder có thẩm quyền phê duyệt, và bao gồm việc theo dõi cùng truyền đạt trạng thái phê duyệt. Những phê duyệt còn thiếu được theo đuổi và làm cho rõ ràng, chứ không được mặc định là đã có."
+    },
+    {
+      "code": "RLCM-013",
+      "stem": "Cặp mô tả nào phân biệt đúng verification, validation và approval của requirements?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Verification kiểm tra chất lượng, validation kiểm tra giá trị, còn approval ghi nhận sự đồng thuận có thẩm quyền.",
+          "rationale": "Đúng. Đây là ba phép kiểm tra khác biệt, do những task khác nhau thực hiện với những mục đích khác nhau."
+        },
+        {
+          "label": "B",
+          "text": "Verification kiểm tra giá trị, validation kiểm tra chất lượng, còn approval ghi nhận sự đồng thuận có thẩm quyền.",
+          "rationale": "Verification và validation bị đảo ngược. Chính chỗ hoán đổi này là lỗi phổ biến nhất trong kỳ thi thật."
+        },
+        {
+          "label": "C",
+          "text": "Verification và validation đều là kiểm tra chất lượng, còn approval là việc phía business ký duyệt chất lượng đó.",
+          "rationale": "Validation không phải là kiểm tra chất lượng. Nó hỏi requirement có mang lại giá trị hay không — điều mà một requirement viết hoàn hảo vẫn có thể trượt."
+        },
+        {
+          "label": "D",
+          "text": "Approval phải đi trước verification để chỉ những requirement đã được phê duyệt mới bị kiểm tra.",
+          "rationale": "Phê duyệt requirements trước khi kiểm tra chất lượng là đảo ngược trình tự và buộc người phê duyệt cam kết với phần việc chưa được kiểm."
+        }
+      ],
+      "sourceHash": "5521311493e6f8e1476bf3ab7347007c873be909b6462b5efda0429e8ccd58eb",
+      "explanation": "Verification kiểm tra rằng requirements được viết tốt và đủ chất lượng. Validation kiểm tra rằng chúng mang lại giá trị và hỗ trợ các business objective. Approval là sự đồng thuận của stakeholder có thẩm quyền rằng requirements đã sẵn sàng đi tiếp."
+    },
+    {
+      "code": "RLCM-014",
+      "stem": "Trên một initiative theo hướng adaptive, requirements được product owner phê duyệt ngay tại thời điểm từng cái được kéo vào một iteration, thay vì phê duyệt cả gói lớn tại một phase gate. Điều này có nhất quán với BABOK không?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Có, vì thời điểm và mức độ trang trọng của việc phê duyệt đi theo approach đã chọn và các quyết định governance.",
+          "rationale": "Đúng. BABOK không bắt buộc một nghi thức phê duyệt duy nhất; nó đòi hỏi stakeholder có thẩm quyền đồng thuận, theo cách mà initiative đã lập kế hoạch."
+        },
+        {
+          "label": "B",
+          "text": "Không, vì requirements phải được baseline và phê duyệt trước khi bắt đầu bất kỳ hoạt động phát triển nào.",
+          "rationale": "Đó là mô tả một predictive approach. Coi nó là phổ quát chính là giả định mà BABOK tránh."
+        },
+        {
+          "label": "C",
+          "text": "Có, nhưng chỉ khi product owner cũng thực hiện cả verification và validation.",
+          "rationale": "Verification và validation là những task riêng và có thể có người khác tham gia. Approval không phụ thuộc vào việc người phê duyệt đích thân thực hiện chúng."
+        },
+        {
+          "label": "D",
+          "text": "Không, vì một người phê duyệt duy nhất không thể đại diện cho mọi stakeholder có lợi ích liên quan.",
+          "rationale": "Một người phê duyệt duy nhất có thẩm quyền là hợp lệ nếu governance approach giao thẩm quyền đó. Tính đại diện là câu hỏi thiết kế governance, không phải một điều cấm."
+        }
+      ],
+      "sourceHash": "f727ac8a6682d9d546f8ec2b4bcabd73f6da09ed1c2bc2c07553583159b53b7b",
+      "explanation": "Mức độ trang trọng và thời điểm phê duyệt đi theo business analysis approach và các quyết định governance của initiative. Các initiative adaptive thường phê duyệt requirements muộn hơn và theo từng phần nhỏ hơn so với initiative predictive."
+    },
+    {
+      "code": "RLCM-015",
+      "stem": "Sáu tháng sau khi một giải pháp go-live, business analyst phát hiện rằng vài requirement đang lưu trữ không còn mô tả đúng cách doanh nghiệp vận hành nữa, vì đã có hai thay đổi nhỏ tiếp theo được thực hiện mà không cập nhật lại chúng. Điều này cho thấy gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các requirement đã không được maintain, nên không còn đáng tin để tái sử dụng hay để làm impact analysis.",
+          "rationale": "Đúng. Giá trị của requirements đang lưu trữ phụ thuộc vào việc chúng vẫn chính xác, và đó là điều task này tồn tại để đảm bảo."
+        },
+        {
+          "label": "B",
+          "text": "Các requirement nên bị xóa, vì thông tin sai còn tệ hơn là không có thông tin.",
+          "rationale": "Xóa đi là vứt bỏ phần việc vốn có thể sửa được, và mất luôn bản ghi về lý do các quyết định ban đầu được đưa ra."
+        },
+        {
+          "label": "C",
+          "text": "Change control process đã thất bại, vì hai thay đổi kia đã không được đánh giá.",
+          "rationale": "Rất có thể hai thay đổi kia đã được đánh giá và phê duyệt đúng quy trình. Thất bại nằm ở chỗ hồ sơ requirement không được cập nhật sau đó."
+        },
+        {
+          "label": "D",
+          "text": "Các requirement chưa từng được validate, vì chúng không còn mang lại giá trị.",
+          "rationale": "Validation quan tâm tới việc một requirement có mang lại giá trị tại thời điểm nó được đánh giá hay không. Việc trở nên lỗi thời về sau là thất bại của maintenance, không phải của validation."
+        }
+      ],
+      "sourceHash": "21992985b52c511b0b57752729fa24a459f44fbec38bc92fc29fabfe6fa15285",
+      "explanation": "Maintain Requirements giữ cho requirements chính xác và cập nhật trong suốt vòng đời của chúng, không chỉ trong lúc initiative diễn ra. Requirement trôi lệch khỏi thực tế doanh nghiệp là requirement đã không được maintain, và điều đó phá hỏng khả năng tái sử dụng cùng mọi impact analysis dựa trên chúng."
+    },
+    {
+      "code": "RLCM-016",
+      "stem": "Một cơ quan quản lý đề nghị business analyst chứng minh một functional requirement ở mức màn hình cụ thể được dẫn xuất từ business requirement nào, và những test case nào sẽ verify nó. Task nào hỗ trợ việc trả lời câu hỏi này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Trace Requirements, vì nó duy trì các quan hệ giữa các cấp độ.",
+          "rationale": "Đúng. Chỉ ra một requirement liên kết thế nào với business requirement ở trên nó và các test case verify nó chính là điều mà các quan hệ traceability nắm bắt."
+        },
+        {
+          "label": "B",
+          "text": "Maintain Requirements, vì requirement cần được giữ chính xác.",
+          "rationale": "Maintain Requirements giữ cho từng requirement chính xác và cập nhật theo thời gian. Tự nó không theo dõi quan hệ giữa các requirement ở những cấp độ khác nhau."
+        },
+        {
+          "label": "C",
+          "text": "Prioritize Requirements, vì có những requirement quan trọng hơn những cái khác.",
+          "rationale": "Prioritization xếp hạng requirements theo tầm quan trọng tương đối. Nó không liên quan gì tới việc một mục cụ thể được dẫn xuất từ requirement nào."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, vì cơ quan quản lý đang hỏi về requirement đó.",
+          "rationale": "Assess Requirements Changes đánh giá tác động của một thay đổi được đề xuất, và thường dựa vào traceability như một input. Trong tình huống này không có thay đổi nào được đề xuất."
+        }
+      ],
+      "sourceHash": "e5ae0c1dcf99c519c9338932e9e5eb2d02cfe87d94abd40267fb08248b95be1b",
+      "explanation": "Trace Requirements đảm bảo requirements và design ở các cấp độ khác nhau khớp với nhau, duy trì các quan hệ và kho traceability cho phép analyst chỉ ra một requirement cấp thấp liên kết ngược lên business requirement nào và xuôi xuống các test case nào."
+    },
+    {
+      "code": "RLCM-017",
+      "stem": "Với ngân sách cố định và hạn chót cứng, business analyst điều phối một buổi làm việc xếp hạng những requirement nào mang lại giá trị lớn nhất để làm trước, đồng thời hiểu rằng thông tin mới xuất hiện về sau trong dự án có thể lại làm thay đổi thứ hạng đó. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Prioritize Requirements, vì nó xếp hạng requirements và dự liệu rằng thứ hạng sẽ được xem lại.",
+          "rationale": "Đúng. Xếp hạng theo tầm quan trọng tương đối trong các ràng buộc, rồi xem lại thứ hạng đó khi có thông tin mới, chính là mục đích và bản chất liên tục của task này."
+        },
+        {
+          "label": "B",
+          "text": "Approve Requirements, vì một quyết định đang được đưa ra về các requirement.",
+          "rationale": "Approve Requirements lấy chữ ký duyệt chính thức cho requirements. Xếp hạng chúng theo giá trị là một hoạt động riêng, đi trước và cung cấp thông tin cho các quyết định phê duyệt."
+        },
+        {
+          "label": "C",
+          "text": "Assess Requirements Changes, vì các mức ưu tiên có thể thay đổi về sau.",
+          "rationale": "Assess requirements changes đánh giá tác động của một thay đổi được đề xuất. Nó không phải hoạt động xếp hạng bộ requirement hiện tại theo giá trị."
+        },
+        {
+          "label": "D",
+          "text": "Define Change Strategy, vì ngân sách và hạn chót là các constraint.",
+          "rationale": "Define Change Strategy chọn cách tiếp cận tổng thể cho một thay đổi ở cấp chiến lược, một task thuộc Strategy Analysis, không phải việc xếp hạng từng requirement."
+        }
+      ],
+      "sourceHash": "09c61bd320163840df3c288e6b52770bca66fc3b17ca28446c7b8b621b8fbadf",
+      "explanation": "Prioritize Requirements xếp hạng requirements theo tầm quan trọng tương đối, và BABOK coi đây là việc liên tục chứ không phải một lần, vì thông tin mới có thể làm đổi thứ hạng khi initiative tiến triển."
+    },
+    {
+      "code": "RLCM-018",
+      "stem": "Một stakeholder gửi yêu cầu bổ sung một trường bắt buộc mới vào một requirement đã được phê duyệt. Trước khi quyết định có chấp nhận hay không, business analyst xác định những requirement, design và phần việc phía sau nào sẽ bị ảnh hưởng, và mức độ tác động đó lớn tới đâu. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Requirements Changes, vì nó đánh giá tác động của một thay đổi được đề xuất.",
+          "rationale": "Đúng. Xác định một thay đổi cụ thể sẽ ảnh hưởng tới cái gì, và ở mức đáng kể tới đâu, chính là impact analysis — element cốt lõi của task này."
+        },
+        {
+          "label": "B",
+          "text": "Trace Requirements, vì các quan hệ giữa requirements đang được xem xét.",
+          "rationale": "Trace Requirements duy trì các quan hệ giúp impact analysis khả thi, nhưng việc đánh giá một thay đổi cụ thể dựa trên các quan hệ đó là một task riêng."
+        },
+        {
+          "label": "C",
+          "text": "Approve Requirements, vì thay đổi này cần một quyết định.",
+          "rationale": "Approve Requirements lấy sự đồng thuận và chữ ký duyệt sau khi tác động của một thay đổi đã được hiểu rõ, chứ không phải phần phân tích xác định tác động đó là gì."
+        },
+        {
+          "label": "D",
+          "text": "Verify Requirements, vì chất lượng của requirement đang bị đặt dấu hỏi.",
+          "rationale": "Verify Requirements kiểm tra rằng một đặc tả đạt chuẩn chất lượng. Nó không có vai trò gì trong việc phân tích tác động phía sau của một thay đổi được đề xuất."
+        }
+      ],
+      "sourceHash": "4037c9f670c9fe59f161d1f87e0f7bb2f12724910782cc6122c982db33325218",
+      "explanation": "Assess Requirements Changes đánh giá hệ quả của một thay đổi được đề xuất đối với requirements và design, dùng impact analysis; nó dựa vào các quan hệ mà Trace Requirements duy trì, nhưng hành vi đánh giá một thay đổi cụ thể là một task tách biệt với bản thân việc tracing."
+    }
+  ]
+}

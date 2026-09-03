@@ -1,0 +1,1022 @@
+{
+  "version": 1,
+  "locale": "vi",
+  "caseStudies": [
+    {
+      "code": "CS-RADD-01",
+      "title": "Northbank: thiết kế lại quy trình khởi tạo khoản vay",
+      "body": "Northbank đang thiết kế lại cách khởi tạo các khoản vay cho doanh nghiệp nhỏ. Hiện nay, một hồ sơ đi qua bốn nhóm: intake, credit assessment, security review và drawdown. Mỗi nhóm giữ bảng tính riêng và nhập tay lại dữ liệu từ kết quả của nhóm trước. Hồ sơ thường xuyên bị trả về intake vì thiếu giấy tờ, và không ai nói được việc này xảy ra bao nhiêu lần hay ở bước nào. Product director muốn ra quyết định trong hai ngày thay vì chín ngày. Quy định pháp lý đòi hỏi mọi credit decision đều phải tái dựng lại được, cho thấy quyết định đó dựa trên thông tin nào và ai đã phê duyệt. Business analyst đã confirm elicitation results từ cả bốn nhóm và hiện đang phân tích chúng.",
+      "sourceHash": "b04dc95d8f4970966d9f2581db831f5435bb2be28eec2f978c6eabaf0ef2ec5f"
+    }
+  ],
+  "questions": [
+    {
+      "code": "RADD-001",
+      "stem": "Business analyst tại Northbank đã confirm elicitation results từ cả bốn nhóm và giờ đang chuyển chúng thành requirements. Theo thuật ngữ BABOK, analyst đang làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân tích, tổng hợp và tinh chỉnh elicitation results thành requirements và designs.",
+          "rationale": "Đúng. Đây là mục đích được nêu ra của Specify and Model Requirements, và nó là bước nằm giữa elicitation results đã confirmed và requirements."
+        },
+        {
+          "label": "B",
+          "text": "Xác nhận rằng elicitation results phản ánh đúng những gì stakeholder đã nói.",
+          "rationale": "Tình huống đã nói rõ các kết quả đã được confirmed. Task đó đã xong."
+        },
+        {
+          "label": "C",
+          "text": "Verify rằng requirements đạt chuẩn chất lượng cần thiết.",
+          "rationale": "Verification đi sau đặc tả. Hiện chưa có requirement nào để verify cả."
+        },
+        {
+          "label": "D",
+          "text": "Định nghĩa requirements architecture cho initiative.",
+          "rationale": "Requirements architecture cấu trúc hóa cả bộ requirement như một tổng thể. Nó vận hành trên những requirement mà khâu đặc tả tạo ra."
+        }
+      ],
+      "sourceHash": "a1eb6c89aa309692eb4dcf1921b790af7d73f2d8d4e1edc560c51249fd634cb2",
+      "explanation": "Specify and Model Requirements phân tích, tổng hợp và tinh chỉnh elicitation results thành requirements và design. Elicitation results đã confirmed là input; requirements đã được đặc tả và mô hình hóa là output."
+    },
+    {
+      "code": "RADD-002",
+      "stem": "Business analyst muốn thể hiện một hồ sơ di chuyển giữa bốn nhóm của Northbank ra sao, nó chờ ở đâu, và ở đâu thì bị trả về intake. Mô hình nào phù hợp nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một process model, vì mối quan tâm là dòng công việc chảy giữa các actor.",
+          "rationale": "Đúng. Dòng chảy, trình tự, bàn giao giữa các bên và vòng lặp làm lại chính là những thứ process model biểu diễn."
+        },
+        {
+          "label": "B",
+          "text": "Một data model, vì mối quan tâm là thông tin mà mỗi nhóm nắm giữ.",
+          "rationale": "Data modelling sẽ mô tả cấu trúc của thông tin, không phải sự di chuyển của một hồ sơ giữa các nhóm."
+        },
+        {
+          "label": "C",
+          "text": "Một state model, vì hồ sơ đổi trạng thái khi nó tiến triển.",
+          "rationale": "Distractor mạnh nhất: hồ sơ đúng là có các trạng thái. Nhưng câu hỏi hỏi về sự di chuyển giữa các nhóm và vòng lặp làm lại, tức là dòng chảy."
+        },
+        {
+          "label": "D",
+          "text": "Một scope model, vì mối quan tâm là nhóm nào nằm trong scope.",
+          "rationale": "Scope model đặt ra ranh giới. Chúng không thể hiện công việc di chuyển ra sao bên trong các ranh giới đó."
+        }
+      ],
+      "sourceHash": "c1b96366b8c32cbe3e39ac8dea34476664637689034510ee1a5a5d394b84dc42",
+      "explanation": "Việc chọn mô hình đi theo khía cạnh đang được biểu diễn. Process model thể hiện dòng công việc, trình tự hoạt động, các actor thực hiện chúng, và chỗ nào công việc quay vòng lại hay phải chờ."
+    },
+    {
+      "code": "RADD-003",
+      "stem": "Quy định pháp lý của Northbank đòi hỏi mọi credit decision phải tái dựng lại được, cho thấy nó dựa trên thông tin nào và ai đã phê duyệt. Business analyst nên xử lý điều này thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Như một non-functional requirement diễn đạt tính auditability mà giải pháp phải thể hiện.",
+          "rationale": "Đúng. Auditability là một phẩm chất dịch vụ mà giải pháp phải có, và điều đó khiến nó là một non-functional requirement."
+        },
+        {
+          "label": "B",
+          "text": "Như một business rule quy định ai được phép phê duyệt một credit decision.",
+          "rationale": "Một quy tắc về việc ai được phép phê duyệt thì mới là business rule. Nghĩa vụ ở đây là quyết định phải tái dựng lại được sau này."
+        },
+        {
+          "label": "C",
+          "text": "Như một constraint, vì quy định pháp lý hạn chế giải pháp.",
+          "rationale": "Hấp dẫn, vì quy định pháp lý đúng là có tính ràng buộc. Nhưng phát biểu này nêu một capability mà giải pháp phải có, khiến nó là một requirement chứ không phải một giới hạn đặt lên thiết kế."
+        },
+        {
+          "label": "D",
+          "text": "Như một assumption về kỳ vọng của cơ quan quản lý.",
+          "rationale": "Requirement này là quy định pháp lý đã được xác nhận, không phải một niềm tin chưa được xác nhận."
+        }
+      ],
+      "sourceHash": "c9a17df3374abc9e5c5d25a719fab3ae7f040b46b4b7387e4ba624699ec73052",
+      "explanation": "Requirement có thể là functional hoặc non-functional. Một nghĩa vụ pháp lý về các phẩm chất mà giải pháp phải thể hiện, chẳng hạn auditability, là một non-functional requirement, và nó phải được phát biểu sao cho verify được."
+    },
+    {
+      "code": "RADD-004",
+      "stem": "Không ai ở Northbank nói được hồ sơ bị trả về intake bao nhiêu lần hay ở bước nào. Một stakeholder đề nghị business analyst cứ phát biểu thẳng một requirement rằng số lần trả về phải giảm một nửa. Phản biện nào mạnh nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Không có baseline đo được thì requirement đó không verify được, nên không thể phát biểu theo cách như vậy.",
+          "rationale": "Đúng. Tính verify được là phẩm chất bắt buộc của một requirement đã đặc tả, và một chỉ tiêu giảm một nửa cần có baseline để đối chiếu."
+        },
+        {
+          "label": "B",
+          "text": "Giảm số lần trả về là một business objective, nên nó thuộc Strategy Analysis chứ không thuộc phần này.",
+          "rationale": "Đáp án suýt đúng. Đúng là các chỉ tiêu về kết quả nằm ở dạng objective thì hợp hơn, nhưng khuyết điểm quyết định là phát biểu đó hoàn toàn không verify được."
+        },
+        {
+          "label": "C",
+          "text": "Stakeholder này không có thẩm quyền phát biểu requirements nếu không có product director.",
+          "rationale": "Stakeholder thường xuyên nêu ra nhu cầu. Thẩm quyền chi phối việc phê duyệt, không chi phối việc một nhu cầu có được nói ra hay không."
+        },
+        {
+          "label": "D",
+          "text": "Requirement này chưa được trace tới một business objective.",
+          "rationale": "Tracing là mối quan tâm về sau, và thêm một liên kết trace cũng không làm cho một phát biểu không verify được trở nên verify được."
+        }
+      ],
+      "sourceHash": "cfc4fddd776731ed6dc5a7b34283d736d4e1aa8493d06baaec4e7bae518e6ebd",
+      "explanation": "Requirement đã đặc tả phải verify được và không mơ hồ. Một chỉ tiêu diễn đạt dựa trên một baseline chưa từng được đo thì không thể verify, vì không có gì để đo phần giảm đi so với nó."
+    },
+    {
+      "code": "RADD-005",
+      "stem": "Một business analyst tạo ra một requirement ở mức tổng quan cho ban lãnh đạo và một bộ chi tiết của chính những requirement đó cho development team. Điều này phản ánh element nào của Specify and Model Requirements?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Implement the Appropriate Levels of Abstraction",
+          "rationale": "Đúng. Trình bày requirements ở mức chi tiết mà từng nhóm đối tượng cần chính là element này."
+        },
+        {
+          "label": "B",
+          "text": "Analyze Requirements",
+          "rationale": "Analyze requirements xem xét và tinh chỉnh chúng cho đầy đủ và nhất quán, không phải cho phù hợp mức chi tiết với từng nhóm đối tượng."
+        },
+        {
+          "label": "C",
+          "text": "Represent Requirements and Attributes",
+          "rationale": "Element đó lo việc ghi nhận requirements và metadata của chúng. Chọn mức chi tiết là mối quan tâm riêng."
+        },
+        {
+          "label": "D",
+          "text": "Model Requirements",
+          "rationale": "Modelling chọn và dựng các cách biểu diễn. Tình huống này nói về mỗi phiên bản mang bao nhiêu chi tiết."
+        }
+      ],
+      "sourceHash": "b6fdef6276421f857afdfd549be03a8fbc29596a099342a41da34efbdc3d2c44",
+      "explanation": "Implement the Appropriate Levels of Abstraction là một element của task này. Cùng một requirement có thể được biểu diễn ở các mức chi tiết khác nhau cho những nhóm đối tượng và mục đích khác nhau."
+    },
+    {
+      "code": "RADD-006",
+      "stem": "Phát biểu nào phân biệt đúng nhất giữa requirement và design theo BABOK?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Requirement tập trung vào nhu cầu còn design tập trung vào giải pháp; khác biệt nằm ở ý định, không phải ở mức độ chi tiết.",
+          "rationale": "Đúng. BABOK nói rõ rằng khác biệt nằm ở chỗ mỗi thứ biểu diễn cái gì, và rằng chúng được làm rõ dần theo vòng lặp."
+        },
+        {
+          "label": "B",
+          "text": "Requirement thì ở mức tổng quan còn design thì chi tiết.",
+          "rationale": "Đây là ngộ nhận phổ biến nhất. Cả hai đều có thể được diễn đạt ở bất kỳ mức chi tiết nào; một requirement chi tiết thì vẫn là requirement."
+        },
+        {
+          "label": "C",
+          "text": "Requirement do business analyst tạo ra còn design do nhân sự kỹ thuật tạo ra.",
+          "rationale": "Vai trò không quyết định phạm trù. BABOK ghi nhận rằng business analyst có thể làm việc với design, và cùng một mục có thể được nhìn theo cả hai cách."
+        },
+        {
+          "label": "D",
+          "text": "Requirement thì được phê duyệt còn design thì không.",
+          "rationale": "Design cũng là đối tượng của việc phê duyệt. Trạng thái phê duyệt không liên quan tới sự phân biệt này."
+        }
+      ],
+      "sourceHash": "49327db0564faac47df10305b9991dfed63ac7e6306656c61331be4fe4842fb4",
+      "explanation": "BABOK coi requirement và design khác nhau ở chỗ chúng biểu diễn cái gì, không phải ở mức chi tiết hay mức trang trọng. Requirement tập trung vào nhu cầu; design tập trung vào giải pháp. Hai thứ được làm rõ dần theo vòng lặp, và design của người này có thể là requirement của người kia."
+    },
+    {
+      "code": "RADD-007",
+      "stem": "Một người review đánh dấu một requirement viết rằng 'hệ thống phải phản hồi nhanh trước thao tác của người dùng'. Requirement này không đạt quality characteristic nào, và task nào lẽ ra phải bắt được nó?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó mơ hồ và không kiểm thử được, và Verify Requirements lẽ ra phải bắt được.",
+          "rationale": "Đúng. Tính không mơ hồ và tính kiểm thử được là các quality characteristic được đánh giá trong quá trình verification."
+        },
+        {
+          "label": "B",
+          "text": "Nó không mang lại giá trị, và Validate Requirements lẽ ra phải bắt được.",
+          "rationale": "Phản hồi nhanh rất có thể mang lại giá trị. Khuyết điểm là phát biểu đó không kiểm tra được, và đó là vấn đề chất lượng."
+        },
+        {
+          "label": "C",
+          "text": "Nó chưa được prioritize, và Prioritize Requirements lẽ ra phải bắt được.",
+          "rationale": "Prioritisation xếp hạng requirements. Nó không đánh giá một requirement được viết tốt tới đâu."
+        },
+        {
+          "label": "D",
+          "text": "Nó chưa được trace, và Trace Requirements lẽ ra phải bắt được.",
+          "rationale": "Traceability ghi lại các quan hệ. Một requirement mơ hồ vẫn có thể được trace đầy đủ mà vẫn không dùng được."
+        }
+      ],
+      "sourceHash": "00fdd521f09a64b605aa987ef58b8223d167da9f6fd70ab6f2375a2ab3e89348",
+      "explanation": "Verify Requirements kiểm tra rằng requirements đủ chất lượng: trong số các phẩm chất khác, chúng phải không mơ hồ và kiểm thử được. Từ 'nhanh' không kiểm thử được vì nó cho phép nhiều cách hiểu."
+    },
+    {
+      "code": "RADD-008",
+      "stem": "Trong lúc verification, một business analyst phát hiện hai requirement trong cùng một package mâu thuẫn nhau về việc chiết khấu có áp dụng cho cước vận chuyển hay không. Quality characteristic nào đã bị vi phạm?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Consistency",
+          "rationale": "Đúng. Hai requirement mâu thuẫn nhau là không nhất quán."
+        },
+        {
+          "label": "B",
+          "text": "Completeness",
+          "rationale": "Completeness liên quan tới việc đã có đủ chi tiết hay chưa. Cả hai requirement ở đây đều hiện diện và chi tiết; chúng chỉ đơn giản là bất đồng với nhau."
+        },
+        {
+          "label": "C",
+          "text": "Feasibility",
+          "rationale": "Feasibility hỏi một requirement có thể đáp ứng được một cách hợp lý trong các ràng buộc hay không. Từng requirement ở đây đều khả thi."
+        },
+        {
+          "label": "D",
+          "text": "Prioritisation",
+          "rationale": "Priority không phải là quality characteristic của verification; nó được gán trong Requirements Life Cycle Management."
+        }
+      ],
+      "sourceHash": "0aef5d49b0e07839b8fdd0f6c365568382f49e030a597075c67ece7e0c281a05",
+      "explanation": "Verify Requirements đánh giá các phẩm chất trong đó có consistency: các requirement không được xung đột nhau hay dùng cùng một thuật ngữ với những nghĩa khác nhau."
+    },
+    {
+      "code": "RADD-009",
+      "stem": "Một requirement được viết hoàn hảo: không mơ hồ, kiểm thử được, đầy đủ và nhất quán với phần còn lại của bộ. Tuy vậy stakeholder vẫn nói không nên xây dựng nó, vì nó giải quyết một vấn đề nay không còn tồn tại. Điều này cho thấy gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một requirement có thể qua được verification mà vẫn trượt validation, vì hai việc này đánh giá những thứ khác nhau.",
+          "rationale": "Đúng. Chất lượng diễn đạt và việc mang lại giá trị là hai thứ độc lập, và đó là lý do BABOK tách hai task này ra."
+        },
+        {
+          "label": "B",
+          "text": "Việc verification đã bị làm sai, vì một requirement không có giá trị thì không thể là complete.",
+          "rationale": "Completeness nghĩa là đã có đủ chi tiết, không có nghĩa là requirement đó đáng xây dựng."
+        },
+        {
+          "label": "C",
+          "text": "Requirement nên được viết lại cho tới khi stakeholder chấp nhận.",
+          "rationale": "Viết lại một requirement giải quyết một vấn đề nay không còn tồn tại thì cũng không tạo ra giá trị."
+        },
+        {
+          "label": "D",
+          "text": "Validation lẽ ra phải được thực hiện trước verification.",
+          "rationale": "BABOK không cố định thứ tự giữa hai việc. Điểm mấu chốt của tình huống là chúng là hai phép kiểm tra khác nhau, không phải là chúng bị làm sai trình tự."
+        }
+      ],
+      "sourceHash": "441333e6b646e281c81cc64510e4ccb802409c111a8f448afa3d4838863656e9",
+      "explanation": "Verification và validation trả lời hai câu hỏi khác nhau. Một requirement có thể qua được verification, vốn đánh giá chất lượng, mà vẫn trượt validation, vốn đánh giá xem nó có mang lại giá trị và hỗ trợ các business objective hay không."
+    },
+    {
+      "code": "RADD-010",
+      "stem": "Một business analyst đang kiểm tra rằng từng requirement trong một package đều hỗ trợ việc mang lại giá trị cho stakeholder và phù hợp với các business objective. Đây là task nào và analyst đang đánh giá điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Validate Requirements, đánh giá xem requirements có mang lại giá trị và có phù hợp với các objective hay không.",
+          "rationale": "Đúng. Validation là phép kiểm tra sự phù hợp với giá trị trên toàn bộ bộ requirement."
+        },
+        {
+          "label": "B",
+          "text": "Verify Requirements, đánh giá xem requirements có được viết đúng cách hay không.",
+          "rationale": "Verification mới là phép kiểm tra chất lượng. Không có gì trong tình huống liên quan tới cách requirements được diễn đạt."
+        },
+        {
+          "label": "C",
+          "text": "Approve Requirements, đánh giá xem stakeholder có đồng thuận với chúng hay không.",
+          "rationale": "Approval ghi nhận sự đồng thuận có thẩm quyền. Analyst ở đây đang đánh giá giá trị, không phải đi thu chữ ký."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, đánh giá xem requirements có nên được sửa đổi hay không.",
+          "rationale": "Task đó đánh giá một thay đổi được đề xuất. Chưa có thay đổi nào được đề xuất cả."
+        }
+      ],
+      "sourceHash": "9961ae5b09756411a62d34b513603406184e270e506ee8e5125995a1ebc1f503",
+      "explanation": "Validate Requirements đảm bảo requirements và design mang lại business value và hỗ trợ các mục tiêu của tổ chức. Đây là phép kiểm tra về giá trị, không phải về chất lượng."
+    },
+    {
+      "code": "RADD-011",
+      "stem": "Validation cho thấy một nhóm requirement khá lớn đang trace tới một business objective mà tổ chức đã từ bỏ từ hai quý trước. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Báo cáo rằng nhóm này không còn phù hợp với một objective đang còn hiệu lực, và khuyến nghị xem xét lại nó trước khi bàn giao.",
+          "rationale": "Đúng. Phơi bày sự lệch hướng để stakeholder quyết định chính là mục đích của validation."
+        },
+        {
+          "label": "B",
+          "text": "Trace lại các requirement này sang một objective khác để chúng vẫn nằm trong scope.",
+          "rationale": "Đáp án sai quyến rũ nhất: nó làm ma trận trace trông khỏe mạnh trong khi vẫn bảo tồn phần việc đã mất đi mục đích."
+        },
+        {
+          "label": "C",
+          "text": "Xóa các requirement đó, vì chúng không còn phục vụ một objective đang còn hiệu lực.",
+          "rationale": "Xóa đơn phương là vượt quá thẩm quyền của analyst và hủy hoại phần việc mà stakeholder có thể vẫn muốn giữ vì một lý do khác."
+        },
+        {
+          "label": "D",
+          "text": "Hạ priority của các requirement đó để chúng rơi ra khỏi release hiện tại.",
+          "rationale": "Hạ priority là che giấu phát hiện. Các requirement đó vẫn nằm trong backlog với một lý do biện minh không còn hiệu lực."
+        }
+      ],
+      "sourceHash": "bc927f977d710ff42f36831c95a4df7b994d828ac600eebb1da52fe7ca2155de",
+      "explanation": "Validate Requirements nhận diện những requirement không còn phù hợp với các business objective, để chúng được xem xét lại thay vì bị mang tiếp vào khâu bàn giao. Tiếp tục xây dựng chúng là tiêu tốn năng lực mà không đổi lại giá trị nào."
+    },
+    {
+      "code": "RADD-012",
+      "stem": "Một business analyst định nghĩa, cho một tập requirements, những điều kiện phải đạt được để stakeholder chấp nhận giải pháp đã bàn giao. Cái gì đang được tạo ra, và trong task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Acceptance and evaluation criteria, trong Validate Requirements.",
+          "rationale": "Đúng. Định nghĩa các evaluation criteria đo lường được là một element của validation."
+        },
+        {
+          "label": "B",
+          "text": "Quality characteristics, trong Verify Requirements.",
+          "rationale": "Quality characteristic mô tả thuộc tính của một requirement được viết tốt, không phải điều kiện để chấp nhận một giải pháp."
+        },
+        {
+          "label": "C",
+          "text": "Solution performance measures, trong Measure Solution Performance.",
+          "rationale": "Performance measure đánh giá một giải pháp khi nó đã được đưa vào sử dụng. Acceptance criteria được thống nhất từ trước."
+        },
+        {
+          "label": "D",
+          "text": "Requirement attributes, trong Plan Business Analysis Information Management.",
+          "rationale": "Attribute là metadata như nguồn gốc và trạng thái, không phải điều kiện chấp nhận."
+        }
+      ],
+      "sourceHash": "28014dcc1eb07c0ab505ec30a844bc8ed71412bc1f1e49e8a23e56463d93ea2f",
+      "explanation": "Việc định nghĩa các evaluation và acceptance criteria đo lường được là một element của Validate Requirements, vì chính những tiêu chí đó diễn đạt điều mà stakeholder sẽ coi là một lần bàn giao có giá trị."
+    },
+    {
+      "code": "RADD-013",
+      "stem": "Bộ requirement của Northbank đã phình lên tới vài trăm mục trải trên bốn nhóm. Business analyst muốn đảm bảo các requirement khớp với nhau thành một tổng thể, hỗ trợ lẫn nhau, và cùng nhau bao phủ được thay đổi. Task nào giải quyết việc này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Requirements Architecture",
+          "rationale": "Đúng. Đây là task lo về cấu trúc và tính mạch lạc của bộ requirement như một tổng thể."
+        },
+        {
+          "label": "B",
+          "text": "Verify Requirements",
+          "rationale": "Verification kiểm tra chất lượng của requirements, phần lớn là từng mục một. Nó không xác lập cả bộ khớp với nhau ra sao."
+        },
+        {
+          "label": "C",
+          "text": "Trace Requirements",
+          "rationale": "Tracing ghi lại từng quan hệ riêng lẻ. Architecture tổ chức cả bộ và cho thấy cấu trúc có đầy đủ và mạch lạc hay không."
+        },
+        {
+          "label": "D",
+          "text": "Specify and Model Requirements",
+          "rationale": "Đặc tả tạo ra các requirement. Architecture tổ chức những gì khâu đặc tả đã tạo ra."
+        }
+      ],
+      "sourceHash": "b7ebb1fd56ab530d36285cc3bf2d2e18ac5c9c0179e94946204656041b06596a",
+      "explanation": "Define Requirements Architecture đảm bảo các requirement cùng nhau hỗ trợ lẫn nhau để đạt được các objective, cấu trúc hóa bộ requirement, và làm cho các khoảng trống cùng xung đột trở nên nhìn thấy được ở cấp độ cả bộ."
+    },
+    {
+      "code": "RADD-014",
+      "stem": "Một business analyst bị chất vấn rằng requirements architecture chỉ là làm trùng lặp lại traceability. Cách phân biệt nào rõ ràng nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Traceability ghi lại quan hệ giữa các mục; architecture mô tả cả bộ được cấu trúc ra sao và nó có đứng vững như một tổng thể hay không.",
+          "rationale": "Đúng. Một bên là tập hợp các liên kết; bên kia là cấu trúc tổ chức làm cho các liên kết đó có ý nghĩa."
+        },
+        {
+          "label": "B",
+          "text": "Traceability áp dụng cho functional requirement còn architecture cho non-functional requirement.",
+          "rationale": "Không cái nào bị giới hạn theo loại requirement."
+        },
+        {
+          "label": "C",
+          "text": "Traceability được duy trì trong lúc bàn giao còn architecture chỉ có trước đó.",
+          "rationale": "Cả hai đều tồn tại xuyên suốt vòng đời. Architecture được cập nhật khi bộ requirement tiến hóa."
+        },
+        {
+          "label": "D",
+          "text": "Traceability là tùy chọn còn architecture là bắt buộc.",
+          "rationale": "BABOK không bắt buộc cái nào ở một mức cố định; cả hai được áp dụng tới mức mà initiative cần."
+        }
+      ],
+      "sourceHash": "e41dec4d8d3225244c295496d18ef8371412b4eb61f88c567bfb0720bece101b",
+      "explanation": "Traceability ghi lại quan hệ giữa từng mục riêng lẻ. Requirements architecture là cấu trúc của cả bộ requirement: chúng được tổ chức ra sao, các phần liên hệ với nhau thế nào, và bộ đó có đầy đủ và nhất quán nội tại hay không."
+    },
+    {
+      "code": "RADD-015",
+      "stem": "Trong lúc cấu trúc lại một bộ requirement, business analyst phát hiện không có requirement nào xử lý tình huống nhà cung cấp thanh toán không khả dụng, dù nhiều requirement đều ngầm giả định rằng nó luôn khả dụng. Requirements architecture đã phơi bày điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một khoảng trống trong bộ requirement mà việc review từng cái riêng lẻ sẽ không lộ ra.",
+          "rationale": "Đúng. Nhìn cả bộ như một cấu trúc chính là thứ làm cho một trường hợp còn thiếu trở nên nhìn thấy được."
+        },
+        {
+          "label": "B",
+          "text": "Một thất bại của verification, vì các requirement liên quan chưa đầy đủ.",
+          "rationale": "Từng requirement bị ảnh hưởng có thể tự nó đã đầy đủ. Chỗ thiếu chỉ lộ ra ở cấp độ cả bộ."
+        },
+        {
+          "label": "C",
+          "text": "Một thất bại của validation, vì các requirement liên quan không mang lại giá trị.",
+          "rationale": "Các requirement hiện có rất có thể đang mang lại giá trị tốt. Thứ còn thiếu là phần bao phủ cho một trường hợp khác."
+        },
+        {
+          "label": "D",
+          "text": "Một change request, vì sẽ cần thêm requirement mới.",
+          "rationale": "Một change request có thể theo sau, nhưng thứ mà architecture phơi bày ra chính là khoảng trống đó."
+        }
+      ],
+      "sourceHash": "fb372f4a3a0eee356bb2e0be3b428a8a384cb01737c9ffdb6991b5604b9a76b4",
+      "explanation": "Một mục đích của requirements architecture là phơi bày những khoảng trống và điểm không nhất quán vốn vô hình khi xem xét từng requirement riêng lẻ. Những giả định được chia sẻ qua nhiều requirement mà không có gì bao phủ trường hợp thất bại đúng là một khoảng trống như vậy."
+    },
+    {
+      "code": "RADD-016",
+      "stem": "Northbank có thể đạt mức ra quyết định trong hai ngày bằng cách mua một origination platform, mở rộng các hệ thống hiện có, hoặc tái cấu trúc bốn nhóm thành một nhóm duy nhất mà không cần công nghệ mới. Business analyst đang mô tả từng phương án và những gì nó đòi hỏi. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Design Options",
+          "rationale": "Đúng. Nhận diện và mô tả các cách thay thế nhau để đáp ứng nhu cầu chính xác là task này, và thay đổi tổ chức được tính là một design option."
+        },
+        {
+          "label": "B",
+          "text": "Define Change Strategy",
+          "rationale": "Change strategy chọn cách doanh nghiệp chuyển đổi sang một future state. Ở đây analyst đang mô tả các giải pháp thay thế nhau."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Potential Value and Recommend Solution",
+          "rationale": "Đó là task tiếp theo. Analyst còn chưa định giá các phương án hay đưa ra khuyến nghị nào."
+        },
+        {
+          "label": "D",
+          "text": "Define Future State",
+          "rationale": "Future state mô tả các điều kiện cần đạt được, có chủ ý không cam kết với một giải pháp nào."
+        }
+      ],
+      "sourceHash": "dcec1886daa0e23f0028127085196c70c295604ac83ed0427979f2d405140b95",
+      "explanation": "Define Design Options nhận diện các cách tiếp cận khả dĩ để đáp ứng nhu cầu, mô tả từng cách, và nhận diện các cơ hội cải tiến. Design option không giới hạn ở phần mềm; thay đổi quy trình và tổ chức đều là những phương án hợp lệ."
+    },
+    {
+      "code": "RADD-017",
+      "stem": "Một stakeholder phản đối rằng một trong các design option đang được cân nhắc hoàn toàn không có phần mềm nào, chỉ là thay đổi cách một nhóm được tổ chức, nên phải bị loại. Business analyst nên phản hồi thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giữ nó lại, vì một design option có thể chỉ gồm thay đổi quy trình hoặc tổ chức mà không có công nghệ nào.",
+          "rationale": "Đúng. BABOK nói rõ chấp nhận thay đổi quy trình, tổ chức và con người như những design option."
+        },
+        {
+          "label": "B",
+          "text": "Loại nó, vì design option phải mô tả các thành phần giải pháp sẽ được xây dựng.",
+          "rationale": "Cách này thu hẹp 'giải pháp' thành phần mềm, đúng là giả định mà BABOK cố ý tránh."
+        },
+        {
+          "label": "C",
+          "text": "Giữ nó lại, nhưng chỉ như phương án do-nothing để làm mốc so sánh với các phương án thật.",
+          "rationale": "Tái cấu trúc bốn nhóm thành một là một thay đổi thực chất, không phải mốc do-nothing."
+        },
+        {
+          "label": "D",
+          "text": "Loại nó và nêu riêng nó ra như một enterprise limitation.",
+          "rationale": "Enterprise limitation hạn chế việc hiện thực hóa giá trị. Một đề xuất tái tổ chức là một design option, không phải một limitation."
+        }
+      ],
+      "sourceHash": "81981ad055cf748863a291558336b9d38744f8ac8334219050a9e1a284c76f53",
+      "explanation": "Design option có thể bao gồm thay đổi quy trình nghiệp vụ, cơ cấu tổ chức, kỹ năng con người, hoặc công nghệ, theo bất kỳ tổ hợp nào. Loại bỏ các phương án phi công nghệ là thu hẹp phần phân tích mà không có căn cứ."
+    },
+    {
+      "code": "RADD-018",
+      "stem": "Một business analyst nhận thấy một design option còn xóa bỏ được cả một bước nhập liệu trùng lặp ở quy trình lân cận, vượt ra ngoài những gì nhu cầu hiện tại đòi hỏi. Analyst nên làm gì với quan sát này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ghi nhận nó như một improvement opportunity gắn với design option đó.",
+          "rationale": "Đúng. Nhận diện improvement opportunity là một element được nêu rõ của task này."
+        },
+        {
+          "label": "B",
+          "text": "Thêm nó vào như một requirement mới, vì đó là lợi ích mà giải pháp có thể mang lại.",
+          "rationale": "Biến một lợi ích tình cờ thành một requirement là mở rộng scope mà không có nhu cầu nào được nêu ra đứng sau."
+        },
+        {
+          "label": "C",
+          "text": "Bỏ qua nó, vì nó nằm ngoài nhu cầu đã nêu.",
+          "rationale": "Vứt bỏ nó là tước đi của người ra quyết định thông tin có thể phân biệt giữa những phương án vốn na ná nhau."
+        },
+        {
+          "label": "D",
+          "text": "Nêu nó như một risk, vì thay đổi ngoài kế hoạch với quy trình lân cận là một mối đe dọa.",
+          "rationale": "Nó có thể mang rủi ro, nhưng mô tả một lợi ích đã nhận diện thuần túy như một mối đe dọa là trình bày sai về nó."
+        }
+      ],
+      "sourceHash": "bcad7e67da0abad8ebe15ff2c3daf648e60e4bfb0735b83e6da33179ec1b834c",
+      "explanation": "Nhận diện các cơ hội cải tiến là một element của Define Design Options. Những cơ hội mà một design option vô tình tạo ra được ghi lại để người ra quyết định cân nhắc."
+    },
+    {
+      "code": "RADD-019",
+      "stem": "Ba design option của Northbank đã được mô tả xong. Business analyst giờ ước tính giá trị mà mỗi phương án sẽ mang lại, cân nhắc nó với chi phí và rủi ro của từng phương án, rồi đề xuất một phương án. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Potential Value and Recommend Solution",
+          "rationale": "Đúng. Định giá các phương án và khuyến nghị một phương án là mục đích được nêu ra của task này."
+        },
+        {
+          "label": "B",
+          "text": "Define Design Options",
+          "rationale": "Task đó đã tạo ra các phương án. Định giá và chọn giữa chúng là task kế tiếp."
+        },
+        {
+          "label": "C",
+          "text": "Assess Risks",
+          "rationale": "Rủi ro là một input cho việc đánh giá giá trị, nhưng task được mô tả ở đây rộng hơn và kết thúc bằng một khuyến nghị."
+        },
+        {
+          "label": "D",
+          "text": "Measure Solution Performance",
+          "rationale": "Task đó đo một giải pháp đã bàn giao và đang được sử dụng. Ở đây chưa có gì được bàn giao cả."
+        }
+      ],
+      "sourceHash": "4271a1e7676f9b9f8eed2c20c904df495928a585147aca8984e4c204d9c9a74a",
+      "explanation": "Analyze Potential Value and Recommend Solution đánh giá giá trị mà từng design option mang lại và khuyến nghị phương án tạo ra giá trị tổng thể lớn nhất, có tính tới các đánh đổi."
+    },
+    {
+      "code": "RADD-020",
+      "stem": "Phương án A mang lại lợi nhuận tài chính cao nhất nhưng đòi hỏi một capability mà tổ chức không có và cũng không thể có được trong khung thời gian cho phép. Phương án B mang lại ít hơn nhưng khả thi. Business analyst nên khuyến nghị điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phương án B, vì giá trị không thể hiện thực hóa trong các constraint thì không phải là giá trị đã mang lại.",
+          "rationale": "Đúng. Đánh giá potential value nghĩa là đánh giá phần giá trị hiện thực hóa được, và đó là lý do constraint cùng năng lực doanh nghiệp là một phần của phần phân tích."
+        },
+        {
+          "label": "B",
+          "text": "Phương án A, vì khuyến nghị phải tối đa hóa lợi nhuận tài chính.",
+          "rationale": "Distractor hấp dẫn nhất. Một khoản lợi nhuận mà tổ chức không đạt tới được chỉ là con số trên giấy."
+        },
+        {
+          "label": "C",
+          "text": "Phương án A, kèm khuyến nghị kéo dài khung thời gian.",
+          "rationale": "Khung thời gian đã được nêu như một constraint. Khuyến nghị gỡ bỏ nó là trả lời một câu hỏi khác với câu được hỏi."
+        },
+        {
+          "label": "D",
+          "text": "Không phương án nào, vì nên tìm thêm một phương án khác kết hợp cả hai.",
+          "rationale": "Từ chối khuyến nghị trong số các phương án sẵn có là bỏ rơi task, và cũng không có căn cứ nào để kỳ vọng tồn tại một phương án lai."
+        }
+      ],
+      "sourceHash": "7060102be858f189a918fd67eeaaa0d80409987dc4f7c388abf11cff51d1a991",
+      "explanation": "Potential value được đánh giá trong tương quan với các constraint và năng lực thực tế của doanh nghiệp để hiện thực hóa nó. Một phương án mà giá trị của nó không hiện thực hóa được trong các ràng buộc áp dụng thì không mang lại giá trị đó."
+    },
+    {
+      "code": "RADD-021",
+      "stem": "Một business analyst đang đánh giá potential value của một design option. Cặp yếu tố nào bắt buộc phải cùng được cân nhắc?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các lợi ích mà phương án được kỳ vọng mang lại, và các chi phí cùng hệ quả tiêu cực mà nó gây ra.",
+          "rationale": "Đúng. Potential value là một phán đoán về phần ròng, nên cần cả hai phía."
+        },
+        {
+          "label": "B",
+          "text": "Số requirement mà phương án đáp ứng và số requirement nó bỏ sót.",
+          "rationale": "Đếm số requirement là coi chúng có giá trị ngang nhau, điều vốn không đúng."
+        },
+        {
+          "label": "C",
+          "text": "Ước lượng của delivery team và mong muốn của sponsor.",
+          "rationale": "Một ước lượng và một mong muốn là input cho quyết định, không phải một đánh giá về giá trị."
+        },
+        {
+          "label": "D",
+          "text": "Mức độ phù hợp của phương án với requirements architecture và độ bao phủ traceability của nó.",
+          "rationale": "Cả hai đều là những phép kiểm tra vệ sinh hữu ích và không cái nào đo được giá trị mà phương án sẽ mang lại."
+        }
+      ],
+      "sourceHash": "2012863d121c943da40a0a616a23a7456a9e810947901caa4248ad53e774693b",
+      "explanation": "Potential value là phần ròng giữa lợi ích kỳ vọng và chi phí kỳ vọng, bao gồm cả các hệ quả tiêu cực. Chỉ đánh giá lợi ích sẽ thổi phồng giá trị, còn chỉ đánh giá chi phí thì không thể xác định được phương án nào tốt hơn."
+    },
+    {
+      "code": "RADD-022",
+      "stem": "Một business analyst phải biểu diễn các quy tắc xác định mức giá nào trong mười một pricing band được áp dụng, dựa trên bốn điều kiện đầu vào có thể kết hợp theo rất nhiều cách. Cách biểu diễn nào phù hợp nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một decision table hoặc decision model, vì kết quả phụ thuộc vào các tổ hợp điều kiện.",
+          "rationale": "Đúng. Decision model làm cho các tổ hợp điều kiện trở nên tường minh, và đó là thứ khiến các trường hợp còn thiếu hay chồng lấn lộ ra."
+        },
+        {
+          "label": "B",
+          "text": "Một process model, vì việc định giá diễn ra như một bước trong quy trình bán hàng.",
+          "rationale": "Process model sẽ cho thấy việc định giá có diễn ra, chứ không cho thấy band nào áp dụng dưới tổ hợp điều kiện nào."
+        },
+        {
+          "label": "C",
+          "text": "Một use case, vì nhân viên bán hàng là người kích hoạt việc định giá.",
+          "rationale": "Use case mô tả các tương tác để đạt một mục tiêu. Chúng là phương tiện tồi để chở những quy tắc tổ hợp dày đặc."
+        },
+        {
+          "label": "D",
+          "text": "Một state model, vì một báo giá dịch chuyển giữa các trạng thái định giá.",
+          "rationale": "State model thể hiện các chuyển đổi được phép của một đối tượng theo thời gian, không phải các quy tắc chọn ra một trong mười một kết quả."
+        }
+      ],
+      "sourceHash": "7f56b914112e28eadd8b09bbcfb8080baea1fe2bdd1ac18d6b5f207d5edbda25",
+      "explanation": "Việc chọn mô hình phụ thuộc vào thứ đang được biểu diễn. Những quy tắc kết hợp nhiều điều kiện để xác định một kết quả được diễn đạt tốt nhất bằng decision table hoặc decision model, vốn làm cho mọi tổ hợp trở nên tường minh và phơi bày các khoảng trống."
+    },
+    {
+      "code": "RADD-023",
+      "stem": "Một business analyst cần thể hiện các chuyển đổi được phép của một hồ sơ bồi thường bảo hiểm trong vòng đời của nó, và những chuyển đổi nào bị cấm. Mô hình nào phù hợp?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một state model.",
+          "rationale": "Đúng. Các chuyển đổi được phép và bị cấm giữa các trạng thái đúng là thứ mà state modelling biểu diễn."
+        },
+        {
+          "label": "B",
+          "text": "Một data flow diagram.",
+          "rationale": "Data flow diagram thể hiện thông tin di chuyển và được biến đổi ra sao, không phải vòng đời của một đối tượng."
+        },
+        {
+          "label": "C",
+          "text": "Một organisational model.",
+          "rationale": "Organisational model thể hiện cơ cấu, vai trò và tuyến báo cáo."
+        },
+        {
+          "label": "D",
+          "text": "Một scope model.",
+          "rationale": "Scope model đặt ra ranh giới của thay đổi. Chúng chẳng nói gì về việc một đối tượng hành xử ra sao theo thời gian."
+        }
+      ],
+      "sourceHash": "ae730e90915c66a33e0c070e7dd969b039585aec85e659389f977c572832e338",
+      "explanation": "State modelling biểu diễn các trạng thái mà một đối tượng có thể ở, các sự kiện gây ra chuyển đổi, và những chuyển đổi nào được phép. Đây là lựa chọn tự nhiên để thể hiện vòng đời của một hồ sơ bồi thường cùng những chuyển đổi bị cấm."
+    },
+    {
+      "code": "RADD-024",
+      "stem": "Trong quá trình phân tích, một business analyst phát hiện hai phòng ban dùng thuật ngữ 'active customer' với hai nghĩa khác nhau, và cả hai nghĩa đều xuất hiện rải rác trong các requirement. Analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giải quyết vấn đề thuật ngữ với cả hai phòng ban rồi áp dụng nhất quán một nghĩa đã thống nhất.",
+          "rationale": "Đúng. Một thuật ngữ mang hai nghĩa là một điểm không nhất quán trong bộ requirement, phải được giải quyết chứ không phải chú thích thêm."
+        },
+        {
+          "label": "B",
+          "text": "Ghi cả hai định nghĩa vào glossary và chú thích requirement nào dùng nghĩa nào.",
+          "rationale": "Distractor mạnh nhất, vì ghi lại sự mơ hồ trông có vẻ chặt chẽ. Nó bảo tồn sự không nhất quán đó đi thẳng vào khâu bàn giao."
+        },
+        {
+          "label": "C",
+          "text": "Lấy định nghĩa của phòng ban sở hữu dữ liệu customer master.",
+          "rationale": "Quyền sở hữu dữ liệu là một tiêu chí phá hòa hợp lý, nhưng chọn đơn phương sẽ khiến các requirement của phòng ban kia âm thầm sai."
+        },
+        {
+          "label": "D",
+          "text": "Tách mỗi requirement bị ảnh hưởng thành hai, mỗi cái theo một định nghĩa.",
+          "rationale": "Cách này nhân đôi bộ requirement để mã hóa một bất đồng vốn cần được giải quyết."
+        }
+      ],
+      "sourceHash": "ad76d4cbdb4b17b8266c66eb70e6ec0458207ab8e386506be361992e9fd682c0",
+      "explanation": "Việc phân tích requirements bao gồm giải quyết những chỗ không nhất quán về thuật ngữ, vì một thuật ngữ mang hai nghĩa làm cho bộ requirement mâu thuẫn nội tại và sẽ cho ra một giải pháp không thỏa mãn cách hiểu nào."
+    },
+    {
+      "code": "RADD-025",
+      "stem": "Hoạt động nào là đặc trưng của Verify Requirements?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rà soát requirements đối chiếu với các quality characteristic và mọi chuẩn mực áp dụng.",
+          "rationale": "Đúng. Kiểm tra các quality characteristic và sự tuân thủ chuẩn mực chính là điều verification làm."
+        },
+        {
+          "label": "B",
+          "text": "Xác nhận với stakeholder rằng các ghi chú elicitation đã ghi lại là chính xác.",
+          "rationale": "Đó là Confirm Elicitation Results, vốn tác động lên elicitation results chứ không phải requirements."
+        },
+        {
+          "label": "C",
+          "text": "Đo lường xem giải pháp đã bàn giao có đạt được các business objective hay không.",
+          "rationale": "Đó là Measure Solution Performance trong Solution Evaluation."
+        },
+        {
+          "label": "D",
+          "text": "Xếp hạng requirements dựa trên một cơ sở tầm quan trọng đã thống nhất.",
+          "rationale": "Đó là Prioritize Requirements."
+        }
+      ],
+      "sourceHash": "d47d718515d5f17a4b536555f79c423bb20c2c9273ee34a26a63c61994d4ddd5",
+      "explanation": "Verify Requirements kiểm tra rằng requirements và design đủ chất lượng để làm nền tảng đáng tin cậy cho các bước tiếp theo, thường thông qua review và bằng cách đối chiếu chúng với các quality characteristic cùng mọi chuẩn mực áp dụng."
+    },
+    {
+      "code": "RADD-026",
+      "stem": "Một stakeholder lập luận rằng validation là không cần thiết vì mọi requirement đều được elicit trực tiếp từ phía business, nên theo định nghĩa nó phải đúng là thứ business muốn. Lập luận phản bác nào mạnh nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Thứ mà một stakeholder yêu cầu không tự động là thứ mang lại giá trị hay hỗ trợ các objective.",
+          "rationale": "Đúng. Validation tồn tại chính vì những gì được elicit và business value có thể phân kỳ."
+        },
+        {
+          "label": "B",
+          "text": "Elicitation results vẫn là unconfirmed cho tới khi stakeholder xem lại chúng.",
+          "rationale": "Đúng, nhưng confirmation là một phép kiểm tra khác, và kết quả đã confirmed vẫn có thể trượt validation."
+        },
+        {
+          "label": "C",
+          "text": "Requirements phải được verify trước thì mới được coi là đã elicit.",
+          "rationale": "Cách này đảo ngược dòng chảy và không giải quyết được lập luận của stakeholder về giá trị."
+        },
+        {
+          "label": "D",
+          "text": "Validation là bắt buộc theo governance approach.",
+          "rationale": "Viện tới sự tuân thủ quy trình là né tránh điểm mấu chốt về nội dung, vốn là chuyện yêu cầu và giá trị có thể khác nhau."
+        }
+      ],
+      "sourceHash": "5236b26b606d31497e094c91fe002619d4bc3d80de78041653011bf17739b8b9",
+      "explanation": "Nhu cầu được elicit và giá trị được mang lại không phải là một. Stakeholder có thể đòi những thứ không hỗ trợ business objective, xung đột với giá trị của stakeholder khác, hoặc đã bị thời cuộc vượt qua. Validation kiểm tra sự phù hợp với giá trị."
+    },
+    {
+      "code": "RADD-027",
+      "stem": "Một business analyst đang chọn cách tổ chức một bộ requirement: theo business capability, theo quy trình, hay theo thành phần hệ thống sẽ hiện thực hóa từng requirement. Cơ sở nào là lựa chọn yếu nhất, và vì sao?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Theo thành phần hệ thống hiện thực hóa, vì nó trói bộ requirement vào một design còn chưa được chọn.",
+          "rationale": "Đúng. Tổ chức xoay quanh một cách hiện thực hóa đã chọn là chặn mất các design option và làm cấu trúc trở nên giòn nếu design thay đổi."
+        },
+        {
+          "label": "B",
+          "text": "Theo business capability, vì capability thay đổi thường xuyên hơn quy trình.",
+          "rationale": "Capability thường là trục tổ chức ổn định hơn chứ không phải kém ổn định hơn."
+        },
+        {
+          "label": "C",
+          "text": "Theo quy trình, vì quy trình cắt ngang ranh giới các phòng ban.",
+          "rationale": "Việc cắt ngang các ranh giới thường là lợi thế, vì nó cho thấy bức tranh đầu-cuối."
+        },
+        {
+          "label": "D",
+          "text": "Cả ba đều yếu như nhau, vì architecture không nên áp đặt một cấu trúc duy nhất.",
+          "rationale": "Requirements architecture tồn tại để áp đặt một cấu trúc mạch lạc. Từ chối chọn một cấu trúc là bỏ rơi task."
+        }
+      ],
+      "sourceHash": "09fe2a2d1438fcb7cc2d74f7c2cf58e058f8fbc966d1c107fdb6302f1410be00",
+      "explanation": "Requirements architecture tổ chức requirements để bộ đó dễ hiểu và đầy đủ. Cấu trúc theo thành phần hiện thực hóa trói bộ requirement vào một design duy nhất, điều này là quá sớm khi các design option vẫn còn để ngỏ."
+    },
+    {
+      "code": "RADD-028",
+      "stem": "Thông thường một business analyst nên định nghĩa bao nhiêu design option trước khi chuyển sang bước khuyến nghị?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Bao nhiêu phương án thực sự khả dụng và đáng cân nhắc, để khuyến nghị là một lựa chọn thực chất.",
+          "rationale": "Đúng. Mục đích là một phép so sánh có ý nghĩa, không phải đạt cho đủ số lượng."
+        },
+        {
+          "label": "B",
+          "text": "Đúng ba, để có thể so sánh cân bằng.",
+          "rationale": "Đây là thói quen quy ước, không phải quy tắc của BABOK. Nặn ra phương án thứ ba cho đủ chỗ trống làm yếu đi phần phân tích."
+        },
+        {
+          "label": "C",
+          "text": "Một, vì analyst nên khuyến nghị thẳng cách tiếp cận tốt nhất.",
+          "rationale": "Một phương án duy nhất chẳng để lại gì cho người ra quyết định phải quyết, và che giấu các đánh đổi."
+        },
+        {
+          "label": "D",
+          "text": "Ít nhất một cho mỗi nhóm stakeholder, để mọi nhóm đều được đại diện.",
+          "rationale": "Phương án mô tả cách đáp ứng nhu cầu. Phân bổ mỗi nhóm một phương án là biến việc thiết kế giải pháp thành cuộc mặc cả về tính đại diện."
+        }
+      ],
+      "sourceHash": "df9b0520c6edac0cadd7e5df0d6dfb7036e755ea447fbe4bdc0075b9985af691",
+      "explanation": "BABOK không quy định một con số. Analyst nhận diện những phương án thực sự khả dụng và đáng cân nhắc, để khuyến nghị là một lựa chọn thực chất chứ không phải sự tán thành cho một câu trả lời đã định sẵn."
+    },
+    {
+      "code": "RADD-029",
+      "stem": "Giải pháp được khuyến nghị sẽ mang lại giá trị rõ ràng cho phòng finance nhưng làm công việc của đội field sales khó hơn một chút. Business analyst nên trình bày điều này thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nói rõ ai được lợi và ai chịu chi phí, để người ra quyết định cân nhắc được sự đánh đổi.",
+          "rationale": "Đúng. Giá trị được đánh giá trên toàn bộ stakeholder, và sự phân bổ không đồng đều là một phần của khuyến nghị."
+        },
+        {
+          "label": "B",
+          "text": "Trình bày giá trị ròng của tổ chức, vì phần lợi của finance lớn hơn phần thiệt của sales.",
+          "rationale": "Một con số ròng che giấu sự phân bổ. Gánh nặng tăng thêm cho đội sales có thể ảnh hưởng tới mức độ áp dụng và do đó tới việc hiện thực hóa giá trị."
+        },
+        {
+          "label": "C",
+          "text": "Bỏ qua tác động lên sales, vì nó nhỏ và có thể làm hỏng việc phê duyệt.",
+          "rationale": "Giấu đi một hệ quả tiêu cực đã biết để bảo vệ một khuyến nghị là đánh lừa người ra quyết định."
+        },
+        {
+          "label": "D",
+          "text": "Khuyến nghị một phương án khác không gây tác động tiêu cực lên bất kỳ stakeholder nào.",
+          "rationale": "Đòi hỏi một phương án không gây hại cho ai sẽ loại trừ hầu hết các thay đổi có thật, và cũng không có phương án nào như vậy được mô tả."
+        }
+      ],
+      "sourceHash": "285333c9dd58979fb0bab135255d98d67b6ee97d431b2f464623e0f13e8811f1",
+      "explanation": "Việc đánh giá potential value bao gồm nhận diện ai được lợi và ai chịu chi phí, vì giá trị không phân bổ đều giữa các stakeholder. Làm rõ sự đánh đổi cho phép người ra quyết định cân nhắc nó thay vì phát hiện ra sau khi đã bàn giao."
+    },
+    {
+      "code": "RADD-030",
+      "stem": "Một requirement phát biểu rằng hệ thống phải hỗ trợ sự tăng trưởng trong tương lai của tổ chức. Trong lúc verification, requirement này rõ ràng nhất là không đạt characteristic nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Testability, vì không có gì trong phát biểu đó có thể chứng minh là đã đạt hay chưa đạt.",
+          "rationale": "Đúng. Không có thước đo tăng trưởng, không phép kiểm thử nào phân biệt được một giải pháp thỏa mãn requirement với một giải pháp không thỏa mãn."
+        },
+        {
+          "label": "B",
+          "text": "Feasibility, vì hỗ trợ tăng trưởng vô hạn là điều bất khả thi.",
+          "rationale": "Phát biểu không nói là vô hạn. Vấn đề là nó chẳng nói gì đo lường được cả."
+        },
+        {
+          "label": "C",
+          "text": "Prioritisation, vì requirement này không có mức quan trọng tương đối.",
+          "rationale": "Priority được gán riêng và không phải là quality characteristic của verification."
+        },
+        {
+          "label": "D",
+          "text": "Traceability, vì nó không thể liên kết tới một business objective.",
+          "rationale": "Nó hoàn toàn có thể được trace tới một objective về tăng trưởng. Trace nó cũng không làm nó verify được."
+        }
+      ],
+      "sourceHash": "be94415d5504b7898c0589aa2e048c3121683cf827399ac42596eb91ef908a2a",
+      "explanation": "Requirement đã verified phải kiểm thử được và không mơ hồ. Một phát biểu không có ngưỡng, khung thời gian hay thước đo tăng trưởng nào được định nghĩa thì chấp nhận mọi cách diễn giải và không thể chứng minh là đã đạt."
+    },
+    {
+      "code": "RADD-031",
+      "stem": "Trước khi requirements được đưa đi tiếp, một business analyst đối chiếu các requirement đã ghi lại với một checklist chất lượng, xác nhận từng cái đều không mơ hồ, đầy đủ và kiểm thử được, nhưng chưa đặt câu hỏi liệu cả bộ có thực sự mang lại business value cần thiết hay không. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Verify Requirements, vì nó kiểm tra các quality characteristic như tính rõ ràng và tính kiểm thử được.",
+          "rationale": "Đúng. Kiểm tra chất lượng đặc tả của một requirement đối chiếu với các phẩm chất như tính rõ ràng và tính kiểm thử được, bằng một checklist, chính xác là Verify Requirements."
+        },
+        {
+          "label": "B",
+          "text": "Validate Requirements, vì các requirement đang được kiểm tra.",
+          "rationale": "Validate Requirements kiểm tra sự phù hợp với business requirement và giá trị mang lại, điều mà đề bài đã loại trừ rõ ràng. Đó là một task riêng và đến sau."
+        },
+        {
+          "label": "C",
+          "text": "Specify and Model Requirements, vì các requirement đang được rà soát.",
+          "rationale": "Specify and Model Requirements tạo ra các requirement ngay từ đầu. Tình huống này đang kiểm tra những requirement đã được tạo ra, chứ không phải tạo ra chúng."
+        },
+        {
+          "label": "D",
+          "text": "Approve Requirements, vì ngầm có một quyết định về các requirement.",
+          "rationale": "Approve Requirements lấy chữ ký duyệt chính thức, một task thuộc Requirements Life Cycle Management đi sau verification, chứ không phải bản thân phép kiểm tra chất lượng."
+        }
+      ],
+      "sourceHash": "e38056bb82cfc45f7cc1c1ed546e3c2ec4b7ac48bae58b64bd99bdc65c59b096",
+      "explanation": "Verify Requirements đảm bảo requirements và design đạt chuẩn chất lượng và dùng được cho mục đích chúng phục vụ, thông qua các hoạt động verification và checklist. Nó được tách bạch có chủ ý với Validate Requirements, vốn kiểm tra sự phù hợp với business value chứ không phải chất lượng đặc tả."
+    },
+    {
+      "code": "RADD-032",
+      "stem": "Các requirement đã qua được vòng kiểm tra chất lượng. Giờ business analyst xác nhận rằng từng requirement vẫn hỗ trợ các business objective đã thống nhất và giá trị mà initiative được lập ra để mang lại. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Validate Requirements, vì nó kiểm tra sự phù hợp với business value.",
+          "rationale": "Đúng. Xác nhận rằng requirements vẫn hỗ trợ các business objective và giá trị kỳ vọng chính là phép kiểm tra sự phù hợp mà task này thực hiện."
+        },
+        {
+          "label": "B",
+          "text": "Verify Requirements, vì các requirement lại đang được kiểm tra lần nữa.",
+          "rationale": "Verify Requirements là phép kiểm tra chất lượng đã hoàn tất trong tình huống này. Kiểm tra sự phù hợp với business value là bước riêng và đến sau."
+        },
+        {
+          "label": "C",
+          "text": "Define Requirements Architecture, vì các requirement đang được xem xét như một bộ.",
+          "rationale": "Define Requirements Architecture đảm bảo các requirement hỗ trợ nhau về mặt cấu trúc. Nó không đánh giá sự phù hợp với business value."
+        },
+        {
+          "label": "D",
+          "text": "Assess Risks, vì business value được nhắc tới.",
+          "rationale": "Assess Risks đánh giá các hệ quả bất lợi trong một quá trình chuyển đổi, một task thuộc Strategy Analysis không liên quan tới việc kiểm tra sự phù hợp của một requirement với business value."
+        }
+      ],
+      "sourceHash": "dc97c675639517b4494e3acf072ed4513aad0bbb9ae8f7d592a0fccc2a177201",
+      "explanation": "Validate Requirements đảm bảo requirements và design phù hợp với business requirement và hỗ trợ việc mang lại giá trị cần thiết, đánh giá sự phù hợp với solution scope — một mối quan tâm khác với phép kiểm tra chất lượng đặc tả do Verify Requirements thực hiện."
+    },
+    {
+      "code": "RADD-033",
+      "stem": "Với hàng chục requirement riêng lẻ được ghi nhận từ nhiều nhóm khác nhau, một business analyst sắp xếp chúng thành một cấu trúc mạch lạc, kiểm tra rằng gộp lại chúng là đầy đủ và các quan hệ giữa chúng là nhất quán, trước khi bắt đầu bất kỳ công việc thiết kế nào. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Requirements Architecture, vì nó tổ chức toàn bộ bộ requirement để đảm bảo tính đầy đủ.",
+          "rationale": "Đúng. Cấu trúc hóa một bộ requirement lớn và kiểm tra tính đầy đủ cùng tính nhất quán trên toàn bộ chính là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Trace Requirements, vì có liên quan tới quan hệ giữa các requirement.",
+          "rationale": "Trace Requirements theo dõi các quan hệ phục vụ mục đích phân tích tác động thay đổi qua các cấp độ. Tổ chức cả bộ requirement thành một cấu trúc mạch lạc là mối quan tâm riêng."
+        },
+        {
+          "label": "C",
+          "text": "Specify and Model Requirements, vì requirement được ghi nhận bởi nhiều nhóm.",
+          "rationale": "Specify and Model Requirements tạo ra từng requirement từ elicitation results. Nó không cấu trúc hóa một bộ đã được ghi nhận như một tổng thể."
+        },
+        {
+          "label": "D",
+          "text": "Define Design Options, vì công việc thiết kế được nhắc tới.",
+          "rationale": "Define Design Options đề xuất các phương án giải pháp, và đề bài nói rõ là công việc thiết kế còn chưa bắt đầu."
+        }
+      ],
+      "sourceHash": "f3bb116018563be714663de066281a8f8a300ee4ea156e75b131753e53de2eed",
+      "explanation": "Define Requirements Architecture đảm bảo các requirement cùng nhau hỗ trợ lẫn nhau để đạt trọn vẹn các objective của initiative, trong đó tính đầy đủ và việc kiểm chứng quan hệ giữa các requirement là những element được nêu rõ."
+    },
+    {
+      "code": "RADD-034",
+      "stem": "Khi đã có sẵn requirements đã validate và prioritize cùng một requirements architecture, business analyst làm việc với delivery team để phác ra hai cách khác nhau mà giải pháp có thể đáp ứng những requirement đó, mỗi cách phân bổ requirement lên các thành phần theo một kiểu khác nhau. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Design Options, vì nó phân bổ requirements lên các thành phần giải pháp.",
+          "rationale": "Đúng. Phác ra các cách tiếp cận giải pháp thay thế nhau và phân bổ requirements lên các thành phần chính là thứ mà task này tạo ra."
+        },
+        {
+          "label": "B",
+          "text": "Analyze Potential Value and Recommend Solution, vì các phương án đang được so sánh.",
+          "rationale": "Analyze Potential Value and Recommend Solution đánh giá và chọn giữa các design option khi chúng đã tồn tại. Tình huống này đang tạo ra các phương án đó, không phải chọn giữa chúng."
+        },
+        {
+          "label": "C",
+          "text": "Define Change Strategy, vì các phương án đang được phác ra.",
+          "rationale": "Define Change Strategy chọn cách chuyển đổi tổng thể ở cấp chiến lược, một task thuộc Strategy Analysis, không phải các phương án thiết kế ở cấp giải pháp."
+        },
+        {
+          "label": "D",
+          "text": "Specify and Model Requirements, vì có liên quan tới requirements.",
+          "rationale": "Specify and Model Requirements tạo ra bản thân các requirement, vốn là input ở đây, không phải các thiết kế giải pháp thay thế nhau đáp ứng chúng."
+        }
+      ],
+      "sourceHash": "5b91ec2f0a44dc8a109c50187342105f84dc379ef2450af94c6805153f2a467a",
+      "explanation": "Define Design Options xác định cách tiếp cận giải pháp, phân bổ requirements lên các thành phần giải pháp, và biểu diễn những design option có thể đạt được future state mong muốn."
+    },
+    {
+      "code": "RADD-035",
+      "stem": "Có hai design option để tự động hóa quy trình đối chiếu hóa đơn. Một business analyst ước tính lợi ích và chi phí kỳ vọng của từng phương án, rồi khuyến nghị phương án mang lại giá trị ròng lớn nhất cho doanh nghiệp. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Potential Value and Recommend Solution, vì nó cân nhắc lợi ích và chi phí để khuyến nghị một phương án.",
+          "rationale": "Đúng. Ước tính lợi ích và chi phí cho từng design option rồi khuyến nghị phương án có giá trị lớn nhất chính là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Define Design Options, vì hai phương án đang được so sánh.",
+          "rationale": "Define Design Options đã tạo ra hai phương án đang được so sánh ở đây. Đánh giá và chọn giữa chúng là một task riêng và đến sau."
+        },
+        {
+          "label": "C",
+          "text": "Measure Solution Performance, vì giá trị đang được ước tính.",
+          "rationale": "Measure Solution Performance đánh giá một giải pháp đã triển khai bằng dữ liệu thu thập được. Chưa phương án nào ở đây được xây dựng cả."
+        },
+        {
+          "label": "D",
+          "text": "Assess Risks, vì một khuyến nghị đang được đưa ra.",
+          "rationale": "Assess Risks đánh giá các hệ quả bất lợi của một quá trình chuyển đổi ở cấp chiến lược, không phải giá trị so sánh giữa hai phương án thiết kế giải pháp."
+        }
+      ],
+      "sourceHash": "56782f80ae0261bace14f2c05ccc00781414b12b745a0cdbbce825141ebbb104",
+      "explanation": "Analyze Potential Value and Recommend Solution ước tính potential value của từng design option và xác lập phương án nào là phù hợp nhất để đáp ứng các requirement của doanh nghiệp, cân lợi ích kỳ vọng với chi phí kỳ vọng."
+    },
+    {
+      "code": "RADD-036",
+      "stem": "Sau khi doanh nghiệp chọn được giải pháp được khuyến nghị, business analyst còn đề xuất thêm một pilot release nhỏ trước khi triển khai toàn diện, để xác nhận giá trị kỳ vọng có thành hiện thực hay không trước khi cam kết đầu tư thêm. Việc khuyến nghị pilot release này là output của task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Potential Value and Recommend Solution, vì pilot release nằm trong số các output của nó.",
+          "rationale": "Đúng. Khuyến nghị một pilot hay beta release trước một operational release đầy đủ được liệt kê rõ trong số các output của task này, bên cạnh khuyến nghị giải pháp."
+        },
+        {
+          "label": "B",
+          "text": "Define Change Strategy, vì có liên quan tới việc lập kế hoạch release.",
+          "rationale": "Define Change Strategy lập kế hoạch transition state và release ở cấp chiến lược rộng hơn, từ trước khi các design option tồn tại, không phải khuyến nghị pilot-trước-triển-khai cụ thể gắn với một giải pháp đã chọn."
+        },
+        {
+          "label": "C",
+          "text": "Verify Requirements, vì chất lượng là mối quan tâm trước khi triển khai.",
+          "rationale": "Verify Requirements kiểm tra chất lượng đặc tả ở giai đoạn sớm hơn trong quy trình. Nó không có vai trò gì trong việc sắp xếp trình tự pilot và operational release."
+        },
+        {
+          "label": "D",
+          "text": "Measure Solution Performance, vì pilot sẽ được đánh giá.",
+          "rationale": "Measure Solution Performance diễn ra sau khi một release đã chạy, dùng dữ liệu do nó sinh ra. Việc đề xuất bản thân pilot release diễn ra trước đó, như một phần của khuyến nghị giải pháp."
+        }
+      ],
+      "sourceHash": "7f98264b647746ad67f7d85c049a552fccbc63dfe4385e259f154d2c9f17cd30",
+      "explanation": "Output của Analyze Potential Value and Recommend Solution nêu rõ có bao gồm prototype hay proof of concept, pilot hay beta release, và operational release, bên cạnh bản thân khuyến nghị giải pháp — khác với phần lập kế hoạch transition state rộng hơn của Define Change Strategy."
+    }
+  ]
+}

@@ -1,0 +1,482 @@
+{
+  "version": 1,
+  "locale": "vi",
+  "questions": [
+    {
+      "code": "SE-001",
+      "stem": "Một portal tự phục vụ đã go-live bốn tháng trước. Sponsor hỏi liệu nó có đang phát huy tác dụng không. Nhóm dự án báo cáo được uptime, thời gian tải trang và số người dùng đã đăng ký, nhưng không ai nói được lượng cuộc gọi có giảm hay không. Theo thuật ngữ BABOK, vấn đề nằm ở đâu?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các performance measure không phản ánh giá trị mà giải pháp lẽ ra phải mang lại.",
+          "rationale": "Đúng. Định nghĩa những thước đo nối được với giá trị dự định là element đầu tiên của task này, và đó chính là thứ đang thiếu ở đây."
+        },
+        {
+          "label": "B",
+          "text": "Giải pháp chưa được sử dụng đủ lâu để có thể đo lường.",
+          "rationale": "Bốn tháng vận hành là quá đủ. Lỗ hổng nằm ở chỗ đang đo cái gì, không phải đo trong bao lâu."
+        },
+        {
+          "label": "C",
+          "text": "Requirements đã không được verify trước khi portal được xây dựng.",
+          "rationale": "Verification kiểm tra chất lượng requirement trước khi bàn giao. Nó sẽ không tạo ra được phép đo lượng cuộc gọi sau khi go-live."
+        },
+        {
+          "label": "D",
+          "text": "Solution scope đã được định nghĩa quá hẹp trong lúc làm change strategy.",
+          "rationale": "Không có gì cho thấy scope của portal bị sai. Thứ vắng mặt là một thước đo về tác động của nó."
+        }
+      ],
+      "sourceHash": "5d3b007f0f2ec368b94de4a9e2ce3af5b2354691c0a80cb49d85a7f031b50e44",
+      "explanation": "Measure Solution Performance định nghĩa các thước đo phản ánh giá trị mà giải pháp được kỳ vọng mang lại, chứ không chỉ những gì dễ đo đạc. Các chỉ số kỹ thuật và chỉ số sử dụng không trả lời được câu hỏi business objective có đạt hay không."
+    },
+    {
+      "code": "SE-002",
+      "stem": "Một business analyst đang cân nhắc dùng thước đo định lượng hay định tính cho solution performance về mức độ tin tưởng của khách hàng vào quy trình claims mới. Cân nhắc nào quan trọng nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Loại thước đo nào thực sự nắm bắt được khía cạnh giá trị đang xét và sẽ được chấp nhận như bằng chứng.",
+          "rationale": "Đúng. BABOK chấp nhận cả hai loại; lựa chọn đi theo thứ đang được đo và thứ mà stakeholder thấy đáng tin."
+        },
+        {
+          "label": "B",
+          "text": "Thước đo định lượng luôn nên được ưu tiên vì chúng khách quan.",
+          "rationale": "Một quy tắc ngón tay cái hấp dẫn, nhưng một con số chính xác đo sai thứ còn tệ hơn một thước đo định tính được thiết kế tốt."
+        },
+        {
+          "label": "C",
+          "text": "Thước đo định tính nên được ưu tiên vì mức độ tin tưởng của khách hàng là chủ quan.",
+          "rationale": "Bản chất của chủ đề không quyết định công cụ đo. Mức độ tin tưởng có thể được đo định lượng qua hành vi quay lại hoặc qua điểm khảo sát."
+        },
+        {
+          "label": "D",
+          "text": "Thước đo nào mà nền tảng báo cáo hiện có tạo ra được mà không cần thay đổi gì.",
+          "rationale": "Sự tiện lợi của công cụ đúng là áp lực sinh ra những thước đo chẳng ai cần."
+        }
+      ],
+      "sourceHash": "442f5fdb788bdc2ffc32cef8c483792ac43e1d13f181f93375c3d2efd806c1c0",
+      "explanation": "Measure Solution Performance chấp nhận cả thước đo định lượng lẫn định tính. Lựa chọn phụ thuộc vào khía cạnh giá trị nào đang được đo và stakeholder sẽ chấp nhận cái gì làm bằng chứng cho nó."
+    },
+    {
+      "code": "SE-003",
+      "stem": "Các stakeholder đã đề xuất một bộ solution performance measure. Trước khi thu thập bất kỳ dữ liệu nào, business analyst kiểm chứng từng thước đo cùng stakeholder để chắc rằng nó thực sự chỉ ra điều họ tin là nó chỉ ra. Đây là element nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Validate Performance Measures",
+          "rationale": "Đúng. Kiểm chứng với stakeholder rằng một thước đo chỉ ra đúng điều họ nghĩ nó chỉ ra chính là element validation của task này."
+        },
+        {
+          "label": "B",
+          "text": "Collect Performance Measures",
+          "rationale": "Thu thập là bước tiếp sau. Tình huống nói rõ là còn trước mọi việc thu thập dữ liệu."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Performance Measures",
+          "rationale": "Phân tích là một task riêng, được thực hiện khi các thước đo đã được thu thập."
+        },
+        {
+          "label": "D",
+          "text": "Assess Solution Limitations",
+          "rationale": "Task đó xem xét cái gì ngăn giải pháp mang lại giá trị. Ở đây chưa có hành vi nào của giải pháp được xem xét cả."
+        }
+      ],
+      "sourceHash": "dd37d43e1842fac7220ab6f05e470ac2a2b7e042a3f16e1edd8deb4148cdf4d3",
+      "explanation": "Validate Performance Measures là một element của Measure Solution Performance. Nó xác nhận cùng stakeholder rằng các thước đo được chọn thực sự phản ánh giá trị dự định, trước khi bỏ công sức đi thu thập chúng."
+    },
+    {
+      "code": "SE-004",
+      "stem": "Dữ liệu sáu tháng cho thấy thời gian xử lý đơn hàng trung bình đã giảm đúng như dự tính, nhưng số đơn phải sửa lần hai lại tăng vọt. Business analyst nên kết luận thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các thước đo phải được diễn giải cùng nhau, vì xử lý nhanh hơn mà sinh ra việc làm lại thì có thể chẳng tạo ra giá trị ròng nào.",
+          "rationale": "Đúng. Phân tích performance nghĩa là xác định giá trị thực sự đã mang lại, và điều đó đòi hỏi đọc các thước đo trong tương quan với nhau."
+        },
+        {
+          "label": "B",
+          "text": "Giải pháp đã thành công, vì thước đo mục tiêu đã cải thiện đúng như dự tính.",
+          "rationale": "Distractor mạnh nhất. Tuyên bố thành công chỉ dựa trên thước đo mục tiêu chính là lỗi mà task này đề phòng."
+        },
+        {
+          "label": "C",
+          "text": "Tỷ lệ phải sửa là một defect và nên được nêu với delivery team.",
+          "rationale": "Nó có thể là defect mà cũng có thể không. Coi nó là defect là bỏ qua phần phân tích xem các thước đo gộp lại nói gì về giá trị."
+        },
+        {
+          "label": "D",
+          "text": "Các performance measure đã không hợp lệ và nên được thay thế.",
+          "rationale": "Các thước đo đang hoạt động tốt; chúng đang phơi bày một tác động có thật. Thay chúng đi là che giấu phát hiện đó."
+        }
+      ],
+      "sourceHash": "0d70cef33ed14d370888a6271188794975644c69e6fdc71cceba6218a0abde7f",
+      "explanation": "Analyze Performance Measures diễn giải dữ liệu đã thu thập để xác định giá trị đã mang lại, và nhìn các thước đo cùng nhau thay vì tách rời. Một khoản lợi ở thước đo này bị bù trừ bởi khoản thiệt ở thước đo kia có thể nghĩa là chẳng có giá trị ròng nào."
+    },
+    {
+      "code": "SE-005",
+      "stem": "Dữ liệu performance của một pricing engine mới chênh lệch rất lớn giữa các khu vực. Trước khi rút ra kết luận, business analyst xem xét liệu chênh lệch đó phản ánh khác biệt thật về solution performance hay chỉ là khác biệt trong cách mỗi khu vực ghi nhận dữ liệu. Vì sao điều này quan trọng?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các kết luận về solution performance chỉ vững chắc nếu dữ liệu nền tảng đang đo cùng một thứ ở mọi nơi.",
+          "rationale": "Đúng. Đánh giá độ tin cậy của dữ liệu performance là một phần của việc phân tích nó một cách có trách nhiệm."
+        },
+        {
+          "label": "B",
+          "text": "Việc thu thập dữ liệu không nhất quán là một solution limitation phải được ghi nhận.",
+          "rationale": "Việc ghi nhận không nhất quán thường là một enterprise limitation về quy trình hay thực hành, không phải hạn chế của bản thân giải pháp."
+        },
+        {
+          "label": "C",
+          "text": "Chênh lệch giữa các khu vực phải bị loại bỏ trước khi có thể đánh giá giải pháp.",
+          "rationale": "Chênh lệch thật giữa các khu vực có thể là một phát hiện có thật và quan trọng. Mục tiêu là phân biệt nó với nhiễu đo lường, không phải xóa bỏ nó."
+        },
+        {
+          "label": "D",
+          "text": "Các performance measure phải được validate lại với stakeholder sau mỗi chu kỳ thu thập.",
+          "rationale": "Không cần validate lại sau mỗi chu kỳ. Điều cần ở đây là hiểu xem chính bộ dữ liệu này có gánh nổi kết luận hay không."
+        }
+      ],
+      "sourceHash": "a9c3e2f6a67bfc975821333659bc4b94f508ba8458f821960bdc818b390ca8a4",
+      "explanation": "Analyze Performance Measures phụ thuộc vào việc hiểu độ tin cậy của dữ liệu và các rủi ro khi diễn giải nó. Chênh lệch do thu thập không nhất quán chẳng nói gì với analyst về giải pháp cả."
+    },
+    {
+      "code": "SE-006",
+      "stem": "Một công cụ pricing mới bàn giao cho ra kết quả đúng, nhưng chỉ sau khi người dùng nhập tay lại dữ liệu mà công cụ không import được. Việc nhập lại này ngốn gần hết phần thời gian mà công cụ lẽ ra phải tiết kiệm. Business analyst nên phân loại điều này thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một solution limitation, vì hạn chế nằm bên trong chính giải pháp.",
+          "rationale": "Đúng. Capability import còn thiếu nằm bên trong giải pháp và trực tiếp hạn chế giá trị nó mang lại."
+        },
+        {
+          "label": "B",
+          "text": "Một enterprise limitation, vì người dùng đang phải làm việc thủ công.",
+          "rationale": "Đây là nhầm lẫn phổ biến nhất ở cặp khái niệm này. Việc làm thủ công là do capability còn thiếu của giải pháp gây ra, không phải do một ràng buộc của doanh nghiệp."
+        },
+        {
+          "label": "C",
+          "text": "Một defect, vì công cụ không đáp ứng requirements của nó.",
+          "rationale": "Công cụ có thể đang đáp ứng chính xác các requirement đã nêu của nó. Một giải pháp có thể không có defect nào mà vẫn hạn chế giá trị nó mang lại."
+        },
+        {
+          "label": "D",
+          "text": "Một risk, vì khoản tiết kiệm kỳ vọng có thể không thành hiện thực.",
+          "rationale": "Sự thiếu hụt đã đang diễn ra và đã được quan sát. Risk là một sự kiện tương lai không chắc chắn."
+        }
+      ],
+      "sourceHash": "a8c6835575fb5681a5ca0329c262c22ff61cc034a30078e4914c85400c07f6cc",
+      "explanation": "Assess Solution Limitations nhận diện các yếu tố bên trong giải pháp làm hạn chế giá trị nó mang lại. Một capability còn thiếu buộc người ta phải làm thủ công là hạn chế của giải pháp, khác với hạn chế nằm ở doanh nghiệp xung quanh."
+    },
+    {
+      "code": "SE-007",
+      "stem": "Một workflow phê duyệt mới vận hành đúng như thiết kế, nhưng giá trị kỳ vọng vẫn không thành hiện thực vì một phòng ban riêng vẫn khăng khăng đòi chữ ký đối chứng trên giấy, do chính sách chưa được cập nhật để bỏ bước đó. Business analyst nên phân loại điều này thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một enterprise limitation, vì hạn chế nằm ở chính sách của tổ chức chứ không nằm trong giải pháp.",
+          "rationale": "Đúng. Giải pháp vận hành đúng như thiết kế; vật cản là một chính sách chưa thay đổi nằm bên ngoài nó."
+        },
+        {
+          "label": "B",
+          "text": "Một solution limitation, vì workflow không loại bỏ được bước giấy tờ.",
+          "rationale": "Đáp án suýt đúng. Workflow chưa bao giờ được yêu cầu phải thay đổi chính sách của một phòng ban khác, và nó đang vận hành đúng như thiết kế."
+        },
+        {
+          "label": "C",
+          "text": "Một defect trong requirements, vì bước giấy tờ đã không được loại bỏ.",
+          "rationale": "Gọi đây là defect của requirements là mặc định rằng initiative có thẩm quyền với chính sách của phòng ban đó, điều không hề được nêu."
+        },
+        {
+          "label": "D",
+          "text": "Một performance measure chưa được validate.",
+          "rationale": "Việc đo lường không bị đặt dấu hỏi. Sự thiếu hụt về giá trị đã được quan sát và nguyên nhân đã được xác định."
+        }
+      ],
+      "sourceHash": "364d08dd9a951469ba7d58c1fba3dfb3552823911ab33846bdf9c1b79e3bc1c1",
+      "explanation": "Assess Enterprise Limitations nhận diện các yếu tố nằm ngoài giải pháp làm hạn chế việc hiện thực hóa giá trị, bao gồm chính sách, cơ cấu, văn hóa của tổ chức và mức độ sẵn sàng của stakeholder."
+    },
+    {
+      "code": "SE-008",
+      "stem": "Trường hợp nào sau đây rõ ràng là enterprise limitation chứ không phải solution limitation?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nhân viên chưa được đào tạo để dùng một capability mà giải pháp đã cung cấp.",
+          "rationale": "Đúng. Capability đã có sẵn trong giải pháp; vật cản là mức độ sẵn sàng sử dụng nó của doanh nghiệp."
+        },
+        {
+          "label": "B",
+          "text": "Giải pháp không xử lý được giao dịch bằng một loại tiền tệ mà doanh nghiệp hiện đang giao dịch.",
+          "rationale": "Một capability còn thiếu bên trong giải pháp là một solution limitation."
+        },
+        {
+          "label": "C",
+          "text": "Giải pháp bị timeout dưới khối lượng giao dịch cuối tháng.",
+          "rationale": "Thiếu hụt performance của chính giải pháp là một solution limitation."
+        },
+        {
+          "label": "D",
+          "text": "Giải pháp tính sai tổng tiền khi áp dụng chiết khấu.",
+          "rationale": "Một kết quả tính sai là defect bên trong giải pháp, và do đó là một solution limitation."
+        }
+      ],
+      "sourceHash": "31de015a03c0953c1a4195591ea689e46c236197df715cbd3acaaa2c05057075",
+      "explanation": "Enterprise limitation nằm bên ngoài giải pháp: văn hóa, cơ cấu, chính sách, kỹ năng và mức độ sẵn sàng của stakeholder. Solution limitation nằm bên trong: capability còn thiếu, defect, và thiếu hụt về performance của bản thân giải pháp."
+    },
+    {
+      "code": "SE-009",
+      "stem": "Một giải pháp đã được sử dụng một năm. Phân tích cho thấy nó chỉ mang lại khoảng một phần ba giá trị kỳ vọng, và chi phí mở rộng nó sẽ vượt quá phần lợi ích còn lại. Business analyst nên cân nhắc phạm vi khuyến nghị nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Toàn bộ phạm vi, bao gồm thay đổi tổ chức xoay quanh giải pháp, chấp nhận mức performance hiện tại, hoặc ngừng sử dụng nó.",
+          "rationale": "Đúng. Task này nói rõ có tính tới cả việc ngừng sử dụng lẫn thay đổi doanh nghiệp, chứ không chỉ cải thiện giải pháp."
+        },
+        {
+          "label": "B",
+          "text": "Chỉ những hành động cải thiện chính giải pháp, vì nó là đối tượng của việc đánh giá.",
+          "rationale": "Cách đọc hẹp đầy cám dỗ. Khi chi phí mở rộng vượt quá lợi ích, giới hạn khuyến nghị trong phạm vi thay đổi giải pháp chắc chắn cho ra một khuyến nghị tệ."
+        },
+        {
+          "label": "C",
+          "text": "Chỉ những hành động mà delivery team đủ năng lực triển khai trong release kế tiếp.",
+          "rationale": "Năng lực bàn giao giới hạn cái gì lên được lịch; nó không nên giới hạn điều analyst sẵn sàng khuyến nghị."
+        },
+        {
+          "label": "D",
+          "text": "Không khuyến nghị gì, vì việc thiếu hụt giá trị đồng nghĩa business case ban đầu đã sai.",
+          "rationale": "Từ chối khuyến nghị là bỏ rơi task. Xác định được rằng luận điểm ban đầu quá lạc quan là một phát hiện, không phải lý do để dừng lại."
+        }
+      ],
+      "sourceHash": "7fedac23379b77aaf4181d7a42d2af4b3bb7027c9882619ce5cc273e53a69fba",
+      "explanation": "Recommend Actions to Increase Solution Value cân nhắc toàn bộ phạm vi hành động khả dĩ, bao gồm điều chỉnh giải pháp, thay đổi doanh nghiệp xung quanh nó, chấp nhận mức performance hiện tại, hoặc ngừng sử dụng và thay thế giải pháp."
+    },
+    {
+      "code": "SE-010",
+      "stem": "Một business analyst đã xác định rằng giá trị của một giải pháp bị giới hạn bởi một enterprise limitation: một chính sách ở phòng ban khác. Sponsor yêu cầu một khuyến nghị. Khuyến nghị nào là phù hợp nhất để xây dựng?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Khuyến nghị thay đổi chính enterprise limitation đó, vì đó mới là thứ đang bó buộc giá trị.",
+          "rationale": "Đúng. Khuyến nghị nên nhắm vào nguyên nhân thật sự của việc thiếu hụt giá trị."
+        },
+        {
+          "label": "B",
+          "text": "Khuyến nghị mở rộng giải pháp để nó vận hành được bất chấp chính sách kia.",
+          "rationale": "Đây là đáp án kiểu kỹ thuật nghe rất hợp lý. Nó tiêu tiền để lách một ràng buộc vốn có thể gỡ bỏ, và để nguyên ràng buộc đó tại chỗ."
+        },
+        {
+          "label": "C",
+          "text": "Khuyến nghị ngừng sử dụng giải pháp, vì nó không thể mang lại giá trị kỳ vọng.",
+          "rationale": "Ngừng sử dụng là phản ứng thái quá khi giải pháp vẫn chạy tốt và vật cản chỉ là một chính sách."
+        },
+        {
+          "label": "D",
+          "text": "Khuyến nghị hạ mức giá trị kỳ vọng trong business case xuống cho khớp với performance thực tế.",
+          "rationale": "Hạ chỉ tiêu xuống cho khớp với phần thiếu hụt là ghi nhận thất bại chứ không phải hành động để tăng giá trị."
+        }
+      ],
+      "sourceHash": "2f58b275f791b2fc196602d2a92b98c76f3050da2d178243e7727f01426dd4b7",
+      "explanation": "Khi giá trị bị bó buộc bởi doanh nghiệp chứ không phải bởi giải pháp, khuyến nghị phù hợp phải nhắm vào enterprise limitation. Sửa giải pháp để lách một enterprise limitation thường tốn thêm chi phí mà không gỡ bỏ được ràng buộc."
+    },
+    {
+      "code": "SE-011",
+      "stem": "Các task thuộc Solution Evaluation có thể được thực hiện trước khi một giải pháp được triển khai hoàn chỉnh không?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Có, chúng áp dụng cho cả prototype, pilot và các giải pháp mới release một phần, chứ không riêng giải pháp đã triển khai đầy đủ.",
+          "rationale": "Đúng. Đánh giá sớm thường chính là điểm mấu chốt, vì các phát hiện vẫn còn kịp ảnh hưởng tới phần bàn giao còn lại."
+        },
+        {
+          "label": "B",
+          "text": "Không, một giải pháp phải chạy production thì mới đánh giá được performance của nó.",
+          "rationale": "Cách này biến việc đánh giá thành thuần túy nhìn lại quá khứ và tước đi khả năng ảnh hưởng tới bất cứ điều gì của nó."
+        },
+        {
+          "label": "C",
+          "text": "Không, đánh giá trước khi triển khai là validation, không phải solution evaluation.",
+          "rationale": "Validation kiểm tra requirements đối chiếu với nhu cầu của stakeholder. Đánh giá một pilot vận hành ra sao là solution evaluation."
+        },
+        {
+          "label": "D",
+          "text": "Có, nhưng chỉ với các giải pháp bàn giao theo adaptive approach.",
+          "rationale": "Không có gì trong Solution Evaluation giới hạn việc đánh giá sớm cho riêng các initiative adaptive; một initiative predictive cũng có thể chạy pilot."
+        }
+      ],
+      "sourceHash": "bf7ba44a67d0f1e6857826b33a9b28da76ac77982d09d853719f640a13e480f4",
+      "explanation": "Solution Evaluation áp dụng cho giải pháp và các thành phần giải pháp ở mọi giai đoạn, bao gồm prototype, pilot và giải pháp mới release một phần. Giá trị có thể và nên được đánh giá trước khi triển khai đầy đủ ở những chỗ khả thi."
+    },
+    {
+      "code": "SE-012",
+      "stem": "Một sponsor đề nghị business analyst định nghĩa các solution performance measure cho một thay đổi mà business objective của nó chưa bao giờ được phát biểu dưới dạng đo lường được. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Làm việc với stakeholder để xác lập giá trị nào đã được kỳ vọng, rồi dẫn xuất các thước đo từ đó.",
+          "rationale": "Đúng. Thước đo được dẫn xuất từ giá trị dự định, nên phần input còn thiếu phải được bổ sung thì việc đo lường mới có ý nghĩa."
+        },
+        {
+          "label": "B",
+          "text": "Định nghĩa thước đo dựa trên những gì giải pháp có khả năng báo cáo về mặt kỹ thuật.",
+          "rationale": "Cách này tạo ra đúng loại chỉ số lệch hướng khiến việc đánh giá trở nên vô dụng."
+        },
+        {
+          "label": "C",
+          "text": "Từ chối định nghĩa thước đo cho tới khi sponsor đưa ra được các objective đo lường được.",
+          "rationale": "Giúp stakeholder diễn đạt được giá trị kỳ vọng chính là phần việc của analyst, không phải một điều kiện tiên quyết mà người khác phải đáp ứng trước."
+        },
+        {
+          "label": "D",
+          "text": "Lấy lại các thước đo đã dùng ở một initiative tương tự nơi khác trong tổ chức.",
+          "rationale": "Thước đo đi mượn phản ánh giá trị dự định của một initiative khác, vốn có thể hoàn toàn khác."
+        }
+      ],
+      "sourceHash": "5e1301d2a9d57485205f068be07a6ce5b7099be31bbb78d258337a54832a3a9e",
+      "explanation": "Business objective là input cho Measure Solution Performance. Khi chúng chưa được phát biểu dưới dạng đo lường được, analyst làm việc với stakeholder để xác lập giá trị nào đã được kỳ vọng, trước khi định nghĩa các thước đo cho nó."
+    },
+    {
+      "code": "SE-013",
+      "stem": "Phân tích một giải pháp đã bàn giao cho thấy performance thấp hơn đáng kể so với mức stakeholder kỳ vọng. Trong tình huống này, output trực tiếp của Analyze Performance Measures là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một bản đánh giá solution performance, mô tả giá trị đã mang lại và chỗ nào còn thiếu hụt.",
+          "rationale": "Đúng. Output là bản đánh giá performance; các limitation và khuyến nghị đến từ những task sau đó."
+        },
+        {
+          "label": "B",
+          "text": "Một bộ hành động được khuyến nghị để khép lại khoảng cách performance.",
+          "rationale": "Khuyến nghị là output của Recommend Actions to Increase Solution Value, cách đó hai task."
+        },
+        {
+          "label": "C",
+          "text": "Một danh sách các hạn chế nội tại của giải pháp.",
+          "rationale": "Nhận diện các hạn chế nội tại là output của Assess Solution Limitations, task đi sau bản đánh giá performance."
+        },
+        {
+          "label": "D",
+          "text": "Một business case đã cập nhật phản ánh phần lợi ích được điều chỉnh.",
+          "rationale": "Business case có thể được cập nhật về sau, nhưng nó không phải output của việc phân tích performance measure."
+        }
+      ],
+      "sourceHash": "a6509e83695fdfd8903048de96ca6f6874b03174b7a5fcf3a2b912e8ea65dc8d",
+      "explanation": "Analyze Performance Measures tạo ra một bản đánh giá solution performance: hiểu biết về giá trị mà giải pháp mang lại và chỗ nào nó còn thiếu hụt. Việc xác định nguyên nhân và khuyến nghị hành động là các task tiếp theo."
+    },
+    {
+      "code": "SE-014",
+      "stem": "Sau khi đánh giá một giải pháp, business analyst kết luận rằng mức performance hiện tại là chấp nhận được và không cần thay đổi gì. 'Không làm gì cả' có phải là một khuyến nghị chính đáng không?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Có, chấp nhận mức performance hiện tại là một trong những khuyến nghị mà task này dự liệu.",
+          "rationale": "Đúng. Khi thay đổi thêm nữa cũng không làm tăng giá trị, khuyến nghị chấp nhận là câu trả lời đúng."
+        },
+        {
+          "label": "B",
+          "text": "Không, task này đòi hỏi các hành động làm tăng giá trị, nên khuyến nghị bắt buộc phải đề xuất một thay đổi.",
+          "rationale": "Đọc tên task như một nghĩa vụ phải luôn thay đổi sẽ sinh ra lãng phí. Task này đòi hỏi khuyến nghị phục vụ giá trị tốt nhất."
+        },
+        {
+          "label": "C",
+          "text": "Có, nhưng chỉ khi giải pháp đã đạt được mọi performance measure của nó.",
+          "rationale": "Chấp nhận vẫn có thể đúng ngay cả khi một thước đo chưa đạt, nếu việc khép lại khoảng cách đó tốn hơn phần nó mang lại."
+        },
+        {
+          "label": "D",
+          "text": "Không, vì chấp nhận mức performance hiện tại sẽ chấm dứt vĩnh viễn việc đánh giá giải pháp.",
+          "rationale": "Chấp nhận mức performance hiện tại bây giờ không loại trừ việc đánh giá lại sau này khi điều kiện thay đổi."
+        }
+      ],
+      "sourceHash": "1839d6ae2f199994e93a52622516a6450df569091853e2ac8288ff689e33eb57",
+      "explanation": "Khuyến nghị doanh nghiệp chấp nhận mức performance hiện tại là một trong những kết quả hợp lệ của task này. Khuyến nghị là một phán đoán về giá trị, và đôi khi hành động tốt nhất có thể làm là không thay đổi gì cả."
+    },
+    {
+      "code": "SE-015",
+      "stem": "Sáu tháng sau go-live, một business analyst rà soát dữ liệu performance đã thu thập đối chiếu với giá trị mà giải pháp lẽ ra phải mang lại, tìm các xu hướng và chênh lệch, nhưng chưa xác định phần thiếu hụt là do thứ gì đó bên trong giải pháp hay do tổ chức xung quanh. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Performance Measures, vì nó xem xét dữ liệu performance để tìm xu hướng và chênh lệch.",
+          "rationale": "Đúng. Rà soát dữ liệu performance đã thu thập đối chiếu với giá trị mong muốn, và tìm xu hướng cùng chênh lệch, đúng là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Measure Solution Performance, vì performance được nhắc tới.",
+          "rationale": "Measure Solution Performance định nghĩa các thước đo và thu thập dữ liệu, một bước đi trước. Tình huống này đã đang phân tích dữ liệu đã thu thập rồi."
+        },
+        {
+          "label": "C",
+          "text": "Assess Solution Limitations, vì có thể đang tồn tại một phần thiếu hụt.",
+          "rationale": "Assess Solution Limitations xác định nguyên nhân nội tại của một thiếu hụt, mà đề bài nói rõ là chưa được xác định."
+        },
+        {
+          "label": "D",
+          "text": "Assess Enterprise Limitations, vì tổ chức được nhắc tới.",
+          "rationale": "Assess Enterprise Limitations xác định nguyên nhân bên ngoài của một thiếu hụt, cũng bị đề bài loại trừ rõ ràng ở thời điểm này."
+        }
+      ],
+      "sourceHash": "419ffcb525a8f9f66c61f4100fbfa14c0bf970bd498b09fca1f9b715e1023b78",
+      "explanation": "Analyze Performance Measures cho cái nhìn thấu đáo về performance của một giải pháp trong tương quan với giá trị nó mang lại, xem xét performance đối chiếu với giá trị mong muốn, các xu hướng và chênh lệch, trước khi quy nguyên nhân về giải pháp hay về doanh nghiệp."
+    },
+    {
+      "code": "SE-016",
+      "stem": "Phân tích performance cho thấy một hệ thống claims mới đang không đạt kỳ vọng. Một business analyst điều tra xem phần thiếu hụt có truy về một thành phần lỗi hay một dependency cụ thể nằm bên trong chính giải pháp hay không. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Solution Limitations, vì nó điều tra các nguyên nhân nội tại của giải pháp.",
+          "rationale": "Đúng. Điều tra xem một thiếu hụt có truy về một thành phần lỗi hay một dependency bên trong giải pháp hay không đúng là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Assess Enterprise Limitations, vì giải pháp đang không đạt kỳ vọng.",
+          "rationale": "Assess Enterprise Limitations nhìn vào các yếu tố bên ngoài giải pháp, chẳng hạn văn hóa hay cơ cấu tổ chức, chứ không phải nguyên nhân bên trong giải pháp."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Performance Measures, vì dữ liệu performance đã được rà soát trước đó.",
+          "rationale": "Analyze Performance Measures là bước trước đó đã phơi bày ra thiếu hụt. Chẩn đoán nguyên nhân nội tại của nó là một task riêng và đến sau."
+        },
+        {
+          "label": "D",
+          "text": "Recommend Actions to Increase Solution Value, vì rốt cuộc vẫn cần một biện pháp khắc phục.",
+          "rationale": "Recommend Actions to Increase Solution Value đến sau khi cả hạn chế nội tại lẫn bên ngoài đã được hiểu rõ, không phải trong lúc đang chẩn đoán một nguyên nhân nội tại."
+        }
+      ],
+      "sourceHash": "a9c40f86f007bb9f78e38155feb2629f3685df49a8510990e69346b658f746d5",
+      "explanation": "Assess Solution Limitations xác định các yếu tố bên trong giải pháp làm hạn chế việc hiện thực hóa đầy đủ giá trị, nhận diện các dependency giữa thành phần nội bộ và điều tra các vấn đề của giải pháp."
+    },
+    {
+      "code": "SE-017",
+      "stem": "Điều tra cho thấy một hệ thống claims mới vận hành đúng như thiết kế, nhưng mức độ áp dụng thấp vì nhân viên chưa từng được đào tạo lại và mô hình vận hành xung quanh chưa hề thay đổi. Task nào nhận diện loại nguyên nhân này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Enterprise Limitations, vì nguyên nhân thuộc về tổ chức chứ không phải kỹ thuật.",
+          "rationale": "Đúng. Nhân viên chưa được đào tạo và mô hình vận hành chưa thay đổi là những yếu tố bên ngoài giải pháp, đúng là phạm vi mà các element về văn hóa doanh nghiệp và mức độ sẵn sàng vận hành của task này bao trùm."
+        },
+        {
+          "label": "B",
+          "text": "Assess Solution Limitations, vì giải pháp có liên quan.",
+          "rationale": "Assess Solution Limitations nhìn vào nguyên nhân nội tại của giải pháp, và đề bài đã loại trừ điều đó bằng cách nói rõ hệ thống vận hành đúng như thiết kế."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Performance Measures, vì dữ liệu performance đã phơi bày vấn đề.",
+          "rationale": "Analyze Performance Measures là bước trước đó phơi bày ra thiếu hụt. Tình huống này đã đang chẩn đoán nguyên nhân, không còn ở giai đoạn thu thập dữ liệu."
+        },
+        {
+          "label": "D",
+          "text": "Recommend Actions to Increase Solution Value, vì mức áp dụng thấp cần được xử lý.",
+          "rationale": "Recommend Actions to Increase Solution Value đề xuất hướng hành động sau khi các hạn chế, cả nội tại lẫn bên ngoài, đã được hiểu rõ."
+        }
+      ],
+      "sourceHash": "e70f5969175052d16ae418d495451bdd7a3696122610abf729078bbf3eab1fac",
+      "explanation": "Assess Enterprise Limitations xác định các yếu tố bên ngoài giải pháp, như văn hóa doanh nghiệp, cơ cấu tổ chức và mức độ sẵn sàng vận hành, làm hạn chế việc hiện thực hóa giá trị ra sao — trái với Assess Solution Limitations vốn nhìn vào bên trong bản thân giải pháp."
+    }
+  ]
+}

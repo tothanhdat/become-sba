@@ -1,0 +1,398 @@
+{
+  "version": 1,
+  "locale": "vi",
+  "questions": [
+    {
+      "code": "EC-001",
+      "stem": "Một business analyst đã đặt lịch một workshop hai tiếng với tám stakeholder từ bộ phận finance và operations để tìm hiểu các vấn đề về reconciliation. Thư mời chỉ ghi 'requirements workshop'. Một đồng nghiệp hỏi analyst mong thu được gì sau buổi đó. Analyst vẫn chưa xác định. Analyst đã bỏ sót điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Xác định các elicitation outcome mong muốn cho hoạt động này.",
+          "rationale": "Đúng. Hiểu scope và xác định các outcome mong muốn là element đầu tiên của việc chuẩn bị elicitation, và mọi thứ còn lại trong thiết kế buổi làm việc đều đi theo nó."
+        },
+        {
+          "label": "B",
+          "text": "Confirm elicitation results với những người tham dự.",
+          "rationale": "Confirmation diễn ra sau elicitation, trong Confirm Elicitation Results. Buổi làm việc còn chưa diễn ra."
+        },
+        {
+          "label": "C",
+          "text": "Lựa chọn stakeholder để mời.",
+          "rationale": "Người tham dự đã được chọn rồi. Lỗ hổng là họ được chọn mà không có một outcome nào để làm căn cứ chọn."
+        },
+        {
+          "label": "D",
+          "text": "Thống nhất change control process cho bất kỳ requirement nào được tạo ra.",
+          "rationale": "Change control là chuyện governance được lập kế hoạch trong Business Analysis Planning and Monitoring, không thuộc việc chuẩn bị một buổi làm việc."
+        }
+      ],
+      "sourceHash": "cda1eee478e4ff54786ca400074c00efae924056b089d288aeaeff6e19d9f8c2",
+      "explanation": "Prepare for Elicitation bắt đầu bằng việc hiểu scope của hoạt động elicitation và xác định các outcome mong muốn. Không có outcome được nêu rõ, analyst không thể chọn người tham dự, chọn technique, hay biết khi nào buổi làm việc là thành công."
+    },
+    {
+      "code": "EC-002",
+      "stem": "Một business analyst cần hiểu các call centre agent thực sự xử lý ngoại lệ như thế nào, khác với những gì quy trình đã ghi trong tài liệu nói rằng họ phải làm. Elicitation technique nào phù hợp nhất, và vì sao?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Observation, vì nó quan sát công việc đúng như cách nó thực sự được thực hiện.",
+          "rationale": "Đúng. Observation là technique để tìm hiểu người ta thực sự làm gì, bao gồm cả những cách làm vòng vo không bao giờ được đưa vào tài liệu quy trình."
+        },
+        {
+          "label": "B",
+          "text": "Document analysis, vì sổ tay quy trình là nguồn có thẩm quyền.",
+          "rationale": "Sổ tay mô tả quy trình như dự định. Nó đúng là nguồn không thể phơi bày sự sai lệch mà analyst đang tìm."
+        },
+        {
+          "label": "C",
+          "text": "Survey hoặc questionnaire, vì nó tiếp cận được toàn bộ agent một cách hiệu quả.",
+          "rationale": "Độ phủ thì tốt, nhưng hành vi do chính người ta tự khai thường mô tả lại quy trình chính thức. Agent có thể không nhận ra hoặc không thừa nhận cách làm vòng vo của chính mình."
+        },
+        {
+          "label": "D",
+          "text": "Focus group, vì các agent có thể cùng nhau thảo luận về các ngoại lệ.",
+          "rationale": "Focus group thu thập ý kiến và phản ứng. Đây là lựa chọn thứ hai hợp lý, nhưng nó vẫn dựa vào điều agent nói chứ không phải điều họ làm."
+        }
+      ],
+      "sourceHash": "3499683c7118b31006ef2d86af4d0413f66c3c06a071266e8d4527890c885860",
+      "explanation": "Prepare for Elicitation chọn technique phù hợp với outcome mong muốn. Observation elicit thông tin bằng cách quan sát người ta thực hiện công việc trong bối cảnh thật, nhờ đó phơi bày khoảng cách giữa thực hành đã ghi trong tài liệu và thực hành thực tế."
+    },
+    {
+      "code": "EC-003",
+      "stem": "Trước khi phỏng vấn các bác sĩ cấp cao vốn rất eo hẹp thời gian, một business analyst đọc trước tài liệu quy trình hiện có, các phát hiện audit trước đây và data dictionary của hệ thống hiện tại. Lý do chính khiến analyst làm việc này trong phạm vi Prepare for Elicitation là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Để đến buổi làm việc với hiểu biết sẵn có, nhờ đó thời gian ít ỏi của stakeholder chỉ dành cho những gì duy nhất họ mới cung cấp được.",
+          "rationale": "Đúng. Chuẩn bị tài liệu hỗ trợ và hiểu biết nền là một phần của task này, và đó chính là thứ làm cho các buổi làm việc bị eo hẹp thời gian trở nên hiệu quả."
+        },
+        {
+          "label": "B",
+          "text": "Để tạo ra requirements trước buổi phỏng vấn, nhờ đó bác sĩ chỉ cần xác nhận lại.",
+          "rationale": "Cách này chiếm chỗ của elicitation và làm nó thiên lệch. Tài liệu mô tả current state; chúng không thay thế được việc elicit nhu cầu."
+        },
+        {
+          "label": "C",
+          "text": "Để đáp ứng yêu cầu governance rằng document analysis phải đi trước interview.",
+          "rationale": "BABOK không quy định thứ tự nào như vậy. Việc chọn technique đi theo outcome mong muốn, chứ không theo một trình tự cố định."
+        },
+        {
+          "label": "D",
+          "text": "Để thiết lập traceability giữa hệ thống hiện tại và các requirement tương lai.",
+          "rationale": "Traceability được thiết lập trong Requirements Life Cycle Management khi đã có requirements, chứ không phải trong lúc chuẩn bị đi elicit chúng."
+        }
+      ],
+      "sourceHash": "d4817d2a611fe363a7ccbd6648049f4f18a29a41754c683e773f1a86ac3f7b51",
+      "explanation": "Việc chuẩn bị tài liệu hỗ trợ và tự xây dựng hiểu biết về lĩnh vực giúp thời gian ít ỏi của stakeholder được dành cho những gì chỉ họ mới cung cấp được, thay vì dành cho phần nền mà analyst đã có thể tự tìm ở nơi khác."
+    },
+    {
+      "code": "EC-004",
+      "stem": "Sau bốn mươi phút của một workshop kéo dài chín mươi phút về order fulfilment, những người tham dự đang tranh luận gay gắt về mức nhân sự kho bãi, vốn nằm ngoài scope đã thống nhất. Hai stakeholder bắt đầu tỏ ra bực bội. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Ghi nhận vấn đề nhân sự để theo dõi sau và đưa nhóm quay lại các objective đã thống nhất.",
+          "rationale": "Đúng. Guide the activity nghĩa là giữ nó bám theo các objective mà vẫn không vứt bỏ thông tin có thể quan trọng về sau."
+        },
+        {
+          "label": "B",
+          "text": "Để cuộc thảo luận tiếp diễn, vì các chủ đề ngoài kế hoạch thường hé lộ nhu cầu thật sự.",
+          "rationale": "Đây là distractor hấp dẫn nhất. Các chủ đề nảy sinh có thể có giá trị, và chính vì vậy chúng được ghi lại để theo dõi sau, nhưng từ bỏ objective là phí cả buổi làm việc analyst đã chuẩn bị."
+        },
+        {
+          "label": "C",
+          "text": "Kết thúc workshop và họp lại sau khi vấn đề nhân sự đã được giải quyết.",
+          "rationale": "Kết thúc buổi làm việc là vứt bỏ năm mươi phút còn lại và khiến analyst phụ thuộc vào một quyết định nằm ngoài scope của initiative."
+        },
+        {
+          "label": "D",
+          "text": "Đề nghị sponsor mở rộng scope để bao gồm cả nhân sự kho bãi.",
+          "rationale": "Mở rộng scope ngay giữa buổi chỉ vì một cuộc tranh luận là quá vội, và nó cũng không xử lý được vấn đề trước mắt là buổi làm việc đang đi chệch hướng."
+        }
+      ],
+      "sourceHash": "b735094d19d418ac2a3238cae3925ef87ef71327f8adf6f40e949a5c8c65467b",
+      "explanation": "Guide Elicitation Activity, một element của Conduct Elicitation, bao gồm việc giữ hoạt động bám sát các objective đã nêu và xử lý phần thảo luận lạc đề, để buổi làm việc vẫn đạt được outcome dự định."
+    },
+    {
+      "code": "EC-005",
+      "stem": "Một business analyst vừa kết thúc một loạt buổi phỏng vấn. Ghi chú đã được viết lại và sắp xếp gọn gàng, nhưng chưa stakeholder nào xem lại. Theo thuật ngữ BABOK, thông tin này đang ở trạng thái nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Elicitation results (unconfirmed).",
+          "rationale": "Đúng. Conduct Elicitation cho ra elicitation results chưa được xác nhận; việc xác nhận là một task riêng."
+        },
+        {
+          "label": "B",
+          "text": "Elicitation results (confirmed).",
+          "rationale": "Confirmation đòi hỏi stakeholder đồng ý rằng bản ghi là chính xác. Viết lại ghi chú cho gọn gàng không phải là đã confirm chúng."
+        },
+        {
+          "label": "C",
+          "text": "Requirements (stated).",
+          "rationale": "Elicitation results chỉ trở thành requirements sau khi được phân tích, tổng hợp và mô hình hóa trong Specify and Model Requirements."
+        },
+        {
+          "label": "D",
+          "text": "Requirements (verified).",
+          "rationale": "Requirement đã verified là requirement đã qua kiểm tra chất lượng trong Verify Requirements. Ghi chú phỏng vấn còn cách trạng thái đó vài bước."
+        }
+      ],
+      "sourceHash": "3e56e3274c72b048126a874792b8bffa5635723f8e210d3ad4769a6176f5630f",
+      "explanation": "Conduct Elicitation tạo ra elicitation results ở trạng thái unconfirmed. Chúng chỉ trở thành confirmed sau Confirm Elicitation Results, khi stakeholder đồng ý rằng thông tin đã ghi khớp với điều họ truyền đạt."
+    },
+    {
+      "code": "EC-006",
+      "stem": "Trong một workshop, người tham dự có vị trí cao nhất nêu quan điểm ngay từ đầu và cả nhóm thấy rõ là ngừng đưa ra phương án khác. Analyst nghi ngờ rằng nhóm đang hội tụ về quan điểm của người cấp cao chứ không phải về đáp án tốt nhất. Hành động nào xử lý tình huống này tốt nhất mà vẫn tiếp tục được elicitation?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Chuyển sang một phương pháp trong đó mỗi người ghi lại ý kiến riêng của mình trước khi cả nhóm thảo luận.",
+          "rationale": "Đúng. Thu ý kiến cá nhân trước là cách chuẩn mực để một tiếng nói áp đảo không dập tắt kiến thức của cả nhóm."
+        },
+        {
+          "label": "B",
+          "text": "Đề nghị người tham dự cấp cao rời đi để các stakeholder còn lại được phát biểu thoải mái.",
+          "rationale": "Loại một stakeholder chính đáng ra khỏi phòng làm hỏng quan hệ làm việc và mất luôn kiến thức của họ — cái giá quá đắt cho một vấn đề mà kỹ năng điều phối giải quyết được."
+        },
+        {
+          "label": "C",
+          "text": "Ghi nhận quan điểm của người cấp cao như kết quả đã thống nhất của nhóm rồi đi tiếp.",
+          "rationale": "Cách này ghi lại thứ bậc chứ không phải kiến thức của nhóm, và cho ra elicitation results mà chính analyst đã tin là không đại diện."
+        },
+        {
+          "label": "D",
+          "text": "Nêu thẳng vấn đề áp đảo với cả nhóm và đề nghị họ tự điều chỉnh.",
+          "rationale": "Gọi thẳng tên vấn đề trước mặt người cấp cao dễ khiến mọi người ngượng và càng làm họ ngại đóng góp hơn, chứ không khôi phục được sự đóng góp."
+        }
+      ],
+      "sourceHash": "d2e2248b275629e35f39f9429e06c72f93b733b9bfa1d2ae08397f557a1345be",
+      "explanation": "Việc guide một hoạt động elicitation bao gồm quản lý động lực nhóm sao cho thông tin thu được phản ánh kiến thức của nhóm chứ không phải thứ bậc của nhóm. Những technique cho phép thu ý kiến cá nhân một cách độc lập sẽ triệt tiêu hiệu ứng áp đảo."
+    },
+    {
+      "code": "EC-007",
+      "stem": "Một business analyst gửi bản tóm tắt workshop cho mọi người và đề nghị từng người tham dự xác nhận rằng nó phản ánh đúng điều họ đã nói. Một người trả lời rằng có một constraint bị ghi ngược. Hoạt động confirmation này đã đạt được điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó đã bắt được một lỗi trước khi thông tin được dùng để xây dựng requirements.",
+          "rationale": "Đúng. Phát hiện lỗi và điểm không nhất quán trong kết quả đã ghi chính xác là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Nó đã validate rằng constraint đó mang lại business value.",
+          "rationale": "Validation kiểm tra rằng requirements mang lại giá trị cho stakeholder. Confirmation chỉ kiểm tra rằng bản ghi trung thành với điều đã được nói."
+        },
+        {
+          "label": "C",
+          "text": "Nó đã verify rằng constraint được viết tốt và không mơ hồ.",
+          "rationale": "Verification là kiểm tra chất lượng áp dụng cho requirements trong Verify Requirements. Elicitation results thì chưa phải là requirements."
+        },
+        {
+          "label": "D",
+          "text": "Nó đã phê duyệt constraint để đưa vào requirements baseline.",
+          "rationale": "Approval là hoạt động thuộc Requirements Life Cycle Management, do stakeholder có thẩm quyền thực hiện trên requirements, không phải sản phẩm phụ của việc xác nhận ghi chú."
+        }
+      ],
+      "sourceHash": "ff70e5608d589b1c55df6ac90d57fcbfe4c9239afc81b5bd211da8c6b22c96c7",
+      "explanation": "Confirm Elicitation Results kiểm tra rằng thông tin đã ghi khớp với điều stakeholder truyền đạt, và phát hiện lỗi, thiếu sót cùng những chỗ không nhất quán trước khi thông tin đó được dùng để xây dựng requirements."
+    },
+    {
+      "code": "EC-008",
+      "stem": "Hai stakeholder confirm những elicitation results mâu thuẫn nhau: bộ phận credit nói rằng hồ sơ vượt một ngưỡng nhất định luôn phải qua manual review, trong khi bộ phận digital nói chính những hồ sơ đó được auto-approve. Cả hai đều chắc chắn. Business analyst nên làm gì tiếp theo?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Đối chiếu cả hai lời kể với các nguồn khác để xác định điều thực sự đang diễn ra, rồi theo dõi tiếp điểm chênh lệch đó.",
+          "rationale": "Đúng. Đối chiếu kết quả giữa các nguồn và theo đuổi các điểm chênh lệch đúng là điều task này quy định."
+        },
+        {
+          "label": "B",
+          "text": "Ghi nhận cả hai phát biểu như những requirement xung đột và để prioritisation giải quyết.",
+          "rationale": "Xung đột ở đây là về sự thật của current state, không phải về những mong muốn cạnh tranh nhau. Prioritisation không thể quyết định lời kể nào về thực tế là đúng."
+        },
+        {
+          "label": "C",
+          "text": "Chấp nhận lời kể của bộ phận credit, vì credit policy chi phối các quyết định phê duyệt.",
+          "rationale": "Nghiêng về phía bộ phận nghe có vẻ có thẩm quyền hơn là đáp án suýt đúng. Rất có thể bộ phận digital đang mô tả một luồng ngoại lệ chưa được ghi vào tài liệu."
+        },
+        {
+          "label": "D",
+          "text": "Escalate mâu thuẫn này lên sponsor để họ quyết định.",
+          "rationale": "Sponsor không thể quyết định một câu hỏi về sự thật mà analyst còn chưa điều tra. Escalate trước là đẩy phần việc của analyst lên trên."
+        }
+      ],
+      "sourceHash": "6f79dc40f014dbd4e955d148484b55c596c11bd76f1b01823782468f63aed43d",
+      "explanation": "Confirm Elicitation Results bao gồm việc đối chiếu kết quả với nguồn của chúng và với các elicitation results khác, rồi theo dõi tiếp những điểm chênh lệch. Mâu thuẫn được phơi bày và điều tra, chứ không được giải quyết bằng cảm tính."
+    },
+    {
+      "code": "EC-009",
+      "stem": "Một business analyst phải truyền đạt cùng một solution scope cho cả executive steering group lẫn development team. Cách tiếp cận nào phản ánh đúng nhất task Communicate Business Analysis Information?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Trình bày cùng một nội dung nền tảng theo định dạng và mức độ chi tiết mà mỗi nhóm đối tượng cần.",
+          "rationale": "Đúng. Xác định hình thức truyền đạt phù hợp cho từng nhóm mà không thay đổi nội dung thực chất là cốt lõi của task này."
+        },
+        {
+          "label": "B",
+          "text": "Gửi cho cả hai nhóm trọn bộ requirements package để không nhóm nào nhận được ít thông tin hơn nhóm kia.",
+          "rationale": "Cùng khối lượng không có nghĩa là cùng mức hiểu. Chôn vùi ban lãnh đạo trong những chi tiết họ không dùng được là làm hỏng mục đích của task, vốn là cách hiểu chung."
+        },
+        {
+          "label": "C",
+          "text": "Chỉ trao đổi với development team, còn steering group thì đọc biên bản họp.",
+          "rationale": "Biên bản là bản ghi của một cuộc thảo luận, không phải một thông điệp được thiết kế theo nhu cầu của steering group."
+        },
+        {
+          "label": "D",
+          "text": "Đăng requirements lên repository dùng chung và báo cho cả hai nhóm biết chỗ để đọc.",
+          "rationale": "Làm cho thông tin sẵn có không đồng nghĩa với truyền đạt nó. Task này đòi hỏi analyst xác nhận rằng cách hiểu chung đã đạt được."
+        }
+      ],
+      "sourceHash": "3703aff39356d1df68ebe6e7ed78e4030331ea76a7b2b39cb88755ba7cefb39b",
+      "explanation": "Task này xác định định dạng và mức độ chi tiết phù hợp cho từng nhóm đối tượng để họ đạt được cách hiểu chung. Thông tin nền tảng chỉ có một bộ; cách trình bày nó thì được tùy chỉnh theo nhu cầu của từng nhóm."
+    },
+    {
+      "code": "EC-010",
+      "stem": "Sau khi trình bày một requirements package, business analyst đề nghị vài người tham dự mô tả bằng lời của chính họ cách quy trình mới sẽ xử lý các đơn hàng bị từ chối. Vì sao analyst làm vậy?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Để xác nhận rằng người nghe đã đạt được cách hiểu chung về thông tin đó.",
+          "rationale": "Đúng. Mục đích của task là cách hiểu được chia sẻ, nên analyst đi kiểm tra nó chứ không mặc định rằng việc trình bày đã đạt được điều đó."
+        },
+        {
+          "label": "B",
+          "text": "Để validate rằng requirement về đơn hàng bị từ chối mang lại business value.",
+          "rationale": "Đó là Validate Requirements. Đề nghị ai đó diễn đạt lại là kiểm tra mức độ hiểu, không phải kiểm tra giá trị."
+        },
+        {
+          "label": "C",
+          "text": "Để lấy phê duyệt cho requirements package từ những người có mặt.",
+          "rationale": "Approval là một hành vi chính thức do stakeholder có thẩm quyền thực hiện trong Approve Requirements, không phải kết quả của một lần kiểm tra mức độ hiểu."
+        },
+        {
+          "label": "D",
+          "text": "Để elicit thêm requirement về đơn hàng bị từ chối.",
+          "rationale": "Có thể sẽ elicit thêm sau đó, nhưng mục đích trực tiếp của việc đề nghị người ta nói lại điều họ vừa nghe là để kiểm tra mức độ hiểu."
+        }
+      ],
+      "sourceHash": "a73d2cc38a97abde9dde410e292468c97e68b09f161b506ddf49e55ad8593c44",
+      "explanation": "Communicate Business Analysis Information chỉ hoàn tất khi người nghe có cách hiểu chung về thông tin. Việc xác nhận cách hiểu đó, thay vì mặc định rằng đã truyền đạt là đã hiểu, là một phần của task."
+    },
+    {
+      "code": "EC-011",
+      "stem": "Một stakeholder vốn rất nhiệt tình lúc đầu initiative đã dần ít phản hồi trong suốt hai tháng và giờ cử người đại diện đi thay ở mọi buổi làm việc. Business analyst nghi ngờ thái độ của stakeholder này đối với thay đổi đã chuyển hướng. Business analyst nên làm gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Trao đổi trực tiếp với stakeholder để hiểu điều gì đã thay đổi, rồi điều chỉnh cách phối hợp cho phù hợp.",
+          "rationale": "Đúng. Theo dõi thái độ và phản ứng lại những thay đổi trong mức độ tham gia chính là nội dung của task này."
+        },
+        {
+          "label": "B",
+          "text": "Làm việc với người đại diện, vì người này tham dự đều đặn và có thể phát ngôn thay stakeholder.",
+          "rationale": "Tiện và nghe hợp lý, nhưng đây là chấp nhận triệu chứng. Người đại diện có thể không có thẩm quyền mà initiative cần, còn sự thoái lui bên dưới thì không được xử lý."
+        },
+        {
+          "label": "C",
+          "text": "Escalate việc vắng mặt lên sponsor để stakeholder được yêu cầu phải tham dự.",
+          "rationale": "Ép tham dự chỉ khôi phục được sự có mặt, không khôi phục được cam kết, và nhiều khả năng làm thái độ của stakeholder cứng lại hơn."
+        },
+        {
+          "label": "D",
+          "text": "Ghi nhận mức độ tham gia giảm sút như một project risk và tiếp tục theo kế hoạch.",
+          "rationale": "Ghi risk vào sổ là ghi lại vấn đề rồi để nó lớn lên. Task này đòi hỏi analyst hành động trước thay đổi trong mức độ tham gia."
+        }
+      ],
+      "sourceHash": "ff090b01d1bb46b5b01ec1b0ed1d1a4f7f7d8b483c1c89738a94677e5a7d1326",
+      "explanation": "Manage Stakeholder Collaboration bao gồm việc theo dõi thái độ và mức độ tham gia của stakeholder trong suốt initiative và hành động khi chúng thay đổi, vì mức tham gia sa sút đe dọa chất lượng và khả năng được chấp nhận của công việc phân tích."
+    },
+    {
+      "code": "EC-012",
+      "stem": "Kết quả nào mô tả đúng nhất điều mà task Manage Stakeholder Collaboration hướng tới?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Stakeholder vẫn là những người tham gia tự nguyện, cùng hướng tới một mục tiêu chung.",
+          "rationale": "Đúng. Duy trì sự tham gia của stakeholder và mục đích chung là mục đích được nêu ra của task này."
+        },
+        {
+          "label": "B",
+          "text": "Stakeholder chính thức phê duyệt requirements tại mỗi checkpoint đã định.",
+          "rationale": "Phê duyệt chính thức thuộc về Approve Requirements. Sự cộng tác tự nguyện làm cho việc phê duyệt dễ hơn, nhưng không phải là một."
+        },
+        {
+          "label": "C",
+          "text": "Trách nhiệm của stakeholder được ghi lại trong một RACI matrix.",
+          "rationale": "Ma trận trách nhiệm là artifact của khâu lập kế hoạch, thuộc Plan Stakeholder Engagement. Ghi lại vai trò tự nó không duy trì được sự cộng tác."
+        },
+        {
+          "label": "D",
+          "text": "Phản hồi của stakeholder được ghi nhận và trace tới các requirement bị ảnh hưởng.",
+          "rationale": "Trace phản hồi tới requirements là hoạt động thuộc Requirements Life Cycle Management, và mô tả việc ghi chép sổ sách chứ không phải mối quan hệ mà task này quản lý."
+        }
+      ],
+      "sourceHash": "c6bff86aa742966656c7bd82453be8fdda0bb67425cf8b8868de2cd4c5939fce",
+      "explanation": "Mục đích của Manage Stakeholder Collaboration là khuyến khích stakeholder cùng hướng tới một mục tiêu chung, duy trì sự tham gia và cam kết mà công việc business analysis phụ thuộc vào."
+    },
+    {
+      "code": "EC-013",
+      "stem": "Sau khi model xong một tập requirements, business analyst quyết định trình bày chúng cho steering committee dưới dạng một package được ký duyệt chính thức, còn với delivery team thì là một buổi walkthrough không chính thức, tùy chỉnh định dạng cho từng nhóm đối tượng. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Communicate Business Analysis Information, vì định dạng được chọn riêng cho từng nhóm đối tượng.",
+          "rationale": "Đúng. Xác định objective và định dạng của một thông điệp cho nhóm đối tượng của nó, rồi chuyển giao package, chính là phạm vi của task này."
+        },
+        {
+          "label": "B",
+          "text": "Conduct Elicitation, vì thông tin đang được chia sẻ với stakeholder.",
+          "rationale": "Conduct Elicitation rút thông tin ra từ stakeholder. Tình huống này đang đẩy thông tin đã được mô hình hóa ra tới stakeholder, tức chiều ngược lại."
+        },
+        {
+          "label": "C",
+          "text": "Confirm Elicitation Results, vì các requirement này đã được thu thập từ trước.",
+          "rationale": "Confirm elicitation results kiểm tra độ chính xác của thông tin đã thu thập so với nguồn của nó, một bước diễn ra trước khi mô hình hóa, chứ không phải việc định dạng một package đã mô hình hóa xong."
+        },
+        {
+          "label": "D",
+          "text": "Manage Stakeholder Collaboration, vì stakeholder đang được tham gia.",
+          "rationale": "Manage Stakeholder Collaboration duy trì sự tham gia và cam kết lâu dài. Chọn định dạng cho một thông điệp theo nhóm đối tượng là một hành vi truyền đạt hẹp hơn, diễn ra một lần."
+        }
+      ],
+      "sourceHash": "c7f1819c867514c20e107b9017aa5b8d73fdbaf903238b165b6b26f545f11f2c",
+      "explanation": "Communicate Business Analysis Information đảm bảo stakeholder có cách hiểu chung về thông tin business analysis, và các element của nó bao gồm rõ ràng việc xác định objective và định dạng của thông điệp cho nhóm đối tượng sẽ nhận nó."
+    },
+    {
+      "code": "EC-014",
+      "stem": "Hai phòng ban đã đưa ra những mức ưu tiên xung đột nhau trong các workshop trước đó. Business analyst thiết lập một buổi sync định kỳ để giữ cả hai nhóm cùng tham gia, kiểm tra xem các cam kết đưa ra ở những buổi trước có được thực hiện không, và xử lý các va chạm khi chúng phát sinh trong suốt phần còn lại của initiative. Task nào đang được thực hiện?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Manage Stakeholder Collaboration, vì nó theo dõi các cam kết và duy trì sự tham gia theo thời gian.",
+          "rationale": "Đúng. Theo dõi xem các cam kết có được thực hiện không và xử lý va chạm trong cộng tác suốt initiative đúng là phạm vi của task này."
+        },
+        {
+          "label": "B",
+          "text": "Plan Stakeholder Engagement, vì stakeholder đã được phân tích cho initiative này.",
+          "rationale": "Plan Stakeholder Engagement tạo ra approach ban đầu để tương tác với stakeholder. Tình huống này là việc thực thi approach đó một cách liên tục, không phải việc lập kế hoạch cho nó."
+        },
+        {
+          "label": "C",
+          "text": "Confirm Elicitation Results, vì các workshop đã elicit thông tin.",
+          "rationale": "Confirm elicitation results kiểm tra độ chính xác của thông tin đã thu thập. Tình huống này nói về duy trì sự cộng tác, không phải kiểm chứng điều đã được nói."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, vì các mức ưu tiên đã xung đột nhau.",
+          "rationale": "Assess requirements changes đánh giá tác động của một thay đổi cụ thể được đề xuất cho một requirement, không phải việc quản lý liên tục quan hệ với stakeholder."
+        }
+      ],
+      "sourceHash": "dee6bc7ccf7fe871b5fa606d8e86ac772385ee5afce7fd84b753ec51f527baa0",
+      "explanation": "Manage Stakeholder Collaboration là công việc liên tục nhằm khuyến khích stakeholder cùng hướng tới một mục tiêu chung, bao gồm đạt được sự đồng thuận về các cam kết, theo dõi mức độ tham gia, và xử lý các vấn đề cộng tác khi chúng phát sinh — khác với việc lập kế hoạch engagement approach từ đầu."
+    }
+  ]
+}

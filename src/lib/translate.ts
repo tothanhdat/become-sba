@@ -7,6 +7,8 @@ import type { OptionLabel } from "./domain";
 export interface TranslatedOption {
   label: OptionLabel;
   text: string;
+  /** Present only for overlay-loaded translations; the on-demand translator omits it. */
+  rationale?: string;
 }
 
 export interface TranslatedCaseStudy {
@@ -18,6 +20,8 @@ export interface QuestionTranslation {
   stem: string;
   options: TranslatedOption[];
   caseStudy: TranslatedCaseStudy | null;
+  /** Null when the translation came from the on-demand translator. */
+  explanation: string | null;
 }
 
 /** What a translator receives: the original English content to translate. */
@@ -27,8 +31,14 @@ export interface TranslationInput {
   caseStudy: TranslatedCaseStudy | null;
 }
 
-/** A function that turns English question content into Vietnamese. Swappable for tests. */
-export type Translator = (input: TranslationInput) => Promise<QuestionTranslation>;
+/**
+ * A function that turns English question content into Vietnamese. Swappable for tests.
+ *
+ * It covers only what the exam screen shows — stem, options, case study. The
+ * explanation and per-option rationales are review-screen content and come from
+ * the Vietnamese overlay files, so they are not part of this contract.
+ */
+export type Translator = (input: TranslationInput) => Promise<Omit<QuestionTranslation, "explanation">>;
 
 interface LoadedQuestion {
   stem: string;
@@ -61,14 +71,25 @@ function loadQuestion(db: Db, questionId: number): LoadedQuestion {
   return { stem: question.stem, options, caseStudy };
 }
 
-function readQuestionCache(db: Db, questionId: number): { stem: string; options: TranslatedOption[] } | null {
+function readQuestionCache(
+  db: Db,
+  questionId: number,
+): { stem: string; options: TranslatedOption[]; explanation: string | null } | null {
   const row = db
-    .select({ stem: questionTranslationsVi.stem, optionsJson: questionTranslationsVi.optionsJson })
+    .select({
+      stem: questionTranslationsVi.stem,
+      optionsJson: questionTranslationsVi.optionsJson,
+      explanation: questionTranslationsVi.explanation,
+    })
     .from(questionTranslationsVi)
     .where(eq(questionTranslationsVi.questionId, questionId))
     .get();
   if (!row) return null;
-  return { stem: row.stem, options: JSON.parse(row.optionsJson) as TranslatedOption[] };
+  return {
+    stem: row.stem,
+    options: JSON.parse(row.optionsJson) as TranslatedOption[],
+    explanation: row.explanation,
+  };
 }
 
 function readCaseStudyCache(db: Db, caseStudyId: number): TranslatedCaseStudy | null {
@@ -104,7 +125,12 @@ export async function translateQuestion(db: Db, questionId: number, translate: T
   const cachedCaseStudy = question.caseStudy ? readCaseStudyCache(db, question.caseStudy.id) : null;
 
   if (cachedQuestion && (!question.caseStudy || cachedCaseStudy)) {
-    return { stem: cachedQuestion.stem, options: cachedQuestion.options, caseStudy: cachedCaseStudy };
+    return {
+      stem: cachedQuestion.stem,
+      options: cachedQuestion.options,
+      caseStudy: cachedCaseStudy,
+      explanation: cachedQuestion.explanation,
+    };
   }
 
   const result = await translate({
@@ -115,10 +141,10 @@ export async function translateQuestion(db: Db, questionId: number, translate: T
   assertOptionsMatch(question.options, result.options);
 
   db.insert(questionTranslationsVi)
-    .values({ questionId, stem: result.stem, optionsJson: JSON.stringify(result.options) })
+    .values({ questionId, stem: result.stem, optionsJson: JSON.stringify(result.options), explanation: null })
     .onConflictDoUpdate({
       target: questionTranslationsVi.questionId,
-      set: { stem: result.stem, optionsJson: JSON.stringify(result.options) },
+      set: { stem: result.stem, optionsJson: JSON.stringify(result.options), explanation: null },
     })
     .run();
 
@@ -132,5 +158,5 @@ export async function translateQuestion(db: Db, questionId: number, translate: T
       .run();
   }
 
-  return result;
+  return { ...result, explanation: null };
 }

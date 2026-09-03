@@ -15,7 +15,8 @@
     "typecheck": "tsc --noEmit",
     "reset": "tsx scripts/reset-progress.ts",
     "babok:extract": "node scripts/extract-babok.mjs",
-    "decks:build": "node scripts/build-decks.mjs"
+    "decks:build": "node scripts/build-decks.mjs",
+    "translations:stamp": "tsx scripts/stamp-translations.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.123.0",

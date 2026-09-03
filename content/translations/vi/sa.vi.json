@@ -1,0 +1,518 @@
+{
+  "version": 1,
+  "locale": "vi",
+  "caseStudies": [
+    {
+      "code": "CS-SA-01",
+      "title": "Meridian Freight: cost to serve đang tăng",
+      "body": "Meridian Freight vận chuyển hàng hóa đóng pallet cho các nhà bán lẻ tạp hóa trên bốn khu vực. Trong mười tám tháng qua, cost to serve của công ty đã tăng 14% trong khi sản lượng chỉ tăng 3%. Các depot manager đổ lỗi cho hệ thống routing đã cũ, không thể lập lại kế hoạch giữa ngày, khiến tài xế phải thực hiện những chuyến quay về ngoài kế hoạch. Bộ phận customer service thì đổ lỗi cho các depot đã nhận những booking không thể đáp ứng. Bộ phận finance nhìn thấy biên lợi nhuận bị bào mòn nhưng không quy được nó về depot hay khách hàng cụ thể nào. Ban điều hành đã đề nghị một business analyst xác định điều gì đang thực sự diễn ra trước khi phê duyệt bất kỳ khoản đầu tư nào. Hội đồng quản trị đã cam kết giảm 10% cost to serve trong vòng hai năm, kèm một constraint là không được đóng cửa depot nào trong thời hạn hợp đồng hiện tại.",
+      "sourceHash": "b49ea07b504bfb0d29569c16c43e928f795ba39ccc1ff6524899a439fe6b9498"
+    }
+  ],
+  "questions": [
+    {
+      "code": "SA-001",
+      "stem": "Business analyst được đề nghị xác định điều gì đang thực sự diễn ra tại Meridian Freight trước khi phê duyệt bất kỳ khoản đầu tư nào. Analyst nên thực hiện task nào trước, và vì sao?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Current State, để hiểu nhu cầu và những gì đang bị ảnh hưởng trước khi cân nhắc bất kỳ giải pháp nào.",
+          "rationale": "Đúng. Tổ chức đang có ba cách giải thích cạnh tranh nhau và không có hiểu biết chung về vấn đề — chính xác là thứ mà task này giải quyết."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, để xác lập mức cost to serve mục tiêu mà hội đồng quản trị đã cam kết.",
+          "rationale": "Mục tiêu 10% của hội đồng quản trị là một business objective, nhưng định nghĩa future state trước khi hiểu vì sao chi phí tăng có nguy cơ thiết kế cho sai vấn đề."
+        },
+        {
+          "label": "C",
+          "text": "Define Change Strategy, để sắp xếp trình tự chuyển đổi hướng tới cost to serve thấp hơn.",
+          "rationale": "Change strategy mô tả cách đi từ current state sang future state. Chưa trạng thái nào được xác lập cả."
+        },
+        {
+          "label": "D",
+          "text": "Assess Risks, vì việc biên lợi nhuận bị bào mòn là rủi ro chính đối với doanh nghiệp.",
+          "rationale": "Đánh giá rủi ro vận hành trên một thay đổi đã được hiểu rõ. Việc biên lợi nhuận bị bào mòn ở đây là vấn đề đang được điều tra, không phải rủi ro của một thay đổi được đề xuất."
+        }
+      ],
+      "sourceHash": "73746c9cd74748cce5b1a5e3708c67f8ab0605db1365f7167474f7dec2ecd312",
+      "explanation": "Analyze Current State tìm hiểu vì sao doanh nghiệp cần thay đổi và những gì sẽ bị ảnh hưởng. Khi có nhiều cách giải thích cạnh tranh nhau và chưa có lời kể thống nhất về vấn đề, current state phải được hiểu trước khi có thể định nghĩa future state hay change strategy."
+    },
+    {
+      "code": "SA-002",
+      "stem": "Bộ phận finance của Meridian nhìn thấy biên lợi nhuận bị bào mòn nhưng không quy được nó về depot hay khách hàng nào. Element nào của Analyze Current State giải quyết trực tiếp nhất khó khăn này?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Xem xét các capability và thông tin nội bộ hiện có, vì chính việc không quy được chi phí đã là một hạn chế của current state.",
+          "rationale": "Đúng. Lỗ hổng đo lường là một phần của current state, và mô tả nó là một phần của việc hiểu vì sao doanh nghiệp cần thay đổi."
+        },
+        {
+          "label": "B",
+          "text": "Xác định solution scope cho một hệ thống phân bổ chi phí mới.",
+          "rationale": "Solution scope thuộc về Define Change Strategy. Gọi tên một giải pháp ở thời điểm này là chiếm chỗ của phần phân tích."
+        },
+        {
+          "label": "C",
+          "text": "Thiết lập business analysis information management approach.",
+          "rationale": "Cái đó lập kế hoạch cho việc lưu trữ thông tin của chính analyst. Nó chẳng liên quan gì tới capability quy chi phí của doanh nghiệp."
+        },
+        {
+          "label": "D",
+          "text": "Xếp hạng các depot theo mức đóng góp vào phần chi phí tăng thêm.",
+          "rationale": "Nghe hấp dẫn, nhưng tình huống đã nói rõ rằng hiện chưa quy được chi phí. Lỗ hổng phải được mô tả trước khi có thể dùng nó."
+        }
+      ],
+      "sourceHash": "8e4a90c588e5c12b90a5d58b78336b443ca2ffb451928f5e4aa26b5037db2a75",
+      "explanation": "Analyze Current State xem xét tài sản, capability, quy trình, công nghệ và thông tin nội bộ của doanh nghiệp. Việc không quy được chi phí chỉ ra một hạn chế trong capability về thông tin và đo lường hiện có."
+    },
+    {
+      "code": "SA-003",
+      "stem": "Hợp đồng của Meridian cấm đóng cửa bất kỳ depot nào trong thời hạn hiện tại. Business analyst nên xử lý điều này thế nào trong phần phân tích current state?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Như một business constraint giới hạn các phương án khả dĩ cho mọi thay đổi.",
+          "rationale": "Đúng. Một hạn chế hợp đồng về điều doanh nghiệp được phép làm là một business constraint được nhận diện trong lúc phân tích current state."
+        },
+        {
+          "label": "B",
+          "text": "Như một assumption, vì hợp đồng có thể được đàm phán lại.",
+          "rationale": "Assumption là điều được tin là đúng nhưng chưa được xác nhận. Hạn chế này đã được hợp đồng xác nhận; khả năng đàm phán lại không biến nó thành assumption."
+        },
+        {
+          "label": "C",
+          "text": "Như một risk đối với change strategy.",
+          "rationale": "Một hạn chế đã biết và chắc chắn là một constraint. Risk là một sự kiện không chắc chắn, có thể xảy ra hoặc không."
+        },
+        {
+          "label": "D",
+          "text": "Như một business requirement, vì doanh nghiệp yêu cầu các depot phải tiếp tục hoạt động.",
+          "rationale": "Business requirement nêu một nhu cầu mà doanh nghiệp muốn được đáp ứng. Còn cái này nêu điều doanh nghiệp không được phép làm."
+        }
+      ],
+      "sourceHash": "6646bcd56323c25f9c4ca2a7d79313890c367327bb2b2a391e741b019fb0ee21",
+      "explanation": "Analyze Current State nhận diện các yếu tố ảnh hưởng nội bộ và bên ngoài lên doanh nghiệp, bao gồm những business constraint như nghĩa vụ hợp đồng, vốn giới hạn các phương án khả dĩ cho mọi thay đổi."
+    },
+    {
+      "code": "SA-004",
+      "stem": "Một business analyst bị hỏi rằng vì sao còn phải mô tả current state khi mọi người đều đã đồng ý rằng tổ chức phải hiện đại hóa khâu billing. Lập luận nào mạnh nhất theo thuật ngữ BABOK?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Không có current state được mô tả thì không có baseline về giá trị, và cũng không có cách nào biết một thay đổi sẽ ảnh hưởng tới cái gì.",
+          "rationale": "Đúng. Current state cung cấp bối cảnh và baseline làm cho nhu cầu và potential value trở nên đánh giá được."
+        },
+        {
+          "label": "B",
+          "text": "Chuẩn tài liệu bắt buộc mọi initiative đều phải có phần mô tả current state.",
+          "rationale": "Tuân thủ biểu mẫu không phải lý do mà BABOK đưa ra. Làm task này chỉ để điền đủ template là bỏ lỡ mục đích của nó."
+        },
+        {
+          "label": "C",
+          "text": "Phần mô tả current state là input cần thiết cho Verify Requirements.",
+          "rationale": "Verification kiểm tra chất lượng của requirements. Nó không tiêu thụ một bản mô tả current state."
+        },
+        {
+          "label": "D",
+          "text": "Nó xác định stakeholder nào nên phê duyệt requirements.",
+          "rationale": "Thẩm quyền phê duyệt được xác lập trong khâu lập kế hoạch governance, không suy ra từ bản mô tả current state."
+        }
+      ],
+      "sourceHash": "e2f6e3c842be193e998ee16b3d9c3cb9224edf87a4a6ac2291ae14513a24e28c",
+      "explanation": "Current state cung cấp bối cảnh để hiểu nhu cầu, future state và giá trị của một thay đổi. Không có nó thì không có baseline để đo cải thiện và không có căn cứ để phán đoán cái gì thực sự bị ảnh hưởng."
+    },
+    {
+      "code": "SA-005",
+      "stem": "Hội đồng quản trị của Meridian đã cam kết giảm 10% cost to serve trong vòng hai năm. Khi định nghĩa future state, business analyst nên xử lý phát biểu này thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Như một business objective mà future state phải đáp ứng, được phát biểu dưới dạng đo lường được và có mốc thời gian.",
+          "rationale": "Đúng. Một cam kết về kết quả, đo lường được và có mốc thời gian, chính là một business objective, và future state được định nghĩa để đáp ứng nó."
+        },
+        {
+          "label": "B",
+          "text": "Như solution scope của initiative.",
+          "rationale": "Solution scope mô tả giải pháp sẽ và sẽ không bao gồm những gì. Một chỉ tiêu phần trăm chẳng nói gì về scope."
+        },
+        {
+          "label": "C",
+          "text": "Như một solution requirement cần được trace tới hệ thống routing.",
+          "rationale": "Cách này mặc định hệ thống routing là câu trả lời. Hội đồng quản trị cam kết một kết quả, không cam kết thay đổi một hệ thống."
+        },
+        {
+          "label": "D",
+          "text": "Như một assumption làm nền cho business case.",
+          "rationale": "Hội đồng quản trị đã cam kết nó như một chỉ tiêu, tức là một objective. Assumption phải là điều được tin nhưng chưa được xác nhận."
+        }
+      ],
+      "sourceHash": "0d473a2357122be80d990163ae9323168099cf703d1a26580d058d6669404938",
+      "explanation": "Define Future State xác định các điều kiện cần thiết để đáp ứng business need, bao gồm những business objective đo lường được và có mốc thời gian. Objective mô tả kết quả mong muốn, không mô tả phương tiện để đạt được nó."
+    },
+    {
+      "code": "SA-006",
+      "stem": "Một steering group nhất quyết rằng future state phải được mô tả là 'triển khai nền tảng cloud của nhà cung cấp trên tất cả các khu vực'. Business analyst thấy không ổn. Phản biện nào mạnh nhất?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Nó phát biểu một giải pháp thay vì các điều kiện phải đạt được, và như vậy chặn mất khả năng đánh giá các design option.",
+          "rationale": "Đúng. Future state mô tả capability và kết quả cần có; cam kết với một sản phẩm ở thời điểm này là bỏ qua Define Design Options."
+        },
+        {
+          "label": "B",
+          "text": "Nó chưa được các stakeholder có thẩm quyền ra quyết định phê duyệt.",
+          "rationale": "Steering group rất có thể đang nắm thẩm quyền đó. Vấn đề nằm ở bản chất của phát biểu, không phải ở việc ai đã tán thành nó."
+        },
+        {
+          "label": "C",
+          "text": "Nó chưa nêu rõ các non-functional requirement mà nền tảng phải đáp ứng.",
+          "rationale": "Thiếu chi tiết là vấn đề nhỏ hơn. Ngay cả một đặc tả sản phẩm chi tiết đầy đủ thì vẫn là một giải pháp chứ không phải future state."
+        },
+        {
+          "label": "D",
+          "text": "Nó không thể được trace tới phần mô tả current state.",
+          "rationale": "BABOK không mô tả quan hệ giữa các trạng thái theo kiểu đó, và một phát biểu về giải pháp vẫn có thể trace được mà vẫn là quá sớm."
+        }
+      ],
+      "sourceHash": "a9dd3ed05113e09923d9bc123a52ff61230e6e36d1e7fb8bad3ceb25d0893cd9",
+      "explanation": "Define Future State mô tả các điều kiện cần thiết để đáp ứng business need, dưới dạng capability và kết quả chứ không phải một giải pháp đã chọn. Gọi tên một sản phẩm làm future state là chặn mất khả năng đánh giá các design option."
+    },
+    {
+      "code": "SA-007",
+      "stem": "Trong Define Future State, một business analyst mô tả giá trị mà doanh nghiệp kỳ vọng thay đổi sẽ mang lại, và xác định những stakeholder nào sẽ nhận được giá trị đó. Sản phẩm được tạo ra là gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phần mô tả potential value của future state.",
+          "rationale": "Đúng. Potential value là một element của bản mô tả future state, bao gồm các lợi ích kỳ vọng và ai là người nhận chúng."
+        },
+        {
+          "label": "B",
+          "text": "Các solution performance measure cho giải pháp đã bàn giao.",
+          "rationale": "Solution performance measure được định nghĩa trong Solution Evaluation, khi đã có một giải pháp để đo."
+        },
+        {
+          "label": "C",
+          "text": "Acceptance criteria cho giải pháp.",
+          "rationale": "Acceptance criteria nêu điều gì phải đúng thì một giải pháp mới được chấp nhận; chúng cụ thể hơn nhiều so với một bản mô tả giá trị kỳ vọng."
+        },
+        {
+          "label": "D",
+          "text": "Change strategy.",
+          "rationale": "Change strategy mô tả cách đi từ current state tới future state. Mô tả giá trị kỳ vọng là một phần của việc định nghĩa đích đến, không phải con đường."
+        }
+      ],
+      "sourceHash": "999f87cc75435c3ab733bb1682b74f508c412536a2ce4e05c1a1ad1787c8cd1e",
+      "explanation": "Define Future State bao gồm việc mô tả potential value, diễn đạt dưới dạng những lợi ích mà thay đổi dự kiến mang lại và mang lại cho ai, để về sau hỗ trợ business case và việc khuyến nghị giải pháp."
+    },
+    {
+      "code": "SA-008",
+      "stem": "Business analyst nhận thấy rằng nếu các depot manager không áp dụng quy trình lập lại kế hoạch giữa ngày mới, khoản tiết kiệm kỳ vọng sẽ không thành hiện thực. Điều này nên được xử lý thế nào trong phạm vi Assess Risks?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Phân tích khả năng xảy ra và hệ quả của nó, rồi thống nhất cách quản lý để giá trị kỳ vọng vẫn có thể đạt được.",
+          "rationale": "Đúng. Đánh giá hệ quả và khả năng xảy ra rồi quyết định biện pháp ứng phó chính là điều task này làm."
+        },
+        {
+          "label": "B",
+          "text": "Ghi nhận nó như một assumption rằng các depot manager sẽ áp dụng quy trình.",
+          "rationale": "Đáp án suýt đúng. Biến một mối đe dọa đã nhận diện thành assumption là gạt nó ra khỏi diện quản lý chủ động thay vì xử lý nó."
+        },
+        {
+          "label": "C",
+          "text": "Thêm một requirement rằng các depot manager bắt buộc phải dùng quy trình mới.",
+          "rationale": "Một nghĩa vụ trên giấy không làm thay đổi hành vi áp dụng, và nó thay một biện pháp ứng phó rủi ro bằng một requirement."
+        },
+        {
+          "label": "D",
+          "text": "Loại nó ra, vì hành vi áp dụng nằm ngoài scope của business analysis.",
+          "rationale": "Rủi ro đối với việc hiện thực hóa giá trị nằm gọn trong phạm vi task này, bất kể nguồn gốc của chúng là gì."
+        }
+      ],
+      "sourceHash": "2c53eef1fce2af0b1cb0c6d37852241e033c1ed293d5194c335c939db59e9140",
+      "explanation": "Assess Risks nhận diện và phân tích các rủi ro đối với kết quả mong muốn, bao gồm hệ quả và khả năng xảy ra của từng cái, rồi xác định cách quản lý chúng để potential value vẫn có thể hiện thực hóa."
+    },
+    {
+      "code": "SA-009",
+      "stem": "Một business analyst đang phân biệt giữa assumption, constraint và risk trên một initiative. Nhóm mô tả nào là đúng?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assumption là niềm tin chưa được xác nhận; constraint là một hạn chế đang áp dụng; risk là một sự kiện không chắc chắn có kèm tác động.",
+          "rationale": "Đúng. Đây là các phân biệt của BABOK, và kỳ thi kiểm tra chúng lặp đi lặp lại."
+        },
+        {
+          "label": "B",
+          "text": "Assumption là risk xác suất thấp; constraint là risk xác suất cao; risk là bất cứ điều gì không chắc chắn.",
+          "rationale": "Assumption và constraint không phải là các điểm trên một thang xác suất. Gộp chúng vào risk là đánh mất ba khái niệm riêng biệt."
+        },
+        {
+          "label": "C",
+          "text": "Assumption do bên ngoài áp đặt; constraint do bên trong tự chọn; risk do thị trường áp đặt.",
+          "rationale": "Nguồn gốc không định nghĩa các thuật ngữ này. Constraint và assumption đều có thể phát sinh từ bên trong hoặc bên ngoài."
+        },
+        {
+          "label": "D",
+          "text": "Assumption là requirement chưa được phê duyệt; constraint là requirement đã được phê duyệt; risk là requirement bị từ chối.",
+          "rationale": "Không cái nào trong ba cái là requirement ở bất kỳ giai đoạn phê duyệt nào. Đây là nhầm lẫn hai khái niệm không liên quan."
+        }
+      ],
+      "sourceHash": "d0f36da6e2e9e09828cc012e55843004b0b362ce7e4a7587a54334120990cb03",
+      "explanation": "Assumption là điều được tin là đúng nhưng chưa được xác nhận. Constraint là một hạn chế mà giải pháp phải vận hành bên trong. Risk là một sự kiện không chắc chắn mà nếu xảy ra sẽ ảnh hưởng tới kết quả."
+    },
+    {
+      "code": "SA-010",
+      "stem": "Hai risk đã được phân tích. Risk X gần như chắc chắn xảy ra nhưng nếu xảy ra thì tốn rất ít. Risk Y khó xảy ra nhưng nếu xảy ra sẽ chấm dứt cả initiative. Sponsor chỉ muốn xử lý risk có xác suất cao hơn. Business analyst nên phản hồi thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Giải thích rằng mức phơi nhiễm là sự kết hợp của khả năng xảy ra và hệ quả, nên Risk Y có thể đáng được quan tâm hơn Risk X.",
+          "rationale": "Đúng. Đánh giá rủi ro chỉ dựa vào khả năng xảy ra là bỏ mất một nửa phần phân tích mà task này đòi hỏi."
+        },
+        {
+          "label": "B",
+          "text": "Đồng ý với sponsor, vì xác suất là thước đo khách quan hơn.",
+          "rationale": "Xác suất không khách quan hơn hệ quả, và làm theo quy tắc này sẽ để một rủi ro có thể chấm dứt cả initiative không được quản lý."
+        },
+        {
+          "label": "C",
+          "text": "Khuyến nghị chấp nhận cả hai risk, vì không cái nào loại bỏ được.",
+          "rationale": "Chấp nhận là một biện pháp ứng phó hợp lệ, nhưng chọn nó cho một rủi ro có thể chấm dứt initiative thì không phải là một quyết định có cân nhắc."
+        },
+        {
+          "label": "D",
+          "text": "Escalate Risk Y lên programme board mà không phân tích thêm.",
+          "rationale": "Escalate mà không phân tích là đẩy một vấn đề chưa được xem xét lên trên. Analyst đã phân tích nó rồi và nên trình bày phần phân tích đó."
+        }
+      ],
+      "sourceHash": "6a4455df190e9624ad1bd01fab765114919ec79cd25255b5c6b440285c1f705d",
+      "explanation": "Phân tích rủi ro cân nhắc cả khả năng xảy ra lẫn độ lớn của hệ quả. Một rủi ro xác suất thấp nhưng hệ quả lớn có thể mang mức phơi nhiễm cao hơn một rủi ro xác suất cao mà hệ quả nhỏ."
+    },
+    {
+      "code": "SA-011",
+      "stem": "Current state và future state của Meridian giờ đã được mô tả xong. Business analyst đang xác định cách hiệu quả nhất để đi từ trạng thái này sang trạng thái kia, bao gồm khu vực nào thay đổi trước và những gì phải sẵn sàng ở mỗi bước. Đây là task nào, và nó tạo ra cái gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Change Strategy, tạo ra change strategy và solution scope.",
+          "rationale": "Đúng. Task này chọn cách tiếp cận cho thay đổi và tạo ra cả change strategy lẫn solution scope."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, tạo ra phần mô tả future state.",
+          "rationale": "Future state thì đã được mô tả xong. Cái còn lại là làm sao tới được đó."
+        },
+        {
+          "label": "C",
+          "text": "Define Design Options, tạo ra các design option.",
+          "rationale": "Design option liên quan tới những cách khả dĩ để đáp ứng requirements bên trong giải pháp. Sắp xếp trình tự chuyển đổi của doanh nghiệp là chuyện của change strategy."
+        },
+        {
+          "label": "D",
+          "text": "Plan Business Analysis Approach, tạo ra business analysis approach.",
+          "rationale": "Cái đó lập kế hoạch cho cách tiến hành công việc phân tích, không phải cách doanh nghiệp sẽ chuyển đổi."
+        }
+      ],
+      "sourceHash": "27962f031e62ca33cee8d05cba0aec75619092668a25e418f28800258c05be81",
+      "explanation": "Define Change Strategy xây dựng và đánh giá các cách tiếp cận thay thế nhau cho thay đổi rồi chọn ra cách được khuyến nghị. Output của nó gồm change strategy và solution scope, và nó xử lý cả transition state lẫn việc lập kế hoạch release."
+    },
+    {
+      "code": "SA-012",
+      "stem": "Một thay đổi không thể bàn giao trong một bước: tổ chức phải chạy song song hệ thống order cũ và mới trong bốn tháng trước khi ngừng hệ thống cũ. Giai đoạn chạy song song này đại diện cho điều gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một transition state trên đường tiến tới future state.",
+          "rationale": "Đúng. Transition state là những trạng thái trung gian mà doanh nghiệp đi qua, được xử lý trong change strategy."
+        },
+        {
+          "label": "B",
+          "text": "Chính là future state, vì đó là cách doanh nghiệp sẽ vận hành tiếp theo.",
+          "rationale": "Future state là trạng thái đích dự định. Một giai đoạn chạy song song tạm thời rõ ràng không phải nơi doanh nghiệp định ở lại."
+        },
+        {
+          "label": "C",
+          "text": "Một constraint đối với thiết kế giải pháp.",
+          "rationale": "Giai đoạn chạy song song là một bước được chọn trong quá trình chuyển đổi, không phải một hạn chế áp lên giải pháp."
+        },
+        {
+          "label": "D",
+          "text": "Một biện pháp ứng phó rủi ro cho khả năng cutover thất bại.",
+          "rationale": "Nó cũng có thể giảm rủi ro cutover, nhưng về mặt cấu trúc thì nó là một transition state trong change strategy."
+        }
+      ],
+      "sourceHash": "10409b9059435a5042b2ebc5bf9bcb8db9ffb3988f7024e063d59fa7f7857f7b",
+      "explanation": "Transition state là một trạng thái trung gian mà doanh nghiệp trải qua trong lúc đi từ current state tới future state. Nó không phải bản thân future state, và nó có thể đòi hỏi những capability chỉ tồn tại tạm thời."
+    },
+    {
+      "code": "SA-013",
+      "stem": "Trước khi khuyến nghị một change strategy, business analyst đánh giá xem tổ chức có hấp thụ nổi thay đổi hay không: nhân sự có đủ kỹ năng chưa, văn hóa có ủng hộ không, và mô hình vận hành có dung nạp được không. Analyst đang tạo ra cái gì?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Một enterprise readiness assessment.",
+          "rationale": "Đúng. Đánh giá năng lực và mức độ sẵn lòng thay đổi của doanh nghiệp là một element của việc định nghĩa change strategy."
+        },
+        {
+          "label": "B",
+          "text": "Một gap analysis giữa current state và future state.",
+          "rationale": "Gap analysis nhận diện những capability còn thiếu. Readiness hỏi liệu doanh nghiệp có hấp thụ nổi thay đổi hay không — một câu hỏi khác."
+        },
+        {
+          "label": "C",
+          "text": "Một stakeholder engagement approach.",
+          "rationale": "Cái đó lập kế hoạch cho cách analyst sẽ phối hợp với stakeholder, và thuộc về Business Analysis Planning and Monitoring."
+        },
+        {
+          "label": "D",
+          "text": "Một phân tích rủi ro cho thay đổi được đề xuất.",
+          "rationale": "Phân tích rủi ro là một task riêng. Các phát hiện về readiness có thể là input cho nó, nhưng bản thân việc đánh giá này nói về năng lực và mức độ sẵn lòng."
+        }
+      ],
+      "sourceHash": "77eff0ea9e9865fdfbcb4417e86721bb2d0199d201b05b3f116e16559b48a103",
+      "explanation": "Enterprise readiness assessment là một element của Define Change Strategy. Nó xem xét năng lực và mức độ sẵn lòng của doanh nghiệp trong việc thực hiện thay đổi và duy trì future state khi đã đạt tới đó."
+    },
+    {
+      "code": "SA-014",
+      "stem": "Một gap analysis đã chỉ ra những capability mà doanh nghiệp còn thiếu để đạt tới future state. Một stakeholder lập luận rằng gap analysis chính là change strategy. Business analyst nên phản hồi thế nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Gap analysis nói rõ cái gì đang thiếu; change strategy chọn cách đóng các khoảng trống đó và theo thứ tự nào.",
+          "rationale": "Đúng. Gap analysis là input cho, và cũng là một element bên trong, công việc rộng hơn là chọn và sắp xếp trình tự một cách tiếp cận."
+        },
+        {
+          "label": "B",
+          "text": "Chúng tương đương nhau, vì đóng mọi khoảng trống đã xác định là chiến lược duy nhất khả dĩ.",
+          "rationale": "Nhiều chiến lược khác nhau có thể đóng cùng những khoảng trống đó với chi phí, nhịp độ và rủi ro khác nhau. Chọn giữa chúng chính là phần việc chiến lược."
+        },
+        {
+          "label": "C",
+          "text": "Gap analysis thay thế change strategy một khi future state đã được phê duyệt.",
+          "rationale": "Phê duyệt một future state không xóa bỏ nhu cầu quyết định cách đi tới đó."
+        },
+        {
+          "label": "D",
+          "text": "Gap analysis thuộc về Analyze Current State, nên nó hoàn toàn đi trước phần chiến lược.",
+          "rationale": "Gap analysis so sánh current state với future state, nên nó không thể hoàn tất chỉ trong phạm vi phân tích current state."
+        }
+      ],
+      "sourceHash": "873d7d8d400161f6ad8c0a269e376642e53c07368fa9d9822af7a5bb3238dca5",
+      "explanation": "Gap analysis nhận diện những gì còn thiếu giữa current state và future state. Change strategy đi xa hơn: nó chọn một cách tiếp cận để đóng các khoảng trống đó, sắp xếp trình tự các transition state, và xác định solution scope."
+    },
+    {
+      "code": "SA-015",
+      "stem": "Một business analyst bị chất vấn: 'Anh đã mô tả một future state mà chúng ta không đủ tiền để làm.' Analyst nên chỉ vào element nào của Define Future State như nơi vấn đề này được giải quyết?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Các constraint đối với future state, vì khả năng chi trả giới hạn future state nào có thể được định nghĩa.",
+          "rationale": "Đúng. Các constraint như ngân sách được nhận diện như một phần của việc định nghĩa future state, nên một mục tiêu vượt quá khả năng chi trả là đã không tôn trọng chúng."
+        },
+        {
+          "label": "B",
+          "text": "Change strategy, vì chi phí là chuyện thay đổi được sắp xếp theo trình tự nào.",
+          "rationale": "Sắp xếp trình tự có thể trải chi phí ra, và đây là distractor mạnh nhất, nhưng một mục tiêu vượt khả năng chi trả về tổng thể trước hết là vấn đề của future state."
+        },
+        {
+          "label": "C",
+          "text": "Phần mô tả current state, vì nó xác lập nền chi phí hiện có.",
+          "rationale": "Nền chi phí hiện tại là bối cảnh. Nó không đặt ra giới hạn cho future state nào có thể được định nghĩa."
+        },
+        {
+          "label": "D",
+          "text": "Solution evaluation, vì khả năng chi trả chỉ được xác nhận khi giải pháp đã đưa vào sử dụng.",
+          "rationale": "Chờ tới khi giải pháp đã chạy mới phát hiện là không đủ tiền chính là thất bại mà element này ngăn ngừa."
+        }
+      ],
+      "sourceHash": "30c9b8f4ee195fe466628331028d42de8e159ca08c84406190ddcf08a5166ca8",
+      "explanation": "Define Future State bao gồm việc nhận diện các constraint và đánh giá xem potential value có biện minh được cho thay đổi hay không. Một future state mà doanh nghiệp không đủ tiền làm là bị chặn bởi một constraint mà việc định nghĩa future state lẽ ra phải tôn trọng."
+    },
+    {
+      "code": "SA-016",
+      "stem": "Trước khi khuyến nghị bất cứ điều gì, một business analyst ghi lại vì sao quy trình đối chiếu hóa đơn thủ công của doanh nghiệp đang thất bại, hôm nay ai đang bị ảnh hưởng, và những business requirement nào sẽ áp dụng cho mọi giải pháp. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Current State, vì nó ghi lại vấn đề của hiện tại và ai đang bị ảnh hưởng.",
+          "rationale": "Đúng. Hiểu vì sao hôm nay cần thay đổi, và tạo ra business requirement từ hiểu biết đó, chính là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, vì rốt cuộc thì một giải pháp vẫn đang được cân nhắc.",
+          "rationale": "Define Future State mô tả trạng thái mong muốn sau khi thay đổi đã diễn ra. Tình huống này hoàn toàn nói về việc hiểu vấn đề của hôm nay, không phải trạng thái đích."
+        },
+        {
+          "label": "C",
+          "text": "Assess Risks, vì các thất bại đã đang xảy ra.",
+          "rationale": "Assess Risks đánh giá các hệ quả bất lợi khi tiến tới một future state, mà điều đó chưa đánh giá được cho tới khi future state được định nghĩa."
+        },
+        {
+          "label": "D",
+          "text": "Define Change Strategy, vì rõ ràng là cần có một thay đổi.",
+          "rationale": "Define Change Strategy chọn cách đi từ current state tới future state. Trong tình huống này chưa trạng thái nào được phân tích cả."
+        }
+      ],
+      "sourceHash": "8325b0f5f23e2f50689dbfa74e6d9cf96bd1b70158dc669faf04421ad75ae3cf",
+      "explanation": "Analyze Current State tìm hiểu lý do doanh nghiệp cần thay đổi một khía cạnh nào đó trong cách vận hành, và những gì bị ảnh hưởng trực tiếp hay gián tiếp, tạo ra bản mô tả current state cùng các business requirement làm output."
+    },
+    {
+      "code": "SA-017",
+      "stem": "Khi future state và các requirement đã được prioritize xong, một business analyst xác định những gì có thể trục trặc trong quá trình chuyển đổi, bao gồm các ẩn số và dependency mà tổ chức có mức chịu đựng hạn chế, rồi khuyến nghị doanh nghiệp có nên tiến hành hay không. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Risks, vì nó đánh giá các hệ quả bất lợi và mức risk tolerance trong quá trình chuyển đổi.",
+          "rationale": "Đúng. Nhận diện những gì có thể trục trặc trong quá trình chuyển đổi, cân nhắc mức chịu đựng rủi ro, rồi khuyến nghị hướng đi chính là mục đích của task này."
+        },
+        {
+          "label": "B",
+          "text": "Analyze Current State, vì các vấn đề đang được nhận diện.",
+          "rationale": "Analyze Current State xem xét vấn đề của hôm nay trước khi có bất kỳ future state nào. Tình huống này đã có sẵn future state và các requirement đã được prioritize."
+        },
+        {
+          "label": "C",
+          "text": "Define Change Strategy, vì một khuyến nghị đang được đưa ra về việc có tiến hành hay không.",
+          "rationale": "Define Change Strategy dùng kết quả phân tích rủi ro làm input để chọn cách tiếp cận; nó đến sau khi rủi ro được đánh giá, chứ không thay thế việc đó."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, vì một quyết định đang được đưa ra về các requirement.",
+          "rationale": "Assess Requirements Changes đánh giá tác động của một thay đổi được đề xuất cho một requirement cụ thể, không phải rủi ro ở cấp doanh nghiệp trong một quá trình chuyển đổi."
+        }
+      ],
+      "sourceHash": "72abc46c046b052d2ec00cc5931b5281c35b538af6527314fee9f702b3ba6f4f",
+      "explanation": "Assess Risks tìm hiểu các hệ quả bất lợi từ những lực tác động bên trong và bên ngoài trong quá trình chuyển đổi tới, hoặc khi đã ở trong, future state, cân nhắc các ẩn số cùng mức risk tolerance rồi đưa ra một khuyến nghị."
+    },
+    {
+      "code": "SA-018",
+      "stem": "Khi current state, future state và phân tích rủi ro đều đã hoàn tất, một business analyst so sánh phương án release 'big bang' một lần với phương án triển khai theo từng giai đoạn, rồi khuyến nghị nên theo phương án nào cùng với trình tự release. Đây là task nào?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Change Strategy, vì nó lựa chọn giữa các cách tiếp cận thay thế nhau cho thay đổi.",
+          "rationale": "Đúng. So sánh các cách chuyển đổi, chẳng hạn một release duy nhất so với triển khai theo giai đoạn, rồi khuyến nghị một cách, đúng là điều mà element transition state của task này bao trùm."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, vì future state dẫn dắt lựa chọn này.",
+          "rationale": "Define Future State đã diễn ra rồi và là input ở đây. Tình huống này nói về việc chọn cách đi tới đó, không phải đích đến trông ra sao."
+        },
+        {
+          "label": "C",
+          "text": "Define Design Options, vì các phương án đang được so sánh.",
+          "rationale": "Define Design Options so sánh các phương án thiết kế giải pháp sau khi change strategy đã được chốt, chứ không phải bản thân cách tiếp cận chuyển đổi tổng thể."
+        },
+        {
+          "label": "D",
+          "text": "Analyze Potential Value and Recommend Solution, vì một khuyến nghị đang được đưa ra.",
+          "rationale": "Analyze Potential Value and Recommend Solution khuyến nghị giữa các design option dựa trên giá trị ước tính, một task về sau thuộc Requirements Analysis and Design Definition, không phải quyết định về đường chuyển đổi."
+        }
+      ],
+      "sourceHash": "b53375ddb7c170f93a55be2cca9249b7ebeea4398c0bb14694feddc8eb2aad02",
+      "explanation": "Define Change Strategy xây dựng và đánh giá các cách tiếp cận thay thế nhau cho một thay đổi rồi chọn ra cách được khuyến nghị, trong đó transition state và việc lập kế hoạch release là một element được nêu rõ."
+    }
+  ]
+}

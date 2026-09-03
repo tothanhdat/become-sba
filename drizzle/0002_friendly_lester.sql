@@ -1,0 +1,1 @@
+ALTER TABLE `question_translations_vi` ADD `explanation` text;

@@ -231,8 +231,17 @@ export const questionTranslationsVi = sqliteTable("question_translations_vi", {
     .primaryKey()
     .references(() => questions.id, { onDelete: "cascade" }),
   stem: text("stem").notNull(),
-  /** JSON array of { label, text }, one entry per option, same labels as questionOptions. */
+  /**
+   * JSON array of { label, text, rationale? }, one entry per option, same
+   * labels as questionOptions. `rationale` is present only for translations
+   * loaded from a content overlay — the on-demand translator does not produce it.
+   */
   optionsJson: text("options_json").notNull(),
+  /**
+   * Null when the translation came from the on-demand translator, which
+   * translates only what the exam screen shows. Overlay files carry it.
+   */
+  explanation: text("explanation"),
   createdAt: integer("created_at").notNull().default(now),
 });
 

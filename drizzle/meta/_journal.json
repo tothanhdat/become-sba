@@ -15,6 +15,13 @@
       "when": 1788430726156,
       "tag": "0001_naive_white_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1788449949350,
+      "tag": "0002_friendly_lester",
+      "breakpoints": true
     }
   ]
 }

@@ -5,11 +5,12 @@
  * Safe to re-run: imports are keyed on stable codes, so this is how the bank
  * grows as new questions are authored.
  */
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 import { importCatalog, listCertifications } from "../src/lib/catalog";
 import { importFlashcardDeck, importQuestionPack } from "../src/lib/content/importer";
+import { importTranslationPack } from "../src/lib/content/translations";
 import { db } from "../src/lib/db";
 import { allocateByBlueprint } from "../src/lib/exam/blueprint";
 import { getBankCoverage } from "../src/lib/exam/sessions";
@@ -50,12 +51,41 @@ loadDir("content/packs", (data, name) => {
   );
 });
 
+// Vietnamese overlays fill the same cache the on-demand translator writes to,
+// so the in-exam translate button works without an API key. Questions first:
+// the overlay resolves against them by code.
+const TRANSLATIONS_DIR = "content/translations/vi";
+let translated = 0;
+const staleTranslations: string[] = [];
+
+if (existsSync(TRANSLATIONS_DIR)) {
+  loadDir(TRANSLATIONS_DIR, (data, name) => {
+    const result = importTranslationPack(db, data);
+    translated += result.questionsUpserted;
+    staleTranslations.push(...result.stale);
+    console.log(
+      `  ${name}: ${result.questionsUpserted} question(s) translated` +
+        (result.caseStudiesUpserted ? `, ${result.caseStudiesUpserted} case study` : "") +
+        (result.stale.length ? `, ${result.stale.length} stale` : ""),
+    );
+  });
+}
+
 loadDir("content/decks", (data, name) => {
   const result = importFlashcardDeck(db, data);
   console.log(`  ${name}: +${result.inserted} new, ${result.updated} updated`);
 });
 
 console.log(`\nQuestions: ${inserted} inserted, ${updated} updated.`);
+console.log(`Vietnamese translations: ${translated} of ${inserted + updated} question(s) pre-loaded.`);
+
+if (staleTranslations.length > 0) {
+  console.log(
+    `\n${staleTranslations.length} translation(s) were written against English text that has since changed:`,
+  );
+  console.log(`  ${staleTranslations.join(", ")}`);
+  console.log("  Re-translate them, then run `npm run translations:stamp` to refresh the hashes.");
+}
 
 if (rejected.length > 0) {
   console.log(`\n${rejected.length} question(s) held back as drafts — fix the citation and re-seed:`);
