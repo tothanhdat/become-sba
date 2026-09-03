@@ -4,6 +4,7 @@ import { DomainBars } from "@/components/DomainBars";
 import { HistoryTable } from "@/components/HistoryTable";
 import { ModeCards } from "@/components/ModeCards";
 import { ReadinessCard } from "@/components/ReadinessCard";
+import { auth } from "@/lib/auth";
 import { getReadiness, getSessionHistory } from "@/lib/analytics";
 import { listCertifications } from "@/lib/catalog";
 import { db } from "@/lib/db";
@@ -46,6 +47,9 @@ export default async function DashboardPage({
 }: {
   searchParams: Promise<{ cert?: string }>;
 }) {
+  const session = await auth();
+  const userId = session?.user?.id ?? null;
+
   const all = listCertifications(db).map((cert) => {
     const coverage = getBankCoverage(db, cert);
     return { cert, summary: toSummary(cert, coverage.total, coverage.byDomain) };
@@ -64,7 +68,7 @@ export default async function DashboardPage({
       (c) => c.summary.framework.code === current.summary.framework.code && c.summary.ready,
     );
     return (
-      <AppShell certifications={certifications} current={current.summary} active="dashboard">
+      <AppShell certifications={certifications} current={current.summary} active="dashboard" user={session?.user ?? null}>
         <CertificationEmptyState
           certification={current.summary}
           frameworkHasContentElsewhere={frameworkHasContentElsewhere}
@@ -74,18 +78,18 @@ export default async function DashboardPage({
   }
 
   const { cert } = current;
-  const readiness = getReadiness(db, cert);
-  const history = getSessionHistory(db, cert, 15);
-  const decks = getDeckStats(db, cert.framework.id);
+  const readiness = getReadiness(db, userId, cert);
+  const history = getSessionHistory(db, userId, cert, 15);
+  const decks = getDeckStats(db, userId, cert.framework.id);
   const coverage = getBankCoverage(db, cert);
-  const reviewPoolSize = loadReviewPool(db, cert).length;
+  const reviewPoolSize = loadReviewPool(db, userId, cert).length;
 
   const weakestDomainLabels = readiness.weakestDomains.map(
     (code) => cert.domains.find((d) => d.code === code)?.code ?? code,
   );
 
   return (
-    <AppShell certifications={certifications} current={current.summary} active="dashboard">
+    <AppShell certifications={certifications} current={current.summary} active="dashboard" user={session?.user ?? null}>
       <div className="flex flex-col gap-6">
         <ReadinessCard
           readiness={readiness}

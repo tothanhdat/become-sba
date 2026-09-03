@@ -1,4 +1,5 @@
 import { AppShell } from "@/components/AppShell";
+import { auth } from "@/lib/auth";
 import { listCertifications } from "@/lib/catalog";
 import { db } from "@/lib/db";
 import { getBankCoverage } from "@/lib/exam/sessions";
@@ -38,9 +39,10 @@ export default async function LibraryPage({
 
   const requested = (await searchParams).cert;
   const current = all.find((c) => c.code === requested) ?? all[all.length - 1];
+  const session = await auth();
 
   return (
-    <AppShell certifications={all} current={current} active="library">
+    <AppShell certifications={all} current={current} active="library" user={session?.user ?? null}>
       <section className="rounded-xl border border-border-subtle bg-surface-card px-8 py-10 text-center">
         <h2 className="text-heading-l text-ink-primary">Thư viện câu hỏi</h2>
         <p className="mx-auto mt-3 max-w-prose text-body-default text-ink-secondary">
