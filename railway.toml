@@ -1,0 +1,21 @@
+# Deployment config for Railway, kept in the repo rather than only in the
+# dashboard so the reasoning below travels with the code.
+
+[build]
+# `next build` collects page data by importing every route, and those imports
+# construct the module-scope `db` singleton in src/lib/db/index.ts, which runs
+# migrations. Railway builds with enough parallelism that several collection
+# workers open the same file at once, all see an empty __drizzle_migrations,
+# and race to CREATE TABLE — one wins, the rest fail the build. The build needs
+# no real data, so give every worker its own throwaway in-memory database.
+buildCommand = "CBAP_DB_PATH=:memory: npm run build"
+
+[deploy]
+# The volume is mounted only at runtime, so seeding has to happen here rather
+# than at build time. `npm run seed` is idempotent (keyed on stable content
+# codes), so running it on every boot is safe and picks up new content.
+startCommand = "npm run seed && npm start"
+healthcheckPath = "/dashboard"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
