@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { startSessionAction } from "@/app/actions";
 import { AppShell } from "@/components/AppShell";
 import { DomainBars } from "@/components/DomainBars";
 import { ReviewList } from "@/components/result/ReviewList";
+import { auth } from "@/lib/auth";
 import { listCertifications } from "@/lib/catalog";
 import { db } from "@/lib/db";
 import { getBankCoverage, getSessionResult } from "@/lib/exam/sessions";
@@ -17,9 +18,14 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
   const sessionId = Number((await params).id);
   if (!Number.isInteger(sessionId)) notFound();
 
+  const session = await auth();
+  if (!session?.user?.id) {
+    redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent(`/result/${sessionId}`)}`);
+  }
+
   let result;
   try {
-    result = getSessionResult(db, sessionId);
+    result = getSessionResult(db, session.user.id, sessionId);
   } catch {
     return (
       <div className="flex min-h-screen items-center justify-center px-6">
@@ -64,7 +70,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
   const wrongCount = result.questions.filter((q) => !q.isCorrect).length;
 
   return (
-    <AppShell certifications={all} current={current} active="dashboard">
+    <AppShell certifications={all} current={current} active="dashboard" user={session.user}>
       <div className="flex flex-col gap-6">
         <section className="flex flex-wrap items-center gap-10 rounded-xl border border-border-subtle bg-surface-card px-8 py-7">
           <div>
@@ -98,6 +104,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
           {wrongCount > 0 && (
             <form action={startSessionAction}>
               <input type="hidden" name="certificationCode" value={result.certification.code} />
+              <input type="hidden" name="returnTo" value={`/result/${sessionId}`} />
               <input type="hidden" name="mode" value="review" />
               <input type="hidden" name="total" value={Math.min(wrongCount, 50)} />
               <button
@@ -118,6 +125,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
           rowAction={(code) => (
             <form action={startSessionAction}>
               <input type="hidden" name="certificationCode" value={result.certification.code} />
+              <input type="hidden" name="returnTo" value={`/result/${sessionId}`} />
               <input type="hidden" name="mode" value="domain" />
               <input type="hidden" name="domain" value={code} />
               <input type="hidden" name="total" value={20} />
