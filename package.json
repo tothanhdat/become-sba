@@ -18,6 +18,7 @@
     "decks:build": "node scripts/build-decks.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.123.0",
     "@auth/drizzle-adapter": "^1.11.3",
     "better-sqlite3": "^11.7.0",
     "drizzle-orm": "^0.38.3",

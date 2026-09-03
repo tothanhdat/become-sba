@@ -8,6 +8,13 @@
       "when": 1788286427604,
       "tag": "0000_magical_proteus",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788430726156,
+      "tag": "0001_naive_white_tiger",
+      "breakpoints": true
     }
   ]
 }

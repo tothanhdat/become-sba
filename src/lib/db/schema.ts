@@ -221,6 +221,31 @@ export const questionOptions = sqliteTable(
   (t) => [uniqueIndex("question_options_q_label_idx").on(t.questionId, t.label)],
 );
 
+/**
+ * Cached Vietnamese translation of a question's stem and options, shared by
+ * every learner. One row per question, translated once on first request.
+ * Catalog-derived data, not personal — no userId.
+ */
+export const questionTranslationsVi = sqliteTable("question_translations_vi", {
+  questionId: integer("question_id")
+    .primaryKey()
+    .references(() => questions.id, { onDelete: "cascade" }),
+  stem: text("stem").notNull(),
+  /** JSON array of { label, text }, one entry per option, same labels as questionOptions. */
+  optionsJson: text("options_json").notNull(),
+  createdAt: integer("created_at").notNull().default(now),
+});
+
+/** Cached Vietnamese translation of a case study, shared by every question that uses it. */
+export const caseStudyTranslationsVi = sqliteTable("case_study_translations_vi", {
+  caseStudyId: integer("case_study_id")
+    .primaryKey()
+    .references(() => caseStudies.id, { onDelete: "cascade" }),
+  title: text("title").notNull(),
+  body: text("body").notNull(),
+  createdAt: integer("created_at").notNull().default(now),
+});
+
 /** One free-text note per question, written by the learner. */
 export const userNotes = sqliteTable(
   "user_notes",

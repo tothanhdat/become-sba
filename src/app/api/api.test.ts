@@ -69,6 +69,7 @@ async function boot(questionsPerKa = 4) {
     result: await import("@/app/api/sessions/[id]/result/route"),
     note: await import("@/app/api/questions/[id]/note/route"),
     bookmark: await import("@/app/api/questions/[id]/bookmark/route"),
+    translate: await import("@/app/api/questions/[id]/translate/route"),
     due: await import("@/app/api/flashcards/due/route"),
     review: await import("@/app/api/flashcards/[id]/review/route"),
     stats: await import("@/app/api/stats/route"),
@@ -229,6 +230,16 @@ describe("notes and bookmarks", () => {
   test("returns 404 for a question that does not exist", async () => {
     const app = await boot();
     expect((await app.bookmark.POST(post(), ctx(9999))).status).toBe(404);
+  });
+});
+
+describe("translate", () => {
+  test("returns 404 for a question that does not exist, signed out", async () => {
+    // No real Claude API call happens on this path — the lookup fails before
+    // translation is attempted, so this runs without ANTHROPIC_API_KEY set.
+    const app = await boot();
+    app.setUser(null);
+    expect((await app.translate.POST(post(), ctx(9999))).status).toBe(404);
   });
 });
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { ACCENT_SOLID_BG } from "@/lib/ui/accent";
 import { formatDuration } from "@/lib/ui/format";
-import type { TakingQuestion, TakingView } from "@/lib/ui/types";
+import type { QuestionTranslation, TakingQuestion, TakingView } from "@/lib/ui/types";
 
 import { CaseStudyBlock } from "./CaseStudyBlock";
 import { QuestionPalette } from "./QuestionPalette";
@@ -29,6 +29,10 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
   const [paletteCollapsed, setPaletteCollapsed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [collapsedCases, setCollapsedCases] = useState<Set<string>>(new Set());
+  const [translated, setTranslated] = useState(false);
+  const [translating, setTranslating] = useState(false);
+  const [translateError, setTranslateError] = useState<string | null>(null);
+  const [translationCache, setTranslationCache] = useState<Map<number, QuestionTranslation>>(new Map());
   const submittedRef = useRef(false);
 
   const load = useCallback(async () => {
@@ -125,6 +129,42 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
     void persistAnswer(current.questionId, { flagged: next });
   }, [current, persistAnswer]);
 
+  // Each question starts back in English; a translation you already fetched
+  // for a question stays cached, so flipping back to it is instant.
+  useEffect(() => {
+    setTranslated(false);
+    setTranslateError(null);
+  }, [current?.questionId]);
+
+  const toggleTranslate = useCallback(async () => {
+    if (!current) return;
+    if (translated) {
+      setTranslated(false);
+      return;
+    }
+    if (translationCache.has(current.questionId)) {
+      setTranslated(true);
+      return;
+    }
+    setTranslating(true);
+    setTranslateError(null);
+    try {
+      const res = await fetch(`/api/questions/${current.questionId}/translate`, { method: "POST" });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setTranslateError(body.error ?? "Không dịch được câu này.");
+        return;
+      }
+      const translation = body as QuestionTranslation;
+      setTranslationCache((prev) => new Map(prev).set(current.questionId, translation));
+      setTranslated(true);
+    } catch {
+      setTranslateError("Không kết nối được tới máy chủ.");
+    } finally {
+      setTranslating(false);
+    }
+  }, [current, translated, translationCache]);
+
   const goTo = useCallback(
     (position: number) => {
       const i = questions.findIndex((q) => q.position === position);
@@ -206,6 +246,16 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
   const urgency =
     remainingSec === null ? "normal" : remainingSec <= 300 ? "urgent" : remainingSec <= 900 ? "warn" : "normal";
 
+  const activeTranslation = translated ? translationCache.get(current.questionId) : undefined;
+  const displayStem = activeTranslation?.stem ?? current.stem;
+  const displayCaseStudy = activeTranslation?.caseStudy ?? current.caseStudy;
+  const displayOptions = activeTranslation
+    ? current.options.map((opt) => ({
+        ...opt,
+        text: activeTranslation.options.find((o) => o.label === opt.label)?.text ?? opt.text,
+      }))
+    : current.options;
+
   return (
     <div className="min-h-screen bg-ground pb-16">
       <header className="sticky top-0 z-20 flex items-center gap-4 border-b border-border-subtle bg-surface-card/95 px-6 py-3 backdrop-blur">
@@ -282,10 +332,10 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
         */}
         <div className={"flex-1 transition-[max-width] " + (paletteCollapsed ? "max-w-[920px]" : "max-w-prose")}>
           <section className="flex flex-col gap-5 rounded-xl border border-border-subtle bg-surface-card p-6">
-            {current.caseStudy && (
+            {displayCaseStudy && (
               <CaseStudyBlock
-                title={current.caseStudy.title}
-                body={current.caseStudy.body}
+                title={displayCaseStudy.title}
+                body={displayCaseStudy.body}
                 open={caseOpen}
                 onToggle={toggleCase}
               />
@@ -302,10 +352,10 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
               )}
             </div>
 
-            <p className="text-body-default leading-relaxed text-ink-primary">{current.stem}</p>
+            <p className="text-body-default leading-relaxed text-ink-primary">{displayStem}</p>
 
             <div className="flex flex-col gap-2.5">
-              {current.options.map((opt) => {
+              {displayOptions.map((opt) => {
                 const selected = current.selectedOptionId === opt.id;
                 return (
                   <button
@@ -333,18 +383,31 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
               })}
             </div>
 
-            <button
-              type="button"
-              onClick={toggleFlag}
-              className={
-                "self-start rounded-lg border px-3.5 py-2 text-body-small transition-colors " +
-                (current.flagged
-                  ? "border-flagged-border bg-flagged-bg text-flagged-text"
-                  : "border-border-strong bg-surface-card text-ink-secondary hover:bg-surface-sunken")
-              }
-            >
-              {current.flagged ? "Bỏ đánh dấu" : "Đánh dấu để xem lại"}
-            </button>
+            <div className="flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={toggleFlag}
+                className={
+                  "rounded-lg border px-3.5 py-2 text-body-small transition-colors " +
+                  (current.flagged
+                    ? "border-flagged-border bg-flagged-bg text-flagged-text"
+                    : "border-border-strong bg-surface-card text-ink-secondary hover:bg-surface-sunken")
+                }
+              >
+                {current.flagged ? "Bỏ đánh dấu" : "Đánh dấu để xem lại"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => void toggleTranslate()}
+                disabled={translating}
+                className="rounded-lg border border-border-strong bg-surface-card px-3.5 py-2 text-body-small text-ink-secondary transition-colors hover:bg-surface-sunken disabled:opacity-60"
+              >
+                {translating ? "Đang dịch…" : translated ? "Hiển thị văn bản gốc" : "Dịch sang tiếng Việt"}
+              </button>
+            </div>
+
+            {translateError && <p className="text-body-small text-wrong-text">{translateError}</p>}
           </section>
 
           <div className="mt-4 flex items-center justify-between">

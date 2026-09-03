@@ -121,6 +121,12 @@ export interface TakingQuestion {
   flagged: boolean;
 }
 
+export interface QuestionTranslation {
+  stem: string;
+  options: { label: OptionLabel; text: string }[];
+  caseStudy: { title: string; body: string } | null;
+}
+
 export interface SessionHeader {
   id: number;
   certificationCode: string;
