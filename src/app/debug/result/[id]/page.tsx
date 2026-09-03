@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getSessionResult } from "@/lib/exam/sessions";
 import { bookmark, note } from "../../actions";
@@ -11,9 +12,15 @@ export default async function Result({ params }: { params: Promise<{ id: string 
   const sessionId = Number((await params).id);
   if (!Number.isInteger(sessionId)) notFound();
 
+  const session = await auth();
+  if (!session?.user?.id) {
+    redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent(`/debug/result/${sessionId}`)}`);
+  }
+  const userId = session.user.id;
+
   let result;
   try {
-    result = getSessionResult(db, sessionId);
+    result = getSessionResult(db, userId, sessionId);
   } catch (error) {
     return (
       <main>

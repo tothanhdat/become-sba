@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
+import { auth } from "@/lib/auth";
 import { getCertification, listCertifications } from "@/lib/catalog";
 import { db } from "@/lib/db";
 import { DECKS, type Deck } from "@/lib/domain";
@@ -20,6 +22,12 @@ export default async function Flashcards({
 }: {
   searchParams: Promise<{ deck?: string; cert?: string }>;
 }) {
+  const session = await auth();
+  if (!session?.user?.id) {
+    redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent("/debug/flashcards")}`);
+  }
+  const userId = session.user.id;
+
   const params = await searchParams;
   const deck = DECKS.includes(params.deck as Deck) ? (params.deck as Deck) : undefined;
 
@@ -27,9 +35,9 @@ export default async function Flashcards({
   const cert = (params.cert && getCertification(db, params.cert)) || all[all.length - 1];
   const frameworkId = cert.framework.id;
 
-  const stats = getDeckStats(db, frameworkId);
-  const due = getDueCards(db, { frameworkId, deck, limit: 1 });
-  const remaining = getDueCards(db, { frameworkId, deck }).length;
+  const stats = getDeckStats(db, userId, frameworkId);
+  const due = getDueCards(db, userId, { frameworkId, deck, limit: 1 });
+  const remaining = getDueCards(db, userId, { frameworkId, deck }).length;
 
   return (
     <main>

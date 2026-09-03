@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
+import { auth } from "@/lib/auth";
 import { getReadiness, getSessionHistory } from "@/lib/analytics";
 import { getCertification, listCertifications } from "@/lib/catalog";
 import { db } from "@/lib/db";
@@ -18,15 +20,21 @@ export default async function DebugHome({
 }: {
   searchParams: Promise<{ cert?: string }>;
 }) {
+  const session = await auth();
+  if (!session?.user?.id) {
+    redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent("/debug")}`);
+  }
+  const userId = session.user.id;
+
   const all = listCertifications(db);
   const requested = (await searchParams).cert;
   const cert = (requested && getCertification(db, requested)) || all[all.length - 1];
 
-  const readiness = getReadiness(db, cert);
-  const history = getSessionHistory(db, cert, 15);
-  const decks = getDeckStats(db, cert.framework.id);
+  const readiness = getReadiness(db, userId, cert);
+  const history = getSessionHistory(db, userId, cert, 15);
+  const decks = getDeckStats(db, userId, cert.framework.id);
   const coverage = getBankCoverage(db, cert);
-  const reviewPool = loadReviewPool(db, cert).length;
+  const reviewPool = loadReviewPool(db, userId, cert).length;
 
   return (
     <main>

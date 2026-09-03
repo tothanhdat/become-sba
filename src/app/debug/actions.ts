@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { EXAM_MODES, REVIEW_GRADES, type ExamMode, type ReviewButton } from "@/lib/domain";
 import { createSession, saveAnswer, submitSession } from "@/lib/exam/sessions";
@@ -17,14 +18,27 @@ function int(form: FormData, key: string): number {
   return Number(str(form, key));
 }
 
+/**
+ * Mirrors requireUserId in src/app/actions.ts: a logged-out visitor is sent
+ * to Google sign-in and lands back on `returnTo` after authenticating.
+ */
+async function requireUserId(returnTo: string): Promise<string> {
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent(returnTo)}`);
+  return userId;
+}
+
 export async function startSession(form: FormData): Promise<void> {
   const mode = str(form, "mode") as ExamMode;
   if (!EXAM_MODES.includes(mode)) throw new Error(`Unknown mode: ${mode}`);
 
+  const userId = await requireUserId("/debug");
+
   const domain = str(form, "domain");
   const totalRaw = int(form, "total");
 
-  const id = createSession(db, {
+  const id = createSession(db, userId, {
     certificationCode: str(form, "certification"),
     mode,
     domain: domain || undefined,
@@ -36,35 +50,43 @@ export async function startSession(form: FormData): Promise<void> {
 
 export async function answer(form: FormData): Promise<void> {
   const sessionId = int(form, "sessionId");
-  saveAnswer(db, sessionId, int(form, "questionId"), { selectedOptionId: int(form, "optionId") });
+  const userId = await requireUserId(`/debug/session/${sessionId}`);
+  saveAnswer(db, userId, sessionId, int(form, "questionId"), { selectedOptionId: int(form, "optionId") });
   revalidatePath(`/debug/session/${sessionId}`);
 }
 
 export async function flag(form: FormData): Promise<void> {
   const sessionId = int(form, "sessionId");
-  saveAnswer(db, sessionId, int(form, "questionId"), { flagged: str(form, "flagged") === "1" });
+  const userId = await requireUserId(`/debug/session/${sessionId}`);
+  saveAnswer(db, userId, sessionId, int(form, "questionId"), { flagged: str(form, "flagged") === "1" });
   revalidatePath(`/debug/session/${sessionId}`);
 }
 
 export async function submit(form: FormData): Promise<void> {
   const sessionId = int(form, "sessionId");
-  submitSession(db, sessionId);
+  const userId = await requireUserId(`/debug/session/${sessionId}`);
+  submitSession(db, userId, sessionId);
   redirect(`/debug/result/${sessionId}`);
 }
 
 export async function note(form: FormData): Promise<void> {
-  saveNote(db, int(form, "questionId"), str(form, "body"));
-  revalidatePath(str(form, "returnTo") || "/debug");
+  const returnTo = str(form, "returnTo") || "/debug";
+  const userId = await requireUserId(returnTo);
+  saveNote(db, userId, int(form, "questionId"), str(form, "body"));
+  revalidatePath(returnTo);
 }
 
 export async function bookmark(form: FormData): Promise<void> {
-  toggleBookmark(db, int(form, "questionId"));
-  revalidatePath(str(form, "returnTo") || "/debug");
+  const returnTo = str(form, "returnTo") || "/debug";
+  const userId = await requireUserId(returnTo);
+  toggleBookmark(db, userId, int(form, "questionId"));
+  revalidatePath(returnTo);
 }
 
 export async function grade(form: FormData): Promise<void> {
   const button = str(form, "button") as ReviewButton;
   if (!(button in REVIEW_GRADES)) throw new Error(`Unknown review button: ${button}`);
-  reviewCard(db, int(form, "cardId"), button);
+  const userId = await requireUserId("/debug/flashcards");
+  reviewCard(db, userId, int(form, "cardId"), button);
   revalidatePath("/debug/flashcards");
 }
