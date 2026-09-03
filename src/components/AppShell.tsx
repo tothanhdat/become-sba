@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { SignInButton } from "@/components/auth/SignInButton";
 import { SignOutButton } from "@/components/auth/SignOutButton";
+import { BackButton } from "@/components/BackButton";
 import { ACCENT_SOFT_BG, ACCENT_SOLID_BG, ACCENT_TEXT } from "@/lib/ui/accent";
 import type { CertificationSummary } from "@/lib/ui/types";
 
@@ -37,6 +38,8 @@ export function AppShell({ certifications, current, active, user, children }: Ap
         recombines them into one row once there's room.
       */}
       <header className="sticky top-0 z-20 flex flex-wrap items-center gap-x-5 gap-y-3 border-b border-border-subtle bg-surface-card/95 px-6 py-3 backdrop-blur sm:px-12">
+        <BackButton />
+
         {/*
           The logo lockup bakes its wordmark into the artwork (icon + "Become
           a S-BA" stacked), so it needs real height for that text to read —
