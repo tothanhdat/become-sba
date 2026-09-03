@@ -239,7 +239,7 @@ export function FlashcardReviewer({ certificationCode, deck }: Props) {
     // flashcard is a small, focused object, not a page-width panel. Every
     // child here (progress bar, card, grade buttons) shares this same
     // max-width, so the grade row never runs wider than the card above it.
-    <div className="mx-auto flex max-w-2xl flex-col gap-4">
+    <div className="mx-auto flex w-full max-w-2xl flex-col gap-4">
       <div className="h-1.5 rounded-full bg-surface-sunken">
         <div
           className="h-1.5 rounded-full bg-accent-solid transition-all"
