@@ -99,11 +99,18 @@ export function FlashcardReviewer({ certificationCode, deck }: Props) {
   const [phase, setPhase] = useState<FlipPhase>("idle");
   const [grading, setGrading] = useState(false);
   const [lastResult, setLastResult] = useState<CardState | null>(null);
+  /** A 401 from either the load or the grade endpoint — sign-in is required to continue. */
+  const [sessionExpired, setSessionExpired] = useState(false);
 
   const load = useCallback(async () => {
     const params = new URLSearchParams({ certification: certificationCode, limit: "200" });
     if (deck) params.set("deck", deck);
     const res = await fetch(`/api/flashcards/due?${params}`, { cache: "no-store" });
+    if (res.status === 401) {
+      // Body is { error: "..." } here, not an array — don't let that land in queue.
+      setSessionExpired(true);
+      return;
+    }
     const cards: DueCard[] = await res.json();
     setQueue(cards);
     setI(0);
@@ -159,6 +166,11 @@ export function FlashcardReviewer({ certificationCode, deck }: Props) {
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ button }),
         });
+        if (res.status === 401) {
+          // Don't advance the queue — the grade wasn't saved, so leave the card in place.
+          setSessionExpired(true);
+          return;
+        }
         if (res.ok) setLastResult(await res.json());
         setI((n) => n + 1);
         setFlipped(false);
@@ -180,6 +192,23 @@ export function FlashcardReviewer({ certificationCode, deck }: Props) {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [current, flipped, grade]);
+
+  if (sessionExpired) {
+    // Same convention as ExamClient's 401 handling: a sign-in link back to this exact URL.
+    const callbackUrl = typeof window !== "undefined" ? window.location.pathname + window.location.search : "/flashcards";
+    return (
+      <section className="rounded-xl border border-border-subtle bg-surface-card px-8 py-14 text-center">
+        <p className="text-heading-m text-ink-primary">Phiên đăng nhập hết hạn</p>
+        <p className="mt-2 text-body-default text-ink-secondary">Đăng nhập lại để tiếp tục ôn thẻ.</p>
+        <a
+          href={`/api/auth/signin?callbackUrl=${encodeURIComponent(callbackUrl)}`}
+          className="mt-5 inline-block rounded-lg border border-border-strong px-4 py-2 text-body-small text-ink-primary"
+        >
+          Đăng nhập lại
+        </a>
+      </section>
+    );
+  }
 
   if (queue === null) {
     return <p className="text-body-default text-ink-muted">Đang tải…</p>;

@@ -17,6 +17,26 @@ npm run dev       # http://localhost:3000
 Hiện giao diện là trang `/debug` — HTML thô, đủ để dùng thật. Giao diện chính thức
 được dựng từ `docs/UI-SPEC.md` và [file Figma](https://www.figma.com/design/yT3XNK1Vro1ndhMRW2X3gr).
 
+## Đăng nhập Google
+
+App yêu cầu đăng nhập Google cho mọi thứ đụng tới tiến độ cá nhân — làm bài thi,
+ghi chú, bookmark, ôn flashcard. Xem Dashboard/Library và chọn bộ flashcard vẫn
+dùng được mà không cần đăng nhập.
+
+Cần 4 biến môi trường trong `.env.local` (không commit):
+
+| Biến | Ý nghĩa |
+|---|---|
+| `AUTH_SECRET` | Sinh bằng `npx auth secret`, hoặc bất kỳ giá trị ngẫu nhiên ≥ 32 byte |
+| `AUTH_GOOGLE_ID` | OAuth 2.0 Client ID từ Google Cloud Console |
+| `AUTH_GOOGLE_SECRET` | Client secret đi kèm |
+| `AUTH_URL` | Gốc URL của app, vd `http://localhost:3000` khi chạy local |
+
+Lấy `AUTH_GOOGLE_ID`/`AUTH_GOOGLE_SECRET`: tạo OAuth 2.0 Client ID loại **Web
+application** trong Google Cloud Console, khai báo authorized redirect URI là
+`{AUTH_URL}/api/auth/callback/google` (vd `http://localhost:3000/api/auth/callback/google`
+khi chạy local).
+
 ## Lệnh
 
 | Lệnh | Việc |
@@ -30,6 +50,8 @@ Hiện giao diện là trang `/debug` — HTML thô, đủ để dùng thật. G
 | `npm run decks:build` | Sinh lại 3 bộ flashcard từ BABOK text |
 
 Làm lại từ đầu hoàn toàn: `rm data/cbap.db && npm run seed`.
+Có `data/cbap.db` từ trước tính năng đăng nhập Google: chạy lệnh trên một lần sau khi
+pull — schema đổi (thêm bảng Auth.js) và migration được sinh lại từ đầu thay vì nối tiếp.
 
 ## Kiến trúc multi-certification
 

@@ -58,7 +58,7 @@ export default async function FlashcardsPage({
   const session = await auth();
   const userId = session?.user?.id ?? null;
 
-  if (reviewing && !session) {
+  if (reviewing && !session?.user?.id) {
     const callback = `/flashcards?cert=${current.code}${params.deck ? `&deck=${params.deck}` : ""}`;
     redirect(`/api/auth/signin?callbackUrl=${encodeURIComponent(callback)}`);
   }
