@@ -505,6 +505,114 @@
           "rationale": "Traceability links requirements to objectives. Performance measures describe how the analysis work itself is going, and are not traced this way."
         }
       ]
+    },
+    {
+      "code": "BAPM-015",
+      "domain": "BAPM",
+      "sourceRef": "3.2",
+      "sourceTask": "Plan Stakeholder Engagement",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A business analyst joins a new initiative and starts compiling a list of stakeholders, rating each one's level of influence and attitude toward the change, before deciding how to engage each group. Which task is the analyst performing?",
+      "explanation": "Plan Stakeholder Engagement is the task whose purpose is to plan an approach for establishing and maintaining effective working relationships with stakeholders; its core element is performing stakeholder analysis to understand who they are before deciding how to engage them.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Stakeholder Engagement, since stakeholder analysis is the element that drives this task.",
+          "isCorrect": true,
+          "rationale": "Correct. Rating influence and attitude is stakeholder analysis, the element at the heart of planning a stakeholder engagement approach."
+        },
+        {
+          "label": "B",
+          "text": "Plan Business Analysis Governance, since it defines who is involved in decisions.",
+          "isCorrect": false,
+          "rationale": "Governance defines how decisions on requirements and designs get made, such as approvals and change control. It does not itself analyze who the stakeholders are."
+        },
+        {
+          "label": "C",
+          "text": "Manage Stakeholder Collaboration, since it deals directly with stakeholders.",
+          "isCorrect": false,
+          "rationale": "Manage Stakeholder Collaboration is the ongoing work of sustaining engagement once an approach already exists, not the upfront analysis of who the stakeholders are."
+        },
+        {
+          "label": "D",
+          "text": "Plan Business Analysis Approach, since it covers the overall method for the work.",
+          "isCorrect": false,
+          "rationale": "Plan Business Analysis Approach sets the overall method for conducting business analysis; stakeholder-specific analysis is a separate, narrower task."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-016",
+      "domain": "BAPM",
+      "sourceRef": "3.3",
+      "sourceTask": "Plan Business Analysis Governance",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Before an initiative begins detailed work, the sponsor asks the business analyst to define, in advance, exactly who is authorized to approve a change to a baselined requirement and what evidence must accompany a change request. Which task addresses this need?",
+      "explanation": "Plan Business Analysis Governance defines how decisions about requirements and designs are made, including reviews, change control, approvals, and prioritization, before that decision-making actually has to happen.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Plan Business Analysis Governance, since it defines the decision-making process itself.",
+          "isCorrect": true,
+          "rationale": "Correct. Deciding in advance who approves changes and what evidence is required is exactly the decision-making structure this task defines."
+        },
+        {
+          "label": "B",
+          "text": "Approve Requirements, since it involves approving a change.",
+          "isCorrect": false,
+          "rationale": "Approve Requirements is where an actual approval is obtained during the work, using the process that governance already defined, not where the process itself is designed."
+        },
+        {
+          "label": "C",
+          "text": "Assess Requirements Changes, since it evaluates the impact of a change.",
+          "isCorrect": false,
+          "rationale": "Assessing a specific proposed change's impact happens later, using the governance rules already in place, not by setting up those rules."
+        },
+        {
+          "label": "D",
+          "text": "Plan Business Analysis Information Management, since it deals with requirement records.",
+          "isCorrect": false,
+          "rationale": "Information management concerns how business analysis information is stored and accessed, not who has authority to approve changes to it."
+        }
+      ]
+    },
+    {
+      "code": "BAPM-017",
+      "domain": "BAPM",
+      "sourceRef": "3.5",
+      "sourceTask": "Identify Business Analysis Performance Improvements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "After a release closes, the business analysis lead reviews how long it took to elicit and approve requirements on this initiative, compares that against target cycle times, and drafts recommendations for how future elicitation sessions on other initiatives should be planned. What is the lead doing?",
+      "explanation": "Identify Business Analysis Performance Improvements assesses the business analysis work itself and plans process improvements. It is easy to confuse with Solution Evaluation's performance tasks, which measure the value of a deployed solution rather than the quality of the business analysis process that produced it.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Identify Business Analysis Performance Improvements, since it assesses BA work and plans process changes.",
+          "isCorrect": true,
+          "rationale": "Correct. Reviewing how the business analysis process performed, against agreed measures, and recommending process changes is the purpose of this task."
+        },
+        {
+          "label": "B",
+          "text": "Plan Business Analysis Approach, since it defines how the work will be done.",
+          "isCorrect": false,
+          "rationale": "Plan Business Analysis Approach sets the method up front. This scenario is a retrospective assessment after the work is already done."
+        },
+        {
+          "label": "C",
+          "text": "Measure Solution Performance, since performance is being measured.",
+          "isCorrect": false,
+          "rationale": "Measure Solution Performance evaluates the deployed solution's value to the business, not the business analyst's own elicitation and approval cycle time."
+        },
+        {
+          "label": "D",
+          "text": "Analyze Performance Measures, since measures are compared against targets.",
+          "isCorrect": false,
+          "rationale": "Analyze Performance Measures interprets a solution's performance data, part of Solution Evaluation, not an assessment of the business analysis process itself."
+        }
+      ]
     }
   ]
 }

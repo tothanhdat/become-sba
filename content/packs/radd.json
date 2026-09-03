@@ -1095,6 +1095,222 @@
           "rationale": "It could plausibly be traced to a growth objective. Tracing it would not make it verifiable."
         }
       ]
+    },
+    {
+      "code": "RADD-031",
+      "domain": "RADD",
+      "sourceRef": "7.2",
+      "sourceTask": "Verify Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Before requirements move forward, a business analyst checks the documented requirements against a quality checklist, confirming each one is unambiguous, complete, and testable, without yet asking whether the set as a whole actually delivers the needed business value. Which task is this?",
+      "explanation": "Verify Requirements ensures that requirements and designs meet quality standards and are usable for the purpose they serve, using verification activities and checklists. It is deliberately distinct from Validate Requirements, which checks alignment with business value rather than specification quality.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Verify Requirements, since it checks quality characteristics like clarity and testability.",
+          "isCorrect": true,
+          "rationale": "Correct. Checking a requirement's specification quality against characteristics such as clarity and testability, using a checklist, is exactly Verify Requirements."
+        },
+        {
+          "label": "B",
+          "text": "Validate Requirements, since the requirements are being checked.",
+          "isCorrect": false,
+          "rationale": "Validate Requirements checks alignment with business requirements and delivered value, which the stem explicitly excludes. That is a separate, later task."
+        },
+        {
+          "label": "C",
+          "text": "Specify and Model Requirements, since requirements are being reviewed.",
+          "isCorrect": false,
+          "rationale": "Specify and Model Requirements produces the requirements in the first place. This scenario is checking already-produced requirements, not creating them."
+        },
+        {
+          "label": "D",
+          "text": "Approve Requirements, since a decision about the requirements is implied.",
+          "isCorrect": false,
+          "rationale": "Approve Requirements obtains formal sign-off, a Requirements Life Cycle Management task that follows verification, not the quality check itself."
+        }
+      ]
+    },
+    {
+      "code": "RADD-032",
+      "domain": "RADD",
+      "sourceRef": "7.3",
+      "sourceTask": "Validate Requirements",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "The requirements have already passed a quality check. Now the business analyst confirms each requirement still supports the agreed business objectives and the value the initiative was chartered to deliver. Which task is this?",
+      "explanation": "Validate Requirements ensures that requirements and designs align to the business requirements and support delivery of needed value, evaluating alignment with solution scope, a different concern from the specification-quality check performed by Verify Requirements.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Validate Requirements, since it checks alignment with business value.",
+          "isCorrect": true,
+          "rationale": "Correct. Confirming that requirements still support the business objectives and expected value is exactly the alignment check this task performs."
+        },
+        {
+          "label": "B",
+          "text": "Verify Requirements, since the requirements are being checked again.",
+          "isCorrect": false,
+          "rationale": "Verify Requirements is the quality check already completed in this scenario. Checking alignment with business value is a distinct, later step."
+        },
+        {
+          "label": "C",
+          "text": "Define Requirements Architecture, since requirements are being examined as a set.",
+          "isCorrect": false,
+          "rationale": "Define Requirements Architecture ensures requirements support one another structurally. It does not evaluate alignment with business value."
+        },
+        {
+          "label": "D",
+          "text": "Assess Risks, since business value is mentioned.",
+          "isCorrect": false,
+          "rationale": "Assess Risks evaluates undesirable consequences during a transition, a Strategy Analysis task unrelated to checking a requirement's alignment with business value."
+        }
+      ]
+    },
+    {
+      "code": "RADD-033",
+      "domain": "RADD",
+      "sourceRef": "7.4",
+      "sourceTask": "Define Requirements Architecture",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "With dozens of individual requirements captured across several teams, a business analyst organizes them into a coherent structure, checking that together they are complete and that the relationships between them are consistent, before any design work begins. Which task is this?",
+      "explanation": "Define Requirements Architecture ensures that requirements collectively support one another to fully achieve the initiative's objectives, with completeness and verifying requirements relationships as explicit elements.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Requirements Architecture, since it organizes the whole requirement set for completeness.",
+          "isCorrect": true,
+          "rationale": "Correct. Structuring a large set of requirements and checking completeness and consistency across the whole set is exactly this task's purpose."
+        },
+        {
+          "label": "B",
+          "text": "Trace Requirements, since relationships between requirements are involved.",
+          "isCorrect": false,
+          "rationale": "Trace Requirements tracks relationships for change-impact purposes across levels. Organizing the whole requirement set into one coherent structure is a separate concern."
+        },
+        {
+          "label": "C",
+          "text": "Specify and Model Requirements, since requirements were captured by several teams.",
+          "isCorrect": false,
+          "rationale": "Specify and Model Requirements produces individual requirements from elicitation results. It does not structure an already-captured set as a whole."
+        },
+        {
+          "label": "D",
+          "text": "Define Design Options, since design work is mentioned.",
+          "isCorrect": false,
+          "rationale": "Define Design Options proposes solution alternatives, and the stem states design work has not begun yet."
+        }
+      ]
+    },
+    {
+      "code": "RADD-034",
+      "domain": "RADD",
+      "sourceRef": "7.5",
+      "sourceTask": "Define Design Options",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "With validated, prioritized requirements and a requirements architecture already in place, a business analyst works with the delivery team to sketch two different ways the solution could satisfy those requirements, each allocating the requirements differently across components. Which task is this?",
+      "explanation": "Define Design Options defines the solution approach, allocates requirements across solution components, and represents design options that could achieve the desired future state.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Design Options, since it allocates requirements across solution components.",
+          "isCorrect": true,
+          "rationale": "Correct. Sketching alternative solution approaches and allocating requirements across components is exactly what this task produces."
+        },
+        {
+          "label": "B",
+          "text": "Analyze Potential Value and Recommend Solution, since alternatives are being compared.",
+          "isCorrect": false,
+          "rationale": "Analyze Potential Value and Recommend Solution evaluates and selects among design options once they exist. This scenario is producing those options, not choosing between them."
+        },
+        {
+          "label": "C",
+          "text": "Define Change Strategy, since alternatives are being sketched.",
+          "isCorrect": false,
+          "rationale": "Define Change Strategy selects an overall transition approach at the strategy level, a Strategy Analysis task, not solution-level design alternatives."
+        },
+        {
+          "label": "D",
+          "text": "Specify and Model Requirements, since requirements are involved.",
+          "isCorrect": false,
+          "rationale": "Specify and Model Requirements produces the requirements themselves, an input here, not alternative solution designs that satisfy them."
+        }
+      ]
+    },
+    {
+      "code": "RADD-035",
+      "domain": "RADD",
+      "sourceRef": "7.6",
+      "sourceTask": "Analyze Potential Value and Recommend Solution",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Two design options exist for automating an invoice-matching process. A business analyst estimates the expected benefits and costs of each, and recommends the option offering the greatest net value to the enterprise. Which task is this?",
+      "explanation": "Analyze Potential Value and Recommend Solution estimates the potential value of each design option and establishes which one is most appropriate to meet the enterprise's requirements, weighing expected benefits against expected costs.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Potential Value and Recommend Solution, since it weighs benefits and costs to recommend an option.",
+          "isCorrect": true,
+          "rationale": "Correct. Estimating benefits and costs for each design option and recommending the one with the greatest value is exactly this task's purpose."
+        },
+        {
+          "label": "B",
+          "text": "Define Design Options, since two options are being compared.",
+          "isCorrect": false,
+          "rationale": "Define Design Options produced the two options being compared here. Evaluating and choosing between them is a separate, later task."
+        },
+        {
+          "label": "C",
+          "text": "Measure Solution Performance, since value is being estimated.",
+          "isCorrect": false,
+          "rationale": "Measure Solution Performance evaluates an already-implemented solution using collected data. Neither design option here has been built yet."
+        },
+        {
+          "label": "D",
+          "text": "Assess Risks, since a recommendation is being made.",
+          "isCorrect": false,
+          "rationale": "Assess Risks evaluates undesirable consequences of a transition at the strategy level, not the comparative value of two solution design options."
+        }
+      ]
+    },
+    {
+      "code": "RADD-036",
+      "domain": "RADD",
+      "sourceRef": "7.6",
+      "sourceTask": "Analyze Potential Value and Recommend Solution",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "After the enterprise selects a recommended solution, the business analyst also proposes a small pilot release before the full rollout, to confirm the expected value materializes before committing further investment. Recommending this pilot release is an output of which task?",
+      "explanation": "Analyze Potential Value and Recommend Solution's outputs explicitly include prototypes or proofs of concept, pilot or beta releases, and operational releases, alongside the solution recommendation itself, distinct from Define Change Strategy's broader transition-states planning.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Potential Value and Recommend Solution, since pilot releases are among its outputs.",
+          "isCorrect": true,
+          "rationale": "Correct. Recommending a pilot or beta release ahead of a full operational release is explicitly listed among this task's outputs, alongside the solution recommendation."
+        },
+        {
+          "label": "B",
+          "text": "Define Change Strategy, since release planning is involved.",
+          "isCorrect": false,
+          "rationale": "Define Change Strategy plans transition states and releases at a broader strategic level, before design options even exist, not the specific pilot-before-rollout recommendation tied to a chosen solution."
+        },
+        {
+          "label": "C",
+          "text": "Verify Requirements, since quality is a concern before rollout.",
+          "isCorrect": false,
+          "rationale": "Verify Requirements checks specification quality earlier in the process. It has no role in sequencing pilot and operational releases."
+        },
+        {
+          "label": "D",
+          "text": "Measure Solution Performance, since the pilot will be evaluated.",
+          "isCorrect": false,
+          "rationale": "Measure Solution Performance happens after a release is live, using data it produces. Proposing the pilot release itself happens before that, as part of the solution recommendation."
+        }
+      ]
     }
   ]
 }

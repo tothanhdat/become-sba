@@ -505,6 +505,114 @@
           "rationale": "Accepting current performance now does not preclude re-evaluating later as conditions change."
         }
       ]
+    },
+    {
+      "code": "SE-015",
+      "domain": "SE",
+      "sourceRef": "8.2",
+      "sourceTask": "Analyze Performance Measures",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Six months after go-live, a business analyst reviews collected performance data against the value the solution was meant to deliver, looking for trends and variances, without yet determining whether any shortfall is caused by something inside the solution or by the surrounding organization. Which task is this?",
+      "explanation": "Analyze Performance Measures provides insight into a solution's performance in relation to the value it brings, examining performance against desired value, trends, and variances, before any cause is attributed to the solution or the enterprise.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Performance Measures, since it examines performance data for trends and variances.",
+          "isCorrect": true,
+          "rationale": "Correct. Reviewing collected performance data against desired value, and looking for trends and variances, is exactly this task's purpose."
+        },
+        {
+          "label": "B",
+          "text": "Measure Solution Performance, since performance is mentioned.",
+          "isCorrect": false,
+          "rationale": "Measure Solution Performance defines the measures and collects the data, a prior step. This scenario is already analyzing data that was collected."
+        },
+        {
+          "label": "C",
+          "text": "Assess Solution Limitations, since a shortfall might exist.",
+          "isCorrect": false,
+          "rationale": "Assess Solution Limitations determines internal causes of a shortfall, which the stem explicitly says has not been determined yet."
+        },
+        {
+          "label": "D",
+          "text": "Assess Enterprise Limitations, since the organization is mentioned.",
+          "isCorrect": false,
+          "rationale": "Assess Enterprise Limitations determines external causes of a shortfall, also explicitly excluded by the stem at this point."
+        }
+      ]
+    },
+    {
+      "code": "SE-016",
+      "domain": "SE",
+      "sourceRef": "8.3",
+      "sourceTask": "Assess Solution Limitations",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Performance analysis shows a new claims system is underdelivering. A business analyst investigates whether the shortfall traces to a specific defective component or dependency inside the solution itself. Which task is this?",
+      "explanation": "Assess Solution Limitations determines the factors internal to the solution that restrict the full realization of value, identifying internal component dependencies and investigating solution problems.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Solution Limitations, since it investigates causes internal to the solution.",
+          "isCorrect": true,
+          "rationale": "Correct. Investigating whether a shortfall traces to a defective component or dependency inside the solution is exactly this task's purpose."
+        },
+        {
+          "label": "B",
+          "text": "Assess Enterprise Limitations, since the solution is underdelivering.",
+          "isCorrect": false,
+          "rationale": "Assess Enterprise Limitations looks at factors external to the solution, such as organizational culture or structure, not causes inside the solution."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Performance Measures, since performance data was already reviewed.",
+          "isCorrect": false,
+          "rationale": "Analyze Performance Measures is the earlier step that surfaced the shortfall. Diagnosing its internal cause is a separate, later task."
+        },
+        {
+          "label": "D",
+          "text": "Recommend Actions to Increase Solution Value, since a fix is eventually needed.",
+          "isCorrect": false,
+          "rationale": "Recommend Actions to Increase Solution Value comes after both internal and external limitations are understood, not while diagnosing an internal cause."
+        }
+      ]
+    },
+    {
+      "code": "SE-017",
+      "domain": "SE",
+      "sourceRef": "8.4",
+      "sourceTask": "Assess Enterprise Limitations",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Investigation shows a new claims system works as designed, but adoption is low because staff were never retrained and the surrounding operating model never changed. Which task identifies this kind of cause?",
+      "explanation": "Assess Enterprise Limitations determines how factors external to the solution, such as enterprise culture, organizational structure, and operational readiness, restrict value realization, in contrast to Assess Solution Limitations, which looks inside the solution itself.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Enterprise Limitations, since the cause is organizational, not technical.",
+          "isCorrect": true,
+          "rationale": "Correct. Untrained staff and an unchanged operating model are factors external to the solution, exactly what this task's enterprise culture and operational assessment elements cover."
+        },
+        {
+          "label": "B",
+          "text": "Assess Solution Limitations, since the solution is involved.",
+          "isCorrect": false,
+          "rationale": "Assess Solution Limitations looks at causes internal to the solution, and the stem explicitly rules that out by stating the system works as designed."
+        },
+        {
+          "label": "C",
+          "text": "Analyze Performance Measures, since performance data revealed the issue.",
+          "isCorrect": false,
+          "rationale": "Analyze Performance Measures is the earlier step that surfaces a shortfall. This scenario is already diagnosing the cause, not gathering the data."
+        },
+        {
+          "label": "D",
+          "text": "Recommend Actions to Increase Solution Value, since low adoption needs addressing.",
+          "isCorrect": false,
+          "rationale": "Recommend Actions to Increase Solution Value proposes a course of action after limitations, internal and external, are already understood."
+        }
+      ]
     }
   ]
 }

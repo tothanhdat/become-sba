@@ -433,6 +433,78 @@
           "rationale": "Tracing feedback to requirements is a Requirements Life Cycle Management activity, and describes bookkeeping rather than the relationship this task manages."
         }
       ]
+    },
+    {
+      "code": "EC-013",
+      "domain": "EC",
+      "sourceRef": "4.4",
+      "sourceTask": "Communicate Business Analysis Information",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Having finished modelling a set of requirements, a business analyst decides to present them as a formally signed-off package to the steering committee, but as an informal walkthrough to the delivery team, tailoring the format to each audience. Which task is this?",
+      "explanation": "Communicate Business Analysis Information ensures stakeholders share an understanding of business analysis information, and its elements explicitly include determining the objectives and format of the communication for the audience receiving it.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Communicate Business Analysis Information, since the format is chosen for each audience.",
+          "isCorrect": true,
+          "rationale": "Correct. Determining the objectives and format of a communication for its audience, and then delivering the package, is what this task covers."
+        },
+        {
+          "label": "B",
+          "text": "Conduct Elicitation, since information is being shared with stakeholders.",
+          "isCorrect": false,
+          "rationale": "Conduct Elicitation draws information out of stakeholders. This scenario is pushing already-modelled information out to stakeholders, the opposite direction."
+        },
+        {
+          "label": "C",
+          "text": "Confirm Elicitation Results, since the requirements were gathered earlier.",
+          "isCorrect": false,
+          "rationale": "Confirming elicitation results checks gathered information for accuracy against its source, a step that happens before modelling, not the formatting of an already-modelled package."
+        },
+        {
+          "label": "D",
+          "text": "Manage Stakeholder Collaboration, since stakeholders are being engaged.",
+          "isCorrect": false,
+          "rationale": "Manage Stakeholder Collaboration sustains ongoing engagement and commitment. Choosing a communication's format for its audience is a narrower, one-time act of communication."
+        }
+      ]
+    },
+    {
+      "code": "EC-014",
+      "domain": "EC",
+      "sourceRef": "4.5",
+      "sourceTask": "Manage Stakeholder Collaboration",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "Two departments elicited conflicting priorities during earlier workshops. The business analyst sets up a recurring sync to keep both groups engaged, checks whether commitments made in prior sessions are being honored, and resolves friction as it comes up over the rest of the initiative. Which task is being performed?",
+      "explanation": "Manage Stakeholder Collaboration is the ongoing work of encouraging stakeholders to work towards a common goal, including gaining agreement on commitments, monitoring engagement, and handling collaboration issues as they arise, distinct from planning the engagement approach up front.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Manage Stakeholder Collaboration, since it monitors commitments and sustains engagement over time.",
+          "isCorrect": true,
+          "rationale": "Correct. Monitoring whether commitments are honored and resolving collaboration friction throughout the initiative is exactly what this task covers."
+        },
+        {
+          "label": "B",
+          "text": "Plan Stakeholder Engagement, since stakeholders were analyzed for this initiative.",
+          "isCorrect": false,
+          "rationale": "Plan Stakeholder Engagement produces the upfront approach for engaging stakeholders. This scenario is the ongoing execution of that approach, not the planning of it."
+        },
+        {
+          "label": "C",
+          "text": "Confirm Elicitation Results, since the workshops elicited information.",
+          "isCorrect": false,
+          "rationale": "Confirming elicitation results checks gathered information for accuracy. This scenario is about sustaining collaboration, not validating what was said."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, since priorities conflicted.",
+          "isCorrect": false,
+          "rationale": "Assessing requirements changes evaluates the impact of a specific proposed change to a requirement, not the ongoing management of stakeholder relationships."
+        }
+      ]
     }
   ]
 }

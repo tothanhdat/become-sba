@@ -541,6 +541,114 @@
           "rationale": "Validation concerns whether a requirement delivers value at the time it is assessed. Going stale later is a maintenance failure, not a validation one."
         }
       ]
+    },
+    {
+      "code": "RLCM-016",
+      "domain": "RLCM",
+      "sourceRef": "5.1",
+      "sourceTask": "Trace Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "A regulator asks the business analyst to demonstrate which business requirement a particular screen-level functional requirement descends from, and which test cases will verify it. Which task supports answering this?",
+      "explanation": "Trace Requirements ensures requirements and designs at different levels are aligned to one another, maintaining the relationships and traceability repository that let an analyst show how a low-level requirement links back to a business requirement and forward to its test cases.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Trace Requirements, since it maintains the relationships between levels.",
+          "isCorrect": true,
+          "rationale": "Correct. Showing how a requirement links to the business requirement above it and the test cases that verify it is exactly what traceability relationships capture."
+        },
+        {
+          "label": "B",
+          "text": "Maintain Requirements, since the requirement needs to stay accurate.",
+          "isCorrect": false,
+          "rationale": "Maintain Requirements keeps individual requirements accurate and current over time. It does not itself track relationships between requirements at different levels."
+        },
+        {
+          "label": "C",
+          "text": "Prioritize Requirements, since some requirements matter more than others.",
+          "isCorrect": false,
+          "rationale": "Prioritization ranks requirements by relative importance. It has no bearing on which requirement a given item descends from."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, since a regulator is asking about the requirement.",
+          "isCorrect": false,
+          "rationale": "Assess Requirements Changes evaluates the impact of a proposed change, and typically relies on traceability as an input. No change is being proposed in this scenario."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-017",
+      "domain": "RLCM",
+      "sourceRef": "5.3",
+      "sourceTask": "Prioritize Requirements",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "With a fixed budget and a hard deadline, the business analyst facilitates a session ranking which requirements deliver the most value first, understanding that new information later in the project may shift that ranking again. Which task is this?",
+      "explanation": "Prioritize Requirements ranks requirements in order of relative importance, and BABOK treats this as continual rather than one-time, since new information can change the ranking as the initiative proceeds.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Prioritize Requirements, since it ranks requirements and expects the ranking to be revisited.",
+          "isCorrect": true,
+          "rationale": "Correct. Ranking by relative importance under constraints, and revisiting that ranking as new information arrives, is the purpose and the continual nature of this task."
+        },
+        {
+          "label": "B",
+          "text": "Approve Requirements, since a decision is being made about the requirements.",
+          "isCorrect": false,
+          "rationale": "Approve Requirements obtains formal sign-off on requirements. Ranking them by value is a distinct activity that precedes and informs approval decisions."
+        },
+        {
+          "label": "C",
+          "text": "Assess Requirements Changes, since priorities may change later.",
+          "isCorrect": false,
+          "rationale": "Assessing requirements changes evaluates the impact of one proposed change. It is not the activity of ranking the current requirement set by value."
+        },
+        {
+          "label": "D",
+          "text": "Define Change Strategy, since the budget and deadline are constraints.",
+          "isCorrect": false,
+          "rationale": "Define Change Strategy selects the overall approach to a change at the strategy level, a Strategy Analysis task, not the ranking of individual requirements."
+        }
+      ]
+    },
+    {
+      "code": "RLCM-018",
+      "domain": "RLCM",
+      "sourceRef": "5.4",
+      "sourceTask": "Assess Requirements Changes",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "A stakeholder submits a request to add a new mandatory field to a requirement that has already been approved. Before deciding whether to accept it, the business analyst determines which other requirements, designs, and downstream work would be affected, and how significant that impact would be. Which task is this?",
+      "explanation": "Assess Requirements Changes evaluates the implications of a proposed change to requirements and designs, using impact analysis; it draws on the relationships that Trace Requirements maintains, but the act of evaluating a specific proposed change is a distinct task from tracing itself.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Requirements Changes, since it evaluates the impact of a proposed change.",
+          "isCorrect": true,
+          "rationale": "Correct. Determining what a specific proposed change would affect, and how significantly, is impact analysis, the core element of this task."
+        },
+        {
+          "label": "B",
+          "text": "Trace Requirements, since relationships between requirements are being examined.",
+          "isCorrect": false,
+          "rationale": "Trace Requirements maintains the relationships that make impact analysis possible, but evaluating a specific proposed change against those relationships is a separate task."
+        },
+        {
+          "label": "C",
+          "text": "Approve Requirements, since the change needs a decision.",
+          "isCorrect": false,
+          "rationale": "Approve Requirements obtains agreement and sign-off after the impact of a change is understood, not the analysis that determines what the impact is."
+        },
+        {
+          "label": "D",
+          "text": "Verify Requirements, since the requirement's quality is in question.",
+          "isCorrect": false,
+          "rationale": "Verify Requirements checks that a specification meets quality standards. It has no role in analyzing the downstream impact of a proposed change."
+        }
+      ]
     }
   ]
 }

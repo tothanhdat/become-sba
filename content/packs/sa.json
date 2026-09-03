@@ -554,6 +554,114 @@
           "rationale": "Waiting until the solution is live to discover it is unaffordable is precisely the failure this element prevents."
         }
       ]
+    },
+    {
+      "code": "SA-016",
+      "domain": "SA",
+      "sourceRef": "6.1",
+      "sourceTask": "Analyze Current State",
+      "difficulty": 2,
+      "status": "active",
+      "stem": "Before recommending anything, a business analyst documents why the enterprise's manual invoice-matching process is failing, who is affected today, and what business requirements would apply to any solution. Which task is this?",
+      "explanation": "Analyze Current State understands the reasons an enterprise needs to change some aspect of how it operates, and what is directly or indirectly affected, producing a current state description and business requirements as outputs.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Analyze Current State, since it documents today's problem and who is affected.",
+          "isCorrect": true,
+          "rationale": "Correct. Understanding why change is needed today, and producing business requirements from that understanding, is the purpose of this task."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, since a solution is eventually being considered.",
+          "isCorrect": false,
+          "rationale": "Define Future State describes the desired condition once change has occurred. This scenario is entirely about understanding today's problem, not the target condition."
+        },
+        {
+          "label": "C",
+          "text": "Assess Risks, since failures are already occurring.",
+          "isCorrect": false,
+          "rationale": "Assess Risks evaluates undesirable consequences of moving toward a future state, which cannot be assessed until that future state is defined."
+        },
+        {
+          "label": "D",
+          "text": "Define Change Strategy, since a change is clearly needed.",
+          "isCorrect": false,
+          "rationale": "Define Change Strategy selects an approach to get from current state to future state. Neither state has been analyzed yet in this scenario."
+        }
+      ]
+    },
+    {
+      "code": "SA-017",
+      "domain": "SA",
+      "sourceRef": "6.3",
+      "sourceTask": "Assess Risks",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "With the future state and prioritized requirements already defined, a business analyst identifies what could go wrong during the transition, including unknowns and dependencies the organization has limited tolerance for, and recommends whether the enterprise should proceed. Which task is this?",
+      "explanation": "Assess Risks understands the undesirable consequences of internal and external forces during a transition to, or once in, the future state, weighing unknowns and risk tolerance and producing a recommendation.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Assess Risks, since it evaluates undesirable consequences and risk tolerance during transition.",
+          "isCorrect": true,
+          "rationale": "Correct. Identifying what could go wrong during a transition, weighing tolerance for that risk, and recommending a course of action is the purpose of this task."
+        },
+        {
+          "label": "B",
+          "text": "Analyze Current State, since problems are being identified.",
+          "isCorrect": false,
+          "rationale": "Analyze Current State examines today's problem before any future state exists. This scenario already has a future state and prioritized requirements in place."
+        },
+        {
+          "label": "C",
+          "text": "Define Change Strategy, since a recommendation is being made about proceeding.",
+          "isCorrect": false,
+          "rationale": "Define Change Strategy uses the risk analysis results as an input to select an approach; it comes after risk is assessed, not instead of it."
+        },
+        {
+          "label": "D",
+          "text": "Assess Requirements Changes, since a decision is being made about requirements.",
+          "isCorrect": false,
+          "rationale": "Assess Requirements Changes evaluates the impact of one proposed change to a specific requirement, not enterprise-level risk during a transition."
+        }
+      ]
+    },
+    {
+      "code": "SA-018",
+      "domain": "SA",
+      "sourceRef": "6.4",
+      "sourceTask": "Define Change Strategy",
+      "difficulty": 3,
+      "status": "active",
+      "stem": "With current state, future state, and risk analysis all complete, a business analyst compares a single 'big bang' release against a phased rollout, and recommends which to pursue along with the release sequence. Which task is this?",
+      "explanation": "Define Change Strategy develops and assesses alternative approaches to a change and selects the recommended approach, with transition states and release planning as one of its explicit elements.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Define Change Strategy, since it selects among alternative approaches to the change.",
+          "isCorrect": true,
+          "rationale": "Correct. Comparing transition approaches, such as a single release against a phased rollout, and recommending one is exactly what this task's transition-states element covers."
+        },
+        {
+          "label": "B",
+          "text": "Define Future State, since the future state guides the choice.",
+          "isCorrect": false,
+          "rationale": "Define Future State already happened and is an input here. This scenario is about choosing how to get there, not what the destination looks like."
+        },
+        {
+          "label": "C",
+          "text": "Define Design Options, since options are being compared.",
+          "isCorrect": false,
+          "rationale": "Define Design Options compares solution design alternatives after a change strategy is already set, not the overall transition approach itself."
+        },
+        {
+          "label": "D",
+          "text": "Analyze Potential Value and Recommend Solution, since a recommendation is made.",
+          "isCorrect": false,
+          "rationale": "Analyze Potential Value and Recommend Solution recommends among design options based on estimated value, a later Requirements Analysis and Design Definition task, not a transition-path decision."
+        }
+      ]
     }
   ]
 }
