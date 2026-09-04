@@ -100,7 +100,9 @@ export function ReviewBlock({ question, frameworkName }: Props) {
   const displayStem = vi?.stem ?? question.stem;
   const displayCaseStudy = vi?.caseStudy ?? question.caseStudy;
   const displayExplanation = vi?.explanation ?? question.explanation;
-  const viOption = (label: string) => vi?.options.find((o) => o.label === label);
+  // Looked up by option id, never by label: `opt.label` is this session's
+  // shuffled display letter, while the translation keeps canonical labels.
+  const viOption = (id: number) => vi?.options.find((o) => o.id === id);
 
   return (
     <article className="overflow-hidden rounded-xl border border-border-subtle bg-surface-card">
@@ -191,13 +193,13 @@ export function ReviewBlock({ question, frameworkName }: Props) {
                     {tone === "correct" ? "✓" : tone === "wrong" ? "✗" : opt.label}
                   </span>
                   <p className="text-body-default text-ink-primary">
-                    {opt.label}. {viOption(opt.label)?.text ?? opt.text}
+                    {opt.label}. {viOption(opt.id)?.text ?? opt.text}
                   </p>
                   {tone === "correct" && <Chip tone="correct">ĐÁP ÁN ĐÚNG</Chip>}
                   {tone === "wrong" && <Chip tone="wrong">BẠN CHỌN</Chip>}
                 </div>
                 <p className="mt-1.5 pl-[34px] text-body-small text-ink-secondary">
-                  {viOption(opt.label)?.rationale ?? opt.rationale}
+                  {viOption(opt.id)?.rationale ?? opt.rationale}
                 </p>
               </div>
             );

@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { beforeEach, describe, expect, test } from "vitest";
 
 import { createDatabase, type Db } from "@/lib/db";
-import { questionTranslationsVi, questions } from "@/lib/db/schema";
+import { questionOptions, questionTranslationsVi, questions } from "@/lib/db/schema";
 import { seedCatalogAndBank } from "@/test-support/bank";
 import { translateQuestion } from "@/lib/translate";
 import { importQuestionPack } from "./importer";
@@ -68,6 +68,24 @@ describe("importTranslationPack", () => {
 
     expect(translation.stem).toBe("Tình huống BAPM-0: analyst phải quyết định bước tiếp theo của programme.");
     expect(translation.options.find((o) => o.label === "C")?.text).toBe("Phương án C cho BAPM-0");
+  });
+
+  test("each imported option carries its own question_options row id", async () => {
+    importTranslationPack(db, viPack());
+
+    const id = questionId("BAPM-001");
+    const translation = await translateQuestion(db, id, refuseToTranslate);
+    const english = db
+      .select({ id: questionOptions.id, label: questionOptions.label })
+      .from(questionOptions)
+      .where(eq(questionOptions.questionId, id))
+      .all();
+
+    // Every translated option must point at the English row with the same label,
+    // so the UI can join on id past the exam screen's per-session shuffle.
+    for (const option of translation.options) {
+      expect(option.id).toBe(english.find((o) => o.label === option.label)!.id);
+    }
   });
 
   test("re-importing a revised file overwrites the stored translation", () => {

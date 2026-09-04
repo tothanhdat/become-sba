@@ -5,6 +5,14 @@ import { caseStudies, caseStudyTranslationsVi, questionOptions, questionTranslat
 import type { OptionLabel } from "./domain";
 
 export interface TranslatedOption {
+  /**
+   * The `question_options.id` this translation belongs to. The exam screen
+   * re-letters options per session (see `shuffleForDisplay`), so the displayed
+   * label is a position, not an identity — the UI must join English text to its
+   * Vietnamese text on this id, never on the label.
+   */
+  id: number;
+  /** The canonical label as stored in `question_options`, not the shuffled display letter. */
   label: OptionLabel;
   text: string;
   /** Present only for overlay-loaded translations; the on-demand translator omits it. */
@@ -38,11 +46,22 @@ export interface TranslationInput {
  * explanation and per-option rationales are review-screen content and come from
  * the Vietnamese overlay files, so they are not part of this contract.
  */
-export type Translator = (input: TranslationInput) => Promise<Omit<QuestionTranslation, "explanation">>;
+export type Translator = (input: TranslationInput) => Promise<TranslatorResult>;
+
+/**
+ * What a translator returns. Deliberately carries no option `id`: identity is
+ * re-attached from the question's own rows by index, so a translator can never
+ * mis-assign a translation to the wrong option.
+ */
+export interface TranslatorResult {
+  stem: string;
+  options: { label: OptionLabel; text: string }[];
+  caseStudy: TranslatedCaseStudy | null;
+}
 
 interface LoadedQuestion {
   stem: string;
-  options: { label: OptionLabel; text: string }[];
+  options: { id: number; label: OptionLabel; text: string }[];
   caseStudy: { id: number; title: string; body: string } | null;
 }
 
@@ -54,10 +73,13 @@ function loadQuestion(db: Db, questionId: number): LoadedQuestion {
     .get();
   if (!question) throw new Error(`Question ${questionId} does not exist`);
 
+  // Ordered by label so the index-zip against the translator's reply below is
+  // deterministic, matching `loadOptions` in exam/sessions.ts.
   const options = db
-    .select({ label: questionOptions.label, text: questionOptions.text })
+    .select({ id: questionOptions.id, label: questionOptions.label, text: questionOptions.text })
     .from(questionOptions)
     .where(eq(questionOptions.questionId, questionId))
+    .orderBy(questionOptions.label)
     .all();
 
   const caseStudy = question.caseStudyId
@@ -101,7 +123,7 @@ function readCaseStudyCache(db: Db, caseStudyId: number): TranslatedCaseStudy | 
   return row ?? null;
 }
 
-function assertOptionsMatch(expected: { label: OptionLabel }[], actual: TranslatedOption[]): void {
+function assertOptionsMatch(expected: { label: OptionLabel }[], actual: { label: OptionLabel }[]): void {
   const expectedLabels = new Set(expected.map((o) => o.label));
   const actualLabels = new Set(actual.map((o) => o.label));
   const sameSize = expectedLabels.size === actualLabels.size;
@@ -135,16 +157,25 @@ export async function translateQuestion(db: Db, questionId: number, translate: T
 
   const result = await translate({
     stem: question.stem,
-    options: question.options,
+    options: question.options.map((o) => ({ label: o.label, text: o.text })),
     caseStudy: question.caseStudy ? { title: question.caseStudy.title, body: question.caseStudy.body } : null,
   });
   assertOptionsMatch(question.options, result.options);
 
+  // Identity comes from the question's own rows, zipped by position; only the
+  // `text` is taken from the translator. Its own labels are never trusted.
+  const options: TranslatedOption[] = question.options.map((o, i) => ({
+    id: o.id,
+    label: o.label,
+    text: result.options[i]?.text ?? o.text,
+  }));
+  const optionsJson = JSON.stringify(options);
+
   db.insert(questionTranslationsVi)
-    .values({ questionId, stem: result.stem, optionsJson: JSON.stringify(result.options), explanation: null })
+    .values({ questionId, stem: result.stem, optionsJson, explanation: null })
     .onConflictDoUpdate({
       target: questionTranslationsVi.questionId,
-      set: { stem: result.stem, optionsJson: JSON.stringify(result.options), explanation: null },
+      set: { stem: result.stem, optionsJson, explanation: null },
     })
     .run();
 
@@ -158,5 +189,5 @@ export async function translateQuestion(db: Db, questionId: number, translate: T
       .run();
   }
 
-  return { ...result, explanation: null };
+  return { stem: result.stem, options, caseStudy: result.caseStudy, explanation: null };
 }

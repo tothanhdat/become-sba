@@ -243,7 +243,9 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
   const displayOptions = activeTranslation
     ? current.options.map((opt) => ({
         ...opt,
-        text: activeTranslation.options.find((o) => o.label === opt.label)?.text ?? opt.text,
+        // Joined on option id, never on label: `opt.label` is this session's
+        // shuffled display letter, while the translation keeps canonical labels.
+        text: activeTranslation.options.find((o) => o.id === opt.id)?.text ?? opt.text,
       }))
     : current.options;
 

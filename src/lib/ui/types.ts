@@ -123,7 +123,11 @@ export interface TakingQuestion {
 
 export interface QuestionTranslation {
   stem: string;
-  options: { label: OptionLabel; text: string }[];
+  /**
+   * `id` is the `question_options.id`; `label` is the canonical letter, which is
+   * NOT the per-session display letter. Join on `id`.
+   */
+  options: { id: number; label: OptionLabel; text: string }[];
   caseStudy: { title: string; body: string } | null;
 }
 

@@ -146,8 +146,11 @@ export function importTranslationPack(db: Db, raw: TranslationPack): Translation
   }
 
   const englishOptions = new Map<number, { label: OptionLabel; text: string; rationale: string }[]>();
+  /** `${questionId}:${label}` -> the option's row id, so the overlay can be stored keyed on identity. */
+  const optionIdByQuestionAndLabel = new Map<string, number>();
   for (const row of db
     .select({
+      id: questionOptions.id,
       questionId: questionOptions.questionId,
       label: questionOptions.label,
       text: questionOptions.text,
@@ -159,6 +162,7 @@ export function importTranslationPack(db: Db, raw: TranslationPack): Translation
     const list = englishOptions.get(row.questionId) ?? [];
     list.push({ label: row.label, text: row.text, rationale: row.rationale });
     englishOptions.set(row.questionId, list);
+    optionIdByQuestionAndLabel.set(`${row.questionId}:${row.label}`, row.id);
   }
 
   const caseCodes = pack.caseStudies.map((c) => c.code);
@@ -188,8 +192,20 @@ export function importTranslationPack(db: Db, raw: TranslationPack): Translation
       });
       if (current !== q.sourceHash) result.stale.push(q.code);
 
+      // Each option carries its `question_options.id`: the exam screen re-letters
+      // options per session, so the UI joins translations on identity, not label.
       const optionsJson = JSON.stringify(
-        q.options.map((o) => (o.rationale ? { label: o.label, text: o.text, rationale: o.rationale } : { label: o.label, text: o.text })),
+        q.options.map((o) => {
+          const id = optionIdByQuestionAndLabel.get(`${source.id}:${o.label}`);
+          if (id === undefined) {
+            throw new Error(
+              `Translation for ${q.code} names option ${o.label}, which that question does not have.`,
+            );
+          }
+          return o.rationale
+            ? { id, label: o.label, text: o.text, rationale: o.rationale }
+            : { id, label: o.label, text: o.text };
+        }),
       );
       const explanation = q.explanation ?? null;
       tx.insert(questionTranslationsVi)

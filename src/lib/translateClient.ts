@@ -5,12 +5,14 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 // scoped to this one file, required by the SDK helper's own type signature.
 import * as z from "zod/v4";
 
-import { OPTION_LABELS } from "./domain";
 import type { Translator } from "./translate";
 
+// The model returns option translations as a plain ordered list — no labels.
+// Labels are re-attached by index from the original input below, so the model
+// cannot mis-assign which translation belongs to which letter.
 const translationSchema = z.object({
   stem: z.string(),
-  options: z.array(z.object({ label: z.enum(OPTION_LABELS), text: z.string() })).length(4),
+  options: z.array(z.string()).length(4),
   caseStudyTitle: z.string().nullable(),
   caseStudyBody: z.string().nullable(),
 });
@@ -37,8 +39,10 @@ export const translateWithClaude: Translator = async ({ stem, options, caseStudy
       "You translate IIBA BABOK v3 business analysis exam content from English to Vietnamese for a BA " +
       "certification prep app. Keep the meaning and difficulty exactly as in the source — this is an exam " +
       "question, not marketing copy. Preserve BABOK task and technique names naturally; a Vietnamese-speaking " +
-      "BA professional should immediately recognize standard terms. Keep numbers, option labels, and any " +
-      "quoted requirement text intact.",
+      "BA professional should immediately recognize standard terms. Keep numbers and any quoted requirement " +
+      "text intact. Return the option translations in `options` as a plain list, in exactly the same order " +
+      "as the options you were given: the first entry translates the first option, the second the second, " +
+      "and so on. Never reorder them and never add labels.",
     messages: [
       {
         role: "user",
@@ -55,9 +59,10 @@ export const translateWithClaude: Translator = async ({ stem, options, caseStudy
   const parsed = response.parsed_output;
   if (!parsed) throw new Error("Claude did not return a valid translation");
 
+  // Zip by index against the ORIGINAL labels — never read a label off the response.
   return {
     stem: parsed.stem,
-    options: parsed.options,
+    options: options.map((option, i) => ({ label: option.label, text: parsed.options[i] ?? option.text })),
     caseStudy: caseStudy ? { title: parsed.caseStudyTitle ?? caseStudy.title, body: parsed.caseStudyBody ?? caseStudy.body } : null,
   };
 };
