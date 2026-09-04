@@ -183,15 +183,6 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
     if (window.confirm(message)) void submit();
   }, [questions, submit]);
 
-  // Leaving without submitting isn't a dead end (answers are already saved
-  // per-question), but the session drops off Trang chủ's history until it's
-  // submitted, so a confirm avoids losing track of it by accident.
-  const confirmAndLeave = useCallback(() => {
-    if (window.confirm("Rời khỏi bài thi? Bài chưa nộp sẽ không hiện lại ở Trang chủ.")) {
-      router.back();
-    }
-  }, [router]);
-
   // Keyboard shortcuts: arrows navigate, 1-4 pick an option, F flags.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -259,14 +250,6 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
   return (
     <div className="min-h-screen bg-ground pb-16">
       <header className="sticky top-0 z-20 flex items-center gap-4 border-b border-border-subtle bg-surface-card/95 px-6 py-3 backdrop-blur">
-        <button
-          type="button"
-          onClick={confirmAndLeave}
-          className="shrink-0 text-body-small text-ink-secondary transition-colors hover:text-ink-primary"
-        >
-          ← Trở lại
-        </button>
-
         <p className="text-heading-s text-ink-primary">
           Câu {current.position} / {questions.length}
         </p>
