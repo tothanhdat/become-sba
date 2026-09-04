@@ -15,10 +15,12 @@ interface AppShellProps {
 
 // Flashcard has no top-nav entry — it's reached from its own mode card on the
 // Dashboard now, so a second entry point in the header was redundant.
-const NAV = [
-  { key: "dashboard", label: "Trang chủ", href: "/dashboard" },
-  { key: "library", label: "Thư viện câu hỏi", href: "/library" },
-] as const;
+//
+// Library has no entry either: the page behind /library is a stub (its
+// GET /api/questions filter endpoint doesn't exist yet — see backlog.md #1),
+// so linking to it from primary nav would be a dead end. The route stays
+// live for direct visits; it just isn't advertised until it's real.
+const NAV = [{ key: "dashboard", label: "Trang chủ", href: "/dashboard" }] as const;
 
 /**
  * The shell every non-exam screen sits inside: logo, certification switcher,
