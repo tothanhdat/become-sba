@@ -183,6 +183,15 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
     if (window.confirm(message)) void submit();
   }, [questions, submit]);
 
+  // Leaving without submitting isn't a dead end (answers are already saved
+  // per-question), but the session drops off Trang chủ's history until it's
+  // submitted, so a confirm avoids losing track of it by accident.
+  const confirmAndLeave = useCallback(() => {
+    if (window.confirm("Thoát khỏi bài thi? Bài chưa nộp sẽ không được tính là kết quả.")) {
+      router.push("/dashboard");
+    }
+  }, [router]);
+
   // Keyboard shortcuts: arrows navigate, 1-4 pick an option, F flags.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -286,9 +295,17 @@ export function ExamClient({ sessionId }: { sessionId: number }) {
 
         <button
           type="button"
+          onClick={confirmAndLeave}
+          className={"rounded-lg border border-border-strong px-3.5 py-1.5 text-body-small text-ink-secondary transition-colors hover:bg-surface-sunken" + (remainingSec !== null ? "" : " ml-auto")}
+        >
+          Thoát
+        </button>
+
+        <button
+          type="button"
           onClick={confirmAndSubmit}
           disabled={submitting}
-          className={"rounded-lg px-4 py-1.5 text-body-medium text-ink-inverse disabled:opacity-60 " + accentBg + (remainingSec !== null ? "" : " ml-auto")}
+          className={"rounded-lg px-4 py-1.5 text-body-medium text-ink-inverse disabled:opacity-60 " + accentBg}
         >
           {submitting ? "Đang nộp…" : "Nộp bài"}
         </button>
